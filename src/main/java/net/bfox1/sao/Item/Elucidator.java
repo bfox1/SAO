@@ -15,11 +15,11 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
-public class ExampleSword extends ItemSword {
+public class Elucidator extends ItemSword {
 
-	public ExampleSword(ToolMaterial par1) {
+	public Elucidator(ToolMaterial par1) {
 		super(par1);
-		setUnlocalizedName("ExampleSword");
+		setUnlocalizedName("Elucidator");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
 	}
 	
@@ -33,7 +33,7 @@ public class ExampleSword extends ItemSword {
         }
         
 
-        ItemStack sword = new ItemStack(SItem.ExampleSword_Powered).setStackDisplayName(EnumChatFormatting.DARK_GREEN + "Sword");
+        ItemStack sword = new ItemStack(SItem.Elucidator_Powered).setStackDisplayName(EnumChatFormatting.DARK_GREEN + "Sword");
         sword.addEnchantment(Enchantment.fireAspect, 2);
         return sword;
     }

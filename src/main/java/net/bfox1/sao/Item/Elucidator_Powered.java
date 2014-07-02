@@ -14,11 +14,11 @@ import net.minecraft.world.World;
 import net.minecraft.enchantment.*;
 import net.minecraftforge.common.util.EnumHelper;
 
-public class ExampleSword_Powered extends ItemSword {
+public class Elucidator_Powered extends ItemSword {
 
-	public ExampleSword_Powered(ToolMaterial p_i45356_1_) {
+	public Elucidator_Powered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
-		setUnlocalizedName("ExampleSword_Powered");
+		setUnlocalizedName("Elucidator_Powered");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
 		
 	}
@@ -43,7 +43,7 @@ public class ExampleSword_Powered extends ItemSword {
         {
 
         }
-        return new ItemStack(SItem.ExampleSword);
+        return new ItemStack(SItem.Elucidator);
     }
 	
 	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)
