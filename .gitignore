@@ -1,0 +1,10 @@
+#################
+## Eclipse
+#################
+
+bin/
+tmp/
+
+.gradle/
+build/
+eclipse/
