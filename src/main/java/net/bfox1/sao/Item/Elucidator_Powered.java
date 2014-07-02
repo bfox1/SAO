@@ -19,7 +19,7 @@ public class Elucidator_Powered extends ItemSword {
 	public Elucidator_Powered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 		setUnlocalizedName("Elucidator_Powered");
-		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
+		setTextureName(Reference.MODID + ":" + "Elucidator");
 		
 	}
 	

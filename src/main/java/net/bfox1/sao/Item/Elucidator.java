@@ -33,7 +33,7 @@ public class Elucidator extends ItemSword {
         }
         
 
-        ItemStack sword = new ItemStack(SItem.Elucidator_Powered).setStackDisplayName(EnumChatFormatting.DARK_GREEN + "Sword");
+        ItemStack sword = new ItemStack(SItem.Elucidator_Powered).setStackDisplayName(EnumChatFormatting.DARK_GREEN + "Elucidator");
         sword.addEnchantment(Enchantment.fireAspect, 2);
         return sword;
     }
