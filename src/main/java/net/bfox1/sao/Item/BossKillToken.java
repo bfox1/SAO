@@ -21,6 +21,7 @@ public class BossKillToken extends Item {
 	this.setUnlocalizedName("BossKillToken");
 	this.setMaxStackSize(1);
 	this.setHasSubtypes(true);
+
 	this.setCreativeTab(CreativeTabs.tabMaterials);
 
 	}
@@ -75,6 +76,7 @@ public class BossKillToken extends Item {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
+        System.out.println();
         if(par1.getItemDamage() == 0)
         {
         	

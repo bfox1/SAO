@@ -11,8 +11,7 @@ public class SItem {
 		
 		public static Item BossKillToken;
 		public static Item HeartOfKobold;
-		
-		public static Enum EnumColor;
+
 		
 		
 		public static void init()
