@@ -38,22 +38,17 @@ public class Elucidator_Powered extends ItemSword {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-        System.out.println(this.getMaxItemUseDuration(par1));
-        System.out.println(this.getDamage(par1));
-        System.out.println(this.getMaxDamage());
+
 
         if(!par2.isRemote)
         {
+    		System.out.println(par1.getMaxDamage() - par1.getItemDamage() + "This works");
 
         }
        // return new ItemStack(SItem.Elucidator);
-        ItemStack damage = new ItemStack(SItem.Elucidator);
-        if(this.getDamage(par1) > 0)
-        {
-        damage.setItemDamage(this.getMaxDamage(par1) - this.getDamage(par1));
-        return damage;
-        }
-        return damage;
+        ItemStack sword = new ItemStack(SItem.Elucidator);
+        sword.setItemDamage(par1.getMaxDamage() - par1.getItemDamage());
+        return sword;
     }
 	
 	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)

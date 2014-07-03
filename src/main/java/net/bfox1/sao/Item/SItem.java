@@ -9,6 +9,9 @@ public class SItem {
 		public static Item Elucidator;
 		public static Item Elucidator_Powered;
 		
+		public static Item AnnealBlade;
+		public static Item AneealBlockPowered;
+		
 		public static Item BossKillToken;
 		public static Item HeartOfKobold;
 
@@ -18,6 +21,8 @@ public class SItem {
 		{
 			Elucidator = new Elucidator(SToolMaterial.Elucidator);
 			Elucidator_Powered = new Elucidator_Powered(SToolMaterial.Elucidator);
+			
+			AnnealBlade = new AnnealBlade(SToolMaterial.Elucidator);
 			
 			BossKillToken = new BossKillToken();
 			HeartOfKobold = new HeartOfKobold();
@@ -30,5 +35,7 @@ public class SItem {
 			ReferenceHelper.registerItem(Elucidator_Powered);
 			ReferenceHelper.registerItem(BossKillToken);
 			ReferenceHelper.registerItem(HeartOfKobold);
+			ReferenceHelper.registerItem(AnnealBlade);
+			//ReferenceHelper.registerItem(AneealBlockPowered);
 		}
 }

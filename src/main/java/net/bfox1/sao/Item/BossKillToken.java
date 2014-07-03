@@ -3,6 +3,7 @@ package net.bfox1.sao.Item;
 import java.util.List;
 
 import net.bfox1.sao.help.Reference;
+import net.bfox1.sao.lib.SCreativeTab;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,7 +23,7 @@ public class BossKillToken extends Item {
 	this.setMaxStackSize(1);
 	this.setHasSubtypes(true);
 
-	this.setCreativeTab(CreativeTabs.tabMaterials);
+	this.setCreativeTab(SCreativeTab.SAO);
 
 	}
 	
@@ -85,6 +86,7 @@ public class BossKillToken extends Item {
         	{
         		System.out.println(par1);
         		System.out.println("This is 1");
+        		return new ItemStack(SItem.HeartOfKobold);
         	}
         }
         if(par1.getItemDamage() > 0)

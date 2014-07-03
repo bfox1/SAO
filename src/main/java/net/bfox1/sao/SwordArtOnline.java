@@ -2,6 +2,7 @@ package net.bfox1.sao;
 
 import net.bfox1.sao.Item.SItem;
 import net.bfox1.sao.help.Reference;
+import net.bfox1.sao.lib.SCreativeTab;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
@@ -17,6 +18,7 @@ public class SwordArtOnline
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+    	SCreativeTab.registerCreativeTab();
     	SItem.init();
     	SItem.registerInit();
     }
@@ -24,5 +26,6 @@ public class SwordArtOnline
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+    	
     }
 }

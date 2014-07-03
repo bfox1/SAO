@@ -6,6 +6,7 @@ import org.lwjgl.util.Color;
 
 import cpw.mods.fml.client.config.GuiConfigEntries.ChatColorEntry;
 import net.bfox1.sao.help.Reference;
+import net.bfox1.sao.lib.SCreativeTab;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -21,6 +22,8 @@ public class Elucidator extends ItemSword {
 		super(par1);
 		setUnlocalizedName("Elucidator");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
+		this.setCreativeTab(SCreativeTab.SAO);
+
 	}
 	
 	@Override
@@ -29,13 +32,13 @@ public class Elucidator extends ItemSword {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
         if(!par2.isRemote)
         {
-
+    		System.out.println(par1.getMaxDamage() - par1.getItemDamage() + "This works");
         }
         
-
         ItemStack sword = new ItemStack(SItem.Elucidator_Powered).setStackDisplayName(EnumChatFormatting.DARK_GREEN + "Elucidator");
         sword.addEnchantment(Enchantment.fireAspect, 2);
-        System.out.println(this.getMaxDamage());
+       // System.out.println(this.getMaxDamage() + "This text");
+        sword.setItemDamage(par1.getMaxDamage() - par1.getItemDamage());
         return sword;
     }
 
