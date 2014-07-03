@@ -1,7 +1,8 @@
-item.Elucidator.name=Elucidator
-item.Elucidator_Powered.name=Elucidator
+item.Elucidator.name=§4Elucidator
+item.Elucidator_Powered.name=§4Elucidator
 
-item.BossKillToken:1.name=BossKillToken
-item.BossKillToken:2.name=BossKillToken
+item.BossKillToken:1.name=§5BossKillToken
+item.BossKillToken:2.name=§5BossKillToken
 
 item.HeartOfKobold.name=Heart Of Kobold
+item.AnnealBlade.name=§6Anneal Blade

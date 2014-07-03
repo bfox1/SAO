@@ -2,48 +2,41 @@ package net.bfox1.sao.Item;
 
 import net.bfox1.sao.help.Reference;
 import net.bfox1.sao.lib.SCreativeTab;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
+
 
 /**
  * @author bfox1
  *
  */
-public class AnnealBlade extends ItemSword {
+public class AnnealBladePowered extends ItemSword {
 
-	public AnnealBlade(ToolMaterial p_i45356_1_) {
+	public AnnealBladePowered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("AnnealBlade");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setCreativeTab(SCreativeTab.SAO);
-
 	}
 	
 	@Override
-    public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
-    {
-        ItemStack sword = new ItemStack(SItem.AnnealBladePowered);
+	public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
+	{
+        ItemStack sword = new ItemStack(SItem.AnnealBlade);
 
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
         if(!par2.isRemote)
         {
 			sword.setItemDamage(par1.getItemDamage());
-			sword.addEnchantment(Enchantment.unbreaking, 2);
-
             return sword;
         }
         
 
         return par1;
-    }
-	
+		
+	}
 
-	
 }

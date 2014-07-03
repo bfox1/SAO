@@ -16,6 +16,10 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 
+/**
+ * @author bfox1
+ *
+ */
 public class Elucidator extends ItemSword {
 
 	public Elucidator(ToolMaterial par1) {
@@ -30,16 +34,22 @@ public class Elucidator extends ItemSword {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
+        ItemStack sword = new ItemStack(SItem.Elucidator_Powered);
+        sword.addEnchantment(Enchantment.fireAspect, 2);
+
         if(!par2.isRemote)
         {
-    		System.out.println(par1.getMaxDamage() - par1.getItemDamage() + "This works");
+    		if (par1.getItemDamage() > 0)
+    		{
+    			sword.setItemDamage(par1.getItemDamage());
+    			return sword;
+    		}else
+    		{
+    			return sword;
+    		}
         }
         
-        ItemStack sword = new ItemStack(SItem.Elucidator_Powered).setStackDisplayName(EnumChatFormatting.DARK_GREEN + "Elucidator");
-        sword.addEnchantment(Enchantment.fireAspect, 2);
-       // System.out.println(this.getMaxDamage() + "This text");
-        sword.setItemDamage(par1.getMaxDamage() - par1.getItemDamage());
-        return sword;
+        return par1;
     }
 
 

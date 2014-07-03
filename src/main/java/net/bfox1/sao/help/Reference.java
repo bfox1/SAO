@@ -1,5 +1,9 @@
 package net.bfox1.sao.help;
 
+/**
+ * @author bfox1
+ *
+ */
 public class Reference {
 
 		public static final String MODID = "sao";

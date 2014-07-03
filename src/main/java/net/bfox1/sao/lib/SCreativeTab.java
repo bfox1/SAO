@@ -2,6 +2,10 @@ package net.bfox1.sao.lib;
 
 import net.minecraft.creativetab.CreativeTabs;
 
+/**
+ * @author bfox1
+ *
+ */
 public class SCreativeTab {
 
 		public static CreativeTabs SAO;

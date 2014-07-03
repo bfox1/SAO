@@ -1,3 +1,4 @@
+
 package net.bfox1.sao.Item;
 
 import java.util.List;
@@ -15,6 +16,11 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+
+/**
+ * @author bfox1
+ *
+ */
 public class BossKillToken extends Item {
 
 	public BossKillToken(){
@@ -42,11 +48,12 @@ public class BossKillToken extends Item {
 		}
 	}
 	
-
+//This is the Number of Meta Items using BossKillTokens.
+	//For Creating textures do it as follows: BossKillToken:(#) ex: BossKillToken:0.png, BossKillToken:1.png
 	public static final String[] names = new String[]
 			{
-				"1",
-				"2"
+				"0",
+				"1"
 			};
 	
 	@Override

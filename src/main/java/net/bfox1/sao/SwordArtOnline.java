@@ -10,6 +10,12 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+/**
+ * @author bfox1
+ * created on 7-1-2014
+ * This is the Main Mod File for the entire mod. All Registrations MUST go here. 
+ * If you need help, Ask bfox1 for information or refer to the Other classes for examples.
+ */
 @Mod(modid = Reference.MODID, version = Reference.VERSION)
 public class SwordArtOnline
 {

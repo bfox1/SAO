@@ -5,6 +5,10 @@ import net.bfox1.sao.lib.SCreativeTab;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
+/**
+ * @author bfox1
+ *
+ */
 public class HeartOfKobold extends Item {
 	
 	public HeartOfKobold(){
