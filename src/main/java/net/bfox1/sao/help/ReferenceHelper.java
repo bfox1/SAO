@@ -3,6 +3,7 @@ package net.bfox1.sao.help;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraftforge.common.util.EnumHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -24,8 +25,4 @@ public class ReferenceHelper {
 
 	}
 	
-	public static void registerEnumToolMaterial(String string, ToolMaterial material, int miningLevel, int damageLevel)
-	{
-		
-	}
 }

@@ -17,7 +17,7 @@ public class AnnealBladePowered extends ItemSword {
 
 	public AnnealBladePowered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
-		this.setUnlocalizedName("AnnealBlade");
+		this.setUnlocalizedName("AnnealBladePowered");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setCreativeTab(SCreativeTab.SAO);
 	}
