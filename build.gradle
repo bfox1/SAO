@@ -24,8 +24,6 @@ archivesBaseName = "modid"
 minecraft {
     version = "1.7.10-10.13.0.1160"
     assetDir = "eclipse/assets"
-    replaceIn "help/Reference.java"
-    replace "@VERSION@", version
 }
 
 dependencies {

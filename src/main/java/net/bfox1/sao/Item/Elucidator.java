@@ -8,6 +8,7 @@ import cpw.mods.fml.client.config.GuiConfigEntries.ChatColorEntry;
 import net.bfox1.sao.help.Reference;
 import net.bfox1.sao.lib.SCreativeTab;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -21,6 +22,8 @@ import net.minecraft.world.World;
  *
  */
 public class Elucidator extends ItemSword {
+	
+	public int PowerPool = 15000;
 
 	public Elucidator(ToolMaterial par1) {
 		super(par1);
@@ -31,6 +34,13 @@ public class Elucidator extends ItemSword {
 	}
 	
 	@Override
+    public boolean hitEntity(ItemStack item, EntityLivingBase player, EntityLivingBase p_77644_3_)
+    {
+        item.damageItem(1, p_77644_3_);
+        return true;
+    }
+	
+	@Override
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
@@ -39,14 +49,11 @@ public class Elucidator extends ItemSword {
 
         if(!par2.isRemote)
         {
-    		if (par1.getItemDamage() > 0)
-    		{
+        	if(par3.isSneaking())
+        	{
     			sword.setItemDamage(par1.getItemDamage());
     			return sword;
-    		}else
-    		{
-    			return sword;
-    		}
+        	}
         }
         
         return par1;

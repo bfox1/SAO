@@ -18,19 +18,18 @@ public class EntityKoboldTest extends EntityMob {
 	public EntityKoboldTest(World p_i1681_1_) {
 		super(p_i1681_1_);
 		this.getNavigator().setAvoidsWater(true);
-		this.setSize(1.5F, 0.9F);
-		this.isImmuneToFire();
+		this.setSize(1.0F, 1.0F);
 		float var2 = 0.25F;
 		
 		this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIPanic(this, 0.38F));
-        this.tasks.addTask(5, new EntityAIWander(this, var2));
+        this.tasks.addTask(5, new EntityAIWander(this, 0.9D));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
 	
 	@Override
-	public boolean isAIEnabled(){
+	protected boolean isAIEnabled(){
 		return true;
 	}
 	
@@ -39,7 +38,7 @@ public class EntityKoboldTest extends EntityMob {
     {
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(6.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50.0D);
         
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000000298023224D);
     }

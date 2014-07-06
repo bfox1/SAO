@@ -18,8 +18,9 @@ public class AnnealBladePowered extends ItemSword {
 	public AnnealBladePowered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("AnnealBladePowered");
-		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(SCreativeTab.SAO);
+		setTextureName(Reference.MODID + ":" + SItem.AnnealBlade.getUnlocalizedName().substring(5));
+		this.setCreativeTab(null);
+		
 	}
 	
 	@Override
@@ -30,8 +31,11 @@ public class AnnealBladePowered extends ItemSword {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
         if(!par2.isRemote)
         {
+        	if(par3.isSneaking())
+        	{
 			sword.setItemDamage(par1.getItemDamage());
             return sword;
+        	}
         }
         
 

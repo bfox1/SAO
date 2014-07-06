@@ -3,37 +3,68 @@ package net.bfox1.sao.Item;
 import java.util.List;
 
 import net.bfox1.sao.help.Reference;
-import net.minecraft.enchantment.EnumEnchantmentType;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.command.ICommand;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.minecraft.enchantment.*;
-import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 /**
  * @author bfox1
  *
  */
 public class Elucidator_Powered extends ItemSword {
+	
+	public static int PowerPool = 5000;
+	
+	public NBTTagCompound test;
 
 	public Elucidator_Powered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 		setUnlocalizedName("Elucidator_Powered");
 		setTextureName(Reference.MODID + ":" + "Elucidator");
+		this.setCreativeTab(null);
 
 	}
 	
-	public boolean hitEntity(ItemStack par1ItemStack, EntityLiving par2EntityLiving, EntityLiving par3EntityLiving)
+	/*@Override
+	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5)
 	{
-	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.poison.id, 20 * 5, 100));
+		if(this.PowerPool > 0)
+		{
+			this.PowerPool = this.PowerPool - 2;
+			System.out.println(this.PowerPool);
+			
+		}
+	}*/
+	
+	@Override
+	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
+	{
+	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.harm.id, 2, 1));
+	 float entity = par2EntityLiving.getHealth();
+	 System.out.println(entity);
 	return true;
+	}
+	
+	public ItemStack powerToolCheck(ItemStack item, World par2, EntityPlayer par3){
+		
+		if(!par2.isRemote){
+			if(this.PowerPool <= 0)
+			{
+				System.out.println("This went through");
+				return new ItemStack(SItem.Elucidator);
+			}
+		}
+		return item;
+		
 	}
 	
 
@@ -43,7 +74,7 @@ public class Elucidator_Powered extends ItemSword {
 
 		ItemStack sword = new ItemStack(SItem.Elucidator);
 		if (!par2.isRemote) {
-			if (par1.getItemDamage() > 0) {
+			if (par3.isSneaking()) {
 				sword.setItemDamage(par1.getItemDamage());
 				return sword;
 			}
@@ -51,7 +82,8 @@ public class Elucidator_Powered extends ItemSword {
 		}
 		return par1;
 	}
-
+	
+	@Override
 	public void addInformation(ItemStack item, EntityPlayer player, List list,
 			boolean par4) {
 

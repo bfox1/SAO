@@ -2,8 +2,7 @@ package net.bfox1.sao.help;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraftforge.common.util.EnumHelper;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -23,6 +22,18 @@ public class ReferenceHelper {
 	{
 		GameRegistry.registerItem(item,  Reference.MODID + "_" + item.getUnlocalizedName().substring(5));
 
+	}
+	
+	public static String registerItemName(Item name)
+	{
+		String test = Reference.MODID + ":" + name.getUnlocalizedName().substring(5);
+		return test;
+
+	}
+	
+	public static String registerBlockName(Block name){
+		String test = Reference.MODID + ":" + name.getUnlocalizedName().substring(5);
+		return test;
 	}
 	
 }

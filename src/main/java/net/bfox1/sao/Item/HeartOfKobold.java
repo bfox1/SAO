@@ -15,7 +15,6 @@ public class HeartOfKobold extends Item {
 		super();
 		setUnlocalizedName("HeartOfKobold");
 		this.setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(CreativeTabs.tabMaterials);
 		this.setCreativeTab(SCreativeTab.SAO);
 	}
 	

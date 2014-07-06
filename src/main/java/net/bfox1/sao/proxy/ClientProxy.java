@@ -49,11 +49,11 @@ public class ClientProxy extends CommonProxy  {
 
 	@Override
 	public void registerGlobalEntity() {
-		int idKobold = 0;
+		int idKobold = EntityRegistry.findGlobalUniqueEntityId();
 		int redColor = (255 << 16);
 		int orangeColor = (255 << 16) + (200 << 8);
 		
-		EntityRegistry.registerModEntity(EntityKoboldTest.class, "KoboldTest", idKobold, Reference.MODID, 80, 3, true);
+		//EntityRegistry.registerModEntity(EntityKoboldTest.class, "KoboldTest", idKobold, Reference.MODID, 80, 3, true);
 		EntityRegistry.registerGlobalEntityID(EntityKoboldTest.class, "KoboldTest", idKobold, redColor, orangeColor);
 		LanguageRegistry.instance().addStringLocalization("entity.KoboldTest.name", "en_US", "Kobold Test");
 	}
