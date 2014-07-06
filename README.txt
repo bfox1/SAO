@@ -12,3 +12,7 @@ TO-DO List:
 *Give some Swords an Additional Potion Effect when Hits Entity
 *Add Teleportation Crystals(Discuss over their effects and Usage)
 
+===============================================================
+After that we release the first DEV mod to the closed Public
+===============================================================
+
