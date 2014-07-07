@@ -15,6 +15,7 @@ public class SToolMaterial {
 	public static ToolMaterial AnnealBlade;
 	public static ToolMaterial DarkRepulser;
 	public static ToolMaterial GuiltyThorn;
+	public static ToolMaterial LambentLight;
 
 	//Registration.
 	public static void init() {
@@ -22,5 +23,6 @@ public class SToolMaterial {
 		AnnealBlade = EnumHelper.addToolMaterial("Anneal", 4, 1500, 3.0F, 5.0F,6);
 		DarkRepulser = EnumHelper.addToolMaterial("DarkRepulser", 9, 8000, 5.0F, 9.0F, 6);
 		GuiltyThorn = EnumHelper.addToolMaterial("GuiltyThorn", 5, 3500, 4.0F, 5.0F, 15);
+		LambentLight = EnumHelper.addToolMaterial("LambentLight", 5, 5500, 9.0F, 12.0F, 14);
 	}
 }
