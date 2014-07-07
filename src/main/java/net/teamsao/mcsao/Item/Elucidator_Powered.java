@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.Item;
+package net.teamsao.mcsao.item;
 
 import java.util.List;
 

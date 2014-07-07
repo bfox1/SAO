@@ -1,11 +1,22 @@
-#################
-## Eclipse
-#################
+#############
+## Eclipse ##
+#############
 
 bin/
 tmp/
-
-.gradle/
+.metadata/
+.settings/
 build/
 eclipse/
-.metadata/
+.classpath
+.project
+
+##############
+## MC Forge ##
+##############
+
+gradle/
+build.gradle
+.gradle/
+gradlew
+gradlew.bat
