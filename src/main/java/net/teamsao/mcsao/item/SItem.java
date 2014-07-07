@@ -42,6 +42,7 @@ public class SItem {
 		public static Item LiberatorPowered;
 		
 		public static Item MateChopper;
+		public static Item MateChopperPowered;
 		
 		public static Item RingofAngelsWhisper;
 		
@@ -55,6 +56,9 @@ public class SItem {
 		public static Item HeartOfKobold = new HeartOfKobold();
 		public static Item CrystalliteIngot = new CrystalliteIngot();
 		public static Item NerveGear = new NerveGear();
+		
+		public static Item TeleportCrystal = new TeleportCrystal();
+		public static Item AntidoteCrystal;
 
 		
 
