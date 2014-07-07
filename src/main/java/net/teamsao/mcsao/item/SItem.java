@@ -3,6 +3,8 @@ package net.teamsao.mcsao.item;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
+import net.teamsao.mcsao.block.ItemBlockDungeonStone;
+import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.material.SToolMaterial;
 
@@ -50,6 +52,8 @@ public class SItem {
 		
 		public static Item TyrantDragon;
 		
+		public static Item DungeonStoneItem = new ItemBlockDungeonStone(SBlock.DungeonStone);
+		
 		
 	//Items
 		public static Item BossKillToken = new BossKillToken();
@@ -84,6 +88,9 @@ public class SItem {
 
 		public static void registerInit()
 		{
+			/**
+			 * Drad, is there a way to make this simpler? To purhaps put all these in an Array? 
+			 */
 	
 			ReferenceHelper.registerItem(Elucidator);
 			ReferenceHelper.registerItem(Elucidator_Powered);
@@ -100,6 +107,8 @@ public class SItem {
 			ReferenceHelper.registerItem(NerveGear);
 			ReferenceHelper.registerItem(LambentLight);
 			ReferenceHelper.registerItem(LambentLightPowered);
+			
+			//ReferenceHelper.registerItem(DungeonStoneItem);
 
 		}
 		

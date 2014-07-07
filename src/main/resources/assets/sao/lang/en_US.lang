@@ -21,4 +21,12 @@ item.LambentLightPowered.name=§bLambentLight
 
 item.NerveGear.name=§7NerveGear
 
+
+//Blocks
+
+tile.DungeonBlock.SmoothStone.name=Dungeon Stone
+tile.DungeonBlock.BrickedStone.name=Dungeon Brick
+tile.DungeonBlock.ChiseledStone.name=Dungeon Chiseled Brick
+tile.DungeonBlock.KnockBackStone.name=Dungeon knockBack
+
 itemGroup.SAO=SAO

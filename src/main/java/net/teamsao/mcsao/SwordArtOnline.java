@@ -1,5 +1,6 @@
 package net.teamsao.mcsao;
 
+import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.item.SItem;
 import net.teamsao.mcsao.lib.Recipe;
@@ -37,8 +38,8 @@ public class SwordArtOnline
     {
     	SCreativeTab.registerCreativeTab();
     	SToolMaterial.init();
-    	SItem.init();
     	SItem.registerInit();
+    	SBlock.registerInit();
     	proxy.registerEntityLiving();
     }
     
