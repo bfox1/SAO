@@ -17,6 +17,7 @@ public class DarkRepulser extends ItemSword {
 		this.setCreativeTab(SCreativeTab.SAO);
 		
 	}
+	//This is a test line
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1, World world, EntityPlayer player)
