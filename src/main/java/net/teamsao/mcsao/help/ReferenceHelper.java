@@ -24,14 +24,14 @@ public class ReferenceHelper {
 
 	}
 	
-	public static String registerItemName(Item name)
+	public static String setItemName(Item name)
 	{
 		String test = Reference.MODID + ":" + name.getUnlocalizedName().substring(5);
 		return test;
 
 	}
 	
-	public static String registerBlockName(Block name){
+	public static String setBlockName(Block name){
 		String test = Reference.MODID + ":" + name.getUnlocalizedName().substring(5);
 		return test;
 	}

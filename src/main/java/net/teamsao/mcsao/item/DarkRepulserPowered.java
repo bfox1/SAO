@@ -11,7 +11,7 @@ public class DarkRepulserPowered extends ItemSword {
 	public DarkRepulserPowered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("DarkRepulserPowered");
-		this.setTextureName(ReferenceHelper.registerItemName(SItem.DarkRepulser));
+		this.setTextureName(ReferenceHelper.setItemName(SItem.DarkRepulser));
 		this.setCreativeTab(null);
 	}
 	

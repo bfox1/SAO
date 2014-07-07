@@ -15,7 +15,7 @@ public class CrystalliteIngot extends Item {
 	{
 		super();
 		this.setUnlocalizedName("CrystalliteIngot");
-		this.setTextureName(ReferenceHelper.registerItemName(this));
+		this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SCreativeTab.SAO);
 	}
 	

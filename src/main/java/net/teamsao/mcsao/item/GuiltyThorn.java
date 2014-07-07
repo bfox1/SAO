@@ -13,7 +13,7 @@ public class GuiltyThorn extends ItemSword {
 	public GuiltyThorn(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("GuiltyThorn");
-		this.setTextureName(ReferenceHelper.registerItemName(this));
+		this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SCreativeTab.SAO);
 	}
 	

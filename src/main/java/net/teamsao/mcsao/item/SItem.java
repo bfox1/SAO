@@ -8,6 +8,8 @@ import net.teamsao.mcsao.material.SToolMaterial;
 
 /**
  * @author bfox1
+ * 
+ * Be sure after Initializing the Item, To Register It down below :)
  *
  */
 public class SItem {
@@ -84,6 +86,7 @@ public class SItem {
 			ReferenceHelper.registerItem(BossKillToken);
 			ReferenceHelper.registerItem(HeartOfKobold);
 			ReferenceHelper.registerItem(CrystalliteIngot);
+			ReferenceHelper.registerItem(NerveGear);
 
 		}
 		

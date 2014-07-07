@@ -16,7 +16,7 @@ public class GuiltyThornPowered extends ItemSword {
 	public GuiltyThornPowered(ToolMaterial par1){
 	super(par1);
 	this.setUnlocalizedName("GuiltyThornPowered");
-	this.setTextureName(ReferenceHelper.registerItemName(SItem.GuiltyThorn));
+	this.setTextureName(ReferenceHelper.setItemName(SItem.GuiltyThorn));
 	this.setCreativeTab(null);
 	}
 	
