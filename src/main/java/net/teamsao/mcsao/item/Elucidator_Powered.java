@@ -43,7 +43,6 @@ public class Elucidator_Powered extends ItemSword {
 		{
 			this.PowerPool = this.PowerPool - 2;
 			System.out.println(this.PowerPool);
-			
 		}
 		}
 	}
@@ -79,6 +78,7 @@ public class Elucidator_Powered extends ItemSword {
 		if (!par2.isRemote) {
 			if (par3.isSneaking()) {
 				sword.setItemDamage(par1.getItemDamage());
+				sword.
 				return sword;
 			}
 
