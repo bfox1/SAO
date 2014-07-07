@@ -5,23 +5,24 @@ import net.minecraft.item.ItemStack;
 
 public class PowerPool extends Item {
 	
-	public Item itemName;
+	/*private Item itemName;
 	
 	public int PowerPool;
 	
 	   public PowerPool getItem()
 	    {
-	        return itemName;
+	        return (PowerPool) this.itemName;
 	    }
 	
-    public void setPowerValue(int p_77964_1_)
+    public PowerPool setPowerValue(int p_77964_1_)
     {
-        this.getItem().s(this, p_77964_1_);
+		return this.getItem().setPower(this, p_77964_1_);
     }
     
-    public void setPower(PowerPool item, int par1)
+    public int setPower(PowerPool powerPool2, int par1)
     {
-    item.PowerPool = par1;
+	return powerPool2.PowerPool = par1;
     }
+    */
 
 }
