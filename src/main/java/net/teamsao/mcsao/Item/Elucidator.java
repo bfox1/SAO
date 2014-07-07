@@ -23,7 +23,7 @@ import net.teamsao.mcsao.lib.SCreativeTab;
  */
 public class Elucidator extends ItemSword {
 	
-	public int PowerPool = 15000;
+	public int PowerPool = Elucidator_Powered.PowerPool;
 
 	public Elucidator(ToolMaterial par1) {
 		super(par1);
