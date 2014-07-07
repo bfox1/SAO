@@ -2,7 +2,7 @@ package net.teamsao.mcsao.lib;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.teamsao.mcsao.Item.SItem;
+import net.teamsao.mcsao.item.SItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class Recipe {

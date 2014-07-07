@@ -2,7 +2,7 @@ package net.teamsao.mcsao.lib;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.teamsao.mcsao.Item.SItem;
+import net.teamsao.mcsao.item.SItem;
 
 /**
  * @author bfox1

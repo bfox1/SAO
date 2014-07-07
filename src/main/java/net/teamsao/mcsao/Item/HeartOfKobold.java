@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.Item;
+package net.teamsao.mcsao.item;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
