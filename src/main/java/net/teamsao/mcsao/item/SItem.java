@@ -15,6 +15,8 @@ import net.teamsao.mcsao.material.SToolMaterial;
 public class SItem {
 
 	//Swords
+
+
 		public static Item Elucidator = new Elucidator(SToolMaterial.Elucidator);
 		public static Item Elucidator_Powered = new Elucidator_Powered(SToolMaterial.Elucidator);
 		
@@ -33,8 +35,8 @@ public class SItem {
 		public static Item Karakurenai;
 		public static Item KarakurenaiPowered;
 		
-		public static Item LambentLight;
-		public static Item LambentLightPowered;
+		public static Item LambentLight = new LambentLight(SToolMaterial.LambentLight);
+		public static Item LambentLightPowered = new LambentLightPowered(SToolMaterial.LambentLight);
 		
 		public static Item Liberator;
 		public static Item LiberatorPowered;
@@ -53,6 +55,9 @@ public class SItem {
 		public static Item HeartOfKobold = new HeartOfKobold();
 		public static Item CrystalliteIngot = new CrystalliteIngot();
 		public static Item NerveGear = new NerveGear();
+
+		
+
 		
 
 		
@@ -72,8 +77,10 @@ public class SItem {
 
 		}
 		
+
 		public static void registerInit()
 		{
+	
 			ReferenceHelper.registerItem(Elucidator);
 			ReferenceHelper.registerItem(Elucidator_Powered);
 			ReferenceHelper.registerItem(AnnealBlade);
@@ -87,8 +94,13 @@ public class SItem {
 			ReferenceHelper.registerItem(HeartOfKobold);
 			ReferenceHelper.registerItem(CrystalliteIngot);
 			ReferenceHelper.registerItem(NerveGear);
+			ReferenceHelper.registerItem(LambentLight);
+			ReferenceHelper.registerItem(LambentLightPowered);
 
 		}
+		
+		
+		
 		
 
 

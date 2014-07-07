@@ -7,14 +7,17 @@ item.BossKillToken:0.name=§5BossKillToken
 item.HeartOfKobold.name=Heart Of Kobold
 item.CrystalliteIngot.name=§bCrystallite Ingot
 
-item.AnnealBlade.name=§6Anneal Blade
-item.AnnealBladePowered.name=§6Anneal Blade
+item.AnnealBlade.name=§3Anneal Blade
+item.AnnealBladePowered.name=§3Anneal Blade
 
 item.DarkRepulser.name=§bDark Repulser
 item.DarkRepulserPowered.name=§bDark Repulser
 
 item.GuiltyThorn.name=§4Guilty Thorn   
 item.GuiltyThornPowered.name=§4Guilty Thorn
+
+item.LambentLight.name=§bLambentLight
+item.LambentLightPowered.name=§bLambentLight
 
 item.NerveGear.name=§7NerveGear
 

@@ -45,7 +45,7 @@ public class Elucidator extends ItemSword {
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
         ItemStack sword = new ItemStack(SItem.Elucidator_Powered);
-        sword.addEnchantment(Enchantment.fireAspect, 2);
+        sword.addEnchantment(Enchantment.sharpness, 3);
 
         if(!par2.isRemote)
         {
