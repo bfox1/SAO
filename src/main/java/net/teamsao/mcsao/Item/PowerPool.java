@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.Item;
+package net.teamsao.mcsao.item;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
