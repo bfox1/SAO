@@ -50,6 +50,7 @@ public class SItem {
 		public static Item BossKillToken = new BossKillToken();
 		public static Item HeartOfKobold = new HeartOfKobold();
 		public static Item CrystalliteIngot = new CrystalliteIngot();
+		public static Item NerveGear = new NerveGear();
 		
 
 		

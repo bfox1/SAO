@@ -20,7 +20,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
  */
 
 /**
- * @author bfox1 and 5chris100
+ * @author bfox1
  */
 @Mod(modid = Reference.MODID, version = Reference.VERSION)
 public class SwordArtOnline
