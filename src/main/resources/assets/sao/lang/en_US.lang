@@ -20,6 +20,8 @@ item.LambentLight.name=§bLambentLight
 item.LambentLightPowered.name=§bLambentLight
 
 item.NerveGear.name=§7NerveGear
+<<<<<<< HEAD
+=======
 
 
 //Blocks
@@ -28,5 +30,6 @@ tile.DungeonBlock.SmoothStone.name=Dungeon Stone
 tile.DungeonBlock.BrickedStone.name=Dungeon Brick
 tile.DungeonBlock.ChiseledStone.name=Dungeon Chiseled Brick
 tile.DungeonBlock.KnockBackStone.name=Dungeon knockBack
+>>>>>>> b0f51881fee919206e2efae932155ddf7a3fe4bf
 
 itemGroup.SAO=SAO

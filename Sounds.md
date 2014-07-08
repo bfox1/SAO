@@ -1,4 +1,4 @@
- Credit to ObbolaLink for creating this file.
+ Credit to [ObbolaLink](http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571574) for creating this file.
   
  Ambience: 1 - 3
  

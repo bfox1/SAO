@@ -88,9 +88,12 @@ public class SItem {
 
 		public static void registerInit()
 		{
+<<<<<<< HEAD
+=======
 			/**
 			 * Drad, is there a way to make this simpler? To purhaps put all these in an Array? 
 			 */
+>>>>>>> b0f51881fee919206e2efae932155ddf7a3fe4bf
 	
 			ReferenceHelper.registerItem(Elucidator);
 			ReferenceHelper.registerItem(Elucidator_Powered);
@@ -107,8 +110,11 @@ public class SItem {
 			ReferenceHelper.registerItem(NerveGear);
 			ReferenceHelper.registerItem(LambentLight);
 			ReferenceHelper.registerItem(LambentLightPowered);
+<<<<<<< HEAD
+=======
 			
 			//ReferenceHelper.registerItem(DungeonStoneItem);
+>>>>>>> b0f51881fee919206e2efae932155ddf7a3fe4bf
 
 		}
 		
