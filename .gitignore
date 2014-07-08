@@ -21,3 +21,12 @@ build.gradle
 gradlew
 gradlew.bat
 *.db
+
+##############
+#### IDEA ####
+##############
+
+SAO.iml
+SAO.ipr
+SAO.iws
+out/

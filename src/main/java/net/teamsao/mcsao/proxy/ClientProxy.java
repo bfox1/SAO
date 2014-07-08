@@ -55,7 +55,7 @@ public class ClientProxy extends CommonProxy  {
 		
 		//EntityRegistry.registerModEntity(EntityKoboldTest.class, "KoboldTest", idKobold, Reference.MODID, 80, 3, true);
 		EntityRegistry.registerGlobalEntityID(EntityKoboldTest.class, "KoboldTest", idKobold, redColor, orangeColor);
-		LanguageRegistry.instance().addStringLocalization("entity.KoboldTest.name", "en_US", "Kobold Test");
+		//LanguageRegistry.instance().addStringLocalization("entity.KoboldTest.name", "en_US", "Kobold Test");
 	}
 
 }

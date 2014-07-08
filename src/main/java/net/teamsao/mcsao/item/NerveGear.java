@@ -25,7 +25,7 @@ public class NerveGear extends ItemArmor {
 	public NerveGear(ArmorMaterial material, int armorType, String name){
 		super(material, 0, armorType);
 		setUnlocalizedName("NerveGear");
-		this.setTextureName(ReferenceHelper.setItemName(this));
+        this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SCreativeTab.SAO);
 	}
 	
