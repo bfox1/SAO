@@ -88,33 +88,17 @@ public class SItem {
 
 		public static void registerInit()
 		{
-<<<<<<< HEAD
-=======
+			Item[] items = {Elucidator, Elucidator_Powered, AnnealBlade, AnnealBladePowered, DarkRepulser, DarkRepulserPowered, GuiltyThorn, GuiltyThornPowered,
+							BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear, LambentLight, LambentLightPowered};
+
 			/**
-			 * Drad, is there a way to make this simpler? To purhaps put all these in an Array? 
+			 * Drad, is there a way to make this simpler? To purhaps put all these in an Array?
+			 * -Chris: Added to array and looped for you. :) 
 			 */
->>>>>>> b0f51881fee919206e2efae932155ddf7a3fe4bf
-	
-			ReferenceHelper.registerItem(Elucidator);
-			ReferenceHelper.registerItem(Elucidator_Powered);
-			ReferenceHelper.registerItem(AnnealBlade);
-			ReferenceHelper.registerItem(AnnealBladePowered);
-			ReferenceHelper.registerItem(DarkRepulser);
-			ReferenceHelper.registerItem(DarkRepulserPowered);
-			ReferenceHelper.registerItem(GuiltyThorn);
-			ReferenceHelper.registerItem(GuiltyThornPowered);
-			
-			ReferenceHelper.registerItem(BossKillToken);
-			ReferenceHelper.registerItem(HeartOfKobold);
-			ReferenceHelper.registerItem(CrystalliteIngot);
-			ReferenceHelper.registerItem(NerveGear);
-			ReferenceHelper.registerItem(LambentLight);
-			ReferenceHelper.registerItem(LambentLightPowered);
-<<<<<<< HEAD
-=======
-			
+			for (int i = 0; i < items.length; i++) {
+				ReferenceHelper.registerItem(items[i]);
+			}
 			//ReferenceHelper.registerItem(DungeonStoneItem);
->>>>>>> b0f51881fee919206e2efae932155ddf7a3fe4bf
 
 		}
 		
