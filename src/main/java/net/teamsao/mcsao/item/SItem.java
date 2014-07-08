@@ -29,8 +29,8 @@ public class SItem {
 		public static Item DarkRepulser = new DarkRepulser(SToolMaterial.DarkRepulser);
 		public static Item DarkRepulserPowered = new DarkRepulserPowered(SToolMaterial.DarkRepulser);
 		
-		public static Item EbonDagger;
-		public static Item EbonDaggerPowered;
+		public static Item EbonDagger = new EbonDagger(SToolMaterial.EbonDagger);
+		public static Item EbonDaggerPowered = new EbonDaggerPowered(SToolMaterial.EbonDagger);
 		
 		public static Item GuiltyThorn = new GuiltyThorn(SToolMaterial.GuiltyThorn);
 		public static Item GuiltyThornPowered = new GuiltyThornPowered(SToolMaterial.GuiltyThorn);
@@ -41,11 +41,14 @@ public class SItem {
 		public static Item LambentLight = new LambentLight(SToolMaterial.LambentLight);
 		public static Item LambentLightPowered = new LambentLightPowered(SToolMaterial.LambentLight);
 		
-		public static Item Liberator;
-		public static Item LiberatorPowered;
+		public static Item LiberatorShield;
+		public static Item LiberatorShieldPowered;
 		
-		public static Item MateChopper;
-		public static Item MateChopperPowered;
+		public static Item LiberatorSword;
+		public static Item LiberatorSwordPowered;
+		
+		public static Item MateChopper = new MateChopper(SToolMaterial.MateChopper);
+		public static Item MateChopperPowered = new MateChopperPowered(SToolMaterial.MateChopper);
 		
 		public static Item RingofAngelsWhisper;
 		
@@ -98,7 +101,8 @@ public class SItem {
 
 	
 			Item[] items = {Elucidator, Elucidator_Powered, AnnealBlade, AnnealBladePowered, DarkRepulser, DarkRepulserPowered, GuiltyThorn,
-							GuiltyThornPowered, BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear, LambentLight, LambentLightPowered};
+							GuiltyThornPowered, BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear, LambentLight, LambentLightPowered,
+							EbonDagger, EbonDaggerPowered, MateChopper, MateChopperPowered};
 			
 			for (int i = 0; i < items.length; i++) {
 				ReferenceHelper.registerItem(items[i]);

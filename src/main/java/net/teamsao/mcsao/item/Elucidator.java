@@ -29,23 +29,17 @@ public class Elucidator extends ItemSword {
 		super(par1);
 		setUnlocalizedName("Elucidator");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(SCreativeTab.SAO);
+		this.setCreativeTab(SCreativeTab.SaoTools);
 
 	}
 	
-	@Override
-    public boolean hitEntity(ItemStack item, EntityLivingBase player, EntityLivingBase p_77644_3_)
-    {
-        item.damageItem(1, p_77644_3_);
-        return true;
-    }
 	
 	@Override
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
         ItemStack sword = new ItemStack(SItem.Elucidator_Powered);
-        sword.addEnchantment(Enchantment.sharpness, 3);
+        sword.addEnchantment(Enchantment.sharpness, 5);
 
         if(!par2.isRemote)
         {

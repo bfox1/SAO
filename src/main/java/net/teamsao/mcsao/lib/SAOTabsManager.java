@@ -16,7 +16,7 @@ public class SAOTabsManager extends CreativeTabs {
 
 	@Override
 	public Item getTabIconItem() {
-		return SItem.BossKillToken;
+		return SItem.Elucidator;
 	}
 
 }
