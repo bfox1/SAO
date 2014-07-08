@@ -11,8 +11,13 @@ import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
  * This file was forked from HeartOfKobold (thanks, bfox! :D).
- * @author 5chris100
- * edited by Bfox1
+ * TODO:
+ * [ ] Finish class
+ * [ ] Make texture
+ * [ ] Make undamageable
+ * [ ] Create GUI in onItemRightClick
+ * 
+ *  @author 5chris100, edited by Bfox1
  */
 public class NerveGear extends ItemArmor {
 	
@@ -42,8 +47,6 @@ public class NerveGear extends ItemArmor {
 		return null;
 		
 	}
-	
-
 	
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3Player)
