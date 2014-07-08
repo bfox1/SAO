@@ -18,6 +18,12 @@ public class ItemBlockDungeonStone extends ItemBlock {
 		//this.setCreativeTab(SCreativeTab.SAO);
 		this.setHasSubtypes(true);
 	}
+	/*
+	 * (non-Javadoc)
+	 * @see net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack)
+	 * 
+	 * These are the Names of the Blocks and what they are. 
+	 */
 	
 	@Override
 	public String getUnlocalizedName(ItemStack itemstack)

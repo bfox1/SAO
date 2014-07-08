@@ -42,7 +42,7 @@ public class NerveGear extends ItemArmor {
 		*/
 		else
 		{
-			System.out.println("Invalid Item TutorialArmor");
+			System.out.println("Invalid Item Armor");
 		}
 		return null;
 		
