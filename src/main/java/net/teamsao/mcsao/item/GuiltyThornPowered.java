@@ -23,7 +23,7 @@ public class GuiltyThornPowered extends ItemSword {
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
 	{
-	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.poison.id, 20 * 5, 3));
+	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.poison.id, 20 * 5, 1));
 	return true;
 	}
 

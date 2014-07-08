@@ -53,7 +53,7 @@ public class BossKillToken extends Item {
 	public static final String[] names = new String[]
 			{
 				"0",
-				"1"
+				"1",
 			};
 	
 	@Override

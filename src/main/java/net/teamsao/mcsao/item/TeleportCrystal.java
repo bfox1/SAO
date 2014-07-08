@@ -21,7 +21,7 @@ public class TeleportCrystal extends Item {
 	public TeleportCrystal(){
 		super();
 		this.setUnlocalizedName("TeleportCrystal");
-		this.setTextureName(ReferenceHelper.setItemName(this));
+		//this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SCreativeTab.SAO);
 	}
 	//Opens a GUI to go to teleport Points. IF ALLOWED.

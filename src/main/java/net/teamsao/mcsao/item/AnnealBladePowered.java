@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 
@@ -18,7 +19,7 @@ public class AnnealBladePowered extends ItemSword {
 	public AnnealBladePowered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("AnnealBladePowered");
-		setTextureName(Reference.MODID + ":" + SItem.AnnealBlade.getUnlocalizedName().substring(5));
+		this.setTextureName(ReferenceHelper.setItemName(SItem.AnnealBlade));
 		this.setCreativeTab(null);
 		
 	}
