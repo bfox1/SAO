@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.powerpool;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -7,7 +7,7 @@ public class PowerPool extends Item {
 	
 	/*private Item itemName;
 	
-	public int PowerPool;
+	private int PowerPool;
 	
 	   public PowerPool getItem()
 	    {

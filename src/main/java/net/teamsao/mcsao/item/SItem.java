@@ -3,7 +3,10 @@ package net.teamsao.mcsao.item;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
+import net.teamsao.mcsao.block.ItemBlockDungeonStone;
+import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
 
 /**
@@ -15,6 +18,8 @@ import net.teamsao.mcsao.material.SToolMaterial;
 public class SItem {
 
 	//Swords
+
+
 		public static Item Elucidator = new Elucidator(SToolMaterial.Elucidator);
 		public static Item Elucidator_Powered = new Elucidator_Powered(SToolMaterial.Elucidator);
 		
@@ -24,8 +29,8 @@ public class SItem {
 		public static Item DarkRepulser = new DarkRepulser(SToolMaterial.DarkRepulser);
 		public static Item DarkRepulserPowered = new DarkRepulserPowered(SToolMaterial.DarkRepulser);
 		
-		public static Item EbonDagger;
-		public static Item EbonDaggerPowered;
+		public static Item EbonDagger = new EbonDagger(SToolMaterial.EbonDagger);
+		public static Item EbonDaggerPowered = new EbonDaggerPowered(SToolMaterial.EbonDagger);
 		
 		public static Item GuiltyThorn = new GuiltyThorn(SToolMaterial.GuiltyThorn);
 		public static Item GuiltyThornPowered = new GuiltyThornPowered(SToolMaterial.GuiltyThorn);
@@ -33,13 +38,17 @@ public class SItem {
 		public static Item Karakurenai;
 		public static Item KarakurenaiPowered;
 		
-		public static Item LambentLight;
-		public static Item LambentLightPowered;
+		public static Item LambentLight = new LambentLight(SToolMaterial.LambentLight);
+		public static Item LambentLightPowered = new LambentLightPowered(SToolMaterial.LambentLight);
 		
-		public static Item Liberator;
-		public static Item LiberatorPowered;
+		public static Item LiberatorShield;
+		public static Item LiberatorShieldPowered;
 		
-		public static Item MateChopper;
+		public static Item LiberatorSword;
+		public static Item LiberatorSwordPowered;
+		
+		public static Item MateChopper = new MateChopper(SToolMaterial.MateChopper);
+		public static Item MateChopperPowered = new MateChopperPowered(SToolMaterial.MateChopper);
 		
 		public static Item RingofAngelsWhisper;
 		
@@ -47,12 +56,20 @@ public class SItem {
 		
 		public static Item TyrantDragon;
 		
+		public static Item DungeonStoneItem = new ItemBlockDungeonStone(SBlock.DungeonStone);
+		
 		
 	//Items
 		public static Item BossKillToken = new BossKillToken();
 		public static Item HeartOfKobold = new HeartOfKobold();
 		public static Item CrystalliteIngot = new CrystalliteIngot();
-		public static Item NerveGear = new NerveGear();
+		public static Item NerveGear = new NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
+		
+		public static Item TeleportCrystal = new TeleportCrystal();
+		public static Item AntidoteCrystal;
+
+		
+
 		
 
 		
@@ -72,23 +89,31 @@ public class SItem {
 
 		}
 		
+
 		public static void registerInit()
 		{
-			ReferenceHelper.registerItem(Elucidator);
-			ReferenceHelper.registerItem(Elucidator_Powered);
-			ReferenceHelper.registerItem(AnnealBlade);
-			ReferenceHelper.registerItem(AnnealBladePowered);
-			ReferenceHelper.registerItem(DarkRepulser);
-			ReferenceHelper.registerItem(DarkRepulserPowered);
-			ReferenceHelper.registerItem(GuiltyThorn);
-			ReferenceHelper.registerItem(GuiltyThornPowered);
+
+			/*
+			 * Drad, is there a way to make this simpler? To perhaps put all these in an Array? 
+			 * 
+			 * Chris: Done and done.
+			 */
+
+	
+			Item[] items = {Elucidator, Elucidator_Powered, AnnealBlade, AnnealBladePowered, DarkRepulser, DarkRepulserPowered, GuiltyThorn,
+							GuiltyThornPowered, BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear, LambentLight, LambentLightPowered,
+							EbonDagger, EbonDaggerPowered, MateChopper, MateChopperPowered};
 			
-			ReferenceHelper.registerItem(BossKillToken);
-			ReferenceHelper.registerItem(HeartOfKobold);
-			ReferenceHelper.registerItem(CrystalliteIngot);
-			ReferenceHelper.registerItem(NerveGear);
+			for (int i = 0; i < items.length; i++) {
+				ReferenceHelper.registerItem(items[i]);
+			}
+			
+
 
 		}
+		
+		
+		
 		
 
 

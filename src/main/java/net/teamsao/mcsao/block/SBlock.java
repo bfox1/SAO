@@ -1,6 +1,10 @@
 package net.teamsao.mcsao.block;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import net.teamsao.mcsao.help.ReferenceHelper;
 
 /**
  * @author bfox1
@@ -10,6 +14,11 @@ public class SBlock {
 	
 	public static Block ForgingStation; //Special TileEntity That Allows the Creation of Most High-tier Swords and Items.
 	
+	public static Block Log;
+	public static Block DungeonStone = new DungeonStone();
+	
+
+	
 	public static void init()
 	{
 		
@@ -17,7 +26,8 @@ public class SBlock {
 	
 	public static void registerInit()
 	{
-		
+	//	ReferenceHelper.registerBlock(DungeonStone);
+		GameRegistry.registerBlock(DungeonStone, ItemBlockDungeonStone.class, ReferenceHelper.setBlockName(SBlock.DungeonStone));
 	}
 
 	

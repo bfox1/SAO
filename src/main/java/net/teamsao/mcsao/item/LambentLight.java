@@ -8,11 +8,13 @@ import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
-public class GuiltyThorn extends ItemSword {
 
-	public GuiltyThorn(ToolMaterial p_i45356_1_) {
+
+public class LambentLight extends ItemSword {
+
+	public LambentLight(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
-		this.setUnlocalizedName("GuiltyThorn");
+		this.setUnlocalizedName("LambentLight");
 		this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SCreativeTab.SaoTools);
 	}
@@ -21,8 +23,8 @@ public class GuiltyThorn extends ItemSword {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-        ItemStack sword = new ItemStack(SItem.GuiltyThornPowered);
-        sword.addEnchantment(Enchantment.sharpness, 5);
+        ItemStack sword = new ItemStack(SItem.LambentLightPowered);
+        sword.addEnchantment(Enchantment.sharpness, 1);
 
         if(!par2.isRemote)
         {

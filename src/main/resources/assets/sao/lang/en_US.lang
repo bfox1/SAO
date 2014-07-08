@@ -1,21 +1,44 @@
-item.Elucidator.name=§0Elucidator
-item.Elucidator_Powered.name=§0Elucidator
-
+//Item with meta data
 item.BossKillToken:1.name=§5BossKillToken
 item.BossKillToken:0.name=§5BossKillToken
 
+//Items
 item.HeartOfKobold.name=Heart Of Kobold
 item.CrystalliteIngot.name=§bCrystallite Ingot
+item.NerveGear.name=§7NerveGear
 
-item.AnnealBlade.name=§6Anneal Blade
-item.AnnealBladePowered.name=§6Anneal Blade
+//Swords
+item.Elucidator.name=§0Elucidator
+item.Elucidator_Powered.name=§0Elucidator
+
+item.AnnealBlade.name=§3Anneal Blade
+item.AnnealBladePowered.name=§3Anneal Blade
 
 item.DarkRepulser.name=§bDark Repulser
 item.DarkRepulserPowered.name=§bDark Repulser
 
-item.GuiltyThorn.name=§4Guilty Thorn   
-item.GuiltyThornPowered.name=§4Guilty Thorn
+item.GuiltyThorn.name=§cGuilty Thorn   
+item.GuiltyThornPowered.name=§cGuilty Thorn
 
-item.NerveGear.name=§7NerveGear
+item.LambentLight.name=§bLambent Light
+item.LambentLightPowered.name=§bLambent Light
 
-itemGroup.SAO=SAO
+item.EbonDagger.name=Ebon Dagger
+item.EbonDaggerPowered.name=Ebon Dagger
+
+item.MateChopper.name=§4Mate Chopper
+item.MateChopperPowered.name=§4Mate Chopper
+
+
+
+//Blocks
+
+tile.DungeonBlock.SmoothStone.name=Dungeon Stone
+tile.DungeonBlock.BrickedStone.name=Dungeon Brick
+tile.DungeonBlock.ChiseledStone.name=Dungeon Chiseled Brick
+tile.DungeonBlock.KnockBackStone.name=Dungeon knock Back
+
+//Tabs
+itemGroup.SAO=Sao
+itemGroup.SAOTools=Sao Tools
+itemGroup.SAOBlocks=Sao Blocks
