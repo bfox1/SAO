@@ -10,5 +10,6 @@ import net.minecraftforge.common.util.EnumHelper;
 public class SArmorMaterial{
 	
 	public static ArmorMaterial coatOfMidnight = EnumHelper.addArmorMaterial("CoatOfMidnight", 21, new int[]{2, 4, 3, 2}, 25);
+	public static ArmorMaterial nerveGear = EnumHelper.addArmorMaterial("NerveGear", -1, new int[]{1}, 1);
 
 }
