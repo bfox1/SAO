@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.teamsao.mcsao.block.ItemBlockDungeonStone;
 import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
 
 /**
@@ -59,7 +60,7 @@ public class SItem {
 		public static Item BossKillToken = new BossKillToken();
 		public static Item HeartOfKobold = new HeartOfKobold();
 		public static Item CrystalliteIngot = new CrystalliteIngot();
-		public static Item NerveGear = new NerveGear();
+		public static Item NerveGear = new NerveGear(SArmorMaterial.coatOfMidnight, 0, "NerveGear");
 		
 		public static Item TeleportCrystal = new TeleportCrystal();
 		public static Item AntidoteCrystal;
@@ -103,7 +104,6 @@ public class SItem {
 				ReferenceHelper.registerItem(items[i]);
 			}
 			
-			//ReferenceHelper.registerItem(DungeonStoneItem);
 
 
 		}

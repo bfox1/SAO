@@ -6,6 +6,10 @@ import net.minecraft.item.ItemStack;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
+/**
+ * @author bfox1
+ *
+ */
 public class ItemBlockDungeonStone extends ItemBlock {
 
 	public ItemBlockDungeonStone(Block p_i45328_1_) {
