@@ -1,6 +1,9 @@
 package net.teamsao.mcsao;
 
+import net.minecraftforge.common.DimensionManager;
 import net.teamsao.mcsao.block.SBlock;
+import net.teamsao.mcsao.dimension.SAOWorldProvider;
+import net.teamsao.mcsao.dimension.SDimension;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.item.SItem;
 import net.teamsao.mcsao.lib.Recipe;
@@ -31,7 +34,7 @@ public class SwordArtOnline
     public static SwordArtOnline instance;
 	 @SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;
-
+	public static int dimensionId = 14;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -48,6 +51,7 @@ public class SwordArtOnline
     {
     	proxy.registerGlobalEntity();
     	Recipe.init();
+    	SDimension.registerInit();
     	//proxy.registerEntityLiving();
     	//proxy.registerGlobalEntity();
     }
