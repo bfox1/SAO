@@ -18,7 +18,7 @@ public class SAOWorldProvider extends WorldProvider
 	
 	public IChunkProvider createChunkGenerator()
 	{
-		return new SOAChunkProvider(worldObj, worldObj.getSeed(), true);
+		return new SAOChunkProvider(worldObj, worldObj.getSeed(), true);
 	}
 	
 	@Override

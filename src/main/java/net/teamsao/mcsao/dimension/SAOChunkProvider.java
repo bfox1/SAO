@@ -56,7 +56,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 
 
-public class SOAChunkProvider implements IChunkProvider
+public class SAOChunkProvider implements IChunkProvider
 {
 
 	/** RNG. */
@@ -107,7 +107,7 @@ public class SOAChunkProvider implements IChunkProvider
     }
 	
 	
-	public SOAChunkProvider(World worldObj, long seed, boolean b)
+	public SAOChunkProvider(World worldObj, long seed, boolean b)
 	{
 		this.worldObj = worldObj;
         this.mapFeaturesEnabled = b;
