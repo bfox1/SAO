@@ -1,8 +1,6 @@
 package net.teamsao.mcsao.item;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemStack;
 import net.teamsao.mcsao.block.ItemBlockDungeonStone;
 import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.ReferenceHelper;
@@ -58,8 +56,8 @@ public class SItem {
 		public static Item TyrantDragon;
 		
 		public static Item DungeonStoneItem = new ItemBlockDungeonStone(SBlock.DungeonStone);
-		
-		
+
+
 	//Items
 		public static Item BossKillToken = new BossKillToken();
 		public static Item HeartOfKobold = new HeartOfKobold();
@@ -67,7 +65,7 @@ public class SItem {
 		public static Item NerveGear = new NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
 		
 		public static Item TeleportCrystal = new TeleportCrystal();
-		public static Item AntidoteCrystal;
+		public static Item AntidoteCrystal = new AntidoteCrystal();
 
 		
 
@@ -103,7 +101,8 @@ public class SItem {
 	
 			Item[] items = {Elucidator, Elucidator_Powered, AnnealBlade, AnnealBladePowered, DarkRepulser, DarkRepulserPowered, GuiltyThorn,
 							GuiltyThornPowered, BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear, LambentLight, LambentLightPowered,
-							EbonDagger, EbonDaggerPowered, MateChopper, MateChopperPowered, Karakurenai, KarakurenaiPowered, ShadowDagger, ShadowDaggerPowered};
+							EbonDagger, EbonDaggerPowered, MateChopper, MateChopperPowered, Karakurenai, KarakurenaiPowered, ShadowDagger, ShadowDaggerPowered,
+                            AntidoteCrystal};
 			
 			for (int i = 0; i < items.length; i++) {
 				ReferenceHelper.registerItem(items[i]);

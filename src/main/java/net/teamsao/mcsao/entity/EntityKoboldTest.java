@@ -2,16 +2,14 @@ package net.teamsao.mcsao.entity;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIPanic;
-import net.minecraft.entity.ai.EntityAISwimming;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.teamsao.mcsao.item.SItem;
 
 public class EntityKoboldTest extends EntityMob {
 
@@ -19,11 +17,11 @@ public class EntityKoboldTest extends EntityMob {
 		super(p_i1681_1_);
 		this.getNavigator().setAvoidsWater(true);
 		this.setSize(1.0F, 2.0F);
-		float var2 = 0.25F;
+		float var2 = 1.0F;
 		
 		this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIPanic(this, 0.38F));
-        this.tasks.addTask(5, new EntityAIWander(this, 0.9D));
+        this.tasks.addTask(2, new EntityAIPanic(this, 2.5F));
+        this.tasks.addTask(5, new EntityAIWander(this, var2));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
@@ -65,7 +63,7 @@ public class EntityKoboldTest extends EntityMob {
 	@Override
     protected String getHurtSound()
     {
-        return "mob.blaze.hit";
+        return "mob.cow.hit";
     }
 
     /**
@@ -74,7 +72,7 @@ public class EntityKoboldTest extends EntityMob {
 	@Override
     protected String getDeathSound()
     {
-        return "mob.blaze.death";
+        return "mob.cow.death";
     }
 	
 	@Override
