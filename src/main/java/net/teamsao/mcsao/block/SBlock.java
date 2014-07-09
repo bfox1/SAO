@@ -1,6 +1,7 @@
 package net.teamsao.mcsao.block;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.teamsao.mcsao.help.Reference;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -16,6 +17,7 @@ public class SBlock {
 	
 	public static Block Log;
 	public static Block DungeonStone = new DungeonStone();
+	public static Block SAOPortalBlock = new SAOPortalBlock();
 	
 
 	
@@ -27,6 +29,7 @@ public class SBlock {
 	public static void registerInit()
 	{
 	//	ReferenceHelper.registerBlock(DungeonStone);
+		GameRegistry.registerBlock(SAOPortalBlock, Reference.MODID + (SAOPortalBlock.getUnlocalizedName().substring(5)));
 		GameRegistry.registerBlock(DungeonStone, ItemBlockDungeonStone.class, ReferenceHelper.setBlockName(SBlock.DungeonStone));
 	}
 
