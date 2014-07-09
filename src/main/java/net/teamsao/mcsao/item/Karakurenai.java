@@ -16,7 +16,7 @@ public class Karakurenai extends SItemSword {
         super(p_i45356_1_);
         this.setUnlocalizedName("Karakurenai");
         this.setTextureName(ReferenceHelper.setItemName(this));
-        this.setCreativeTab(SCreativeTab.SaoTools);
+        this.setCreativeTab(SCreativeTab.SAO_Tools);
     }
 
     @Override
