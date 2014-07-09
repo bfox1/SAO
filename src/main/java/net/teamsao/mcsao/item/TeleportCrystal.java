@@ -38,6 +38,7 @@ public class TeleportCrystal extends Item {
 	
 	/**
 	 * @author 5chris100
+     *
 	 */
 	
 	public ItemStack onItemLeftClick(ItemStack par1, World par2, EntityPlayer par3) {
@@ -46,6 +47,10 @@ public class TeleportCrystal extends Item {
 			int y = par3.getPlayerCoordinates().posY;
 			int z = par3.getPlayerCoordinates().posZ;
 			// Opens a GUI to set current coordinates as teleport point.
+            /*
+            this will send player to DImension number.
+             */
+           // par3.travelToDimension(3);
 		}
 		
 		return par1;

@@ -85,6 +85,8 @@ public class KoboldTest extends ModelBase {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         this.rightleg.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
         this.leftleg.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+        this.rightarm.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+        this.leftarm.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
 	}
 	
     public int func_78104_a()
