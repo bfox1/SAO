@@ -19,7 +19,7 @@ public class AnnealBlade extends ItemSword {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("AnnealBlade");
 		this.setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(SCreativeTab.SaoTools);
+		this.setCreativeTab(SCreativeTab.SAO_Tools);
 	}
 	
 	@Override

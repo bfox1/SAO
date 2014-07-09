@@ -10,14 +10,14 @@ public class SCreativeTab {
 
 		public static CreativeTabs SAO;
 		
-		public static CreativeTabs SaoTools;
+		public static CreativeTabs SAO_Tools;
 		
-		public static CreativeTabs SaoBlocks;
+		public static CreativeTabs SAO_Blocks;
 		
 		public static void registerCreativeTab()
 		{
 			SAO = new SAOTabsManager(CreativeTabs.getNextID(), "SAO");
-			SaoTools = new SAOTabsManager(CreativeTabs.getNextID(), "SAOTools");
-			SaoBlocks = new SAOTabsManager(CreativeTabs.getNextID(), "SAOBlocks");
+			SAO_Tools = new SAOTabsManager(CreativeTabs.getNextID(), "SAOTools");
+			SAO_Blocks = new SAOTabsManager(CreativeTabs.getNextID(), "SAOBlocks");
 		}
 }

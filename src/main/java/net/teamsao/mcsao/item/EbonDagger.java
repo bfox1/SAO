@@ -14,7 +14,7 @@ public class EbonDagger extends ItemSword {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("EbonDagger");
 		this.setTextureName(ReferenceHelper.setItemName(this));
-		this.setCreativeTab(SCreativeTab.SaoTools);
+		this.setCreativeTab(SCreativeTab.SAO_Tools);
 	}
 	
 	@Override
