@@ -6,6 +6,11 @@ item.BossKillToken:0.name=§5BossKillToken
 item.HeartOfKobold.name=Heart Of Kobold
 item.CrystalliteIngot.name=§bCrystallite Ingot
 item.NerveGear.name=§7NerveGear
+item.TeleportCrystal.name=Teleport Crystal
+item.AntidoteCrystal.name=Antidote Crystal
+
+//Foods
+item.RagoutRabbitMeat.name=RagoutRabbitMeat
 
 //Swords
 item.Elucidator.name=§0Elucidator
@@ -38,7 +43,13 @@ tile.DungeonBlock.BrickedStone.name=Dungeon Brick
 tile.DungeonBlock.ChiseledStone.name=Dungeon Chiseled Brick
 tile.DungeonBlock.KnockBackStone.name=Dungeon knock Back
 
+tile.portalTutorialBlock.name=SAO Portal Block
+
 //Tabs
 itemGroup.SAO=Sao
 itemGroup.SAOTools=Sao Tools
 itemGroup.SAOBlocks=Sao Blocks
+
+//Entities
+entity.KoboldTest.name=Kobold
+//Others

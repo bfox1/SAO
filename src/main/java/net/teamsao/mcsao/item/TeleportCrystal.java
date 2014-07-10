@@ -4,6 +4,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldProvider;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.DimensionManager;
+import net.teamsao.mcsao.SwordArtOnline;
+import net.teamsao.mcsao.dimension.SDimension;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
@@ -26,15 +31,20 @@ public class TeleportCrystal extends Item {
 	}
 	//Opens a GUI to go to teleport Points. IF ALLOWED.
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3Player)
-	{
-		if(!par2World.isRemote && par3Player.isSneaking())
-			{
-				//Opens a GUI to go to teleport Points. IF ALLOWED.
-			}
-		return par1ItemStack;
-		
-	}
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3Player) {
+        if (!par2World.isRemote && par3Player.isSneaking()) {
+            //Opens a GUI to go to teleport Points. IF ALLOWED.
+            if (par3Player.dimension == SwordArtOnline.dimensionId) {
+                par3Player.travelToDimension(0);
+            }
+            if (par3Player.dimension != SwordArtOnline.dimensionId) {
+                par3Player.travelToDimension(14);
+            }
+
+
+        }
+        return par1ItemStack;
+    }
 	
 	/**
 	 * @author 5chris100
@@ -50,7 +60,6 @@ public class TeleportCrystal extends Item {
             /*
             this will send player to DImension number.
              */
-           // par3.travelToDimension(3);
 		}
 		
 		return par1;
