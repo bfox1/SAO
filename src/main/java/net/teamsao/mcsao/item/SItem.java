@@ -72,7 +72,7 @@ public class SItem {
 		public static Item NerveGear = new NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
 		
 		public static Item TeleportCrystal = new TeleportCrystal();
-		public static Item AntidoteCrystal = new AntidoteCrystal();1
+		public static Item AntidoteCrystal = new AntidoteCrystal();
 
 	//Armor
         public static Item CoatOfMidnightBody = new COM_Body(SArmorMaterial.coatOfMidnight, 1, "CoatOfMidnightBody");
@@ -88,7 +88,7 @@ public class SItem {
 
 		public static void registerInit()
 		{
-  
+
 			/*
 			 * Drad, is there a way to make this simpler? To perhaps put all these in an Array? 
 			 * 
