@@ -21,6 +21,7 @@ public class SToolMaterial {
 	public static ToolMaterial MateChopper;
     public static ToolMaterial ShadowDagger;
     public static ToolMaterial ObjectEraser;
+    public static ToolMaterial TyrantDragon;
 
     //Registration.
 	public static void init() {
@@ -42,5 +43,6 @@ public class SToolMaterial {
 		MateChopper = EnumHelper.addToolMaterial("MateChopper", 12, 9900, 9.0F, 15.0F, 2);
         ShadowDagger = EnumHelper.addToolMaterial("ShadowDagger", 2, 5700, 5.0F, 4.0F, 15);
         ObjectEraser = EnumHelper.addToolMaterial("ObjectEraser", 50, -1, 50.0F, 50.0F, 50);
+        TyrantDragon = EnumHelper.addToolMaterial("TyrantDragon", 5, 4400, 10.0F, 10.0F, 10);
 	}
 }

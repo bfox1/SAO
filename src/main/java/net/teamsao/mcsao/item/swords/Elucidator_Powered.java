@@ -56,19 +56,7 @@ public class Elucidator_Powered extends ItemSword {
 	 System.out.println(entity);
 	return true;
 	}
-	
-	public ItemStack powerToolCheck(ItemStack item, World par2, EntityPlayer par3){
-		
-		if(!par2.isRemote){
-			if(this.PowerPool <= 0)
-			{
-				System.out.println("This went through");
-				return new ItemStack(SItem.Elucidator);
-			}
-		}
-		return item;
-		
-	}
+
 	
 
 	@Override

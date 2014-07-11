@@ -10,7 +10,8 @@ item.TeleportCrystal.name=Teleport Crystal
 item.AntidoteCrystal.name=Antidote Crystal
 
 //Foods
-item.RagoutRabbitMeat.name=RagoutRabbitMeat
+item.RagoutRabbitMeat.name=Ragout Rabbit Meat
+item.ScavengerToadMeat.name=Toad Meat
 
 //Swords
 item.Elucidator.name=§0Elucidator
@@ -34,6 +35,15 @@ item.EbonDaggerPowered.name=Ebon Dagger
 item.MateChopper.name=§4Mate Chopper
 item.MateChopperPowered.name=§4Mate Chopper
 
+item.Karakurenai.name=Karakurenai
+item.KarakurenaiPowered.name=Karakurenai
+
+item.ShadowDagger.name=§8Shadow Dagger
+item.ShadowDaggerPowered.name=§8Shadow Dagger
+
+item.TyrantDragon.name=Tyrant Dragon
+item.TyrantDragonPowered.name=Tyrant Dragon
+
 
 
 //Blocks
@@ -49,7 +59,9 @@ tile.portalTutorialBlock.name=SAO Portal Block
 itemGroup.SAO=Sao
 itemGroup.SAOTools=Sao Tools
 itemGroup.SAOBlocks=Sao Blocks
+itemGroup.SaoFood=Sao Foods
 
 //Entities
 entity.KoboldTest.name=Kobold
+entity.Boar.name=Boar
 //Others

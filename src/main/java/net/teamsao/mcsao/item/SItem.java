@@ -3,7 +3,6 @@ package net.teamsao.mcsao.item;
 import net.minecraft.item.Item;
 import net.teamsao.mcsao.block.ItemBlockDungeonStone;
 import net.teamsao.mcsao.block.SBlock;
-import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.armor.COM_Body;
 import net.teamsao.mcsao.item.armor.COM_Boots;
@@ -58,8 +57,8 @@ public class SItem {
 		public static Item ShadowDagger = new ShadowDagger(SToolMaterial.ShadowDagger);
         public static Item ShadowDaggerPowered = new ShadowDaggerPowered(SToolMaterial.ShadowDagger);
 		
-		public static Item TyrantDragon;
-        public static Item TyrantDragonPowered;
+		public static Item TyrantDragon = new TyrantDragon(SToolMaterial.TyrantDragon);
+        public static Item TyrantDragonPowered = new TyrantDragonPowered(SToolMaterial.TyrantDragon);
 
     //ItemBlocks
 		public static Item DungeonStoneItem = new ItemBlockDungeonStone(SBlock.DungeonStone);
@@ -105,7 +104,7 @@ public class SItem {
             Item[] swords = {Elucidator, Elucidator_Powered, AnnealBlade, AnnealBladePowered, DarkRepulser, DarkRepulserPowered,
                                 GuiltyThorn, GuiltyThornPowered,LambentLight, LambentLightPowered,
                                 EbonDagger, EbonDaggerPowered, MateChopper, MateChopperPowered, Karakurenai, KarakurenaiPowered,
-                                ShadowDagger, ShadowDaggerPowered};
+                                ShadowDagger, ShadowDaggerPowered, TyrantDragon, TyrantDragonPowered};
 			
 			for (int i = 0; i <items.length; i++) {
 				ReferenceHelper.registerItem(items[i]);
