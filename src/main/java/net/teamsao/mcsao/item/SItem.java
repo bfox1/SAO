@@ -88,7 +88,7 @@ public class SItem {
 
 		public static void registerInit()
 		{
-  
+
 			/*
 			 * Drad, is there a way to make this simpler? To perhaps put all these in an Array? 
 			 * 

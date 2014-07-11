@@ -12,6 +12,6 @@ public class SItemFood extends ItemFood {
         super(heartsHealed, saturation, wolfsLike);
         this.setUnlocalizedName(name);
         this.setTextureName(ReferenceHelper.setItemName(this));
-        this.setCreativeTab(SCreativeTab.SAO_Food);
+        this.setCreativeTab(SCreativeTab.SaoFood);
     }
 }

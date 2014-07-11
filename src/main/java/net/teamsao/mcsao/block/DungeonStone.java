@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -19,7 +20,7 @@ public class DungeonStone extends Block {
 	public DungeonStone() {
 		
 	      super(Material.rock);
-	        this.setCreativeTab(SCreativeTab.SAO_Blocks);
+	        this.setCreativeTab(SCreativeTab.SaoBlocks);
 	        this.setBlockName("DungeonBlock");
 	    }
 	    
@@ -97,5 +98,7 @@ public class DungeonStone extends Block {
 	                 par3List.add(new ItemStack(par1, 1, i));
 	          }
 	    }
+
+
 
 }

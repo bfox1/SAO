@@ -34,9 +34,6 @@ public class TeleportCrystal extends Item {
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3Player) {
         if (!par2World.isRemote && par3Player.isSneaking()) {
             //Opens a GUI to go to teleport Points. IF ALLOWED.
-            if (par3Player.dimension == SwordArtOnline.dimensionId) {
-                par3Player.travelToDimension(0);
-            }
             if (par3Player.dimension != SwordArtOnline.dimensionId) {
                 par3Player.travelToDimension(14);
             }

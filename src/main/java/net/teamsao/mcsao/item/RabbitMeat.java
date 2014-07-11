@@ -14,6 +14,6 @@ public class RabbitMeat extends ItemFood {
             super(heartsHeal, saturation, wolfLike);
             this.setUnlocalizedName(name);
             this.setTextureName(ReferenceHelper.setItemName(this));
-            this.setCreativeTab(SCreativeTab.SAO_Food);
+            this.setCreativeTab(SCreativeTab.SaoFood);
         }
 }
