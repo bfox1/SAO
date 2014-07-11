@@ -8,7 +8,13 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
- 
+
+/**
+ * 
+ * @author Ian
+ * Pretty sure this class doesn't have any desirable features for us yet. It's basically just here as a placeholder
+ * in case we want to add ores later.
+ */
 public class SAOWorldGenerator implements IWorldGenerator
 {
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)

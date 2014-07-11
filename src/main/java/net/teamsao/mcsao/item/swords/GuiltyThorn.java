@@ -15,7 +15,7 @@ public class GuiltyThorn extends ItemSword {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("GuiltyThorn");
 		this.setTextureName(ReferenceHelper.setItemName(this));
-		this.setCreativeTab(SCreativeTab.SAO_Tools);
+		this.setCreativeTab(SCreativeTab.SaoTools);
 	}
 	
 	@Override

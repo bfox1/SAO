@@ -17,7 +17,7 @@ public class ShadowDagger extends SItemSword {
         super(p_i45356_1_);
         this.setUnlocalizedName("ShadowDagger");
         this.setTextureName(ReferenceHelper.setItemName(this));
-        this.setCreativeTab(SCreativeTab.SAO_Tools);
+        this.setCreativeTab(SCreativeTab.SaoTools);
     }
 
     @Override

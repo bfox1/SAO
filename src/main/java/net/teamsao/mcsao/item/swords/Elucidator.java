@@ -22,7 +22,7 @@ public class Elucidator extends ItemSword {
 		super(par1);
 		setUnlocalizedName("Elucidator");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(SCreativeTab.SAO_Tools);
+		this.setCreativeTab(SCreativeTab.SaoTools);
 
 	}
 	

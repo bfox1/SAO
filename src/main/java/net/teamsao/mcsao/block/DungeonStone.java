@@ -20,7 +20,7 @@ public class DungeonStone extends Block {
 	public DungeonStone() {
 		
 	      super(Material.rock);
-	        this.setCreativeTab(SCreativeTab.SAO_Blocks);
+	        this.setCreativeTab(SCreativeTab.SaoBlocks);
 	        this.setBlockName("DungeonBlock");
 	    }
 	    

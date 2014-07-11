@@ -9,17 +9,15 @@ import net.minecraft.creativetab.CreativeTabs;
 public class SCreativeTab {
 
 		public static CreativeTabs SAO;
+		public static CreativeTabs SaoFood;
+		public static CreativeTabs SaoTools;
+		public static CreativeTabs SaoBlocks;
 		
-		public static CreativeTabs SAO_Tools;
-		
-		public static CreativeTabs SAO_Blocks;
-        public static CreativeTabs SAO_Food;
-
-    public static void registerCreativeTab()
+		public static void registerCreativeTab()
 		{
 			SAO = new SAOTabsManager(CreativeTabs.getNextID(), "SAO");
-			SAO_Tools = new SAOTabsManager(CreativeTabs.getNextID(), "SAOTools");
-			SAO_Blocks = new SAOTabsManager(CreativeTabs.getNextID(), "SAOBlocks");
-            SAO_Food = new SAOTabsManager(CreativeTabs.getNextID(), "SAOFoods");
+			SaoTools = new SAOTabsManager(CreativeTabs.getNextID(), "SAOTools");
+			SaoBlocks = new SAOTabsManager(CreativeTabs.getNextID(), "SAOBlocks");
+            SaoFood = new SAOTabsManager(CreativeTabs.getNextID(), "SAOFoods");
 		}
 }

@@ -18,7 +18,7 @@ public class MateChopper extends ItemSword {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("MateChopper");
 		this.setTextureName(ReferenceHelper.setItemName(this));
-		this.setCreativeTab(SCreativeTab.SAO_Tools);
+		this.setCreativeTab(SCreativeTab.SaoTools);
 	}
 	
 
