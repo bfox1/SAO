@@ -55,7 +55,14 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 
-
+/**
+ * 
+ * @author Ian
+ * Chunk generation class, mostly copied from ChunkProviderGenerate, which basically creates a void world.
+ * No blocks other than the ones created upon entry to the dimension it is used for exist here. Most methods
+ * are unmodified here, and there are a few which did not contain any real code to begin with which are
+ * given a to-do placeholder.
+ */
 public class SAOChunkProvider implements IChunkProvider
 {
 
@@ -74,7 +81,7 @@ public class SAOChunkProvider implements IChunkProvider
     private World worldObj;
     /** are map structures going to be generated (e.g. strongholds) */
     private final boolean mapFeaturesEnabled;
-    private WorldType field_147435_p;
+    private WorldType worldType;
     private final double[] field_147434_q;
     private final float[] parabolicField;
     private double[] stoneNoise = new double[256];
@@ -98,20 +105,24 @@ public class SAOChunkProvider implements IChunkProvider
     private static final String __OBFID = "CL_00000396";
 
     {
-        caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
+        /*caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
         strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
         villageGenerator = (MapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
         mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
         scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
         ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, RAVINE);
+        
+        * Ian - Attempt to prevent any structures from appearing. It didn't work so much since it was re-instantiated
+        * so many times in the code.
+        */
     }
 	
 	
-	public SAOChunkProvider(World worldObj, long seed, boolean b)
+	public SAOChunkProvider(World worldObj, long seed, boolean enableMapFeatures)
 	{
 		this.worldObj = worldObj;
-        this.mapFeaturesEnabled = b;
-        this.field_147435_p = worldObj.getWorldInfo().getTerrainType();
+        this.mapFeaturesEnabled = enableMapFeatures;
+        this.worldType = worldObj.getWorldInfo().getTerrainType();
         this.rand = new Random(seed);
         this.field_147431_j = new NoiseGeneratorOctaves(this.rand, 16);
         this.field_147432_k = new NoiseGeneratorOctaves(this.rand, 16);
@@ -144,7 +155,7 @@ public class SAOChunkProvider implements IChunkProvider
 	}
 
 	@Override
-	public boolean chunkExists(int p_73149_1_, int p_73149_2_)
+	public boolean chunkExists(int chunkXCoord, int chunkZCoord)
 	{
 		//TODO code missing
 		return true;
@@ -201,10 +212,13 @@ public class SAOChunkProvider implements IChunkProvider
                             {
                                 if ((d15 += d16) > 0.0D)
                                 {
-                                    p_147424_3_[j3 += short1] = Blocks.stonebrick;
+                                	//Ian - Attempt to replace all blocks with empty spots here and in the next block.
+                                	//I believe this is the filler block
+                                    p_147424_3_[j3 += short1] = Blocks.air;
                                 }
                                 else if (k2 * 8 + l2 < b0)
                                 {
+                                	//And I think this is the topper block.
                                     p_147424_3_[j3 += short1] = Blocks.air;
                                 }
                                 else
@@ -226,39 +240,60 @@ public class SAOChunkProvider implements IChunkProvider
             }
         }
     }
-
-    public void replaceBlocksForBiome(int p_147422_1_, int p_147422_2_, Block[] p_147422_3_, byte[] p_147422_4_, BiomeGenBase[] p_147422_5_)
+	/**
+	 * The method which uses the noise generators to create hills above ground, with the amount of "hill" being
+	 * based on the biome's height class and the world type.
+	 * @param chunkXCoord
+	 * @param chunkZCoord
+	 * @param chunkOfBlocks
+	 * @param p_147422_4_
+	 * @param biomesToGenerate
+	 */
+    public void replaceBlocksForBiome(int chunkXCoord, int chunkZCoord, Block[] chunkOfBlocks, byte[] p_147422_4_, BiomeGenBase[] biomesToGenerate)
     {
-        ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, p_147422_1_, p_147422_2_, p_147422_3_, p_147422_4_, p_147422_5_);
+        ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, chunkXCoord, chunkZCoord, chunkOfBlocks, p_147422_4_, biomesToGenerate);
         MinecraftForge.EVENT_BUS.post(event);
         if (event.getResult() == Result.DENY) return;
 
         double d0 = 0.03125D;
-        this.stoneNoise = this.field_147430_m.func_151599_a(this.stoneNoise, (double)(p_147422_1_ * 16), (double)(p_147422_2_ * 16), 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
-
+        this.stoneNoise = this.field_147430_m.func_151599_a(this.stoneNoise, (double)(chunkXCoord * 16), (double)(chunkZCoord * 16), 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
+        
+        /*
+         * Ian - Renamed most of the parameters when I figured out what they were by tracing the code. No idea about the byte array;
+         * it's something to do with the BiomeGenBase class.
+         */
+        
         for (int k = 0; k < 16; ++k)
         {
             for (int l = 0; l < 16; ++l)
             {
-                BiomeGenBase biomegenbase = p_147422_5_[l + k * 16];
-                biomegenbase.genTerrainBlocks(this.worldObj, this.rand, p_147422_3_, p_147422_4_, p_147422_1_ * 16 + k, p_147422_2_ * 16 + l, this.stoneNoise[l + k * 16]);
+                BiomeGenBase biomegenbase = biomesToGenerate[l + k * 16];
+                /*if(worldType != WorldType.FLAT)
+                { 
+                
+                //Ian - The if statement is something I made to test it but this is where all blocks in every chunk are generated.
+                	
+                	biomegenbase.genTerrainBlocks(this.worldObj, this.rand, p_147422_3_, p_147422_4_, p_147422_1_ * 16 + k, p_147422_2_ * 16 + l, this.stoneNoise[l + k * 16]);
+                }*/
             }
         }
     }
 
 	@Override
 	/**
-	 * 
+	 * When generating chunks, uses chunk coordinates to add caves, ravines, and structures randomly throughout the chunk based on the noise generators.
 	 */
-	public Chunk provideChunk(int p_73154_1_, int p_73154_2_) {
-		this.rand.setSeed((long)p_73154_1_ * 341873128712L + (long)p_73154_2_ * 132897987541L);
+	public Chunk provideChunk(int chunkXCoord, int chunkZCoord) {
+		this.rand.setSeed((long)chunkXCoord * 341873128712L + (long)chunkZCoord * 132897987541L);
         Block[] ablock = new Block[65536];
         byte[] abyte = new byte[65536];
-        this.func_147424_a(p_73154_1_, p_73154_2_, ablock);
-        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, p_73154_1_ * 16, p_73154_2_ * 16, 16, 16);
-        this.replaceBlocksForBiome(p_73154_1_, p_73154_2_, ablock, abyte, this.biomesForGeneration);
-        this.caveGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
+        this.func_147424_a(chunkXCoord, chunkZCoord, ablock);
+        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, chunkXCoord * 16, chunkZCoord * 16, 16, 16);
+        this.replaceBlocksForBiome(chunkXCoord, chunkZCoord, ablock, abyte, this.biomesForGeneration);
+        /*this.caveGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
         this.ravineGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
+        
+        //Ian - disabled structure generation *period* with this comment block.
 
         if (this.mapFeaturesEnabled)
         {
@@ -266,9 +301,9 @@ public class SAOChunkProvider implements IChunkProvider
             this.villageGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
             this.strongholdGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
             this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, p_73154_1_, p_73154_2_, ablock);
-        }
+        }*/
 
-        Chunk chunk = new Chunk(this.worldObj, ablock, abyte, p_73154_1_, p_73154_2_);
+        Chunk chunk = new Chunk(this.worldObj, ablock, abyte, chunkXCoord, chunkZCoord);
         byte[] abyte1 = chunk.getBiomeArray();
 
         for (int k = 0; k < abyte1.length; ++k)
@@ -314,7 +349,7 @@ public class SAOChunkProvider implements IChunkProvider
 	                        float f3 = biomegenbase1.rootHeight;
 	                        float f4 = biomegenbase1.heightVariation;
 
-	                        if (this.field_147435_p == WorldType.AMPLIFIED && f3 > 0.0F)
+	                        if (this.worldType == WorldType.AMPLIFIED && f3 > 0.0F)
 	                        {
 	                            f3 = 1.0F + f3 * 2.0F;
 	                            f4 = 1.0F + f4 * 4.0F;
@@ -403,7 +438,8 @@ public class SAOChunkProvider implements IChunkProvider
 	    }
 
 	@Override
-	public Chunk loadChunk(int p_73158_1_, int p_73158_2_) {
+	public Chunk loadChunk(int p_73158_1_, int p_73158_2_)
+	{
 		return this.provideChunk(p_73158_1_, p_73158_2_);
 	}
 
@@ -424,10 +460,13 @@ public class SAOChunkProvider implements IChunkProvider
 
         if (this.mapFeaturesEnabled)
         {
-            this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
+            /*this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
             flag = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
             this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
             this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
+            
+            Ian - Attempted to disable structure gen here. It didn't work but I'm keeping it disabled since it isn't used anyway.
+            */
         }
 
         int k1;
@@ -440,7 +479,8 @@ public class SAOChunkProvider implements IChunkProvider
             k1 = k + this.rand.nextInt(16) + 8;
             l1 = this.rand.nextInt(256);
             i2 = l + this.rand.nextInt(16) + 8;
-            (new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, k1, l1, i2);
+           // (new WorldGenLakes(Blocks.water)).generate(this.worldObj, this.rand, k1, l1, i2);
+            // Ian - Attempt to disable water. This works!
         }
 
         if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, LAVA) && !flag && this.rand.nextInt(8) == 0)
@@ -451,11 +491,13 @@ public class SAOChunkProvider implements IChunkProvider
 
             if (l1 < 63 || this.rand.nextInt(10) == 0)
             {
-                (new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
+                //(new WorldGenLakes(Blocks.lava)).generate(this.worldObj, this.rand, k1, l1, i2);
+            	// Ian - Attempt to disable lava. This didn't work on its own for whatever reason. 
+            	// I blame the dungeon spawn code below.
             }
         }
 
-        boolean doGen = TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, DUNGEON);
+        /*boolean doGen = TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, DUNGEON);
         for (k1 = 0; doGen && k1 < 8; ++k1)
         {
             l1 = k + this.rand.nextInt(16) + 8;
@@ -463,6 +505,8 @@ public class SAOChunkProvider implements IChunkProvider
             int j2 = l + this.rand.nextInt(16) + 8;
             (new WorldGenDungeons()).generate(this.worldObj, this.rand, l1, i2, j2);
         }
+        
+        Ian - Disabled the generation of ice and random spawning of neutral animals here.
 
         biomegenbase.decorate(this.worldObj, this.rand, k, l);
         if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, ANIMALS))
@@ -494,6 +538,7 @@ public class SAOChunkProvider implements IChunkProvider
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag));
 
         BlockFalling.fallInstantly = false;
+        */
 	}
 
 	@Override
@@ -553,10 +598,13 @@ public class SAOChunkProvider implements IChunkProvider
 	{
 		if (this.mapFeaturesEnabled)
         {
-            this.mineshaftGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
+            /*this.mineshaftGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
             this.villageGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
             this.strongholdGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
             this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
+            
+            Ian - Attempt to disable structures which did not work. Keeping this here in case it prevents new structures from being generated.
+            */
         }
 	}
 
