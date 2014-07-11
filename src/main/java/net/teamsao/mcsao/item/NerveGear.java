@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
@@ -26,7 +27,7 @@ public class NerveGear extends ItemArmor {
 		super(material, 0, armorType);
 		setUnlocalizedName(name);
         this.setTextureName(ReferenceHelper.setItemName(this));
-		this.setCreativeTab(SCreativeTab.SAO);
+		this.setCreativeTab(SAOTabsManager.SAO);
 	}
 	
 	@Override

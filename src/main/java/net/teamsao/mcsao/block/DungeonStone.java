@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 public class DungeonStone extends Block {
@@ -20,7 +21,7 @@ public class DungeonStone extends Block {
 	public DungeonStone() {
 		
 	      super(Material.rock);
-	        this.setCreativeTab(SCreativeTab.SaoBlocks);
+	        this.setCreativeTab(SAOTabsManager.saoBlocks);
 	        this.setBlockName("DungeonBlock");
 	    }
 	    

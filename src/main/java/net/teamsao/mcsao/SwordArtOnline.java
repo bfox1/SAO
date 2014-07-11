@@ -41,7 +41,7 @@ public class SwordArtOnline
     public void preInit(FMLPreInitializationEvent event)
     {
         SEntity.registerIds();
-    	SCreativeTab.registerCreativeTab();
+    	//SCreativeTab.registerCreativeTab(); //Removing in later updates
     	SToolMaterial.init();
     	SItem.registerInit();
     	SBlock.registerInit();

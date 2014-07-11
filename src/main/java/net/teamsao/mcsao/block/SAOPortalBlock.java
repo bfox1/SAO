@@ -17,7 +17,7 @@ public class SAOPortalBlock extends BlockPortal
     {
         super();
         setBlockName("portalTutorialBlock");
-        setCreativeTab(SCreativeTab.SaoBlocks);
+        setCreativeTab(null);
     }
  
     @Override

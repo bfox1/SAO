@@ -8,6 +8,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
@@ -20,7 +21,7 @@ public class AnnealBlade extends ItemSword {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("AnnealBlade");
 		this.setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(SCreativeTab.SaoTools);
+		this.setCreativeTab(SAOTabsManager.saoTools);
 	}
 	
 	@Override

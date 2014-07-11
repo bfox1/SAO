@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 public class CrystalliteIngot extends Item {
@@ -16,7 +17,7 @@ public class CrystalliteIngot extends Item {
 		super();
 		this.setUnlocalizedName("CrystalliteIngot");
 		this.setTextureName(ReferenceHelper.setItemName(this));
-		this.setCreativeTab(SCreativeTab.SAO);
+		this.setCreativeTab(SAOTabsManager.SAO);
 	}
 	
 	@Override 

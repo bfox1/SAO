@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
@@ -22,7 +23,7 @@ public class Elucidator extends ItemSword {
 		super(par1);
 		setUnlocalizedName("Elucidator");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
-		this.setCreativeTab(SCreativeTab.SaoTools);
+		this.setCreativeTab(SAOTabsManager.saoTools);
 
 	}
 	

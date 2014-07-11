@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.SItem;
 import net.teamsao.mcsao.item.SItemSword;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
@@ -18,7 +19,7 @@ public class Karakurenai extends SItemSword {
         super(p_i45356_1_);
         this.setUnlocalizedName("Karakurenai");
         this.setTextureName(ReferenceHelper.setItemName(this));
-        this.setCreativeTab(SCreativeTab.SaoTools);
+        this.setCreativeTab(SAOTabsManager.saoTools);
     }
 
     @Override

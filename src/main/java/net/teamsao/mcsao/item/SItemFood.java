@@ -2,6 +2,7 @@ package net.teamsao.mcsao.item;
 
 import net.minecraft.item.ItemFood;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
@@ -12,6 +13,6 @@ public class SItemFood extends ItemFood {
         super(heartsHealed, saturation, wolfsLike);
         this.setUnlocalizedName(name);
         this.setTextureName(ReferenceHelper.setItemName(this));
-        this.setCreativeTab(SCreativeTab.SaoFood);
+        this.setCreativeTab(SAOTabsManager.saoFood);
     }
 }

@@ -15,7 +15,7 @@ public class ItemBlockDungeonStone extends ItemBlock {
 	public ItemBlockDungeonStone(Block p_i45328_1_) {
 		super(p_i45328_1_);
 		//this.setUnlocalizedName("DungeonStone");
-		//this.setCreativeTab(SCreativeTab.SAO);
+		//this.setCreativeTab(SAOTabsManager.SAO);
 		this.setHasSubtypes(true);
 	}
 	/*

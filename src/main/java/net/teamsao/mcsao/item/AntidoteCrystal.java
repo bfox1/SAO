@@ -9,6 +9,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
@@ -20,7 +21,7 @@ public class AntidoteCrystal extends Item{
         super();
         this.setUnlocalizedName("AntidoteCrystal");
         this.setTextureName(ReferenceHelper.setItemName(this));
-        this.setCreativeTab(SCreativeTab.SAO);
+        this.setCreativeTab(SAOTabsManager.SAO);
         this.setMaxDamage(12);
     }
 

@@ -12,6 +12,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -29,7 +30,7 @@ public class BossKillToken extends Item {
 	this.setMaxStackSize(1);
 	this.setHasSubtypes(true);
 
-	this.setCreativeTab(SCreativeTab.SAO);
+	this.setCreativeTab(SAOTabsManager.SAO);
 
 	}
 	

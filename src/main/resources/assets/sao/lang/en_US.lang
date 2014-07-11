@@ -57,9 +57,9 @@ tile.portalTutorialBlock.name=SAO Portal Block
 
 //Tabs
 itemGroup.SAO=Sao
-itemGroup.SAOTools=Sao Tools
-itemGroup.SAOBlocks=Sao Blocks
-itemGroup.SaoFood=Sao Foods
+itemGroup.SaoTools=Sao Tools
+itemGroup.SaoBlocks=Sao Blocks
+itemGroup.SaoFoods=Sao Foods
 
 //Entities
 entity.KoboldTest.name=Kobold

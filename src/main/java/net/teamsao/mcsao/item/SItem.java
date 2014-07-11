@@ -1,13 +1,13 @@
 package net.teamsao.mcsao.item;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
 import net.teamsao.mcsao.block.ItemBlockDungeonStone;
 import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.item.armor.COM_Body;
-import net.teamsao.mcsao.item.armor.COM_Boots;
-import net.teamsao.mcsao.item.armor.COM_Leggings;
+import net.teamsao.mcsao.item.armor.*;
 import net.teamsao.mcsao.item.swords.*;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
 
@@ -78,6 +78,11 @@ public class SItem {
         public static Item CoatOfMidnightLeggings = new COM_Leggings(SArmorMaterial.coatOfMidnight, 2, "CoatOfMidnightLeggings");
         public static Item CoatOfMidnightBoots = new COM_Boots(SArmorMaterial.coatOfMidnight, 3, "CoatOfMidnightBoots");
 
+        public static Item debugHelmet = new Debug_Helmet(SArmorMaterial.debugMaterial, 0, "DebugHelmet");
+        public static Item debugChestPlate = new Debug_ChestPlate(SArmorMaterial.debugMaterial,  1, "DebugChestPlate");
+        public static Item debugLeggings = new Debug_Leggings(SArmorMaterial.debugMaterial,  2, "DebugLeggings");
+        public static Item debugBoots = new Debug_Boots(SArmorMaterial.debugMaterial,  3, "DebugBoots");
+
     //Food
         public static Item ragoutRabbitMeat = new RabbitMeat(10, 15.0F, false, "RagoutRabbitMeat");
         public static SItemFood ScavengerToadMeat = new ScavengerToadMeat(3, 4.0F, false, "ScavengerToadMeat");
@@ -97,7 +102,7 @@ public class SItem {
 	
 			Item[] items = { BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear,AntidoteCrystal,
                             TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
-                            ObjectEraser};
+                            ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots};
 
             Item[] foods = {ragoutRabbitMeat, ScavengerToadMeat};
 

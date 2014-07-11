@@ -7,6 +7,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 public class GuiltyThorn extends ItemSword {
@@ -15,7 +16,7 @@ public class GuiltyThorn extends ItemSword {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("GuiltyThorn");
 		this.setTextureName(ReferenceHelper.setItemName(this));
-		this.setCreativeTab(SCreativeTab.SaoTools);
+		this.setCreativeTab(SAOTabsManager.saoTools);
 	}
 	
 	@Override

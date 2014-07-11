@@ -3,6 +3,7 @@ package net.teamsao.mcsao.item;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
@@ -14,6 +15,6 @@ public class RabbitMeat extends ItemFood {
             super(heartsHeal, saturation, wolfLike);
             this.setUnlocalizedName(name);
             this.setTextureName(ReferenceHelper.setItemName(this));
-            this.setCreativeTab(SCreativeTab.SaoFood);
+            this.setCreativeTab(SAOTabsManager.saoFood);
         }
 }

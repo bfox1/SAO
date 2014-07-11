@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
@@ -17,7 +18,7 @@ public class COM_Leggings extends ItemArmor {
         super(material, 2, armorSlot);
         setUnlocalizedName(name);
         this.setTextureName(ReferenceHelper.setItemName(this));
-        this.setCreativeTab(SCreativeTab.SAO);
+        this.setCreativeTab(SAOTabsManager.SAO);
     }
 
     @Override
