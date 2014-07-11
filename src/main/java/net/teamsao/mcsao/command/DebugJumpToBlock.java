@@ -1,5 +1,6 @@
 package net.teamsao.mcsao.command;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
@@ -17,6 +18,12 @@ import net.minecraft.util.EnumChatFormatting;
 public class DebugJumpToBlock implements ICommand {
 
 	private List aliases;
+	
+	public DebugJumpToBlock() {
+		this.aliases = new ArrayList();
+		this.aliases.add("jumptoblock");
+		this.aliases.add("jtb");
+	}
 	
 	@Override
 	public int compareTo(Object arg0) {
