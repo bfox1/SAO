@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.swords;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,6 +9,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.item.SItem;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 public class MateChopperPowered extends ItemSword {

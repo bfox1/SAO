@@ -4,6 +4,7 @@ import net.minecraftforge.common.DimensionManager;
 import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.dimension.SAOWorldProvider;
 import net.teamsao.mcsao.dimension.SDimension;
+import net.teamsao.mcsao.entity.SEntity;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.item.SItem;
 import net.teamsao.mcsao.lib.Recipe;
@@ -39,6 +40,7 @@ public class SwordArtOnline
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+        SEntity.registerIds();
     	SCreativeTab.registerCreativeTab();
     	SToolMaterial.init();
     	SItem.registerInit();

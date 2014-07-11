@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.swords;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item.ToolMaterial;
@@ -7,6 +7,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.item.SItem;
 import net.teamsao.mcsao.lib.SCreativeTab;
 
 

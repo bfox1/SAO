@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.swords;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.item.SItem;
 
 /**
  * @author bfox1

@@ -1,18 +1,11 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.swords;
 
-import java.util.List;
+import net.teamsao.mcsao.item.SItem;
 
-import org.lwjgl.util.Color;
-
-import cpw.mods.fml.client.config.GuiConfigEntries.ChatColorEntry;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.lib.SCreativeTab;

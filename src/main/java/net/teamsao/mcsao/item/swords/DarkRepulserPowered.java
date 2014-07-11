@@ -1,10 +1,11 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.swords;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.item.SItem;
 
 public class DarkRepulserPowered extends ItemSword {
 

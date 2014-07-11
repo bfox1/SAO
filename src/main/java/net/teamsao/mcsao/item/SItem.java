@@ -3,7 +3,12 @@ package net.teamsao.mcsao.item;
 import net.minecraft.item.Item;
 import net.teamsao.mcsao.block.ItemBlockDungeonStone;
 import net.teamsao.mcsao.block.SBlock;
+import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.item.armor.COM_Body;
+import net.teamsao.mcsao.item.armor.COM_Boots;
+import net.teamsao.mcsao.item.armor.COM_Leggings;
+import net.teamsao.mcsao.item.swords.*;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
 
@@ -48,13 +53,15 @@ public class SItem {
 		public static Item MateChopper = new MateChopper(SToolMaterial.MateChopper);
 		public static Item MateChopperPowered = new MateChopperPowered(SToolMaterial.MateChopper);
 		
-		public static Item ObjectEraser;
+		public static Item ObjectEraser = new ObjectEraser(SToolMaterial.ObjectEraser);
 		
 		public static Item ShadowDagger = new ShadowDagger(SToolMaterial.ShadowDagger);
         public static Item ShadowDaggerPowered = new ShadowDaggerPowered(SToolMaterial.ShadowDagger);
 		
 		public static Item TyrantDragon;
-		
+        public static Item TyrantDragonPowered;
+
+    //ItemBlocks
 		public static Item DungeonStoneItem = new ItemBlockDungeonStone(SBlock.DungeonStone);
 
 
@@ -67,26 +74,16 @@ public class SItem {
 		public static Item TeleportCrystal = new TeleportCrystal();
 		public static Item AntidoteCrystal = new AntidoteCrystal();
 
-		
+	//Armor
+        public static Item CoatOfMidnightBody = new COM_Body(SArmorMaterial.coatOfMidnight, 1, "CoatOfMidnightBody");
+        public static Item CoatOfMidnightLeggings = new COM_Leggings(SArmorMaterial.coatOfMidnight, 2, "CoatOfMidnightLeggings");
+        public static Item CoatOfMidnightBoots = new COM_Boots(SArmorMaterial.coatOfMidnight, 3, "CoatOfMidnightBoots");
 
-		
+    //Food
+        public static Item ragoutRabbitMeat = new RabbitMeat(10, 15.0F, false, "RagoutRabbitMeat");
+        public static SItemFood ScavengerToadMeat = new ScavengerToadMeat(3, 4.0F, false, "ScavengerToadMeat");
 
-		
-		
-		public static void init()
-		{
-		//	Elucidator = new Elucidator(SToolMaterial.Elucidator);
-		//	Elucidator_Powered = new Elucidator_Powered(SToolMaterial.Elucidator);
-			
-		//	AnnealBlade = new AnnealBlade(SToolMaterial.AnnealBlade);
-		//	AnnealBladePowered = new AnnealBladePowered(SToolMaterial.AnnealBlade);
-			
-		//	DarkRepulser = new DarkRepulser(SToolMaterial.DarkRepulser);
-			
-		//	BossKillToken = new BossKillToken();
-		//	HeartOfKobold = new HeartOfKobold();
 
-		}
 		
 
 		public static void registerInit()
@@ -99,14 +96,27 @@ public class SItem {
 			 */
 
 	
-			Item[] items = {Elucidator, Elucidator_Powered, AnnealBlade, AnnealBladePowered, DarkRepulser, DarkRepulserPowered, GuiltyThorn,
-							GuiltyThornPowered, BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear, LambentLight, LambentLightPowered,
-							EbonDagger, EbonDaggerPowered, MateChopper, MateChopperPowered, Karakurenai, KarakurenaiPowered, ShadowDagger, ShadowDaggerPowered,
-                            AntidoteCrystal};
+			Item[] items = { BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear,AntidoteCrystal,
+                            TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
+                            ObjectEraser};
+
+            Item[] foods = {ragoutRabbitMeat, ScavengerToadMeat};
+
+            Item[] swords = {Elucidator, Elucidator_Powered, AnnealBlade, AnnealBladePowered, DarkRepulser, DarkRepulserPowered,
+                                GuiltyThorn, GuiltyThornPowered,LambentLight, LambentLightPowered,
+                                EbonDagger, EbonDaggerPowered, MateChopper, MateChopperPowered, Karakurenai, KarakurenaiPowered,
+                                ShadowDagger, ShadowDaggerPowered};
 			
-			for (int i = 0; i < items.length; i++) {
+			for (int i = 0; i <items.length; i++) {
 				ReferenceHelper.registerItem(items[i]);
 			}
+            for(int i = 0; i < foods.length; i++){
+                ReferenceHelper.registerItem(foods[i]);
+            }
+
+            for(int i = 0; i < swords.length; i++){
+                ReferenceHelper.registerItem(swords[i]);
+            }
 			
 
 
