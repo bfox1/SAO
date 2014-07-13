@@ -16,3 +16,11 @@ To-Do
 8. Recruit more Coders/texturers/Builders
 9. Prepare for Dev release.
 10. Release the first version of the mod to the public as a closed beta
+
+
+INFO
+-----
+
+You can find the main Forum post at http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2126565-sword-art-online-mod-wip-recruiting?page=2#c21
+
+A bit.ly will be handy Chris :) Even though i may do that :P
