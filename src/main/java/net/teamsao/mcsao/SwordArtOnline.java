@@ -36,48 +36,47 @@ import net.teamsao.mcsao.util.LogHelper;
 @Mod(modid = Reference.MODID, certificateFingerprint = "Test", version = Reference.VERSION)
 public class SwordArtOnline {
 
-    @Instance(Reference.MODID)
-    public static SwordArtOnline instance;
-    @SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
-    public static SProxy proxy;
-    public static int dimensionId = 14;
+	@Instance(Reference.MODID)
+	public static SwordArtOnline instance;
+	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
+	public static SProxy proxy;
+	public static int dimensionId = 2;
 
 
-    @EventHandler
-    public void invalidFingerprint(FMLFingerprintViolationEvent event){
+	@EventHandler
+	public void invalidFingerprint(FMLFingerprintViolationEvent event)
+	{
+		if(Reference.FINGERPRINT.equals("Test"))
+		{
+			LogHelper.info(Messages.NO_FINGERPRINT_MESSAGE);
+		}
+		else
 
-    if(Reference.FINGERPRINT.equals("Test"))
+		{
+			LogHelper.warn(Messages.INVALID_FINGERPRINT_MESSAGE);
+		}
+	}
 
-    {
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		SEntity.registerIds();
+		SToolMaterial.init();
+		SItem.registerInit();
+		SBlock.registerInit();
+		SDimension.registerInit();
+		proxy.registerEntityLiving();
+	}
 
-        LogHelper.info(Messages.NO_FINGERPRINT_MESSAGE);
-    }
-        else
+	@EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+		proxy.registerGlobalEntity();
+		proxy.registerTileEntities();
+		Recipe.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		SDimension.registerInit();
+	}
 
-        {
-            LogHelper.warn(Messages.INVALID_FINGERPRINT_MESSAGE);
-        }
-}
-
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-        SEntity.registerIds();
-    	SToolMaterial.init();
-    	SItem.registerInit();
-    	SBlock.registerInit();
-    	proxy.registerEntityLiving();
-    }
-    
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-    	proxy.registerGlobalEntity();
-        proxy.registerTileEntities();
-    	Recipe.init();
-        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-    	SDimension.registerInit();
-    }
-    
 
 }

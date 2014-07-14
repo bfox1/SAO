@@ -95,6 +95,7 @@ public class SAOChunkProvider implements IChunkProvider
     private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
     /** Holds ravine generator */
     private MapGenBase ravineGenerator = new MapGenRavine();
+    private SAOTowerGen towerGen = new SAOTowerGen();
     /** The biomes that are used to generate the chunk */
     private BiomeGenBase[] biomesForGeneration;
     double[] field_147427_d;
@@ -161,11 +162,20 @@ public class SAOChunkProvider implements IChunkProvider
 		return true;
 	}
 	
-	public void func_147424_a(int p_147424_1_, int p_147424_2_, Block[] p_147424_3_)
+	/**
+	 * I Believe this method is used to create the upper layers of terrain generation in the world. For example the top
+	 * layer of most biomes is a grass block, followed mostly by dirt but there may be sand and gravel in-between. Then
+	 * there is stone, which is generated first I assume, so that this topper and filler layer can be placed above it
+	 * using the same random seed.
+	 * @param chunkXCoord
+	 * @param chunkZCoord
+	 * @param chunkOfBlocks
+	 */
+	public void func_147424_a(int chunkXCoord, int chunkZCoord, Block[] chunkOfBlocks)
     {
         byte b0 = 63;
-        this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, p_147424_1_ * 4 - 2, p_147424_2_ * 4 - 2, 10, 10);
-        this.func_147423_a(p_147424_1_ * 4, 0, p_147424_2_ * 4);
+        this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, chunkXCoord * 4 - 2, chunkZCoord * 4 - 2, 10, 10);
+        this.func_147423_a(chunkXCoord * 4, 0, chunkZCoord * 4);
 
         for (int k = 0; k < 4; ++k)
         {
@@ -214,16 +224,16 @@ public class SAOChunkProvider implements IChunkProvider
                                 {
                                 	//Ian - Attempt to replace all blocks with empty spots here and in the next block.
                                 	//I believe this is the filler block
-                                    p_147424_3_[j3 += short1] = Blocks.air;
+                                    chunkOfBlocks[j3 += short1] = Blocks.air;
                                 }
                                 else if (k2 * 8 + l2 < b0)
                                 {
                                 	//And I think this is the topper block.
-                                    p_147424_3_[j3 += short1] = Blocks.air;
+                                    chunkOfBlocks[j3 += short1] = Blocks.air;
                                 }
                                 else
                                 {
-                                    p_147424_3_[j3 += short1] = null;
+                                    chunkOfBlocks[j3 += short1] = null;
                                 }
                             }
 
@@ -271,7 +281,8 @@ public class SAOChunkProvider implements IChunkProvider
                 /*if(worldType != WorldType.FLAT)
                 { 
                 
-                //Ian - The if statement is something I made to test it but this is where all blocks in every chunk are generated.
+                * Ian - The if statement is something I made to test it but this is where all blocks in every chunk are generated.
+                * Getting rid of this code is what makes the void dimension. Lava and other structures might remain after but this does most of the work.
                 	
                 	biomegenbase.genTerrainBlocks(this.worldObj, this.rand, p_147422_3_, p_147422_4_, p_147422_1_ * 16 + k, p_147422_2_ * 16 + l, this.stoneNoise[l + k * 16]);
                 }*/
@@ -281,7 +292,8 @@ public class SAOChunkProvider implements IChunkProvider
 
 	@Override
 	/**
-	 * When generating chunks, uses chunk coordinates to add caves, ravines, and structures randomly throughout the chunk based on the noise generators.
+	 * When generating chunks, uses chunk coordinates to add caves, ravines, and structures randomly
+	 * throughout the chunk based on the noise generators.
 	 */
 	public Chunk provideChunk(int chunkXCoord, int chunkZCoord) {
 		this.rand.setSeed((long)chunkXCoord * 341873128712L + (long)chunkZCoord * 132897987541L);
@@ -444,19 +456,19 @@ public class SAOChunkProvider implements IChunkProvider
 	}
 
 	@Override
-	public void populate(IChunkProvider p_73153_1_, int p_73153_2_, int p_73153_3_)
+	public void populate(IChunkProvider thisChunkProvider, int chunkX, int chunkZ)
 	{
 		BlockFalling.fallInstantly = true;
-        int k = p_73153_2_ * 16;
-        int l = p_73153_3_ * 16;
+        int k = chunkX * 16;
+        int l = chunkZ * 16;
         BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(k + 16, l + 16);
         this.rand.setSeed(this.worldObj.getSeed());
         long i1 = this.rand.nextLong() / 2L * 2L + 1L;
         long j1 = this.rand.nextLong() / 2L * 2L + 1L;
-        this.rand.setSeed((long)p_73153_2_ * i1 + (long)p_73153_3_ * j1 ^ this.worldObj.getSeed());
+        this.rand.setSeed((long)chunkX * i1 + (long)chunkZ * j1 ^ this.worldObj.getSeed());
         boolean flag = false;
 
-        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag));
+        MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(thisChunkProvider, worldObj, rand, chunkX, chunkZ, flag));
 
         if (this.mapFeaturesEnabled)
         {
@@ -467,6 +479,10 @@ public class SAOChunkProvider implements IChunkProvider
             
             Ian - Attempted to disable structure gen here. It didn't work but I'm keeping it disabled since it isn't used anyway.
             */
+        	if(chunkX == 0 && chunkZ == 0)
+        	{
+        		this.towerGen.generate(this.worldObj, this.rand, chunkX, chunkZ, 40);
+        	}
         }
 
         int k1;
@@ -474,7 +490,7 @@ public class SAOChunkProvider implements IChunkProvider
         int i2;
 
         if (biomegenbase != BiomeGenBase.desert && biomegenbase != BiomeGenBase.desertHills && !flag && this.rand.nextInt(4) == 0
-            && TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, LAKE))
+            && TerrainGen.populate(thisChunkProvider, worldObj, rand, chunkX, chunkZ, flag, LAKE))
         {
             k1 = k + this.rand.nextInt(16) + 8;
             l1 = this.rand.nextInt(256);
@@ -483,7 +499,7 @@ public class SAOChunkProvider implements IChunkProvider
             // Ian - Attempt to disable water. This works!
         }
 
-        if (TerrainGen.populate(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag, LAVA) && !flag && this.rand.nextInt(8) == 0)
+        if (TerrainGen.populate(thisChunkProvider, worldObj, rand, chunkX, chunkZ, flag, LAVA) && !flag && this.rand.nextInt(8) == 0)
         {
             k1 = k + this.rand.nextInt(16) + 8;
             l1 = this.rand.nextInt(this.rand.nextInt(248) + 8);
@@ -536,9 +552,9 @@ public class SAOChunkProvider implements IChunkProvider
         }
 
         MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Post(p_73153_1_, worldObj, rand, p_73153_2_, p_73153_3_, flag));
-
+		*/
         BlockFalling.fallInstantly = false;
-        */
+        
 	}
 
 	@Override
