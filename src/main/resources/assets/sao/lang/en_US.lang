@@ -53,7 +53,7 @@ tile.DungeonBlock.BrickedStone.name=Dungeon Brick
 tile.DungeonBlock.ChiseledStone.name=Dungeon Chiseled Brick
 tile.DungeonBlock.KnockBackStone.name=Dungeon knock Back
 
-tile.portal.name=SAO Portal Block
+tile.portalTutorialBlock.name=SAO Portal Block
 
 //Tabs
 itemGroup.SAO=Sao

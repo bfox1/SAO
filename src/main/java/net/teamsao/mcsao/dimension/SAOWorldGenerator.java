@@ -7,7 +7,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**
@@ -20,8 +19,6 @@ public class SAOWorldGenerator implements IWorldGenerator
 {
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
     {
-    	
-    	//System.out.println("Is this class even being used?!");
         switch (world.provider.dimensionId)
         {
         case -1:
@@ -30,14 +27,12 @@ public class SAOWorldGenerator implements IWorldGenerator
             generateSurface(world, random, chunkX * 16, chunkZ * 16);
         case 1:
             generateEnd(world, random, chunkX * 16, chunkZ * 16);
-        case 2:
-        	generateAincrad(world, random, chunkX * 16, chunkZ * 16);
         }
     }
  
     private void generateEnd(World world, Random random, int x, int z)
     {
-    	
+ 
     }
  
     private void generateSurface(World world, Random random, int x, int z)
@@ -52,27 +47,9 @@ public class SAOWorldGenerator implements IWorldGenerator
         int Zcoord = z + random.nextInt(16);
         (new WorldGenMinable(Tutorial.tutorialBlock, 1, 15, Blocks.netherrack)).generate(world, random, Xcoord, Ycoord, Zcoord);*/
     }
-    
-    /**
-     * 
-     * In here goes the execution of another IWorldGenerator implementation which *will* contain the code for structure gen
-     * of the tower.
-     * 
-     * @param world
-     * @param rand
-     * @param blockX
-     * @param blockZ
-     */
-    private void generateAincrad(World world, Random rand, int blockX, int blockZ)
-    {
-    	System.out.println("Fine the class is being used but where is the generator?!");
-    	WorldGenerator towerGen = new SAOTowerGen();
-    	towerGen.generate(world, rand, blockX, blockZ, 0);
-    }
  
     /**
-     * Adds an Ore Spawn to Minecraft. Simply register all Ores to spawn with this method in your Generation method
-     * in your IWorldGeneration implementing Class
+     * Adds an Ore Spawn to Minecraft. Simply register all Ores to spawn with this method in your Generation method in your IWorldGeneration extending Class
      * 
      * @param The Block to spawn
      * @param The World to spawn in
