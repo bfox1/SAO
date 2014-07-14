@@ -59,6 +59,7 @@ public class SwordArtOnline {
         }
 }
 
+    
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
@@ -66,6 +67,7 @@ public class SwordArtOnline {
     	SToolMaterial.init();
     	SItem.registerInit();
     	SBlock.registerInit();
+    	SDimension.registerInit();
     	proxy.registerEntityLiving();
     }
     
@@ -77,6 +79,8 @@ public class SwordArtOnline {
     	Recipe.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     	SDimension.registerInit();
+    	//proxy.registerEntityLiving();
+    	//proxy.registerGlobalEntity();
     }
     
 

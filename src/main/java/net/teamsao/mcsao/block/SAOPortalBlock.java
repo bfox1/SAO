@@ -16,7 +16,7 @@ public class SAOPortalBlock extends BlockPortal
     public SAOPortalBlock()
     {
         super();
-        setBlockName("portalTutorialBlock");
+        setBlockName("portal");
         setCreativeTab(null);
     }
  
@@ -48,17 +48,17 @@ public class SAOPortalBlock extends BlockPortal
     }
  
     @Override
-    public boolean func_150000_e(World par1World, int par2, int par3, int par4)
+    public boolean func_150000_e(World worldObj, int blockX, int blockY, int blockZ)
     {
         byte b0 = 0;
         byte b1 = 0;
  
-        if (par1World.getBlock(par2 - 1, par3, par4) == Blocks.sandstone || par1World.getBlock(par2 + 1, par3, par4) == Blocks.sandstone)
+        if (worldObj.getBlock(blockX - 1, blockY, blockZ) == Blocks.sandstone || worldObj.getBlock(blockX + 1, blockY, blockZ) == Blocks.sandstone)
         {
             b0 = 1;
         }
  
-        if (par1World.getBlock(par2, par3, par4 - 1) == Blocks.sandstone || par1World.getBlock(par2, par3, par4 + 1) == Blocks.sandstone)
+        if (worldObj.getBlock(blockX, blockY, blockZ - 1) == Blocks.sandstone || worldObj.getBlock(blockX, blockY, blockZ + 1) == Blocks.sandstone)
         {
             b1 = 1;
         }
@@ -69,10 +69,10 @@ public class SAOPortalBlock extends BlockPortal
         }
         else
         {
-            if (par1World.isAirBlock(par2 - b0, par3, par4 - b1))
+            if (worldObj.isAirBlock(blockX - b0, blockY, blockZ - b1))
             {
-                par2 -= b0;
-                par4 -= b1;
+                blockX -= b0;
+                blockZ -= b1;
             }
  
             int l;
@@ -86,8 +86,8 @@ public class SAOPortalBlock extends BlockPortal
  
                     if (l != -1 && l != 2 || i1 != -1 && i1 != 3)
                     {
-                        Block j1 = par1World.getBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l);
-                        boolean isAirBlock = par1World.isAirBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l);
+                        Block j1 = worldObj.getBlock(blockX + b0 * l, blockY + i1, blockZ + b1 * l);
+                        boolean isAirBlock = worldObj.isAirBlock(blockX + b0 * l, blockY + i1, blockZ + b1 * l);
  
                         if (flag)
                         {
@@ -108,7 +108,7 @@ public class SAOPortalBlock extends BlockPortal
             {
                 for (i1 = 0; i1 < 3; ++i1)
                 {
-                    par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, SBlock.SAOPortalBlock, 0, 2);
+                    worldObj.setBlock(blockX + b0 * l, blockY + i1, blockZ + b1 * l, SBlock.SAOPortalBlock, 0, 2);
                 }
             }
  
