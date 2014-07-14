@@ -34,14 +34,14 @@ import net.teamsao.mcsao.util.LogHelper;
  * @author bfox1
  */
 @Mod(modid = Reference.MODID, certificateFingerprint = "Test", version = Reference.VERSION)
-public class SwordArtOnline
-{
+public class SwordArtOnline {
 
 	@Instance(Reference.MODID)
 	public static SwordArtOnline instance;
 	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;
 	public static int dimensionId = 2;
+
 
 	@EventHandler
 	public void invalidFingerprint(FMLFingerprintViolationEvent event)
@@ -51,6 +51,7 @@ public class SwordArtOnline
 			LogHelper.info(Messages.NO_FINGERPRINT_MESSAGE);
 		}
 		else
+
 		{
 			LogHelper.warn(Messages.INVALID_FINGERPRINT_MESSAGE);
 		}
@@ -76,5 +77,6 @@ public class SwordArtOnline
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		SDimension.registerInit();
 	}
+
 
 }
