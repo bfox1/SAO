@@ -35,7 +35,7 @@ public class SwordArtOnline
     public static SwordArtOnline instance;
 	 @SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;
-	public static int dimensionId = 14;
+	public static int dimensionId = 2;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -45,6 +45,7 @@ public class SwordArtOnline
     	SToolMaterial.init();
     	SItem.registerInit();
     	SBlock.registerInit();
+    	SDimension.registerInit();
     	proxy.registerEntityLiving();
     }
     
@@ -53,7 +54,6 @@ public class SwordArtOnline
     {
     	proxy.registerGlobalEntity();
     	Recipe.init();
-    	SDimension.registerInit();
     	//proxy.registerEntityLiving();
     	//proxy.registerGlobalEntity();
     }
