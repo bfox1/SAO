@@ -12,33 +12,46 @@ import net.teamsao.mcsao.lib.SCreativeTab;
  */
 public class ItemBlockDungeonStone extends ItemBlock {
 
+	public ItemBlockDungeonStone(Block p_i45328_1_) {
+		super(p_i45328_1_);
+		//this.setUnlocalizedName("DungeonStone");
+		//this.setCreativeTab(SAOTabsManager.SAO);
+		this.setHasSubtypes(true);
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see net.minecraft.item.ItemBlock#getUnlocalizedName(net.minecraft.item.ItemStack)
 	 * 
 	 * These are the Names of the Blocks and what they are. 
 	 */
-	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "KnockBackStone"};
-	
-	public ItemBlockDungeonStone(Block p_i45328_1_)
-	{
-		super(p_i45328_1_);
-		this.setHasSubtypes(true);
-	}
 	
 	@Override
 	public String getUnlocalizedName(ItemStack itemstack)
 	{
 		String name = "";
-		int damageValue = itemstack.getItemDamage();
-		
-		if(damageValue >= 0 && damageValue < subBlocks.length)
+		switch(itemstack.getItemDamage())
 		{
-			name = subBlocks[itemstack.getItemDamage()];
+		case 0:
+		{
+			name = "SmoothStone";
+			break;
 		}
-		else
+		case 1:
 		{
-			name = "broken";
+			name = "BrickedStone";
+			break;
+		}
+		case 2:
+		{
+			name = "ChiseledStone";
+			break;
+		}
+		case 3:
+		{
+			name = "KnockBackStone";
+			break;
+		}
+		default: name = "broken";
 		}
 		return getUnlocalizedName() + "." + name;
 	}
@@ -49,4 +62,6 @@ public class ItemBlockDungeonStone extends ItemBlock {
 		return damageValue;
 	}
 	
+
+
 }

@@ -6,19 +6,10 @@ This mod will provide the experience similar to [Sword Art Online](http://sworda
 To-Do
 -----
 
-1. Create a working Dimension with portal creation within Aincrad.
-2. Allow teleport crystal to perform same actions as above^
+1. Finish adding swords.
+2. Add bosses and their drops.
 3. Texture items
-4. Create Models for Mobs. No bosses yet
-5. Get Builders to begin creating schema
-6. Finish ForgeStation to create Weapons and Tool[Bfox Job]
-7. Get a working Nerve Gear to Hold CD Game.
-8. Recruit more Coders/texturers/Builders
-9. Prepare for Dev release.
-10. Release the first version of the mod to the public as a closed beta
-
-
-INFO
------
-
-You can find the main forum post [here](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2126565-sword-art-online-mod-wip-recruiting?page=2#c21).
+4. Add all items
+5. Give some Swords an Additional Potion Effect when Hits Entity
+6. Add teleportation crystals (Discuss over their effects and usage)
+7. Release the first version of the mod to the public as a closed beta

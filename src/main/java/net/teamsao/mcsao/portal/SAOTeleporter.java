@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Random;
  
 
-
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.ChunkCoordinates;
@@ -452,25 +450,21 @@ public class SAOTeleporter extends Teleporter
             }
  
             j5 = i1;
-            /* Ian - Attempt at tower generation made here, didn't work. Laggy too, but always has been really.
-            //x value to the front and back of the portal
+ 
             for (k2 = -1; k2 <= 1; ++k2)
             {
-            	//z value to the left and right of the portal
                 for (i3 = 1; i3 < 3; ++i3)
                 {
-                	//y value extension below and above the portal floor
                     for (l2 = -1; l2 < 3; ++l2)
                     {
                         k3 = i5 + (i3 - 1) * k5 + k2 * l5;
                         j3 = j5 + l2;
                         i4 = j2 + (i3 - 1) * l5 - k2 * k5;
                         flag = l2 < 0;
-                        //System.out.println("When generating the portal frame x y and z are: (x:"+k3+", y:"+j3+", z:"+i4+")");
                         this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.sandstone : Blocks.air);
                     }
                 }
-            }*/
+            }
         }
  
         for (k2 = 0; k2 < 4; ++k2)
@@ -484,7 +478,6 @@ public class SAOTeleporter extends Teleporter
                     i4 = j2 + (i3 - 1) * l5;
                     flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
                     this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.sandstone : SBlock.SAOPortalBlock, 0, 2);
-                    //System.out.println("When generating the portal blocks x y and z are: (x:"+k3+", y:"+j3+", z:"+i4+")");
                 }
             }
  
