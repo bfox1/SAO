@@ -21,6 +21,4 @@ To-Do
 INFO
 -----
 
-You can find the main Forum post at http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2126565-sword-art-online-mod-wip-recruiting?page=2#c21
-
-A bit.ly will be handy Chris :) Even though i may do that :P
+You can find the main forum post [here](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2126565-sword-art-online-mod-wip-recruiting?page=2#c21).
