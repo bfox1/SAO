@@ -18,7 +18,7 @@ import net.teamsao.mcsao.lib.SCreativeTab;
 
 public class DungeonStone extends Block {
 
-	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "KnockBackStone"};
+	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "AlterStone", "EdgedStone"};
 	
 	public DungeonStone()
 	{
