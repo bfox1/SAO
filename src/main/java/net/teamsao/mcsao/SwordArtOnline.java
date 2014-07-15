@@ -75,7 +75,6 @@ public class SwordArtOnline {
 		proxy.registerTileEntities();
 		Recipe.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-		SDimension.registerInit();
 	}
 
 
