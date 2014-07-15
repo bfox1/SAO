@@ -13,7 +13,7 @@ import net.teamsao.mcsao.help.ReferenceHelper;
  */
 public class SBlock {
 	
-	public static Block ForgingStation; //Special TileEntity That Allows the Creation of Most High-tier Swords and Items.
+	public static Block ForgingStation = new ForgeStation(); //Special TileEntity That Allows the Creation of Most High-tier Swords and Items.
 	
 	public static Block Log;
 	public static Block DungeonStone = new DungeonStone();
@@ -31,6 +31,9 @@ public class SBlock {
 	//	ReferenceHelper.registerBlock(DungeonStone);
 		GameRegistry.registerBlock(SAOPortalBlock, Reference.MODID + (SAOPortalBlock.getUnlocalizedName().substring(5)));
 		GameRegistry.registerBlock(DungeonStone, ItemBlockDungeonStone.class, ReferenceHelper.setBlockName(SBlock.DungeonStone));
+        //Use the Method below for registering simple Blocks
+
+        ReferenceHelper.registerBlock(ForgingStation);
 	}
 
 	

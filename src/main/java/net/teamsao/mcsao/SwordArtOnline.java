@@ -1,10 +1,15 @@
 package net.teamsao.mcsao;
 
+import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
+import net.minecraft.network.NetworkManager;
 import net.minecraftforge.common.DimensionManager;
+import net.teamsao.mcsao.block.ForgeStation;
 import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.dimension.SAOWorldProvider;
 import net.teamsao.mcsao.dimension.SDimension;
 import net.teamsao.mcsao.entity.SEntity;
+import net.teamsao.mcsao.gui.GuiHandler;
+import net.teamsao.mcsao.help.Messages;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.item.SItem;
 import net.teamsao.mcsao.lib.Recipe;
@@ -18,6 +23,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import net.teamsao.mcsao.util.LogHelper;
 
 /* Created on 7-1-2014
  * This is the main file for the entire mod. All Registrations MUST go here. 
@@ -27,36 +33,50 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 /**
  * @author bfox1
  */
-@Mod(modid = Reference.MODID, version = Reference.VERSION)
-public class SwordArtOnline
-{
-	
-    @Instance(Reference.MODID)
-    public static SwordArtOnline instance;
-	 @SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
+@Mod(modid = Reference.MODID, certificateFingerprint = "Test", version = Reference.VERSION)
+public class SwordArtOnline {
+
+	@Instance(Reference.MODID)
+	public static SwordArtOnline instance;
+	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;
 	public static int dimensionId = 2;
-    
-    @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-        SEntity.registerIds();
-    	//SCreativeTab.registerCreativeTab(); //Removing in later updates
-    	SToolMaterial.init();
-    	SItem.registerInit();
-    	SBlock.registerInit();
-    	SDimension.registerInit();
-    	proxy.registerEntityLiving();
-    }
-    
-    @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
-    	proxy.registerGlobalEntity();
-    	Recipe.init();
-    	//proxy.registerEntityLiving();
-    	//proxy.registerGlobalEntity();
-    }
-    
+
+
+	@EventHandler
+	public void invalidFingerprint(FMLFingerprintViolationEvent event)
+	{
+		if(Reference.FINGERPRINT.equals("Test"))
+		{
+			LogHelper.info(Messages.NO_FINGERPRINT_MESSAGE);
+		}
+		else
+
+		{
+			LogHelper.warn(Messages.INVALID_FINGERPRINT_MESSAGE);
+		}
+	}
+
+	@EventHandler
+	public void preInit(FMLPreInitializationEvent event)
+	{
+		SEntity.registerIds();
+		SToolMaterial.init();
+		SItem.registerInit();
+		SBlock.registerInit();
+		SDimension.registerInit();
+		proxy.registerEntityLiving();
+	}
+
+	@EventHandler
+	public void init(FMLInitializationEvent event)
+	{
+		proxy.registerGlobalEntity();
+		proxy.registerTileEntities();
+		Recipe.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		SDimension.registerInit();
+	}
+
 
 }
