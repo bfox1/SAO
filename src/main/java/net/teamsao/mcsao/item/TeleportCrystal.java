@@ -1,27 +1,32 @@
 package net.teamsao.mcsao.item;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldProvider;
-import net.minecraft.world.WorldServer;
-import net.minecraftforge.common.DimensionManager;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.dimension.SDimension;
+import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
-import net.teamsao.mcsao.portal.SAOTeleporter;
+
+import java.io.File;
 
 
 /**
  * @author bfox1
  *
  */
+
+
 public class TeleportCrystal extends Item {
+
+    public File saveDir;
+    public File worldDir = null;
+
+
 
 	/* Chris: Here's an idea for the crystals. Whenever they're used, 
 	 * 
@@ -39,9 +44,27 @@ public class TeleportCrystal extends Item {
         if (!par2World.isRemote && par3Player.isSneaking()) {
             //Opens a GUI to go to teleport Points. IF ALLOWED.
             if (par3Player.dimension != SwordArtOnline.dimensionId) {
+                int x = Minecraft.getMinecraft().objectMouseOver.blockX;
+                int y = Minecraft.getMinecraft().objectMouseOver.blockY;
+                int z = Minecraft.getMinecraft().objectMouseOver.blockZ;
 
-               // par3Player.travelToDimension(14);
+                String name = par2World.getBlock(x, y, z).getUnlocalizedName().substring(5);
+                if(name.equals(SBlock.TeleportCrystalBlock.getUnlocalizedName().substring(5)))
+                {
+                    par3Player.addChatMessage(new ChatComponentText("They Equal"));
+                    load();
+
+                }
+
+                par3Player.addChatMessage(new ChatComponentText(x + ":" + y + ":" + z + ":" + name));
+                //System.out.println(Minecraft.getMinecraft().objectMouseOver);
+
+
+
+
+
             }
+            /*
 
                 EntityPlayerMP player = (EntityPlayerMP) par3Player;
 
@@ -62,12 +85,16 @@ public class TeleportCrystal extends Item {
                     player.timeUntilPortal = 10;
                     player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, new SAOTeleporter(mServer.worldServerForDimension(1)));
                 }
-            }
+
+            */
+        }
 
 
 
         return par1ItemStack;
     }
+
+
 	
 	/**
 	 * @author 5chris100
@@ -88,4 +115,17 @@ public class TeleportCrystal extends Item {
 		return par1;
 		
 	}
+
+    public void load()
+    {
+        if((Minecraft.getMinecraft().theWorld == null) || (Minecraft.getMinecraft().thePlayer == null))
+        {
+            return;
+        }
+
+        File worldDir = new File(new File(saveDir, "SAOMODs"), "default");
+    }
+
+
+
 }

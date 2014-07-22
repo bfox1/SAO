@@ -54,6 +54,12 @@ tile.DungeonBlock.ChiseledStone.name=Dungeon Chiseled Brick
 tile.DungeonBlock.AlterStone.name=Dungeon AlterStone
 tile.DungeonBlock.EdgedStone.name=Dungeon EdgedStone
 
+tile.CrystalStone.SmoothStone.name=Crystal Stone
+tile.CrystalStone.BrickedStone.name Crystal Brick
+tile.CrystalStone.ChiseledStone.name=Crystal Chiseled Brick
+tile.CrystalStone.AlterStone.name=Crystal AlterStone
+tile.CyrstalStone.EdgedStone.name=Crystal EdgedStone
+
 tile.portal.name=SAO Portal Block
 
 //Tabs
