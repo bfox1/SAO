@@ -1,13 +1,11 @@
 package net.teamsao.mcsao.item;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.teamsao.mcsao.block.ItemBlockDungeonStone;
+import net.teamsao.mcsao.block.ItemBlockMetaData;
 import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.armor.*;
 import net.teamsao.mcsao.item.swords.*;
-import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
 
@@ -61,7 +59,8 @@ public class SItem {
         public static Item TyrantDragonPowered = new TyrantDragonPowered(SToolMaterial.TyrantDragon);
 
     //ItemBlocks
-		public static Item DungeonStoneItem = new ItemBlockDungeonStone(SBlock.DungeonStone);
+		public static Item DungeonStoneItem = new ItemBlockMetaData(SBlock.DungeonStone);
+        public static Item CrystalDungeonItem = new ItemBlockMetaData(SBlock.CrystalStone);
 
 
 	//Items

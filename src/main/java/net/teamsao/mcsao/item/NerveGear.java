@@ -5,6 +5,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
@@ -22,6 +24,8 @@ import net.teamsao.mcsao.lib.SCreativeTab;
  *  @author 5chris100, edited by Bfox1
  */
 public class NerveGear extends ItemArmor {
+
+    int tickCounter;
 	
 	public NerveGear(ArmorMaterial material, int armorType, String name){
 		super(material, 0, armorType);
@@ -37,11 +41,6 @@ public class NerveGear extends ItemArmor {
 		{
 			return Reference.MODID + ":models/armor/NerveGear.png";
 		}
-		/*else if(==pants)
-		{
-			return Reference.MODID + ":models/armor/tutorialpants";
-		}
-		*/
 		else
 		{
 			System.out.println("Invalid Item Armor");
@@ -63,5 +62,29 @@ public class NerveGear extends ItemArmor {
 		return par1ItemStack;
 		
 	}
+
+    @Override
+    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5)
+    {
+        if(tickCounter == 10)
+        {
+           EntityPlayer player = ((EntityPlayer)par3Entity);
+          //  if(player.inventory.armorInventory == new ItemStack(SItem.NerveGear)) {
+                ChunkCoordinates name = player.getBedLocation(0);
+
+                int x = name.posX;
+                int y = name.posY;
+                int z = name.posZ;
+
+                player.addChatMessage(new ChatComponentText(x + ":" + y + ":" + z));
+
+                this.tickCounter = 0;
+          //  }
+
+
+        }
+        tickCounter++;
+    }
+
 
 }

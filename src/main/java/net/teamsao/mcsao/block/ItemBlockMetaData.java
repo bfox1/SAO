@@ -10,7 +10,7 @@ import net.teamsao.mcsao.lib.SCreativeTab;
  * @author bfox1
  *
  */
-public class ItemBlockDungeonStone extends ItemBlock {
+public class ItemBlockMetaData extends ItemBlock {
 
 	/*
 	 * (non-Javadoc)
@@ -20,7 +20,7 @@ public class ItemBlockDungeonStone extends ItemBlock {
 	 */
 	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "AlterStone", "EdgedStone"};
 	
-	public ItemBlockDungeonStone(Block p_i45328_1_)
+	public ItemBlockMetaData(Block p_i45328_1_)
 	{
 		super(p_i45328_1_);
 		this.setHasSubtypes(true);
