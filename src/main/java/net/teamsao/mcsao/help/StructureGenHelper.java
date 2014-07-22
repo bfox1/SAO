@@ -26,10 +26,12 @@ public class StructureGenHelper
 	
 	public static Integer distance3D(double[] origin, double[] point)
 	{
-		if(origin.length != 3 || point.length != 3)
+		if(origin == null || point == null || origin.length != 3 || point.length != 3)
 		{
-			//This should not happen. Will write more code later to make sure of it.
+			//Do not use null data or those openly visible to not have the right amount of data.
+			return null;
 		}
+		//Also check and be sure that no indices of the arrays are null. (later)
 		double xDelta = Math.abs(origin[0]-point[0]);
 		double yDelta = Math.abs(origin[1]-point[1]);
 		double zDelta = Math.abs(origin[2]-point[2]);
