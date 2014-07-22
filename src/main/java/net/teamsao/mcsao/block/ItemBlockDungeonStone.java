@@ -18,7 +18,7 @@ public class ItemBlockDungeonStone extends ItemBlock {
 	 * 
 	 * These are the Names of the Blocks and what they are. 
 	 */
-	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "KnockBackStone"};
+	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "AlterStone", "EdgedStone"};
 	
 	public ItemBlockDungeonStone(Block p_i45328_1_)
 	{

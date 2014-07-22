@@ -14,8 +14,8 @@ item.RagoutRabbitMeat.name=Ragout Rabbit Meat
 item.ScavengerToadMeat.name=Toad Meat
 
 //Swords
-item.Elucidator.name=§0Elucidator
-item.Elucidator_Powered.name=§0Elucidator
+item.Elucidator.name=§8Elucidator
+item.Elucidator_Powered.name=§8Elucidator
 
 item.AnnealBlade.name=§3Anneal Blade
 item.AnnealBladePowered.name=§3Anneal Blade
@@ -51,7 +51,8 @@ item.TyrantDragonPowered.name=Tyrant Dragon
 tile.DungeonBlock.SmoothStone.name=Dungeon Stone
 tile.DungeonBlock.BrickedStone.name=Dungeon Brick
 tile.DungeonBlock.ChiseledStone.name=Dungeon Chiseled Brick
-tile.DungeonBlock.KnockBackStone.name=Dungeon knock Back
+tile.DungeonBlock.AlterStone.name=Dungeon AlterStone
+tile.DungeonBlock.EdgedStone.name=Dungeon EdgedStone
 
 tile.portal.name=SAO Portal Block
 
