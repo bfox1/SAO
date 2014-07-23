@@ -610,17 +610,14 @@ public class SAOChunkProvider implements IChunkProvider
 	}
 
 	@Override
-	public void recreateStructures(int p_82695_1_, int p_82695_2_)
+	public void recreateStructures(int chunkX, int chunkZ)
 	{
 		if (this.mapFeaturesEnabled)
 		{
-			/*this.mineshaftGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
-            this.villageGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
-            this.strongholdGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
-            this.scatteredFeatureGenerator.func_151539_a(this, this.worldObj, p_82695_1_, p_82695_2_, (Block[])null);
-
-            Ian - Attempt to disable structures which did not work. Keeping this here in case it prevents new structures from being generated.
-			 */
+			if(chunkX == 0 && chunkZ == 0)
+			{
+				this.towerGen.generate(this.worldObj, this.rand, chunkX, chunkZ, 40);
+			}
 		}
 	}
 

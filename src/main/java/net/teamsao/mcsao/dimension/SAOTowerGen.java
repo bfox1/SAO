@@ -96,24 +96,26 @@ public class SAOTowerGen extends WorldGenerator
 								miniChunk.setExtBlockMetadata(x, y, z, 1);
 								if(!world.isRemote)
 								{
-									world.markBlockForUpdate(modX, 33+y, modZ);
-									world.notifyBlockChange(modX, 33+y, modZ, wall);
+									world.markBlockForUpdate(modX, 32+y, modZ);
+									world.notifyBlockChange(modX, 32+y, modZ, wall);
 								}
 							}
 						}
 						else if(distance < radius)
 						{
 							fastSetBlock(x, 7, z, floor, miniChunk);
-							world.markBlockForUpdate(modX, 40, modZ);
-							world.notifyBlockChange(modX, 40, modZ, floor);
-							//miniChunk.setExtBlockMetadata(x, 7, z, 0);
+							if(!world.isRemote)
+							{
+								world.markBlockForUpdate(modX, 39, modZ);
+								world.notifyBlockChange(modX, 39, modZ, floor);
+							}
 						}
 					}
 				}
-				if(!world.isRemote)
+				/*if(!world.isRemote)
 				{
 					chunk.generateHeightMap();
-				}
+				}*/
 				chunk.generateSkylightMap();
 				chunk.setChunkModified();
 				
