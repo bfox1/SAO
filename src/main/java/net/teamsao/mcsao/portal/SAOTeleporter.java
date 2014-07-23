@@ -182,7 +182,7 @@ public class SAOTeleporter extends Teleporter
     /**
      * Place an entity in a nearby portal which already exists.
      */
-    @SuppressWarnings("unchecked")
+    //@SuppressWarnings("unchecked")
     @Override
     public boolean placeInExistingPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
     {
@@ -220,6 +220,7 @@ public class SAOTeleporter extends Teleporter
  
                     for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
                     {
+                    	//System.out.println(k1+","+i2+","+l1);
                         if (this.worldServerInstance.getBlock(k1, i2, l1) == SBlock.SAOPortalBlock)
                         {
                             while (this.worldServerInstance.getBlock(k1, i2 - 1, l1) == SBlock.SAOPortalBlock)
