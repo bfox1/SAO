@@ -1,17 +1,23 @@
 package net.teamsao.mcsao.item;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
+import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.lib.SCreativeTab;
+import net.teamsao.mcsao.portal.SAOTeleporter;
+import org.lwjgl.Sys;
 
 /**
  * This file was forked from HeartOfKobold (thanks, bfox! :D).
@@ -32,6 +38,7 @@ public class NerveGear extends ItemArmor {
 		setUnlocalizedName(name);
         this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SAOTabsManager.SAO);
+
 	}
 	
 	@Override
@@ -63,28 +70,34 @@ public class NerveGear extends ItemArmor {
 		
 	}
 
-    @Override
-    public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5)
+
+    public void onArmorTick(World world, EntityPlayer players, ItemStack itemStack)
     {
-        if(tickCounter == 10)
-        {
-           EntityPlayer player = ((EntityPlayer)par3Entity);
-          //  if(player.inventory.armorInventory == new ItemStack(SItem.NerveGear)) {
-                ChunkCoordinates name = player.getBedLocation(0);
+        EntityPlayer entityPlayer;
 
-                int x = name.posX;
-                int y = name.posY;
-                int z = name.posZ;
 
-                player.addChatMessage(new ChatComponentText(x + ":" + y + ":" + z));
+        if(!world.isRemote) {
+                if(players.getCurrentArmor(3) == itemStack && players.isPlayerSleeping()) {
 
-                this.tickCounter = 0;
-          //  }
+                    EntityPlayerMP player = ((EntityPlayerMP)players);
+
+                    SAOTeleporter.tranferPlayerToDimension(player, 2);
+
+
+
+
+                }
+
+            }
 
 
         }
-        tickCounter++;
-    }
+
+
+
+
+
+
 
 
 }

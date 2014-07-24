@@ -1,6 +1,9 @@
 package net.teamsao.mcsao;
 
 import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.NetworkManager;
 import net.minecraftforge.common.DimensionManager;
 import net.teamsao.mcsao.block.ForgeStation;
@@ -8,6 +11,7 @@ import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.dimension.SAOWorldProvider;
 import net.teamsao.mcsao.dimension.SDimension;
 import net.teamsao.mcsao.entity.SEntity;
+import net.teamsao.mcsao.entity.SEntityPlayer;
 import net.teamsao.mcsao.gui.GuiHandler;
 import net.teamsao.mcsao.help.Messages;
 import net.teamsao.mcsao.help.Reference;
@@ -42,6 +46,7 @@ public class SwordArtOnline {
 	public static SProxy proxy;
 	public static int dimensionId = 2;
 
+    SEntityPlayer player;
 
 	@EventHandler
 	public void invalidFingerprint(FMLFingerprintViolationEvent event)
@@ -66,6 +71,8 @@ public class SwordArtOnline {
 		SBlock.registerInit();
 		SDimension.registerInit();
 		proxy.registerEntityLiving();
+
+
 	}
 
 	@EventHandler
