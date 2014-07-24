@@ -1,15 +1,14 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.items;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.init.SAOBlocks;
+import net.teamsao.mcsao.lib.DimensionId;
 import net.teamsao.mcsao.lib.SAOTabsManager;
 
 import java.io.File;
@@ -43,13 +42,13 @@ public class TeleportCrystal extends Item {
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3Player) {
         if (!par2World.isRemote && par3Player.isSneaking()) {
             //Opens a GUI to go to teleport Points. IF ALLOWED.
-            if (par3Player.dimension != SwordArtOnline.dimensionId) {
+            if (par3Player.dimension != DimensionId.SAO_DIMENSION_ID) {
                 int x = Minecraft.getMinecraft().objectMouseOver.blockX;
                 int y = Minecraft.getMinecraft().objectMouseOver.blockY;
                 int z = Minecraft.getMinecraft().objectMouseOver.blockZ;
 
                 String name = par2World.getBlock(x, y, z).getUnlocalizedName().substring(5);
-                if(name.equals(SBlock.TeleportCrystalBlock.getUnlocalizedName().substring(5)))
+                if(name.equals(SAOBlocks.TeleportCrystalBlock.getUnlocalizedName().substring(5)))
                 {
                     par3Player.addChatMessage(new ChatComponentText("They Equal"));
                     load();

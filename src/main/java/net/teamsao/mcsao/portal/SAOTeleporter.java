@@ -7,7 +7,6 @@ import java.util.Random;
 
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -23,8 +22,9 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
-import net.teamsao.mcsao.block.SBlock;
- 
+import net.teamsao.mcsao.block.BlockSAO;
+import net.teamsao.mcsao.init.SAOBlocks;
+
 public class SAOTeleporter extends Teleporter
 {
     private final WorldServer worldServerInstance;
@@ -221,9 +221,9 @@ public class SAOTeleporter extends Teleporter
                     for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
                     {
                     	//System.out.println(k1+","+i2+","+l1);
-                        if (this.worldServerInstance.getBlock(k1, i2, l1) == SBlock.SAOPortalBlock)
+                        if (this.worldServerInstance.getBlock(k1, i2, l1) == net.teamsao.mcsao.init.SAOBlocks.SAOPortalBlock)
                         {
-                            while (this.worldServerInstance.getBlock(k1, i2 - 1, l1) == SBlock.SAOPortalBlock)
+                            while (this.worldServerInstance.getBlock(k1, i2 - 1, l1) == net.teamsao.mcsao.init.SAOBlocks.SAOPortalBlock)
                             {
                                 --i2;
                             }
@@ -257,22 +257,22 @@ public class SAOTeleporter extends Teleporter
             d4 = (double)k + 0.5D;
             int j2 = -1;
  
-            if (this.worldServerInstance.getBlock(i - 1, j, k) == SBlock.SAOPortalBlock)
+            if (this.worldServerInstance.getBlock(i - 1, j, k) == SAOBlocks.SAOPortalBlock)
             {
                 j2 = 2;
             }
  
-            if (this.worldServerInstance.getBlock(i + 1, j, k) == SBlock.SAOPortalBlock)
+            if (this.worldServerInstance.getBlock(i + 1, j, k) == SAOBlocks.SAOPortalBlock)
             {
                 j2 = 0;
             }
  
-            if (this.worldServerInstance.getBlock(i, j, k - 1) == SBlock.SAOPortalBlock)
+            if (this.worldServerInstance.getBlock(i, j, k - 1) == SAOBlocks.SAOPortalBlock)
             {
                 j2 = 3;
             }
  
-            if (this.worldServerInstance.getBlock(i, j, k + 1) == SBlock.SAOPortalBlock)
+            if (this.worldServerInstance.getBlock(i, j, k + 1) == SAOBlocks.SAOPortalBlock)
             {
                 j2 = 1;
             }
@@ -578,7 +578,7 @@ public class SAOTeleporter extends Teleporter
                     j3 = j5 + l2;
                     i4 = j2 + (i3 - 1) * l5;
                     flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
-                    this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.sandstone : SBlock.SAOPortalBlock, 0, 2);
+                    this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.sandstone : SAOBlocks.SAOPortalBlock, 0, 2);
                     //System.out.println("When generating the portal blocks x y and z are: (x:"+k3+", y:"+j3+", z:"+i4+")");
                 }
             }

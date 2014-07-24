@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.block;
+package net.teamsao.mcsao.block.dungeonstone;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

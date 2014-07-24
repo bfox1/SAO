@@ -1,4 +1,6 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.foods;
+
+import net.teamsao.mcsao.item.SItemFood;
 
 /**
  * Created by bfox1 on 7/9/2014.

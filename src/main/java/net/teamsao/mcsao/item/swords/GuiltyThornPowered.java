@@ -1,6 +1,5 @@
 package net.teamsao.mcsao.item.swords;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -9,15 +8,16 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.item.SItem;
-import net.teamsao.mcsao.lib.SCreativeTab;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
+//
 
 public class GuiltyThornPowered extends ItemSword {
 	
 	public GuiltyThornPowered(ToolMaterial par1){
 	super(par1);
 	this.setUnlocalizedName("GuiltyThornPowered");
-	this.setTextureName(ReferenceHelper.setItemName(SItem.GuiltyThorn));
+	this.setTextureName(ReferenceHelper.setItemName(SAOItems.GuiltyThorn));
 	this.setCreativeTab(null);
 	}
 	
@@ -33,7 +33,7 @@ public class GuiltyThornPowered extends ItemSword {
 public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
 {
     par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-    ItemStack sword = new ItemStack(SItem.GuiltyThorn);
+    ItemStack sword = new ItemStack(SAOItems.GuiltyThorn);
 
     if(!par2.isRemote)
     {

@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.block;
+package net.teamsao.mcsao.block.inventoryblocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -22,7 +22,7 @@ import java.util.Random;
 public class ForgeStation extends BlockContainer {
     int cookTime;
 
-    protected ForgeStation() {
+    public ForgeStation() {
         super(Material.iron);
         this.setHardness(2.0F);
         this.setResistance(5.0F);

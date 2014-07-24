@@ -5,10 +5,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.item.SItemSword;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
+//
 
 /**
  * Created by bfox1 on 7/8/2014.
@@ -25,7 +26,7 @@ public class ShadowDagger extends SItemSword {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-        ItemStack sword = new ItemStack(SItem.ShadowDaggerPowered);
+        ItemStack sword = new ItemStack(SAOItems.ShadowDaggerPowered);
 
         if(!par2.isRemote)
         {

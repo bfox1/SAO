@@ -4,8 +4,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.teamsao.mcsao.block.SBlock;
-import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 
 /**
  * @author bfox1
@@ -20,7 +20,7 @@ public class SAOTabsManager extends CreativeTabs {
 
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return SItem.TeleportCrystal;
+            return SAOItems.TeleportCrystal;
         }
     };
 
@@ -29,7 +29,7 @@ public class SAOTabsManager extends CreativeTabs {
 
     @SideOnly(Side.CLIENT)
     public Item getTabIconItem() {
-        return SItem.Elucidator;
+        return SAOItems.Elucidator;
     }
 
 };
@@ -39,7 +39,7 @@ public class SAOTabsManager extends CreativeTabs {
     {
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return SItem.ragoutRabbitMeat;
+            return SAOItems.ragoutRabbitMeat;
         }
     };
 
@@ -47,12 +47,12 @@ public class SAOTabsManager extends CreativeTabs {
     {
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return SItem.DungeonStoneItem;
+            return SAOItems.DungeonStoneItem;
         }
     };
     @Override
     public Item getTabIconItem() {
-        return SItem.TeleportCrystal;
+        return SAOItems.TeleportCrystal;
     }
 
 

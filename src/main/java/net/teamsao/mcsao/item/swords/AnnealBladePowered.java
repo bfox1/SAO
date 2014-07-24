@@ -1,14 +1,12 @@
 package net.teamsao.mcsao.item.swords;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.item.SItem;
-import net.teamsao.mcsao.lib.SCreativeTab;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 
 
 /**
@@ -20,7 +18,7 @@ public class AnnealBladePowered extends ItemSword {
 	public AnnealBladePowered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
 		this.setUnlocalizedName("AnnealBladePowered");
-		this.setTextureName(ReferenceHelper.setItemName(SItem.AnnealBlade));
+		this.setTextureName(ReferenceHelper.setItemName(SAOItems.AnnealBlade));
 		this.setCreativeTab(null);
 		
 	}
@@ -28,7 +26,7 @@ public class AnnealBladePowered extends ItemSword {
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
 	{
-        ItemStack sword = new ItemStack(SItem.AnnealBlade);
+        ItemStack sword = new ItemStack(SAOItems.AnnealBlade);
 
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
         if(!par2.isRemote)

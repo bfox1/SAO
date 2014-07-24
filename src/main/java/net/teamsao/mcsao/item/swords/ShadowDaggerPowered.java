@@ -7,7 +7,8 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.item.SItemSword;
 
 /**
@@ -17,7 +18,7 @@ public class ShadowDaggerPowered extends SItemSword {
     public ShadowDaggerPowered(ToolMaterial p_i45356_1_) {
         super(p_i45356_1_);
         this.setUnlocalizedName("ShadowDaggerPowered");
-        this.setTextureName(ReferenceHelper.setItemName(SItem.ShadowDagger));
+        this.setTextureName(ReferenceHelper.setItemName(SAOItems.ShadowDagger));
         this.setCreativeTab(null);
     }
 
@@ -32,7 +33,7 @@ public class ShadowDaggerPowered extends SItemSword {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-        ItemStack sword = new ItemStack(SItem.MateChopper);
+        ItemStack sword = new ItemStack(SAOItems.MateChopper);
 
         if(!par2.isRemote)
         {

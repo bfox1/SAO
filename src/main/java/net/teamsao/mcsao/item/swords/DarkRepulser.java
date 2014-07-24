@@ -6,9 +6,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
+//
 
 public class DarkRepulser extends ItemSword {
 
@@ -24,7 +25,7 @@ public class DarkRepulser extends ItemSword {
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1, World world, EntityPlayer player)
 	{
-		ItemStack sword = new ItemStack(SItem.DarkRepulserPowered);
+		ItemStack sword = new ItemStack(SAOItems.DarkRepulserPowered);
         player.setItemInUse(par1, this.getMaxItemUseDuration(par1));
         if(!world.isRemote)
         {

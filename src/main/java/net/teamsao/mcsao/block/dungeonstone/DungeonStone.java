@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.block;
+package net.teamsao.mcsao.block.dungeonstone;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
+//
 
 public class DungeonStone extends Block {
 

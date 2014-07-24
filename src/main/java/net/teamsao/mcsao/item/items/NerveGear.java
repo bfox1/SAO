@@ -1,23 +1,17 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.items;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
 import net.teamsao.mcsao.portal.SAOTeleporter;
-import org.lwjgl.Sys;
 
 /**
  * This file was forked from HeartOfKobold (thanks, bfox! :D).
@@ -44,7 +38,7 @@ public class NerveGear extends ItemArmor {
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 	{
-		if(stack.getItem() == SItem.NerveGear)
+		if(stack.getItem() == SAOItems.NerveGear)
 		{
 			return Reference.MODID + ":models/armor/NerveGear.png";
 		}

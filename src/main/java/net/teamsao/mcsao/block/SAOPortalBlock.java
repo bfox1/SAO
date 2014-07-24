@@ -8,9 +8,13 @@ import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.lib.SCreativeTab;
+//
+import net.teamsao.mcsao.init.SAOBlocks;
+import net.teamsao.mcsao.lib.DimensionId;
 import net.teamsao.mcsao.portal.SAOTeleporter;
- 
+
+import java.awt.*;
+
 public class SAOPortalBlock extends BlockPortal
 {
     public SAOPortalBlock()
@@ -33,11 +37,11 @@ public class SAOPortalBlock extends BlockPortal
             {
                 player.timeUntilPortal = 10;
             }
-            else if (player.dimension != SwordArtOnline.dimensionId)
+            else if (player.dimension != DimensionId.SAO_DIMENSION_ID)
             {
                 player.timeUntilPortal = 10;
  
-                player.mcServer.getConfigurationManager().transferPlayerToDimension(player, SwordArtOnline.dimensionId, new SAOTeleporter(mServer.worldServerForDimension(SwordArtOnline.dimensionId)));
+                player.mcServer.getConfigurationManager().transferPlayerToDimension(player, DimensionId.SAO_DIMENSION_ID, new SAOTeleporter(mServer.worldServerForDimension(DimensionId.SAO_DIMENSION_ID)));
             }
             else
             {
@@ -108,7 +112,7 @@ public class SAOPortalBlock extends BlockPortal
             {
                 for (i1 = 0; i1 < 3; ++i1)
                 {
-                    worldObj.setBlock(blockX + b0 * l, blockY + i1, blockZ + b1 * l, SBlock.SAOPortalBlock, 0, 2);
+                    worldObj.setBlock(blockX + b0 * l, blockY + i1, blockZ + b1 * l, SAOBlocks.SAOPortalBlock, 0, 2);
                 }
             }
  

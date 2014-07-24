@@ -1,22 +1,19 @@
 package net.teamsao.mcsao.entity;
 
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.item.SItem;
 
 public class EntityKoboldTest extends EntityMob {
 
 	public EntityKoboldTest(World p_i1681_1_) {
 		super(p_i1681_1_);
 		this.getNavigator().setAvoidsWater(true);
-		this.setSize(1.0F, 2.0F);
+		this.setSize(2.0F, 4.0F);
 		float var2 = 1.0F;
 		
 		this.tasks.addTask(0, new EntityAISwimming(this));

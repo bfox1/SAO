@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.items;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
 
 public class CrystalliteIngot extends Item {
 	

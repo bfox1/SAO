@@ -1,10 +1,9 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.items;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
 
 /**
  * @author bfox1
