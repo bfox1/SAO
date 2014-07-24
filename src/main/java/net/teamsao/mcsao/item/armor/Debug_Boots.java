@@ -1,10 +1,10 @@
 package net.teamsao.mcsao.item.armor;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.teamsao.mcsao.help.Reference;
-import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.item.SItemArmor;
 
 /**
@@ -19,11 +19,11 @@ public class Debug_Boots extends SItemArmor {
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 
     {
-        if(stack.getItem() != SItem.debugLeggings)
+        if(stack.getItem() != SAOItems.debugLeggings)
         {
             return Reference.MODID + ":models/armor/DEBUG_ARMOR1.png";
         }
-        else if(stack.getItem() == SItem.debugLeggings)
+        else if(stack.getItem() == SAOItems.debugLeggings)
         {
             return Reference.MODID + ":models/armor/DEBUG_ARMOR2.png";
         }

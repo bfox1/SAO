@@ -5,6 +5,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.lib.SAOTabsManager;
 
 /**
@@ -22,11 +23,11 @@ public abstract class SItemArmor extends ItemArmor {
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
 
     {
-        if(stack.getItem() == SItem.CoatOfMidnightBody)
+        if(stack.getItem() == SAOItems.CoatOfMidnightBody)
         {
             return Reference.MODID + ":models/armor/1.png";
         }
-        else if(stack.getItem() ==SItem.CoatOfMidnightLeggings)
+        else if(stack.getItem() == SAOItems.CoatOfMidnightLeggings)
         {
             return Reference.MODID + ":models/armor/2.png";
         }

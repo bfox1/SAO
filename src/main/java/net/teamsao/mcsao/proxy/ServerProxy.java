@@ -10,11 +10,7 @@ public class ServerProxy extends CommonProxy {
 		
 	}
 
-	@Override
-	public void registerTileEntities() {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	@Override
 	public void initRenderingAndTextures() {
@@ -40,10 +36,8 @@ public class ServerProxy extends CommonProxy {
 		
 	}
 
-	@Override
-	public void registerGlobalEntity() {
-		// TODO Auto-generated method stub
-		
-	}
+
+
+
 
 }

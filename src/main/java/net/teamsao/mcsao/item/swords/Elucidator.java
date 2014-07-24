@@ -1,6 +1,7 @@
 package net.teamsao.mcsao.item.swords;
 
-import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,7 +10,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
+//
 
 /**
  * @author bfox1
@@ -32,7 +33,7 @@ public class Elucidator extends ItemSword {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-        ItemStack sword = new ItemStack(SItem.Elucidator_Powered);
+        ItemStack sword = new ItemStack(SAOItems.Elucidator_Powered);
         sword.addEnchantment(Enchantment.sharpness, 5);
 
         if(!par2.isRemote)

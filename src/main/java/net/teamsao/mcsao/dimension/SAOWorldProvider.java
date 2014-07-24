@@ -5,6 +5,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.teamsao.mcsao.SwordArtOnline;
+import net.teamsao.mcsao.lib.DimensionId;
 
 /**
  * 
@@ -19,7 +20,7 @@ public class SAOWorldProvider extends WorldProvider
 	public void registerWorldChunkManager()
 	{
 		this.worldChunkMgr = new WorldChunkManagerHell(void_world, 0.1F);
-		this.dimensionId = SwordArtOnline.dimensionId;
+		this.dimensionId = DimensionId.SAO_DIMENSION_ID;
 	}
 	
 	public IChunkProvider createChunkGenerator()

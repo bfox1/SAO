@@ -1,5 +1,5 @@
 
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.items;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -94,7 +94,7 @@ public class BossKillToken extends Item {
         	{
         		System.out.println(par1);
         		System.out.println("This is 1");
-        		return new ItemStack(SItem.HeartOfKobold);
+        		return new ItemStack(SAOItems.HeartOfKobold);
         	}
         }
         if(par1.getItemDamage() > 0)

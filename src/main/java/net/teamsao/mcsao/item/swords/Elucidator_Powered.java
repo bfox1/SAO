@@ -2,7 +2,6 @@ package net.teamsao.mcsao.item.swords;
 
 import java.util.List;
 
-import net.minecraft.command.ICommand;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,9 +12,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.teamsao.mcsao.help.Reference;
-import net.teamsao.mcsao.item.SItem;
+import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemSAO;
 
 /**
  * @author bfox1
@@ -35,18 +34,7 @@ public class Elucidator_Powered extends ItemSword {
 
 	}
 	
-	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5)
-	{
-		if(((EntityPlayer)par3Entity).inventory.getCurrentItem() == par1ItemStack)
-		{
-		if(this.PowerPool > 0)
-		{
-			this.PowerPool = this.PowerPool - 2;
-			System.out.println(this.PowerPool);
-		}
-		}
-	}
+
 	
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
@@ -63,7 +51,7 @@ public class Elucidator_Powered extends ItemSword {
 	public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3) {
 		par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
 
-		ItemStack sword = new ItemStack(SItem.Elucidator);
+		ItemStack sword = new ItemStack(SAOItems.Elucidator);
 		if (!par2.isRemote) {
 			if (par3.isSneaking()) {
 				sword.setItemDamage(par1.getItemDamage());

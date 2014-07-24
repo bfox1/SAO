@@ -1,10 +1,10 @@
-package net.teamsao.mcsao.item;
+package net.teamsao.mcsao.item.foods;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.lib.SCreativeTab;
+
 
 /**
  * Created by bfox1 on 7/9/2014.

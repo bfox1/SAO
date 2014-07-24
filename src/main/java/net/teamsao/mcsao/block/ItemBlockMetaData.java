@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.lib.SCreativeTab;
+//
 
 /**
  * @author bfox1

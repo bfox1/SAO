@@ -1,20 +1,16 @@
 package net.teamsao.mcsao.dimension;
 
-import java.awt.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.chunk.NibbleArray;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.teamsao.mcsao.block.SBlock;
 import net.teamsao.mcsao.help.StructureGenHelper;
+import net.teamsao.mcsao.init.SAOBlocks;
 
 public class SAOTowerGen extends WorldGenerator
 {
@@ -50,7 +46,7 @@ public class SAOTowerGen extends WorldGenerator
 		int height = 10;
 		long startTime = System.currentTimeMillis();
 		Block floor = Blocks.stonebrick;
-		Block wall = SBlock.DungeonStone;
+		Block wall = SAOBlocks.DungeonStone;
 
 		for(int chunkX = -32; chunkX < 32; chunkX++)
 		{
@@ -131,35 +127,35 @@ public class SAOTowerGen extends WorldGenerator
 				{
 					for(int y = startY; y < startY + height + 1; y++)
 					{
-						world.setBlock(x, y, z, SBlock.DungeonStone, 1, 3);
+						world.setBlock(x, y, z, BlockSAO.DungeonStone, 1, 3);
 					}
 				}
 				else if(distance == radius - 3)
 				{
 					for(int y = startY+height; y < startY + height*2 + 1; y++)
 					{
-						world.setBlock(x, y, z, SBlock.DungeonStone, 1, 3);
+						world.setBlock(x, y, z, BlockSAO.DungeonStone, 1, 3);
 					}
 				}
 				else if(distance == radius - 2)
 				{
 					for(int y = startY+height*2; y < startY + height*3 + 1; y++)
 					{
-						world.setBlock(x, y, z, SBlock.DungeonStone, 1, 3);
+						world.setBlock(x, y, z, BlockSAO.DungeonStone, 1, 3);
 					}
 				}
 				else if(distance == radius - 1)
 				{
 					for(int y = startY+height*3; y < startY + height*4 + 1; y++)
 					{
-						world.setBlock(x, y, z, SBlock.DungeonStone, 1, 3);
+						world.setBlock(x, y, z, BlockSAO.DungeonStone, 1, 3);
 					}
 				}
 				else if(distance == radius)
 				{
 					for(int y = startY+height*4; y < startY + height*5 + 1; y++)
 					{
-						world.setBlock(x, y, z, SBlock.DungeonStone, 1, 3);
+						world.setBlock(x, y, z, BlockSAO.DungeonStone, 1, 3);
 					}
 				}
 				else if(distance < radius)
@@ -171,7 +167,7 @@ public class SAOTowerGen extends WorldGenerator
 					else
 					{
 						world.setBlock(x, startY, z, Blocks.stonebrick);
-						//world.setBlock(x, startY+height+1, z, SBlock.DungeonStone, 1, 3);
+						//world.setBlock(x, startY+height+1, z, BlockSAO.DungeonStone, 1, 3);
 					}
 				}
 				//System.out.println("Code got as far as (x:"+x+", y:"+startY+", z:"+z+")");
@@ -180,7 +176,7 @@ public class SAOTowerGen extends WorldGenerator
 		long endTime = System.currentTimeMillis();
 		float time = (endTime - startTime);
 		System.out.println("Time for completion is "+time+" milliseconds, "+time/1000.0F+" seconds, or "+time/60000F+" minutes.");
-		//world.setBlock(startX, startY, startZ, SBlock.DungeonStone);
+		//world.setBlock(startX, startY, startZ, BlockSAO.DungeonStone);
 		return true;
 	}
 }
