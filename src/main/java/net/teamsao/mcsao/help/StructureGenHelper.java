@@ -399,7 +399,7 @@ public class StructureGenHelper
 			{
 				for(int z = zStart; z < zBounds; z++)
 				{
-					if(schema[y][x][z].getBlock() == Blocks.air)
+					if(schema[y][x][z] == null)
 					{
 						continue;
 					}
