@@ -14,6 +14,10 @@ package net.teamsao.mcsao.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityIronGolem;
+import net.minecraft.util.MathHelper;
+import net.teamsao.mcsao.entity.EntityKoboldTest;
 
 public class Illfang_the_Kobold_Lord extends ModelBase
 {
@@ -77,13 +81,13 @@ public class Illfang_the_Kobold_Lord extends ModelBase
     textureWidth = 64;
     textureHeight = 32;
     
-      Main_body = new ModelRenderer(this, 0, 0);
+      Main_body = new ModelRenderer(this, "MainBody");
       Main_body.addBox(0F, 0F, 0F, 32, 32, 16);
       Main_body.setRotationPoint(0F, -44F, 0F);
       Main_body.setTextureSize(64, 32);
       Main_body.mirror = true;
       setRotation(Main_body, 0F, 0F, 0F);
-      body_out = new ModelRenderer(this, 0, 0);
+      body_out = new ModelRenderer(this, "BodyOut");
       body_out.addBox(0F, 0F, 0F, 20, 13, 3);
       body_out.setRotationPoint(6F, -30F, -2F);
       body_out.setTextureSize(64, 32);
@@ -395,6 +399,31 @@ public class Illfang_the_Kobold_Lord extends ModelBase
       sword.setTextureSize(64, 32);
       sword.mirror = true;
       setRotation(sword, 0F, 0F, 0.1115358F);
+
+      /*this.Main_body.addChild(this.body_top);
+      this.Main_body.addChild(this.body_out);
+
+      this.Left_leg_top.addChild(this.left_leg_bottom);
+      this.left_leg_bottom.addChild(this.left_foot);
+
+      this.right_leg_top.addChild(this.right_leg_bottom);
+      this.left_leg_bottom.addChild(this.right_foot);
+
+      this.left_arm_top.addChild(this.left_arm_mid);
+      this.left_arm_mid.addChild(this.left_arm_bottom);
+      this.left_arm_bottom.addChild(this.left_hand);
+
+      this.left_hand.addChild(this.left_finger_one);
+      this.left_hand.addChild(this.left_finger_two);
+      this.left_hand.addChild(this.left_finger_three);
+      this.left_hand.addChild(this.left_thumb);
+      this.left_hand.addChild(this.left_thumb_two);
+
+      this.left_hand.addChild(this.sheild_main);
+      this.sheild_main.addChild(this.sheild_out);
+      this.sheild_main.addChild(this.shield_out_2);
+      this.sheild_main.addChild(this.shield_out_3);
+      */
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -462,10 +491,45 @@ public class Illfang_the_Kobold_Lord extends ModelBase
     model.rotateAngleY = y;
     model.rotateAngleZ = z;
   }
-  
+
+  @Override
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity e)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
+      this.left_leg_bottom.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
+      this.right_leg_bottom.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
+
+      this.left_arm_top.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
   }
+
+    @Override
+    public void setLivingAnimations(EntityLivingBase p_78086_1_, float p_78086_2_, float p_78086_3_, float p_78086_4_)
+    {
+        EntityKoboldTest entitykoboldtest = (EntityKoboldTest)p_78086_1_;
+        int i = 0;
+
+        if (i > 0)
+        {
+
+        }
+        else
+        {
+            int j = 0;
+
+            if (j > 0)
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+    public void leftLegMovement()
+    {
+
+    }
 
 }
