@@ -15,6 +15,7 @@ public class EntityKoboldTest extends EntityMob {
         this.setSize(3.0F, 4.0F);
         float var2 = 1.0F;
 		this.getNavigator().setAvoidsWater(true);
+
 		this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(5, new EntityAIWander(this, var2));
         this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));

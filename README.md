@@ -3,6 +3,16 @@ Sword Art Online Mod
 
 This mod will provide the experience similar to [Sword Art Online](http://swordartonline.wikia.com/Sword_Art_Online) into the Minecraft world.
 
++++++++++++++++++
+IMPORTANT
++++++++++++++++++
+
+There are a few new things added
+1. All Registry addition to the Mod will be placed within the proxy classes based on where it needs to be. visit commonproxy class for more info.
+2. under init is the Classes for Initializing Anything, blocks, Items, Etc.
+3. Extend ALL Items and Blocks with there BlockSAO/ItemSAO super class.
+4. Dont forget to Enjoy modding:) Well, its late for me and im tired, Night night
+
 To-Do
 -----
 

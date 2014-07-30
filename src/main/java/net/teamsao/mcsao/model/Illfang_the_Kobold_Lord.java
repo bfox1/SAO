@@ -14,8 +14,9 @@ package net.teamsao.mcsao.model;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityIronGolem;
+
 import net.minecraft.util.MathHelper;
 import net.teamsao.mcsao.entity.EntityKoboldTest;
 
@@ -75,19 +76,34 @@ public class Illfang_the_Kobold_Lord extends ModelBase
     ModelRenderer sword_main;
     ModelRenderer sword_blade;
     ModelRenderer sword;
-  
-  public Illfang_the_Kobold_Lord()
+    private float f;
+    private float f1;
+    private float f2;
+    private float f3;
+    private float f4;
+    private float f5;
+    private Entity e;
+
+    public Illfang_the_Kobold_Lord()
   {
     textureWidth = 64;
     textureHeight = 32;
     
+
       Main_body = new ModelRenderer(this, "MainBody");
+
+
+
       Main_body.addBox(0F, 0F, 0F, 32, 32, 16);
       Main_body.setRotationPoint(0F, -44F, 0F);
       Main_body.setTextureSize(64, 32);
       Main_body.mirror = true;
       setRotation(Main_body, 0F, 0F, 0F);
+
       body_out = new ModelRenderer(this, "BodyOut");
+
+
+
       body_out.addBox(0F, 0F, 0F, 20, 13, 3);
       body_out.setRotationPoint(6F, -30F, -2F);
       body_out.setTextureSize(64, 32);
@@ -400,6 +416,7 @@ public class Illfang_the_Kobold_Lord extends ModelBase
       sword.mirror = true;
       setRotation(sword, 0F, 0F, 0.1115358F);
 
+
       /*this.Main_body.addChild(this.body_top);
       this.Main_body.addChild(this.body_out);
 
@@ -424,12 +441,13 @@ public class Illfang_the_Kobold_Lord extends ModelBase
       this.sheild_main.addChild(this.shield_out_2);
       this.sheild_main.addChild(this.shield_out_3);
       */
+
   }
   
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+   // setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     Main_body.render(f5);
     body_out.render(f5);
     body_top.render(f5);
@@ -492,10 +510,11 @@ public class Illfang_the_Kobold_Lord extends ModelBase
     model.rotateAngleZ = z;
   }
 
+
   @Override
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity e)
   {
-    super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
+      super.setRotationAngles(f, f1, f2, f3, f4, f5, e);
       this.left_leg_bottom.rotateAngleX = MathHelper.cos(f * 0.6662F) * 1.4F * f1;
       this.right_leg_bottom.rotateAngleX = MathHelper.cos(f * 0.6662F + (float)Math.PI) * 1.4F * f1;
 
@@ -531,5 +550,8 @@ public class Illfang_the_Kobold_Lord extends ModelBase
     {
 
     }
+
+
+
 
 }

@@ -43,7 +43,10 @@ public class TeleportCrystal extends Item {
         if (!par2World.isRemote && par3Player.isSneaking()) {
             //Opens a GUI to go to teleport Points. IF ALLOWED.
             if (par3Player.dimension != DimensionId.SAO_DIMENSION_ID) {
+
                 /*
+=======
+>>>>>>> origin/Ian:src/main/java/net/teamsao/mcsao/item/items/TeleportCrystal.java
                 int x = Minecraft.getMinecraft().objectMouseOver.blockX;
                 int y = Minecraft.getMinecraft().objectMouseOver.blockY;
                 int z = Minecraft.getMinecraft().objectMouseOver.blockZ;

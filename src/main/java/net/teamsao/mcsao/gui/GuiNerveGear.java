@@ -7,12 +7,15 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.teamsao.mcsao.container.ContainerNerveGear;
 import net.teamsao.mcsao.help.Reference;
-import net.teamsao.mcsao.tileentity.TileEntityNerveGear;
+
 import org.lwjgl.opengl.GL11;
 
 public class GuiNerveGear extends GuiContainer {
+    public GuiNerveGear(Container p_i1072_1_) {
+        super(p_i1072_1_);
+    }
 
-    public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/NerveGear.png");
+   /* public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/NerveGear.png");
 
     public TileEntityNerveGear nerveGear;
 
@@ -23,6 +26,7 @@ public class GuiNerveGear extends GuiContainer {
 
 
 	}
+	*/
 
 	@Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2){
@@ -39,7 +43,7 @@ public class GuiNerveGear extends GuiContainer {
         //draw your Gui here, only thing you need to change is the path
         //this.mc.renderEngine.getTexture(GuiForgeStation);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.renderEngine.bindTexture(texture);
+      //  this.mc.renderEngine.bindTexture(texture);
         int x = (width - xSize) / 2;
         int y = (height - ySize) / 2;
         this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);

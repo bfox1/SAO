@@ -470,19 +470,18 @@ public class SAOChunkProvider implements IChunkProvider
 
 		MinecraftForge.EVENT_BUS.post(new PopulateChunkEvent.Pre(thisChunkProvider, worldObj, rand, chunkX, chunkZ, flag));
 
-		if (this.mapFeaturesEnabled)
-		{
-			/*this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
-            flag = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
-            this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
-            this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
 
-            Ian - Attempted to disable structure gen here. It didn't work but I'm keeping it disabled since it isn't used anyway.
-			 */
-			if(chunkX == 0 && chunkZ == 0)
-			{
-				this.towerGen.generate(this.worldObj, this.rand, chunkX, chunkZ, 40);
-			}
+		/*this.mineshaftGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
+        flag = this.villageGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
+        this.strongholdGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
+        this.scatteredFeatureGenerator.generateStructuresInChunk(this.worldObj, this.rand, p_73153_2_, p_73153_3_);
+
+        Ian - Attempted to disable structure gen here. It didn't work but I'm keeping it disabled since it isn't used anyway.
+		 */
+		if(chunkX == 0 && chunkZ == 0)
+		{
+			this.towerGen.generate(this.worldObj, this.rand, chunkX, chunkZ, 40);
+
 		}
 
 		int k1;
@@ -612,13 +611,9 @@ public class SAOChunkProvider implements IChunkProvider
 	@Override
 	public void recreateStructures(int chunkX, int chunkZ)
 	{
-		if (this.mapFeaturesEnabled)
-		{
-			if(chunkX == 0 && chunkZ == 0)
-			{
-				this.towerGen.generate(this.worldObj, this.rand, chunkX, chunkZ, 40);
-			}
-		}
+
+		//TODO Missing code
+
 	}
 
 	@Override
