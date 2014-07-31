@@ -120,28 +120,26 @@ public class StructureGenHelper
 		int chunkZStart = chunk.zPosition << 4;
 		int miniChunkYStart = miniChunk.getYLocation();
 		for(int x = xStart; x < xBounds; x++)
+		for(int z = zStart; z < zBounds; z++)
 		{
-			for(int z = zStart; z < zBounds; z++)
+			if(z >> 4 != chunk.zPosition || x >> 4 != chunk.xPosition)
 			{
-				if(z >> 4 != chunk.zPosition || x >> 4 != chunk.xPosition)
+				chunk = world.getChunkFromBlockCoords(x, z);
+				miniChunk = chunk.getBlockStorageArray()[yStart >> 4];
+			}
+			for(int y = yStart; y < yBounds; y++)
+			{
+				if(y > miniChunkYStart + 15)
 				{
-					chunk = world.getChunkFromBlockCoords(x, z);
-					miniChunk = chunk.getBlockStorageArray()[yStart >> 4];
+					miniChunk = chunk.getBlockStorageArray()[y >> 4];
+					miniChunkYStart = miniChunk.getYLocation();
 				}
-				for(int y = yStart; y < yBounds; y++)
+				miniChunk.func_150818_a(x & 15, y & 15, z & 15, schema[y][x][z].getBlock());
+				miniChunk.setExtBlockMetadata(x & 15, y & 15, z & 15, schema[y][x][z].getMetadata());
+				if(!world.isRemote)
 				{
-					if(y > miniChunkYStart + 15)
-					{
-						miniChunk = chunk.getBlockStorageArray()[y >> 4];
-						miniChunkYStart = miniChunk.getYLocation();
-					}
-					miniChunk.func_150818_a(x & 15, y & 15, z & 15, schema[y][x][z].getBlock());
-					miniChunk.setExtBlockMetadata(x & 15, y & 15, z & 15, schema[y][x][z].getMetadata());
-					if(!world.isRemote)
-					{
-						world.markBlockForUpdate(x, y, z);
-						world.notifyBlockChange(x, y, z, schema[y][x][z].getBlock());
-					}
+					world.markBlockForUpdate(x, y, z);
+					world.notifyBlockChange(x, y, z, schema[y][x][z].getBlock());
 				}
 			}
 		}

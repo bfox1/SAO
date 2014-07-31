@@ -56,7 +56,6 @@ public class SAOTowerGen extends WorldGenerator
 		Chunk chunk = world.getChunkFromChunkCoords(chunkX, chunkZ);
 		ExtendedBlockStorage miniChunk = chunk.getBlockStorageArray()[2] = new ExtendedBlockStorage(startY >> 4 << 4, !chunk.worldObj.provider.hasNoSky);
 		for(int x = 0; x < 16; x++)
-
 		{
 			for(int z = 0; z < 16; z++)
 			{
@@ -68,9 +67,6 @@ public class SAOTowerGen extends WorldGenerator
 				//hackyFix(world, chunk, modX, modZ);
 				if(distance == floor1Radius)
 				{
-
-
-
 					for(int y = 7; y < 16; y++)
 					{
 						chunk.getBlock(modX & 15, 32+y, modZ & 15);
