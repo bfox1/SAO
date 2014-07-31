@@ -20,6 +20,7 @@ public class LambentLight extends ItemSword {
 		this.setUnlocalizedName("LambentLight");
 		this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SAOTabsManager.saoTools);
+
 	}
 	
 	@Override

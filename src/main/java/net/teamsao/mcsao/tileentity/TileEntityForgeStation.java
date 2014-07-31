@@ -158,10 +158,7 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
 
         par1NBTTagCompound.setTag("Items", nbttaglist);
 
-        if (this.hasCustomInventoryName())
-        {
-            par1NBTTagCompound.setString("CustomName", this.getInventoryName);
-        }
+
     }
 
 

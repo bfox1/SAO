@@ -57,7 +57,7 @@ public class NerveGear extends ItemArmor {
 		{
 			if(par3Player.isSneaking())
 			{
-				//Opens Gui for insertion of Cartridge. 
+
 			}
 		}
 		return par1ItemStack;

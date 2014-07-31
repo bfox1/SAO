@@ -7,6 +7,8 @@ import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.*;
 import net.teamsao.mcsao.item.armor.*;
 import net.teamsao.mcsao.item.foods.RabbitMeat;
+import net.teamsao.mcsao.item.items.SAOCD;
+
 import net.teamsao.mcsao.item.swords.*;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
@@ -15,6 +17,8 @@ import net.teamsao.mcsao.material.SToolMaterial;
  * Created by bfox1 on 7/23/2014.
  */
 public class SAOItems {
+
+    public static Item CDSAO = new SAOCD();
 
     public static Item Elucidator = new net.teamsao.mcsao.item.swords.Elucidator(SToolMaterial.Elucidator);
     public static Item Elucidator_Powered = new net.teamsao.mcsao.item.swords.Elucidator_Powered(SToolMaterial.Elucidator);
@@ -94,7 +98,9 @@ public class SAOItems {
 
         Item[] items = { BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear,AntidoteCrystal,
                 TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
-                ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots};
+
+                ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO};
+
 
         Item[] foods = {ragoutRabbitMeat, ScavengerToadMeat};
 

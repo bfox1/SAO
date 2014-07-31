@@ -23,4 +23,6 @@ public interface SProxy {
 	public abstract void registerGlobalEntity();
 
     public abstract void registerDimension();
+
+    public abstract void addChestLoot();
 }

@@ -2,7 +2,12 @@ package net.teamsao.mcsao.proxy;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
+
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DimensionManager;
+import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.lib.DimensionId;
 import net.teamsao.mcsao.dimension.SAOWorldProvider;
 import net.teamsao.mcsao.entity.*;
@@ -36,4 +41,11 @@ public abstract class CommonProxy implements SProxy {
         DimensionManager.registerProviderType(DimensionId.SAO_DIMENSION_ID, SAOWorldProvider.class, false);
         DimensionManager.registerDimension(DimensionId.SAO_DIMENSION_ID, DimensionId.SAO_DIMENSION_ID);
     }
+
+
+    public void addChestLoot()
+    {
+        ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SAOItems.CDSAO), 1,1, 005));
+    }
+
 }

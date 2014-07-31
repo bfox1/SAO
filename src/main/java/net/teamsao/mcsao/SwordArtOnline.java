@@ -27,7 +27,7 @@ import net.teamsao.mcsao.util.LogHelper;
 /**
  * @author bfox1
  */
-@Mod(modid = Reference.MODID, certificateFingerprint = "Test", version = Reference.VERSION)
+@Mod(modid = Reference.MODID, name = Reference.NAME, certificateFingerprint = "Test", version = Reference.VERSION)
 public class SwordArtOnline {
 
 	@Instance(Reference.MODID)
