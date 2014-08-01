@@ -18,13 +18,11 @@ import net.teamsao.mcsao.init.SAOBlocks;
 public class SAOTowerGen extends WorldGenerator
 {
 
-
 	private int floor1Radius = 500;
 	private int floor1SegmentHeight = 10;
 	
 	private Block floor = Blocks.stonebrick;
 	private Block wall = SAOBlocks.DungeonStone;
-	
 
 	private void fastSetBlock(int x, int y, int z, Block block, ExtendedBlockStorage miniChunk)
 	{
@@ -64,13 +62,11 @@ public class SAOTowerGen extends WorldGenerator
 
 				int distance = StructureGenHelper.distance2D(modX, modZ);
 
-				//hackyFix(world, chunk, modX, modZ);
 				if(distance == floor1Radius)
 				{
 					for(int y = 7; y < 16; y++)
 					{
 						chunk.getBlock(modX & 15, 32+y, modZ & 15);
-						//fastSetBlock(x, y, z, wall, miniChunk);
 						miniChunk.func_150818_a(x, y & 15, z, wall);
 						miniChunk.setExtBlockMetadata(x, y & 15, z, 1);
 						if(!world.isRemote)
@@ -84,12 +80,10 @@ public class SAOTowerGen extends WorldGenerator
 				else if(distance < floor1Radius)
 				{
 					chunk.getBlock(modX & 15, startY, modZ & 15);
-					//fastSetBlock(x, 7, z, floor, miniChunk);
 					miniChunk.func_150818_a(x, startY & 15, z, floor);
 					miniChunk.setExtBlockMetadata(x, startY & 15, z, 0);
 					if(!world.isRemote)
 					{
-
 						world.markBlockForUpdate(modX, startY, modZ);
 						world.notifyBlockChange(modX, startY, modZ, floor);
 					}
@@ -144,10 +138,10 @@ public class SAOTowerGen extends WorldGenerator
 
 	@Override
 	public boolean generate(World world, Random rand,
-			int blockX, int blockY, int blockZ) {
-
-		long startTime = System.currentTimeMillis();
-
+			int blockX, int blockY, int blockZ)
+	{
+		long startTime = System.nanoTime();
+		
 		for(int chunkX = -33; chunkX < 32; chunkX++)
 		{
 			for(int chunkZ = -33; chunkZ < 32; chunkZ++)
@@ -155,10 +149,10 @@ public class SAOTowerGen extends WorldGenerator
 				setUpTower(world, chunkX, chunkZ);
 			}
 		}
-		long endTime = System.currentTimeMillis();
-		float time = (endTime - startTime);
-		System.out.println("Time for completion is "+time+" milliseconds, "+time/1000.0F+" seconds, or "+time/60000F+" minutes.");
-
+		
+		long endTime = System.nanoTime();
+		long time = (endTime - startTime);
+		System.out.println("Time for completion is "+time+" nanoseconds, "+time/1000000L+" seconds, or "+time/60000000L+" minutes.");
 		return true;
 	}
 }

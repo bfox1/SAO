@@ -16,6 +16,15 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
  */
 public class StructureGenHelper
 {
+	
+	/**
+	 * This is a method to get the distance between two 2 dimensional points, essentially on the minecraft horizontal axis.
+	 * @param x1
+	 * @param z1
+	 * @param x2
+	 * @param z2
+	 * @return the integer-rounded distance between the two 2D points.
+	 */
 	public static Integer distance2D(double x1, double z1, double x2, double z2)
     {
     	double xDelta = Math.abs(x2-x1);
@@ -24,6 +33,14 @@ public class StructureGenHelper
     	return (int) distance;
     }
 	
+	/**
+	 * This method is exactly like the other distance2D method, except that it forgoes the need for calculating the
+	 * difference between the two points, and relies instead on the idea that the user knows what the difference is
+	 * from other information.
+	 * @param xD
+	 * @param zD
+	 * @return the integer-rounded distance between two 2D points, using the deltas.
+	 */
 	public static Integer distance2D(double xD, double zD)
 	{
 		double xDelta = Math.abs(xD);
@@ -32,6 +49,13 @@ public class StructureGenHelper
     	return (int) distance;
 	}
 	
+	/**
+	 * This method is used to get the distance between a pair of 3D coordinates. It assumes that an array
+	 * is the cheapest and fastest way to store the data in order.
+	 * @param origin
+	 * @param point
+	 * @return the integer-rounded distance between two 3D points.
+	 */
 	public static Integer distance3D(double[] origin, double[] point)
 	{
 		if(origin == null || point == null || origin.length != 3 || point.length != 3)
@@ -111,9 +135,9 @@ public class StructureGenHelper
 	public static void placeSchema(World world, BlockData[][][] schema, int xStart, int zStart)
 	{
 		int yStart = 39;
-		int xBounds = schema[0].length+xStart;
+		int xBounds = schema.length+xStart;
 		int zBounds = schema[0][0].length+zStart;
-		int yBounds = schema.length+yStart;
+		int yBounds = schema[0].length+yStart;
 		Chunk chunk = world.getChunkFromBlockCoords(xStart, zStart);
 		ExtendedBlockStorage miniChunk = chunk.getBlockStorageArray()[yStart >> 4];
 		int chunkXStart = chunk.xPosition << 4;
@@ -134,12 +158,12 @@ public class StructureGenHelper
 					miniChunk = chunk.getBlockStorageArray()[y >> 4];
 					miniChunkYStart = miniChunk.getYLocation();
 				}
-				miniChunk.func_150818_a(x & 15, y & 15, z & 15, schema[y][x][z].getBlock());
-				miniChunk.setExtBlockMetadata(x & 15, y & 15, z & 15, schema[y][x][z].getMetadata());
+				miniChunk.func_150818_a(x & 15, y & 15, z & 15, schema[x][y][z].getBlock());
+				miniChunk.setExtBlockMetadata(x & 15, y & 15, z & 15, schema[x][y][z].getMetadata());
 				if(!world.isRemote)
 				{
 					world.markBlockForUpdate(x, y, z);
-					world.notifyBlockChange(x, y, z, schema[y][x][z].getBlock());
+					world.notifyBlockChange(x, y, z, schema[x][y][z].getBlock());
 				}
 			}
 		}
@@ -184,6 +208,7 @@ public class StructureGenHelper
 			placeSchema(world, schema, xStart-2, zStart+2);
 			return true;
 		}
+		//At one point, figure out how to log an error to FML and do so here.
 		return false;
 	}
 	
@@ -218,6 +243,19 @@ public class StructureGenHelper
 	}
 	
 	/**
+	 * This method is just used to shorten repetitive code. Also makes it easier to use block data elsewhere.
+	 * @param world
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return a new BlockData object which contains the block type, metadata, and entered coordinates.
+	 */
+	public static BlockData getBlockDataAt(World world, int x, int y, int z)
+	{
+		return new BlockData(world.getBlock(x, y, z), world.getBlockMetadata(x, y, z), x, y, z);
+	}
+	
+	/**
 	 * This method is used to determine the block types in the immediate horizontal area around the block.
 	 * Thanks to the BlockData method it can also be used to determine block metadata value.
 	 * @author Ian
@@ -230,10 +268,10 @@ public class StructureGenHelper
 	public static BlockData[] blockHorizontalNeighbors(World world, int x, int y, int z)
 	{
 		BlockData[] neighbors = new BlockData[4];
-		neighbors[0] = new BlockData(world.getBlock(x+1, y, z), world.getBlockMetadata(x+1, y, z), x+1, y, z);
-		neighbors[1] = new BlockData(world.getBlock(x-1, y, z), world.getBlockMetadata(x-1, y, z), x-1, y, z);
-		neighbors[2] = new BlockData(world.getBlock(x, y, z+1), world.getBlockMetadata(x, y, z+1), x, y, z+1);
-		neighbors[3] = new BlockData(world.getBlock(x, y, z-1), world.getBlockMetadata(x, y, z-1), x, y, z-1);
+		neighbors[0] = getBlockDataAt(world, x+1, y, z);
+		neighbors[1] = getBlockDataAt(world, x-1, y, z);
+		neighbors[2] = getBlockDataAt(world, x, y, z+1);
+		neighbors[3] = getBlockDataAt(world, x, y, z-1);
 		return neighbors;
 	}
 	
@@ -250,12 +288,12 @@ public class StructureGenHelper
 	public static BlockData[] blockNeighbors(World world, int x, int y, int z)
 	{
 		BlockData[] neighbors = new BlockData[6];
-		neighbors[0] = new BlockData(world.getBlock(x+1, y, z), world.getBlockMetadata(x+1, y, z), x+1, y, z);
-		neighbors[1] = new BlockData(world.getBlock(x-1, y, z), world.getBlockMetadata(x-1, y, z), x-1, y, z);
-		neighbors[2] = new BlockData(world.getBlock(x, y+1, z), world.getBlockMetadata(x, y+1, z), x, y+1, z);
-		neighbors[3] = new BlockData(world.getBlock(x, y-1, z), world.getBlockMetadata(x, y-1, z), x, y-1, z);
-		neighbors[4] = new BlockData(world.getBlock(x, y, z+1), world.getBlockMetadata(x, y, z+1), x, y, z+1);
-		neighbors[5] = new BlockData(world.getBlock(x, y, z-1), world.getBlockMetadata(x, y, z-1), x, y, z-1);
+		neighbors[0] = getBlockDataAt(world, x+1, y, z);
+		neighbors[1] = getBlockDataAt(world, x-1, y, z);
+		neighbors[2] = getBlockDataAt(world, x, y+1, z);
+		neighbors[3] = getBlockDataAt(world, x, y-1, z);
+		neighbors[4] = getBlockDataAt(world, x, y, z+1);
+		neighbors[5] = getBlockDataAt(world, x, y, z-1);
 		return neighbors;
 	}
 	
