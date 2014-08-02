@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.InputStream;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -43,21 +44,129 @@ public class SchematicHelper
         }
 	}
 	
-	public BlockData[][][] expandSchema(Schematic schem)
+	/**
+	 * Used in the nullifying empty space method to determine whether this current block at a location is inside of or
+	 * in-between other structures, which is essentially the basis for determining whether it should have an air block
+	 * or be a null block. If there is only one block along any one axis, it could be the corner of a roof or something.
+	 * But, if it's in-between two blocks along an axis it could easily be between two houses or towers, or inside.
+	 * When blocks become null, they no longer act as part of the schema and are skipped in the checkBounds algorithm.
+	 * @param schema is the object traversed using the input coordinates and direction.
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return true if the block has non-air blocks on both sides of at least one of the three axes. Returns false if
+	 * on any one axis only one side has a block
+	 */
+	public static boolean blocksExistAlongAxes(BlockData[][][] schema, int x, int y, int z)
 	{
-		int xWidth = schem.width;
-		int yHeight = schem.height;
-		int zLength = schem.length;
-		BlockData[][][] schematic = new BlockData[xWidth][yHeight][zLength];
+		int xStart = 0;
+		int yStart = 0;
+		int zStart = 0;
+		boolean side1 = false;
+		boolean side2 = false;
+		for(xStart = 0; xStart < x; xStart++)
+		{
+			if(schema[xStart][y][z].getBlock() != Blocks.air)
+			{
+				side1 = true;
+				break;
+			}
+		}
+		for(xStart = x+1; xStart < schema.length; xStart++)
+		{
+			if(schema[xStart][y][z].getBlock() != Blocks.air)
+			{
+				side2 = true;
+				if(side1 && side2)
+				{
+					return true;
+				}
+			}
+		}
+		side1 = false;
+		side2 = false;
+		for(yStart = 0; yStart < y; yStart++)
+		{
+			if(schema[x][yStart][z].getBlock() != Blocks.air)
+			{
+				side1 = true;
+				break;
+			}
+		}
+		for(yStart = y+1; yStart < schema[0].length; yStart++)
+		{
+			if(schema[x][yStart][z].getBlock() != Blocks.air)
+			{
+				side2 = true;
+				if(side1 && side2)
+				{
+					return true;
+				}
+			}
+		}
+		side1 = false;
+		side2 = false;
+		for(zStart = 0; zStart < z; zStart++)
+		{
+			if(schema[x][y][zStart].getBlock() != Blocks.air)
+			{
+				side1 = true;
+				break;
+			}
+		}
+		for(zStart = z+1; zStart < schema[0][0].length; zStart++)
+		{
+			if(schema[x][y][zStart].getBlock() != Blocks.air)
+			{
+				return side1;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Attempts to identify air blocks which contribute to the structure of the schema in order to find the list of those
+	 * that do not. This uses the compare-to method of BlockData.
+	 * @param schema
+	 */
+	public static void nullifyEmptySpace(BlockData[][][] schema)
+	{
+		int xWidth = schema.length;
+		int yHeight = schema[0].length;
+		int zLength = schema[0][0].length;
 		for(int x = 0; x < xWidth; x++)
 		for(int y = 0; y < yHeight; y++)
 		for(int z = 0; z < zLength; z++)
 		{
-			Block block = Block.getBlockById(schem.getBlocks()[x + xWidth*(y+yHeight*z)]);
-			int metadata = schem.getData()[x + xWidth*(y+yHeight*z)];
-			schematic[x][y][z] = new BlockData(block, metadata, x, y, z);
+			if(schema[x][y][z].getBlock() == Blocks.air)
+			{
+				if(!(blocksExistAlongAxes(schema, x, y, z)))
+				{
+					schema[x][y][z].setBlock(null);
+				}
+			}
 		}
-		
-		return schematic;
+	}
+	
+	/**
+	 * Turns the 1D array of block binary data and metadata into a 3D array of BlockData.
+	 * @param slimSchem
+	 * @return the 3D array of BlockData containing all of the data recovered from the schema.
+	 */
+	public static BlockData[][][] expandSchema(Schematic slimSchem)
+	{
+		int xWidth = slimSchem.width;
+		int yHeight = slimSchem.height;
+		int zLength = slimSchem.length;
+		BlockData[][][] fatSchem = new BlockData[xWidth][yHeight][zLength];
+		for(int x = 0; x < xWidth; x++)
+		for(int y = 0; y < yHeight; y++)
+		for(int z = 0; z < zLength; z++)
+		{
+			Block block = Block.getBlockById(slimSchem.getBlocks()[x + xWidth*(y+yHeight*z)]);
+			int metadata = slimSchem.getData()[x + xWidth*(y+yHeight*z)];
+			fatSchem[x][y][z] = new BlockData(block, metadata, x, y, z);
+		}
+		return fatSchem;
 	}
 }
