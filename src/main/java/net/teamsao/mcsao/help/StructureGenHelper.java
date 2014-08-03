@@ -398,7 +398,8 @@ public class StructureGenHelper
 	 * floor for an alarming drop.
 	 * @author Ian
 	 * @param world
-	 * @param schema
+	 * @param schema - Generated in the SchematicHelper class from a .schematic file, it can also be trimmed to
+	 * allow for the null block spots as mentioned in this method's description.
 	 * @param xStart
 	 * @param zStart
 	 * @return true if there is no direct overlap or overlap from immediate neighbors and false otherwise.
@@ -430,28 +431,24 @@ public class StructureGenHelper
 			return false;
 		}
 		for(int y = yStart+1; y < yBounds; y++)
+		for(int x = xStart; x < xBounds; x++)
+		for(int z = zStart; z < zBounds; z++)
 		{
-			for(int x = xStart; x < xBounds; x++)
+			if(schema[y][x][z] == null)
 			{
-				for(int z = zStart; z < zBounds; z++)
-				{
-					if(schema[y][x][z] == null)
-					{
-						continue;
-					}
-					if(world.getBlock(x, y, z) != Blocks.air)
-					{
-						return false;
-					}
-					else if(y > yStart+1 && blockHasNeighbors(world, x, y, z))
-					{
-						return false;
-					}
-					else if(y > yStart && floorBlockHasNeighbors(world, x, y, z))
-					{
-						return false;
-					}
-				}
+				continue;
+			}
+			if(world.getBlock(x, y, z) != Blocks.air)
+			{
+				return false;
+			}
+			else if(y > yStart+1 && blockHasNeighbors(world, x, y, z))
+			{
+				return false;
+			}
+			else if(y > yStart && floorBlockHasNeighbors(world, x, y, z))
+			{
+				return false;
 			}
 		}
 		return true;

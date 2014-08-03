@@ -66,7 +66,7 @@ public class SchematicHelper
 		boolean side2 = false;
 		for(xStart = 0; xStart < x; xStart++)
 		{
-			if(schema[xStart][y][z].getBlock() != Blocks.air)
+			if(schema[xStart][y][z] != null && schema[xStart][y][z].getBlock() != Blocks.air)
 			{
 				side1 = true;
 				break;
@@ -74,7 +74,7 @@ public class SchematicHelper
 		}
 		for(xStart = x+1; xStart < schema.length; xStart++)
 		{
-			if(schema[xStart][y][z].getBlock() != Blocks.air)
+			if(schema[xStart][y][z] != null && schema[xStart][y][z].getBlock() != Blocks.air)
 			{
 				side2 = true;
 				if(side1 && side2)
@@ -87,7 +87,7 @@ public class SchematicHelper
 		side2 = false;
 		for(yStart = 0; yStart < y; yStart++)
 		{
-			if(schema[x][yStart][z].getBlock() != Blocks.air)
+			if(schema[x][yStart][z] != null && schema[x][yStart][z].getBlock() != Blocks.air)
 			{
 				side1 = true;
 				break;
@@ -95,7 +95,7 @@ public class SchematicHelper
 		}
 		for(yStart = y+1; yStart < schema[0].length; yStart++)
 		{
-			if(schema[x][yStart][z].getBlock() != Blocks.air)
+			if(schema[x][yStart][z] != null && schema[x][yStart][z].getBlock() != Blocks.air)
 			{
 				side2 = true;
 				if(side1 && side2)
@@ -105,10 +105,9 @@ public class SchematicHelper
 			}
 		}
 		side1 = false;
-		side2 = false;
 		for(zStart = 0; zStart < z; zStart++)
 		{
-			if(schema[x][y][zStart].getBlock() != Blocks.air)
+			if(schema[x][y][zStart] != null && schema[x][y][zStart].getBlock() != Blocks.air)
 			{
 				side1 = true;
 				break;
@@ -116,7 +115,7 @@ public class SchematicHelper
 		}
 		for(zStart = z+1; zStart < schema[0][0].length; zStart++)
 		{
-			if(schema[x][y][zStart].getBlock() != Blocks.air)
+			if(schema[x][y][zStart] != null && schema[x][y][zStart].getBlock() != Blocks.air)
 			{
 				return side1;
 			}
@@ -126,18 +125,37 @@ public class SchematicHelper
 	
 	/**
 	 * Attempts to identify air blocks which contribute to the structure of the schema in order to find the list of those
-	 * that do not. This uses the compare-to method of BlockData.
+	 * that do not.
 	 * @param schema
 	 */
-	public static void nullifyEmptySpace(BlockData[][][] schema)
+	public static void trimSchema(BlockData[][][] schema)
 	{
-		int xWidth = schema.length;
-		int yHeight = schema[0].length;
-		int zLength = schema[0][0].length;
+		int xWidth = 0;
+		int yHeight = 0;
+		int zLength = 0;
+		try
+		{
+			xWidth = schema.length;
+			yHeight = schema[0].length;
+			zLength = schema[0][0].length;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			return;
+		}
 		for(int x = 0; x < xWidth; x++)
 		for(int y = 0; y < yHeight; y++)
 		for(int z = 0; z < zLength; z++)
 		{
+			if(schema[x][y][z] == null)
+			{
+				/*
+				 * Don't let people try to trim the schema more than once. Also don't let people edit
+				 * in null blocks by themselves and try to trim it after.
+				 */
+				return;
+			}
 			if(schema[x][y][z].getBlock() == Blocks.air)
 			{
 				if(!(blocksExistAlongAxes(schema, x, y, z)))
