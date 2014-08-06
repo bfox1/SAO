@@ -19,6 +19,7 @@ public class SAOBlocks {
     public static Block SAOPortalBlock = new net.teamsao.mcsao.block.SAOPortalBlock();
     public static Block CrystalStone = new net.teamsao.mcsao.block.dungeonstone.CrystalStone();
     public static Block TeleportCrystalBlock = new net.teamsao.mcsao.block.TeleportCrystalBlock();
+    public static Block SafeAreaBlock = new net.teamsao.mcsao.block.SafeAreaBlock();
 
     public static void registerInit()
     {
@@ -30,5 +31,6 @@ public class SAOBlocks {
 
         ReferenceHelper.registerBlock(ForgingStation);
         ReferenceHelper.registerBlock(TeleportCrystalBlock);
+        ReferenceHelper.registerBlock(SafeAreaBlock);
     }
 }
