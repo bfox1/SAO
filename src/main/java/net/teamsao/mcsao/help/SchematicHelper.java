@@ -63,7 +63,6 @@ public class SchematicHelper
 		int yStart = 0;
 		int zStart = 0;
 		boolean side1 = false;
-		boolean side2 = false;
 		for(xStart = 0; xStart < x; xStart++)
 		{
 			if(schema[xStart][y][z] != null && schema[xStart][y][z].getBlock() != Blocks.air)
@@ -76,15 +75,13 @@ public class SchematicHelper
 		{
 			if(schema[xStart][y][z] != null && schema[xStart][y][z].getBlock() != Blocks.air)
 			{
-				side2 = true;
-				if(side1 && side2)
+				if(side1)
 				{
 					return true;
 				}
 			}
 		}
 		side1 = false;
-		side2 = false;
 		for(yStart = 0; yStart < y; yStart++)
 		{
 			if(schema[x][yStart][z] != null && schema[x][yStart][z].getBlock() != Blocks.air)
@@ -97,8 +94,7 @@ public class SchematicHelper
 		{
 			if(schema[x][yStart][z] != null && schema[x][yStart][z].getBlock() != Blocks.air)
 			{
-				side2 = true;
-				if(side1 && side2)
+				if(side1)
 				{
 					return true;
 				}
@@ -148,7 +144,7 @@ public class SchematicHelper
 		for(int y = 0; y < yHeight; y++)
 		for(int z = 0; z < zLength; z++)
 		{
-			if(schema[x][y][z] == null)
+			if(schema[x][y][z] == null || schema[x][y][z].getBlock() == null)
 			{
 				/*
 				 * Don't let people try to trim the schema more than once. Also don't let people edit
@@ -177,12 +173,14 @@ public class SchematicHelper
 		int yHeight = slimSchem.height;
 		int zLength = slimSchem.length;
 		BlockData[][][] fatSchem = new BlockData[xWidth][yHeight][zLength];
+		byte[] blocks = slimSchem.getBlocks();
+		byte[] blockData = slimSchem.getData();
 		for(int x = 0; x < xWidth; x++)
 		for(int y = 0; y < yHeight; y++)
 		for(int z = 0; z < zLength; z++)
 		{
-			Block block = Block.getBlockById(slimSchem.getBlocks()[x + xWidth*(y+yHeight*z)]);
-			int metadata = slimSchem.getData()[x + xWidth*(y+yHeight*z)];
+			Block block = Block.getBlockById(blocks[x + xWidth*(y+yHeight*z)]);
+			int metadata = blockData[x + xWidth*(y+yHeight*z)];
 			fatSchem[x][y][z] = new BlockData(block, metadata, x, y, z);
 		}
 		return fatSchem;

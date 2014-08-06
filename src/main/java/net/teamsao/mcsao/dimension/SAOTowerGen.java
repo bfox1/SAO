@@ -24,27 +24,6 @@ public class SAOTowerGen extends WorldGenerator
 	private Block floor = Blocks.stonebrick;
 	private Block wall = SAOBlocks.DungeonStone;
 
-	private void fastSetBlock(int x, int y, int z, Block block, ExtendedBlockStorage miniChunk)
-	{
-		int i1 = Block.getIdFromBlock(block);
-		miniChunk.getBlockLSBArray()[y << 8 | z << 4 | x] = (byte)(i1 & 255);
-
-		if (i1 > 255)
-		{
-			if (miniChunk.getBlockMSBArray() == null)
-			{
-				miniChunk.setBlockMSBArray(new NibbleArray(miniChunk.getBlockLSBArray().length, 4));
-			}
-
-			miniChunk.getBlockMSBArray().set(x, y, z, (i1 & 3840) >> 8);
-		}
-		else if (miniChunk.getBlockMSBArray() != null)
-		{
-			miniChunk.getBlockMSBArray().set(x, y, z, 0);
-		}
-	}
-
-
 	private void setUpTower(World world, int chunkX, int chunkZ)
 	{
 		int startX = 0;
@@ -92,27 +71,6 @@ public class SAOTowerGen extends WorldGenerator
 		}
 		chunk.generateSkylightMap();
 		chunk.setChunkModified();
-	}
-	
-	/**
-	 * This method is used because for whatever stupid reason the blocks around the initial dimension load-up
-	 * don't render client-side. I don't know why it happens but this fixes it. I am adding code to duplicate
-	 * setBlock without getting rid of the advantages of modifying the chunk directly, which will hopefully
-	 * make this method disappear.
-	 * @author Ian
-	 * @param world - reference to world for usage of setBlock
-	 * @param x - world block x coordinate
-	 * @param z - world block z coordinate
-	 */
-	private void hackyFix(World world, Chunk chunk, int x, int z)
-	{
-		if(Math.abs(x) <= 256 && Math.abs(z) <= 256)
-		{
-			if(x % 16 == 0 && z % 16 == 0)
-			{
-				world.setBlock(x, 38, z, floor);
-			}
-		}
 	}
 	
 	/**

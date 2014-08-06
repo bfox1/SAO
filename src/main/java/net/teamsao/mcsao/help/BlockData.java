@@ -1,5 +1,8 @@
 package net.teamsao.mcsao.help;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 
@@ -54,6 +57,31 @@ public class BlockData implements Comparable
 		this.blockX = x;
 		this.blockY = y;
 		this.blockZ = z;
+	}
+	
+	/**
+	 * Helper method to use when copying a piece of data or for use with lists.
+	 * @return a copy of this object with the same block, metadata, and coordinate values, but a different reference.
+	 */
+	public BlockData getCopy()
+	{
+		return new BlockData(this.block, this.metadata, this.blockX, this.blockY, this.blockZ);
+	}
+	
+	/**
+	 * Copies an ArrayList of BlockData objects, deep copy so no references to the original array or its stored objects
+	 * remain in the copy.
+	 * @param original
+	 * @return a completely separate copy of the original ArrayList
+	 */
+	public static ArrayList<BlockData> copyList(ArrayList<BlockData> original)
+	{
+		ArrayList<BlockData> copy = new ArrayList<BlockData>(original.size());
+		for(BlockData data : original)
+		{
+			copy.add(data.getCopy());
+		}
+		return copy;
 	}
 	
 	/**
@@ -125,6 +153,10 @@ public class BlockData implements Comparable
 
 	public Block getBlock()
 	{
+		if(block == null)
+		{
+			return null;
+		}
 		return block;
 	}
 

@@ -1,5 +1,7 @@
 package net.teamsao.mcsao.help;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -16,7 +18,6 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
  */
 public class StructureGenHelper
 {
-	
 	/**
 	 * This is a method to get the distance between two 2 dimensional points, essentially on the minecraft horizontal axis.
 	 * @param x1
@@ -243,6 +244,36 @@ public class StructureGenHelper
 	}
 	
 	/**
+	 * Checks to see at what point from the starting y level at these x and z coordinates the defined "hole"
+	 * reaches its bottom. It could, in fact, return 0 if you done goofed and it's not actually a hole.
+	 * This variant uses a BlockData object instead of world coordinates. Works better with the recursive
+	 * method.
+	 * @author Ian
+	 * @param world
+	 * @param block - A BlockData object used in place of coordinates.
+	 * @return the number of blocks from this block that the floor of the hole is.
+	 */
+	public static int blocksDownToFloor(World world, BlockData block)
+	{
+		int startY = block.getBlockY();
+		int blocksDown = 0;
+		if(block.getBlock() == Blocks.air)
+		{
+			return blocksDown;
+		}
+		while(startY > 0)
+		{
+			blocksDown++;
+			startY--;
+			if(world.getBlock(block.getBlockX(), startY, block.getBlockZ()) != Blocks.air)
+			{
+				return blocksDown;
+			}
+		}
+		return blocksDown;
+	}
+	
+	/**
 	 * This method is just used to shorten repetitive code. Also makes it easier to use block data elsewhere.
 	 * @param world
 	 * @param x
@@ -276,8 +307,9 @@ public class StructureGenHelper
 	}
 	
 	/**
-	 * Unfortunately this method can only be used to determine block types. A list of world coordinates would
-	 * require a more complex data structure to be returned since a Block doesn't know where it is.
+	 * Thankfully, this method now returns a BlockData array so each data point knows where it is and what it is.
+	 * This can be used to find special block types in neighboring blocks and possibly used in recursion to determine
+	 * a pattern of custom blocks.
 	 * @author Ian
 	 * @param world
 	 * @param x
@@ -301,11 +333,9 @@ public class StructureGenHelper
 	 * Recursive method to determine whether neighbor blocks also have sheer drop-like holes, which in large
 	 * enough amounts creates the pattern of a cliff. This threshold is likely to be tuned as it is tested, but
 	 * for now the threshold for how many really big holes you can find before this thing shorts to true is 5.
-	 * 
-	 * In addition a last-direction variable is used to prevent infinite recursion. 0 means just started, 1 means
-	 * x + 1, 2 means x - 1, 3 means z + 1, 4, means z - 1. There is the possibility of square formations of drops
-	 * causing a short-out when the number of drops is too small but that sounds better than a gigantic profiling
-	 * method for now.
+	 * This method uses a "traversed" block data list to determine whether or not a block has already been gone over
+	 * in the current step of recursion. It has the possibility of going over some blocks more than once, but it's
+	 * better than not being able to find a hole because a path has been blocked.
 	 * 
 	 * @author Ian
 	 * @param world
@@ -315,31 +345,47 @@ public class StructureGenHelper
 	 * @param count
 	 * @return true if a large amount of sheer drops is found, false if the pattern ends early on in any direction.
 	 */
-	public static boolean isLargeDrop(World world, int x, int y, int z, int count, int lastDir)
+	public static boolean isLargeDrop(World world, int x, int y, int z, int count, ArrayList<BlockData> traversed)
 	{
 		if(count >= 5)
 		{
 			return true;
 		}
-		if(!(lastDir == 1) && world.getBlock(x+1, y, z) == Blocks.air 
-				&& blocksDownToFloor(world, x+1, y, z) >= 6)
+		BlockData block1 = getBlockDataAt(world, x+1, y, z);
+		if(!traversed.contains(block1))
 		{
-			return isLargeDrop(world, x+1, y, z, count++, 2);
+			traversed.add(block1);
+			if(world.getBlock(x+1, y, z) == Blocks.air && blocksDownToFloor(world, block1) >= 6)
+			{
+				return isLargeDrop(world, x+1, y, z, count++, BlockData.copyList(traversed));
+			}
 		}
-		else if(!(lastDir == 2) && world.getBlock(x-1, y, z) == Blocks.air 
-				&& blocksDownToFloor(world, x-1, y, z) >= 6)
+		BlockData block2 = getBlockDataAt(world, x-1, y, z);
+		if(!traversed.contains(block2))
 		{
-			return isLargeDrop(world, x-1, y, z, count++, 1);
+			traversed.add(block2);
+			if(world.getBlock(x-1, y, z) == Blocks.air && blocksDownToFloor(world, block2) >= 6)
+			{
+				return isLargeDrop(world, x-1, y, z, count++, BlockData.copyList(traversed));
+			}
 		}
-		else if(!(lastDir == 3) && world.getBlock(x, y, z+1) == Blocks.air 
-				&& blocksDownToFloor(world, x, y, z+1) >= 6)
+		BlockData block3 = getBlockDataAt(world, x, y, z+1);
+		if(!traversed.contains(block3))
 		{
-			return isLargeDrop(world, x, y, z+1, count++, 4);
+			traversed.add(block3);
+			if(world.getBlock(x, y, z+1) == Blocks.air && blocksDownToFloor(world, block3) >= 6)
+			{
+				return isLargeDrop(world, x, y, z+1, count++, BlockData.copyList(traversed));
+			}
 		}
-		else if(!(lastDir == 4) && world.getBlock(x, y, z-1) == Blocks.air 
-				&& blocksDownToFloor(world, x, y, z-1) >= 6)
+		BlockData block4 = getBlockDataAt(world, x, y, z-1);
+		if(!traversed.contains(block4))
 		{
-			return isLargeDrop(world, x, y, z-1, count++, 3);
+			traversed.add(block4);
+			if(world.getBlock(x, y, z-1) == Blocks.air && blocksDownToFloor(world, block4) >= 6)
+			{
+				return isLargeDrop(world, x, y, z-1, count++, BlockData.copyList(traversed));
+			}
 		}
 		return false;
 	}
@@ -374,7 +420,9 @@ public class StructureGenHelper
 					if(holeDepth >= 6)
 					{
 						holeCount++;
-						if(isLargeDrop(world, x, yStart, z, 0, 0))
+						ArrayList<BlockData> traversed = new ArrayList<BlockData>();
+						traversed.add(getBlockDataAt(world, x, yStart, z));
+						if(isLargeDrop(world, x, yStart, z, 0, traversed))
 						{
 							return false;
 						}
