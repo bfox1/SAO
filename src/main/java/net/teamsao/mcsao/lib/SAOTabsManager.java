@@ -50,6 +50,12 @@ public class SAOTabsManager extends CreativeTabs {
             return SAOItems.DungeonStoneItem;
         }
     };
+
+    public static final SAOTabsManager saoGuns = new SAOTabsManager(CreativeTabs.getNextID(), "SAO Guns") {
+        @SideOnly(Side.CLIENT)
+        public Item getTabIconItem() { return null; }
+    };
+
     @Override
     public Item getTabIconItem() {
         return SAOItems.TeleportCrystal;
