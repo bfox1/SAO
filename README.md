@@ -18,7 +18,7 @@ To-Do
 
 Hover over each job to find the member(s) assigned to it.
 
-Assigned to Dradgit[Assignee][drad]:
+Assigned to [Dradgit][drad]:
 
 Look into the possibility of a method which traverses a list of chunks, and maybe uses pieces of a schematic which actually fit within the chunk being currently traversed in order to fully develop a chunk before moving on to other pieces of the schematic. This way, it would take full advantage of accessing a chunk object directly instead of using setBlock to change one block at a time.
 
@@ -26,22 +26,22 @@ Look into the possibility of adding a method to change one block type in a schem
 
 Add a large cone shaped dirt block formation below the floor of floor 1, to prevent people from falling into the abyss by accident. Possibly add more layers to the floor or get bfox to make the blocks indestructible already.
 
-Assigned to Chris[Assignee][chris]:
+Assigned to [Chris][chris]:
 
 Weapons need a refined power system, chris is currently working on it.
 
-Assigned to Bfox[Assignee][bfox]:
+Assigned to [Bfox][bfox]:
 
 The nerve gear needs an internal inventory which will store a CD and allow teleportation based on the CD being in the inventory. It also needs to save
 aincrad player locations.
 
-Assigned to Texturers[Assignee][richard]/Modelers[Assignee][golden]:
+Assigned to [Texturers][richard]/[Modelers][golden]:
 
 Finish texture ideas for blocks (types of blocks listed in ItemBlockMetaData)
 
 Bosses and mobs need models and we need ideas for specific mobs and bosses.
 
-Assigned to SirPwn[Assignee][sirpwns]:
+Assigned to [SirPwn][sirpwns]:
 
 We also need a way to make a safe zone. The best idea we had earlier was making a block that players could pass through but mobs could not.
 
