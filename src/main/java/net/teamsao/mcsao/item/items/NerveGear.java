@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
@@ -32,8 +33,14 @@ public class NerveGear extends ItemArmor {
 		setUnlocalizedName(name);
         this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SAOTabsManager.SAO);
+        this.setMaxStackSize(1);
 
 	}
+
+    @Override
+    public int getMaxItemUseDuration(ItemStack stack) {
+        return 1; // return any value greater than zero
+    }
 	
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
@@ -57,8 +64,9 @@ public class NerveGear extends ItemArmor {
 		{
 			if(par3Player.isSneaking())
 			{
-
-			}
+                par3Player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_ITEM_INV, par3Player.worldObj, (int) par3Player.posX,
+                        (int) par3Player.posY, (int)par3Player.posZ);
+            }
 		}
 		return par1ItemStack;
 		

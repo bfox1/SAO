@@ -18,34 +18,11 @@ import net.teamsao.mcsao.init.SAOBlocks;
 public class SAOTowerGen extends WorldGenerator
 {
 
-
 	private int floor1Radius = 500;
 	private int floor1SegmentHeight = 10;
 	
 	private Block floor = Blocks.stonebrick;
 	private Block wall = SAOBlocks.DungeonStone;
-	
-
-	private void fastSetBlock(int x, int y, int z, Block block, ExtendedBlockStorage miniChunk)
-	{
-		int i1 = Block.getIdFromBlock(block);
-		miniChunk.getBlockLSBArray()[y << 8 | z << 4 | x] = (byte)(i1 & 255);
-
-		if (i1 > 255)
-		{
-			if (miniChunk.getBlockMSBArray() == null)
-			{
-				miniChunk.setBlockMSBArray(new NibbleArray(miniChunk.getBlockLSBArray().length, 4));
-			}
-
-			miniChunk.getBlockMSBArray().set(x, y, z, (i1 & 3840) >> 8);
-		}
-		else if (miniChunk.getBlockMSBArray() != null)
-		{
-			miniChunk.getBlockMSBArray().set(x, y, z, 0);
-		}
-	}
-
 
 	private void setUpTower(World world, int chunkX, int chunkZ)
 	{
@@ -64,13 +41,11 @@ public class SAOTowerGen extends WorldGenerator
 
 				int distance = StructureGenHelper.distance2D(modX, modZ);
 
-				//hackyFix(world, chunk, modX, modZ);
 				if(distance == floor1Radius)
 				{
 					for(int y = 7; y < 16; y++)
 					{
 						chunk.getBlock(modX & 15, 32+y, modZ & 15);
-						//fastSetBlock(x, y, z, wall, miniChunk);
 						miniChunk.func_150818_a(x, y & 15, z, wall);
 						miniChunk.setExtBlockMetadata(x, y & 15, z, 1);
 						if(!world.isRemote)
@@ -84,12 +59,10 @@ public class SAOTowerGen extends WorldGenerator
 				else if(distance < floor1Radius)
 				{
 					chunk.getBlock(modX & 15, startY, modZ & 15);
-					//fastSetBlock(x, 7, z, floor, miniChunk);
 					miniChunk.func_150818_a(x, startY & 15, z, floor);
 					miniChunk.setExtBlockMetadata(x, startY & 15, z, 0);
 					if(!world.isRemote)
 					{
-
 						world.markBlockForUpdate(modX, startY, modZ);
 						world.notifyBlockChange(modX, startY, modZ, floor);
 					}
@@ -98,27 +71,6 @@ public class SAOTowerGen extends WorldGenerator
 		}
 		chunk.generateSkylightMap();
 		chunk.setChunkModified();
-	}
-	
-	/**
-	 * This method is used because for whatever stupid reason the blocks around the initial dimension load-up
-	 * don't render client-side. I don't know why it happens but this fixes it. I am adding code to duplicate
-	 * setBlock without getting rid of the advantages of modifying the chunk directly, which will hopefully
-	 * make this method disappear.
-	 * @author Ian
-	 * @param world - reference to world for usage of setBlock
-	 * @param x - world block x coordinate
-	 * @param z - world block z coordinate
-	 */
-	private void hackyFix(World world, Chunk chunk, int x, int z)
-	{
-		if(Math.abs(x) <= 256 && Math.abs(z) <= 256)
-		{
-			if(x % 16 == 0 && z % 16 == 0)
-			{
-				world.setBlock(x, 38, z, floor);
-			}
-		}
 	}
 	
 	/**
@@ -144,10 +96,10 @@ public class SAOTowerGen extends WorldGenerator
 
 	@Override
 	public boolean generate(World world, Random rand,
-			int blockX, int blockY, int blockZ) {
-
-		long startTime = System.currentTimeMillis();
-
+			int blockX, int blockY, int blockZ)
+	{
+		long startTime = System.nanoTime();
+		
 		for(int chunkX = -33; chunkX < 32; chunkX++)
 		{
 			for(int chunkZ = -33; chunkZ < 32; chunkZ++)
@@ -155,10 +107,10 @@ public class SAOTowerGen extends WorldGenerator
 				setUpTower(world, chunkX, chunkZ);
 			}
 		}
-		long endTime = System.currentTimeMillis();
-		float time = (endTime - startTime);
-		System.out.println("Time for completion is "+time+" milliseconds, "+time/1000.0F+" seconds, or "+time/60000F+" minutes.");
-
+		
+		long endTime = System.nanoTime();
+		long time = (endTime - startTime);
+		System.out.println("Time for completion is "+time+" nanoseconds, "+time/1000000L+" seconds, or "+time/60000000L+" minutes.");
 		return true;
 	}
 }
