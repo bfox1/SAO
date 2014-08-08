@@ -65,6 +65,7 @@ Auto-building house block? Will we just make it out of vanilla blocks for now or
 [sirpwns]: http://github.com/sirpwnsamin "SirPwn"
 [moonless]: http://github.com/Moonless-sky/ "Moonless_sky"
 [richard]: http://github.com/BloodRain/ "Richard"
+[earbuds]: http://github.com/Earbuds/ "Earbuds"
 
 Other info
 ----------
