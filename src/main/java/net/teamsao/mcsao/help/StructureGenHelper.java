@@ -1,5 +1,7 @@
 package net.teamsao.mcsao.help;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -16,6 +18,14 @@ import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
  */
 public class StructureGenHelper
 {
+	/**
+	 * This is a method to get the distance between two 2 dimensional points, essentially on the minecraft horizontal axis.
+	 * @param x1
+	 * @param z1
+	 * @param x2
+	 * @param z2
+	 * @return the integer-rounded distance between the two 2D points.
+	 */
 	public static Integer distance2D(double x1, double z1, double x2, double z2)
     {
     	double xDelta = Math.abs(x2-x1);
@@ -24,6 +34,14 @@ public class StructureGenHelper
     	return (int) distance;
     }
 	
+	/**
+	 * This method is exactly like the other distance2D method, except that it forgoes the need for calculating the
+	 * difference between the two points, and relies instead on the idea that the user knows what the difference is
+	 * from other information.
+	 * @param xD
+	 * @param zD
+	 * @return the integer-rounded distance between two 2D points, using the deltas.
+	 */
 	public static Integer distance2D(double xD, double zD)
 	{
 		double xDelta = Math.abs(xD);
@@ -32,6 +50,13 @@ public class StructureGenHelper
     	return (int) distance;
 	}
 	
+	/**
+	 * This method is used to get the distance between a pair of 3D coordinates. It assumes that an array
+	 * is the cheapest and fastest way to store the data in order.
+	 * @param origin
+	 * @param point
+	 * @return the integer-rounded distance between two 3D points.
+	 */
 	public static Integer distance3D(double[] origin, double[] point)
 	{
 		if(origin == null || point == null || origin.length != 3 || point.length != 3)
@@ -111,9 +136,9 @@ public class StructureGenHelper
 	public static void placeSchema(World world, BlockData[][][] schema, int xStart, int zStart)
 	{
 		int yStart = 39;
-		int xBounds = schema[0].length+xStart;
+		int xBounds = schema.length+xStart;
 		int zBounds = schema[0][0].length+zStart;
-		int yBounds = schema.length+yStart;
+		int yBounds = schema[0].length+yStart;
 		Chunk chunk = world.getChunkFromBlockCoords(xStart, zStart);
 		ExtendedBlockStorage miniChunk = chunk.getBlockStorageArray()[yStart >> 4];
 		int chunkXStart = chunk.xPosition << 4;
@@ -134,12 +159,12 @@ public class StructureGenHelper
 					miniChunk = chunk.getBlockStorageArray()[y >> 4];
 					miniChunkYStart = miniChunk.getYLocation();
 				}
-				miniChunk.func_150818_a(x & 15, y & 15, z & 15, schema[y][x][z].getBlock());
-				miniChunk.setExtBlockMetadata(x & 15, y & 15, z & 15, schema[y][x][z].getMetadata());
+				miniChunk.func_150818_a(x & 15, y & 15, z & 15, schema[x][y][z].getBlock());
+				miniChunk.setExtBlockMetadata(x & 15, y & 15, z & 15, schema[x][y][z].getMetadata());
 				if(!world.isRemote)
 				{
 					world.markBlockForUpdate(x, y, z);
-					world.notifyBlockChange(x, y, z, schema[y][x][z].getBlock());
+					world.notifyBlockChange(x, y, z, schema[x][y][z].getBlock());
 				}
 			}
 		}
@@ -184,6 +209,7 @@ public class StructureGenHelper
 			placeSchema(world, schema, xStart-2, zStart+2);
 			return true;
 		}
+		//At one point, figure out how to log an error to FML and do so here.
 		return false;
 	}
 	
@@ -218,6 +244,49 @@ public class StructureGenHelper
 	}
 	
 	/**
+	 * Checks to see at what point from the starting y level at these x and z coordinates the defined "hole"
+	 * reaches its bottom. It could, in fact, return 0 if you done goofed and it's not actually a hole.
+	 * This variant uses a BlockData object instead of world coordinates. Works better with the recursive
+	 * method.
+	 * @author Ian
+	 * @param world
+	 * @param block - A BlockData object used in place of coordinates.
+	 * @return the number of blocks from this block that the floor of the hole is.
+	 */
+	public static int blocksDownToFloor(World world, BlockData block)
+	{
+		int startY = block.getBlockY();
+		int blocksDown = 0;
+		if(block.getBlock() == Blocks.air)
+		{
+			return blocksDown;
+		}
+		while(startY > 0)
+		{
+			blocksDown++;
+			startY--;
+			if(world.getBlock(block.getBlockX(), startY, block.getBlockZ()) != Blocks.air)
+			{
+				return blocksDown;
+			}
+		}
+		return blocksDown;
+	}
+	
+	/**
+	 * This method is just used to shorten repetitive code. Also makes it easier to use block data elsewhere.
+	 * @param world
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return a new BlockData object which contains the block type, metadata, and entered coordinates.
+	 */
+	public static BlockData getBlockDataAt(World world, int x, int y, int z)
+	{
+		return new BlockData(world.getBlock(x, y, z), world.getBlockMetadata(x, y, z), x, y, z);
+	}
+	
+	/**
 	 * This method is used to determine the block types in the immediate horizontal area around the block.
 	 * Thanks to the BlockData method it can also be used to determine block metadata value.
 	 * @author Ian
@@ -230,16 +299,17 @@ public class StructureGenHelper
 	public static BlockData[] blockHorizontalNeighbors(World world, int x, int y, int z)
 	{
 		BlockData[] neighbors = new BlockData[4];
-		neighbors[0] = new BlockData(world.getBlock(x+1, y, z), world.getBlockMetadata(x+1, y, z), x+1, y, z);
-		neighbors[1] = new BlockData(world.getBlock(x-1, y, z), world.getBlockMetadata(x-1, y, z), x-1, y, z);
-		neighbors[2] = new BlockData(world.getBlock(x, y, z+1), world.getBlockMetadata(x, y, z+1), x, y, z+1);
-		neighbors[3] = new BlockData(world.getBlock(x, y, z-1), world.getBlockMetadata(x, y, z-1), x, y, z-1);
+		neighbors[0] = getBlockDataAt(world, x+1, y, z);
+		neighbors[1] = getBlockDataAt(world, x-1, y, z);
+		neighbors[2] = getBlockDataAt(world, x, y, z+1);
+		neighbors[3] = getBlockDataAt(world, x, y, z-1);
 		return neighbors;
 	}
 	
 	/**
-	 * Unfortunately this method can only be used to determine block types. A list of world coordinates would
-	 * require a more complex data structure to be returned since a Block doesn't know where it is.
+	 * Thankfully, this method now returns a BlockData array so each data point knows where it is and what it is.
+	 * This can be used to find special block types in neighboring blocks and possibly used in recursion to determine
+	 * a pattern of custom blocks.
 	 * @author Ian
 	 * @param world
 	 * @param x
@@ -250,12 +320,12 @@ public class StructureGenHelper
 	public static BlockData[] blockNeighbors(World world, int x, int y, int z)
 	{
 		BlockData[] neighbors = new BlockData[6];
-		neighbors[0] = new BlockData(world.getBlock(x+1, y, z), world.getBlockMetadata(x+1, y, z), x+1, y, z);
-		neighbors[1] = new BlockData(world.getBlock(x-1, y, z), world.getBlockMetadata(x-1, y, z), x-1, y, z);
-		neighbors[2] = new BlockData(world.getBlock(x, y+1, z), world.getBlockMetadata(x, y+1, z), x, y+1, z);
-		neighbors[3] = new BlockData(world.getBlock(x, y-1, z), world.getBlockMetadata(x, y-1, z), x, y-1, z);
-		neighbors[4] = new BlockData(world.getBlock(x, y, z+1), world.getBlockMetadata(x, y, z+1), x, y, z+1);
-		neighbors[5] = new BlockData(world.getBlock(x, y, z-1), world.getBlockMetadata(x, y, z-1), x, y, z-1);
+		neighbors[0] = getBlockDataAt(world, x+1, y, z);
+		neighbors[1] = getBlockDataAt(world, x-1, y, z);
+		neighbors[2] = getBlockDataAt(world, x, y+1, z);
+		neighbors[3] = getBlockDataAt(world, x, y-1, z);
+		neighbors[4] = getBlockDataAt(world, x, y, z+1);
+		neighbors[5] = getBlockDataAt(world, x, y, z-1);
 		return neighbors;
 	}
 	
@@ -263,11 +333,9 @@ public class StructureGenHelper
 	 * Recursive method to determine whether neighbor blocks also have sheer drop-like holes, which in large
 	 * enough amounts creates the pattern of a cliff. This threshold is likely to be tuned as it is tested, but
 	 * for now the threshold for how many really big holes you can find before this thing shorts to true is 5.
-	 * 
-	 * In addition a last-direction variable is used to prevent infinite recursion. 0 means just started, 1 means
-	 * x + 1, 2 means x - 1, 3 means z + 1, 4, means z - 1. There is the possibility of square formations of drops
-	 * causing a short-out when the number of drops is too small but that sounds better than a gigantic profiling
-	 * method for now.
+	 * This method uses a "traversed" block data list to determine whether or not a block has already been gone over
+	 * in the current step of recursion. It has the possibility of going over some blocks more than once, but it's
+	 * better than not being able to find a hole because a path has been blocked.
 	 * 
 	 * @author Ian
 	 * @param world
@@ -277,31 +345,47 @@ public class StructureGenHelper
 	 * @param count
 	 * @return true if a large amount of sheer drops is found, false if the pattern ends early on in any direction.
 	 */
-	public static boolean isLargeDrop(World world, int x, int y, int z, int count, int lastDir)
+	public static boolean isLargeDrop(World world, int x, int y, int z, int count, ArrayList<BlockData> traversed)
 	{
 		if(count >= 5)
 		{
 			return true;
 		}
-		if(!(lastDir == 1) && world.getBlock(x+1, y, z) == Blocks.air 
-				&& blocksDownToFloor(world, x+1, y, z) >= 6)
+		BlockData block1 = getBlockDataAt(world, x+1, y, z);
+		if(!traversed.contains(block1))
 		{
-			return isLargeDrop(world, x+1, y, z, count++, 2);
+			traversed.add(block1);
+			if(world.getBlock(x+1, y, z) == Blocks.air && blocksDownToFloor(world, block1) >= 6)
+			{
+				return isLargeDrop(world, x+1, y, z, count++, BlockData.copyList(traversed));
+			}
 		}
-		else if(!(lastDir == 2) && world.getBlock(x-1, y, z) == Blocks.air 
-				&& blocksDownToFloor(world, x-1, y, z) >= 6)
+		BlockData block2 = getBlockDataAt(world, x-1, y, z);
+		if(!traversed.contains(block2))
 		{
-			return isLargeDrop(world, x-1, y, z, count++, 1);
+			traversed.add(block2);
+			if(world.getBlock(x-1, y, z) == Blocks.air && blocksDownToFloor(world, block2) >= 6)
+			{
+				return isLargeDrop(world, x-1, y, z, count++, BlockData.copyList(traversed));
+			}
 		}
-		else if(!(lastDir == 3) && world.getBlock(x, y, z+1) == Blocks.air 
-				&& blocksDownToFloor(world, x, y, z+1) >= 6)
+		BlockData block3 = getBlockDataAt(world, x, y, z+1);
+		if(!traversed.contains(block3))
 		{
-			return isLargeDrop(world, x, y, z+1, count++, 4);
+			traversed.add(block3);
+			if(world.getBlock(x, y, z+1) == Blocks.air && blocksDownToFloor(world, block3) >= 6)
+			{
+				return isLargeDrop(world, x, y, z+1, count++, BlockData.copyList(traversed));
+			}
 		}
-		else if(!(lastDir == 4) && world.getBlock(x, y, z-1) == Blocks.air 
-				&& blocksDownToFloor(world, x, y, z-1) >= 6)
+		BlockData block4 = getBlockDataAt(world, x, y, z-1);
+		if(!traversed.contains(block4))
 		{
-			return isLargeDrop(world, x, y, z-1, count++, 3);
+			traversed.add(block4);
+			if(world.getBlock(x, y, z-1) == Blocks.air && blocksDownToFloor(world, block4) >= 6)
+			{
+				return isLargeDrop(world, x, y, z-1, count++, BlockData.copyList(traversed));
+			}
 		}
 		return false;
 	}
@@ -336,7 +420,9 @@ public class StructureGenHelper
 					if(holeDepth >= 6)
 					{
 						holeCount++;
-						if(isLargeDrop(world, x, yStart, z, 0, 0))
+						ArrayList<BlockData> traversed = new ArrayList<BlockData>();
+						traversed.add(getBlockDataAt(world, x, yStart, z));
+						if(isLargeDrop(world, x, yStart, z, 0, traversed))
 						{
 							return false;
 						}
@@ -360,7 +446,8 @@ public class StructureGenHelper
 	 * floor for an alarming drop.
 	 * @author Ian
 	 * @param world
-	 * @param schema
+	 * @param schema - Generated in the SchematicHelper class from a .schematic file, it can also be trimmed to
+	 * allow for the null block spots as mentioned in this method's description.
 	 * @param xStart
 	 * @param zStart
 	 * @return true if there is no direct overlap or overlap from immediate neighbors and false otherwise.
@@ -392,28 +479,24 @@ public class StructureGenHelper
 			return false;
 		}
 		for(int y = yStart+1; y < yBounds; y++)
+		for(int x = xStart; x < xBounds; x++)
+		for(int z = zStart; z < zBounds; z++)
 		{
-			for(int x = xStart; x < xBounds; x++)
+			if(schema[y][x][z] == null)
 			{
-				for(int z = zStart; z < zBounds; z++)
-				{
-					if(schema[y][x][z] == null)
-					{
-						continue;
-					}
-					if(world.getBlock(x, y, z) != Blocks.air)
-					{
-						return false;
-					}
-					else if(y > yStart+1 && blockHasNeighbors(world, x, y, z))
-					{
-						return false;
-					}
-					else if(y > yStart && floorBlockHasNeighbors(world, x, y, z))
-					{
-						return false;
-					}
-				}
+				continue;
+			}
+			if(world.getBlock(x, y, z) != Blocks.air)
+			{
+				return false;
+			}
+			else if(y > yStart+1 && blockHasNeighbors(world, x, y, z))
+			{
+				return false;
+			}
+			else if(y > yStart && floorBlockHasNeighbors(world, x, y, z))
+			{
+				return false;
 			}
 		}
 		return true;
