@@ -32,6 +32,10 @@ public class SwordArtOnline {
 
 	@Instance(Reference.MODID)
 	public static SwordArtOnline instance;
+
+    public static int modGuiIndex = 0;
+
+    public static final int GUI_ITEM_INV = modGuiIndex++;
 	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;
 

@@ -1,16 +1,15 @@
 package net.teamsao.mcsao.portal;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import ibxm.Player;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
@@ -27,6 +26,12 @@ import net.teamsao.mcsao.init.SAOBlocks;
 
 public class SAOTeleporter extends Teleporter
 {
+
+
+
+    int spawnX = 0;
+    int spawnY = 40;
+    int spawnZ = 0;
     private final WorldServer worldServerInstance;
  
     /** A private Random() function in Teleporter */
@@ -56,6 +61,20 @@ public class SAOTeleporter extends Teleporter
 
     public static void tranferPlayerToDimension(EntityPlayerMP mpPlayer, int newDim)
     {
+        int bedX= 0;
+        int bedY = 0;
+        int bedZ = 0;
+
+        ChunkCoordinates overWorldBed = mpPlayer.getBedLocation(0);
+
+        if(mpPlayer.getBedLocation(0) != null) {
+            bedX = overWorldBed.posX;
+            bedY = overWorldBed.posY;
+            bedZ = overWorldBed.posZ;
+        }
+
+
+
         MinecraftServer mcServer = MinecraftServer.getServer();
         int s = mpPlayer.dimension;
         WorldServer worldServer = mcServer.worldServerForDimension(mpPlayer.dimension);
@@ -66,7 +85,11 @@ public class SAOTeleporter extends Teleporter
         mpPlayer.isDead = false;
         transferEntityToWorld(mpPlayer, s, worldServer, worldServer1);
         func_72375_a(mpPlayer, worldServer);
-        mpPlayer.playerNetServerHandler.setPlayerLocation(0, 40, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+        if(mpPlayer.dimension == 2) {
+            mpPlayer.playerNetServerHandler.setPlayerLocation(0, 40, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+        }else if(mpPlayer.dimension == 0){
+            mpPlayer.playerNetServerHandler.setPlayerLocation(bedX, bedY, bedZ, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+        }
         mpPlayer.theItemInWorldManager.setWorld(worldServer1);
         updateTimeAndWeatherForPlayer(mpPlayer, worldServer1);
         syncPlayerInventory(mpPlayer);

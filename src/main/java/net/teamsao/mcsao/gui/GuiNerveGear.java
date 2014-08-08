@@ -8,25 +8,36 @@ import net.minecraft.util.StatCollector;
 import net.teamsao.mcsao.container.ContainerNerveGear;
 import net.teamsao.mcsao.help.Reference;
 
+import net.teamsao.mcsao.inventory.InventoryNerveGear;
 import org.lwjgl.opengl.GL11;
 
 public class GuiNerveGear extends GuiContainer {
-    public GuiNerveGear(Container p_i1072_1_) {
-        super(p_i1072_1_);
+
+    private float xSize_lo;
+    private float ySize_lo;
+
+    private final InventoryNerveGear inventory;
+
+
+
+    //public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/NerveGear.png");
+
+
+    public GuiNerveGear(ContainerNerveGear containerItem)
+    {
+        super(containerItem);
+        this.inventory = containerItem.inventory;
     }
 
-   /* public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/NerveGear.png");
+    /*@Override
+    public void drawScreen(int par1, int par2, float par3)
+    {
+        super.drawScreen(par1, par2, par3);
+        this.xSize_lo = (float)par1;
+        this.ySize_lo = (float)par2;
+    }
+*/
 
-    public TileEntityNerveGear nerveGear;
-
-	public GuiNerveGear(InventoryPlayer inventoryPlayer, TileEntityNerveGear tileEntityNerveGear) {
-		super(new ContainerNerveGear(inventoryPlayer, tileEntityNerveGear));
-
-        this.nerveGear = tileEntityNerveGear;
-
-
-	}
-	*/
 
 	@Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2){

@@ -5,8 +5,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemHangingEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.container.ContainerForgeStation;
 import net.teamsao.mcsao.container.ContainerNerveGear;
+import net.teamsao.mcsao.inventory.InventoryNerveGear;
 import net.teamsao.mcsao.tileentity.TileEntityForgeStation;
 //import net.teamsao.mcsao.tileentity.TileEntityNerveGear;
 
@@ -21,6 +23,11 @@ public class GuiHandler implements IGuiHandler {
         if(tileEntity instanceof TileEntityForgeStation){
             return new ContainerForgeStation(player.inventory, (TileEntityForgeStation) tileEntity);
         }
+        if(ID == SwordArtOnline.GUI_ITEM_INV)
+        {
+            System.out.println("This passes ServerGuiElement");
+            return new ContainerNerveGear(player, player.inventory, new InventoryNerveGear(player.getHeldItem()));
+        }
      /*   if(tileEntity instanceof TileEntityNerveGear)
         {
             return new ContainerNerveGear(player.inventory, (TileEntityNerveGear) tileEntity);
@@ -33,6 +40,12 @@ public class GuiHandler implements IGuiHandler {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
         if(tileEntity instanceof TileEntityForgeStation){
             return new GuiForgeStation(player.inventory, (TileEntityForgeStation) tileEntity);
+        }
+
+        if(ID == SwordArtOnline.GUI_ITEM_INV)
+        {
+            System.out.println("This passes ClientGuiElement");
+            return new GuiNerveGear((ContainerNerveGear) new ContainerNerveGear(player, player.inventory, new InventoryNerveGear(player.getHeldItem())));
         }
       /*  if(tileEntity instanceof TileEntityNerveGear)
         {
