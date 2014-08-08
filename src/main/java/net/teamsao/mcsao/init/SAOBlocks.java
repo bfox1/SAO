@@ -6,12 +6,15 @@ import net.teamsao.mcsao.block.*;
 import net.teamsao.mcsao.block.inventoryblocks.ForgeStation;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.item.ItemIngot;
 
 /**
  * Created by bfox1 on 7/24/2014.
  */
 public class SAOBlocks {
 
+	public static final int ForgingStationID = 0;
+	
     public static Block ForgingStation = new ForgeStation(); //Special TileEntity That Allows the Creation of Most High-tier Swords and Items.
 
     public static Block Log;
