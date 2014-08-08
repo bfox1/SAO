@@ -1,24 +1,14 @@
-Sword Art Online Mod
-====================
+Sword Art Online
+================
 
-This mod will provide the experience similar to [Sword Art Online](http://swordartonline.wikia.com/Sword_Art_Online) into the Minecraft world.
-
-+++++++++++++++++
-IMPORTANT
-+++++++++++++++++
-
-There are a few new things added
-1. All Registry addition to the Mod will be placed within the proxy classes based on where it needs to be. visit commonproxy class for more info.
-2. under init is the Classes for Initializing Anything, blocks, Items, Etc.
-3. Extend ALL Items and Blocks with there BlockSAO/ItemSAO super class.
-4. Dont forget to Enjoy modding:) Well, its late for me and im tired, Night night
+This mod will provide an experience, similar to the virtual reality game [Sword Art Online](http://swordartonline.wikia.com/Sword_Art_Online), into the world of Minecraft.
 
 To-Do
 -----
 
 Hover over each job to find the member(s) assigned to it.
 
-Assigned to [Dradgit][drad]:
+### Assigned to [Dradgit][drad]:
 
 Look into the possibility of a method which traverses a list of chunks, and maybe uses pieces of a schematic which actually fit within the chunk being currently traversed in order to fully develop a chunk before moving on to other pieces of the schematic. This way, it would take full advantage of accessing a chunk object directly instead of using setBlock to change one block at a time.
 
@@ -26,26 +16,26 @@ Look into the possibility of adding a method to change one block type in a schem
 
 Add a large cone shaped dirt block formation below the floor of floor 1, to prevent people from falling into the abyss by accident. Possibly add more layers to the floor or get bfox to make the blocks indestructible already.
 
-Assigned to [Chris][chris]:
+### Assigned to [Chris][chris]:
 
 Weapons need a refined power system, chris is currently working on it.
 
-Assigned to [Bfox][bfox]:
+### Assigned to [Bfox][bfox]:
 
 The nerve gear needs an internal inventory which will store a CD and allow teleportation based on the CD being in the inventory. It also needs to save
 aincrad player locations.
 
-Assigned to [Texturers][richard]/[Modelers][golden]:
+### Assigned to [Texturers][richard]/[Modelers][golden]:
 
 Finish texture ideas for blocks (types of blocks listed in ItemBlockMetaData)
 
 Bosses and mobs need models and we need ideas for specific mobs and bosses.
 
-Assigned to [SirPwn][sirpwns]:
+### Assigned to [SirPwn][sirpwns]:
 
 We also need a way to make a safe zone. The best idea we had earlier was making a block that players could pass through but mobs could not.
 
-Unassigned:
+### Unassigned:
 
 People need to build schematics then hand me a .schematic file.
 
@@ -76,7 +66,7 @@ Auto-building house block? Will we just make it out of vanilla blocks for now or
 [moonless]: http://github.com/Moonless-sky/ "Moonless_sky"
 [richard]: http://github.com/BloodRain/ "Richard"
 
-INFO
------
+Other info
+----------
 
 You can find the main forum post [here] (http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/wip-mods/2126565-sword-art-online-mod-wip-recruiting?page=2#c21).
