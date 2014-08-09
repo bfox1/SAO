@@ -14,7 +14,7 @@ public class SAOCD extends ItemSAO{
     {
         super();
         this.setMaxStackSize(1);
-        this.setUnlocalizedName("saocartridge");
+        this.setUnlocalizedName("cartridge");
         this.setTextureName(ReferenceHelper.setItemName(this));
     }
 }

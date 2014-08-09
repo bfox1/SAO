@@ -7,7 +7,7 @@ item.HeartOfKobold.name=Heart Of Kobold
 item.NerveGear.name=§7NerveGear
 item.TeleportCrystal.name=Teleport Crystal
 item.AntidoteCrystal.name=Antidote Crystal
-item.saocartridge.name=SAO Game
+item.sao:cartridge.name=SAO Game
 
 //Ingots
 item.sao:CrystalliteIngot.name=§bCrystallite Ingot
@@ -58,7 +58,7 @@ tile.DungeonBlock.AlterStone.name=Dungeon AlterStone
 tile.DungeonBlock.EdgedStone.name=Dungeon EdgedStone
 
 tile.CrystalStone.SmoothStone.name=Crystal Stone
-tile.CrystalStone.BrickedStone.name Crystal Brick
+tile.CrystalStone.BrickedStone.name=Crystal Brick
 tile.CrystalStone.ChiseledStone.name=Crystal Chiseled Brick
 tile.CrystalStone.AlterStone.name=Crystal AlterStone
 tile.CyrstalStone.EdgedStone.name=Crystal EdgedStone
