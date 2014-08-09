@@ -3,13 +3,16 @@ package net.teamsao.mcsao.item.items;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
+import net.teamsao.mcsao.container.ContainerNerveGear;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.inventory.InventoryNerveGear;
 import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.portal.SAOTeleporter;
@@ -27,6 +30,8 @@ import net.teamsao.mcsao.portal.SAOTeleporter;
 public class NerveGear extends ItemArmor {
 
     int tickCounter;
+
+    ItemStack stack = new ItemStack(SAOItems.CDSAO);
 	
 	public NerveGear(ArmorMaterial material, int armorType, String name){
 		super(material, 0, armorType);
@@ -75,22 +80,26 @@ public class NerveGear extends ItemArmor {
 
     public void onArmorTick(World world, EntityPlayer players, ItemStack itemStack)
     {
-        EntityPlayer entityPlayer;
+        ItemStack gear = new InventoryNerveGear(itemStack).getStackInSlot(0);
+        ItemStack cart = new ItemStack(SAOItems.CDSAO);
+        if(gear != null && cart != null) {
+            String gear2 = gear.getUnlocalizedName();
+            String cart2 = cart.getUnlocalizedName();
+            if (!world.isRemote) {
+                if (players.getCurrentArmor(3) == itemStack && players.isPlayerSleeping() && players.dimension == 0) {
+                    //String cart = new ItemStack(SAOItems.CDSAO).getUnlocalizedName();
 
+                    if (gear2.equals(cart2)) {
 
-        if(!world.isRemote) {
-                if(players.getCurrentArmor(3) == itemStack && players.isPlayerSleeping()) {
-
-                    EntityPlayerMP player = ((EntityPlayerMP)players);
-
-                    SAOTeleporter.tranferPlayerToDimension(player, 2);
-
-
+                        EntityPlayerMP player = ((EntityPlayerMP) players);
+                        SAOTeleporter.tranferPlayerToDimension(player, 2);
+                    }
 
 
                 }
 
             }
+        }
 
 
         }
