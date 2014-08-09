@@ -1,0 +1,74 @@
+//Item with meta data
+item.BossKillToken:1.name=§5BossKillToken
+item.BossKillToken:0.name=§5BossKillToken
+
+//Items
+item.HeartOfKobold.name=Heart Of Kobold
+item.CrystalliteIngot.name=§bCrystallite Ingot
+item.NerveGear.name=§7NerveGear
+item.TeleportCrystal.name=Teleport Crystal
+item.AntidoteCrystal.name=Antidote Crystal
+
+//Foods
+item.RagoutRabbitMeat.name=Ragout Rabbit Meat
+item.ScavengerToadMeat.name=Toad Meat
+
+//Swords
+item.Elucidator.name=§8Elucidator
+item.Elucidator_Powered.name=§8Elucidator
+
+item.AnnealBlade.name=§3Anneal Blade
+item.AnnealBladePowered.name=§3Anneal Blade
+
+item.DarkRepulser.name=§bDark Repulser
+item.DarkRepulserPowered.name=§bDark Repulser
+
+item.GuiltyThorn.name=§cGuilty Thorn   
+item.GuiltyThornPowered.name=§cGuilty Thorn
+
+item.LambentLight.name=§bLambent Light
+item.LambentLightPowered.name=§bLambent Light
+
+item.EbonDagger.name=Ebon Dagger
+item.EbonDaggerPowered.name=Ebon Dagger
+
+item.MateChopper.name=§4Mate Chopper
+item.MateChopperPowered.name=§4Mate Chopper
+
+item.Karakurenai.name=Karakurenai
+item.KarakurenaiPowered.name=Karakurenai
+
+item.ShadowDagger.name=§8Shadow Dagger
+item.ShadowDaggerPowered.name=§8Shadow Dagger
+
+item.TyrantDragon.name=Tyrant Dragon
+item.TyrantDragonPowered.name=Tyrant Dragon
+
+
+
+//Blocks
+
+tile.DungeonBlock.SmoothStone.name=Dungeon Stone
+tile.DungeonBlock.BrickedStone.name=Dungeon Brick
+tile.DungeonBlock.ChiseledStone.name=Dungeon Chiseled Brick
+tile.DungeonBlock.AlterStone.name=Dungeon AlterStone
+tile.DungeonBlock.EdgedStone.name=Dungeon EdgedStone
+
+tile.CrystalStone.SmoothStone.name=Crystal Stone
+tile.CrystalStone.BrickedStone.name Crystal Brick
+tile.CrystalStone.ChiseledStone.name=Crystal Chiseled Brick
+tile.CrystalStone.AlterStone.name=Crystal AlterStone
+tile.CyrstalStone.EdgedStone.name=Crystal EdgedStone
+
+tile.portal.name=SAO Portal Block
+
+//Tabs
+itemGroup.SAO=Sao
+itemGroup.SaoTools=Sao Tools
+itemGroup.SaoBlocks=Sao Blocks
+itemGroup.SaoFoods=Sao Foods
+
+//Entities
+entity.KoboldTest.name=Kobold
+entity.Boar.name=Boar
+//Others
