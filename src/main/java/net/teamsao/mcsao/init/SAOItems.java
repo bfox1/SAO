@@ -8,7 +8,6 @@ import net.teamsao.mcsao.item.*;
 import net.teamsao.mcsao.item.armor.*;
 import net.teamsao.mcsao.item.foods.RabbitMeat;
 import net.teamsao.mcsao.item.items.SAOCD;
-
 import net.teamsao.mcsao.item.swords.*;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
@@ -74,13 +73,16 @@ public class SAOItems {
     // Items
     public static Item BossKillToken = new net.teamsao.mcsao.item.items.BossKillToken();
     public static Item HeartOfKobold = new net.teamsao.mcsao.item.items.HeartOfKobold();
-    public static Item CrystalliteIngot = new net.teamsao.mcsao.item.items.CrystalliteIngot();
     public static Item NerveGear = new net.teamsao.mcsao.item.items.NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
 
     public static Item TeleportCrystal = new net.teamsao.mcsao.item.items.TeleportCrystal();
     public static Item AntidoteCrystal = new net.teamsao.mcsao.item.items.AntidoteCrystal();
 
-    // Armor
+
+    //Ingots
+    public static Item CrystalliteIngot = new net.teamsao.mcsao.item.ingots.CrystalliteIngot();
+    
+    //Armor
     public static Item CoatOfMidnightBody = new COM_Body(SArmorMaterial.coatOfMidnight, 1, "CoatOfMidnightBody");
     public static Item CoatOfMidnightLeggings = new COM_Leggings(SArmorMaterial.coatOfMidnight, 2, "CoatOfMidnightLeggings");
     public static Item CoatOfMidnightBoots = new COM_Boots(SArmorMaterial.coatOfMidnight, 3, "CoatOfMidnightBoots");
@@ -92,18 +94,26 @@ public class SAOItems {
 
     // Food
     public static Item ragoutRabbitMeat = new RabbitMeat(10, 15.0F, false, "RagoutRabbitMeat");
-    public static SItemFood scavengerToadMeat = new net.teamsao.mcsao.item.foods.ScavengerToadMeat(3, 4.0F, false, "ScavengerToadMeat");
+
+    public static SItemFood ScavengerToadMeat = new net.teamsao.mcsao.item.foods.ScavengerToadMeat(3, 4.0F, false, "ScavengerToadMeat");
+    
+
+
 
     protected static void registerInit() {
 
-        Item[] items = { BossKillToken, HeartOfKobold, CrystalliteIngot, NerveGear,AntidoteCrystal,
+        Item[] items = { BossKillToken, HeartOfKobold, NerveGear,AntidoteCrystal,
                 TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
                 ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO};
 
-        Item[] foods = {ragoutRabbitMeat, scavengerToadMeat};
+
+        Item[] foods = {ragoutRabbitMeat, ScavengerToadMeat};
 
         Item[] swords = {Elucidator, AnnealBlade, DarkRepulser, GuiltyThorn, LambentLight, EbonDagger, MateChopper,
                         Karakurenai, ShadowDagger, TyrantDragon, KagemitsuG4, LiberatorShield, LiberatorSword};
+
+        Item[] ingots = {CrystalliteIngot};
+
 
         Item[] pSwords = {ElucidatorPowered, AnnealBladePowered, DarkRepulserPowered, GuiltyThornPowered, LambentLightPowered,
                          EbonDaggerPowered, MateChopperPowered, KarakurenaiPowered, ShadowDaggerPowered, TyrantDragonPowered,
@@ -115,13 +125,25 @@ public class SAOItems {
             ReferenceHelper.registerItem(item);
         }
 
+
         for (Item food : foods) {
             ReferenceHelper.registerItem(food);
+        }
+
+        
+        for(int i = 0; i < ingots.length; i++) {
+        	ReferenceHelper.registerItem(ingots[i]);
+        }
+        
+        for(int i = 0; i < foods.length; i++){
+            ReferenceHelper.registerItem(foods[i]);
+
         }
 
         for (Item sword : swords) {
             ReferenceHelper.registerItem(sword);
         }
+
 
         for (Item pSword : pSwords) {
             ReferenceHelper.registerItem(pSword);
@@ -130,6 +152,7 @@ public class SAOItems {
         for (Item gun : guns) {
             ReferenceHelper.registerItem(gun);
         }
+
 
     }
 }

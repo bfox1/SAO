@@ -4,11 +4,13 @@ item.BossKillToken:0.name=§5BossKillToken
 
 //Items
 item.HeartOfKobold.name=Heart Of Kobold
-item.CrystalliteIngot.name=§bCrystallite Ingot
 item.NerveGear.name=§7NerveGear
 item.TeleportCrystal.name=Teleport Crystal
 item.AntidoteCrystal.name=Antidote Crystal
 item.saocartridge.name=SAO Game
+
+//Ingots
+item.sao:CrystalliteIngot.name=§bCrystallite Ingot
 
 //Foods
 item.RagoutRabbitMeat.name=Ragout Rabbit Meat
@@ -68,6 +70,7 @@ tile.portal.name=SAO Portal Block
 //Tabs
 itemGroup.SAO=Sao
 itemGroup.SaoTools=Sao Tools
+itemGroup.SaoIngots=Sao Ingots
 itemGroup.SaoBlocks=Sao Blocks
 itemGroup.SaoFoods=Sao Foods
 
