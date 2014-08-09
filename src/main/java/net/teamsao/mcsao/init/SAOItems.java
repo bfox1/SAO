@@ -100,7 +100,7 @@ public class SAOItems {
 
 
 
-    protected static void registerInit() {
+    public static void registerInit() {
 
         Item[] items = { BossKillToken, HeartOfKobold, NerveGear,AntidoteCrystal,
                 TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
@@ -110,16 +110,16 @@ public class SAOItems {
         Item[] foods = {ragoutRabbitMeat, ScavengerToadMeat};
 
         Item[] swords = {Elucidator, AnnealBlade, DarkRepulser, GuiltyThorn, LambentLight, EbonDagger, MateChopper,
-                        Karakurenai, ShadowDagger, TyrantDragon, KagemitsuG4, LiberatorShield, LiberatorSword};
+                        Karakurenai, ShadowDagger, TyrantDragon, /*KagemitsuG4, LiberatorShield, LiberatorSword*/};
 
         Item[] ingots = {CrystalliteIngot};
 
 
         Item[] pSwords = {ElucidatorPowered, AnnealBladePowered, DarkRepulserPowered, GuiltyThornPowered, LambentLightPowered,
                          EbonDaggerPowered, MateChopperPowered, KarakurenaiPowered, ShadowDaggerPowered, TyrantDragonPowered,
-                         KagemitsuG4Powered, LiberatorShieldPowered, LiberatorSwordPowered};
+                         /*KagemitsuG4Powered, LiberatorShieldPowered, LiberatorSwordPowered*/};
 
-        Item[] guns = {FnFiveSeven, PgmUltimaRatioHecateII, Type54BlackStar};
+        /*Item[] guns = {FnFiveSeven, PgmUltimaRatioHecateII, Type54BlackStar};*/
 
         for (Item item : items) {
             ReferenceHelper.registerItem(item);
@@ -149,9 +149,10 @@ public class SAOItems {
             ReferenceHelper.registerItem(pSword);
         }
 
-        for (Item gun : guns) {
+       /* for (Item gun : guns) {
             ReferenceHelper.registerItem(gun);
         }
+        */
 
 
     }
