@@ -18,11 +18,10 @@ public class CrystalliteIngot extends ItemIngot {
 		super();
 		this.setUnlocalizedName("CrystalliteIngot");
 		this.setTextureName(ReferenceHelper.setItemName(this));
+		this.setMalleability(9);
 	}
 	
-	@Override 
-	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)
-	{
+	public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4){
 		list.add(EnumChatFormatting.DARK_AQUA + "" + "A Very Sought After Metal");
 	}
 }

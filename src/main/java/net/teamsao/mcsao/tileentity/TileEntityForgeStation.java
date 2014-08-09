@@ -24,7 +24,7 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
     private static final int[] slotsSides = new int[] {1};
     
 	//private ItemStack[] inv;
-    public ItemStack[] slots = new ItemStack[5];
+    public ItemStack[] slots = new ItemStack[6];
     
     //public int cookTime;
     //public int power;

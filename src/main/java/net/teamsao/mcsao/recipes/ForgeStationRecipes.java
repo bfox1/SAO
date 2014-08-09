@@ -5,10 +5,15 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.ItemHammer;
+import net.teamsao.mcsao.item.ItemIngot;
+import net.teamsao.mcsao.item.SwordType;
+import net.teamsao.mcsao.item.WeaponType;
 
 // Created by Skymmer on 8/8/2014.
 
@@ -27,11 +32,20 @@ public class ForgeStationRecipes {
     	
     }
     
-    public void forge(ItemStack itemstack, ItemStack itemstack2, float exp) {
+    public void addForgingRecipe(Item ingot, Item weapontype, Item swordtype, Item hammer, float exp) {
+    	if(ingot instanceof ItemIngot) {
+    		if(weapontype instanceof WeaponType) {
+    			if(swordtype instanceof SwordType) {
+    				if(((ItemHammer) hammer).getHammerTier() >= ((ItemIngot) ingot).getMalleability()) {
+    					
+    				}
+    			}
+    		}
+    	}
     }
 
-    public void putRecipeAndExpInList(ItemStack itemstack, ItemStack itemstack2, float exp) {
-        this.incineratorList.put(itemstack, itemstack2);
+    public void putRecipeAndExpInList(ItemStack ingot, ItemStack itemstack2, float exp) {
+        this.incineratorList.put(ingot, itemstack2);
         this.experienceList.put(itemstack2, Float.valueOf(exp));
     }
     
