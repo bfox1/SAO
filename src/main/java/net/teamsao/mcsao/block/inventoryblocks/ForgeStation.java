@@ -5,12 +5,15 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
+import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.tileentity.TileEntityForgeStation;
 
@@ -18,6 +21,7 @@ import java.util.Random;
 
 /**
  * Created by bfox1 on 7/12/2014.
+ * Edited by Skymmer on 8/7/2014.
  */
 public class ForgeStation extends BlockContainer {
     int cookTime;
@@ -30,29 +34,23 @@ public class ForgeStation extends BlockContainer {
         this.setCreativeTab(SAOTabsManager.saoBlocks);
     }
 
-    @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player,
-                                    int metadata, float what, float these, float are)
-    {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int metadata, float hitX, float hitY, float hitZ) {
         TileEntity tileEntity = world.getTileEntity(x, y , z);
-        if(tileEntity == null || player.isSneaking()){
+        if(tileEntity == null || player.isSneaking()) {
             return false;
         }
         //Code to Open Gui.
-        player.openGui(SwordArtOnline.instance, 0, world, x, y, z);
+        player.openGui(SwordArtOnline.instance, SAOBlocks.ForgingStationID, world, x, y, z); // moved id to a separate area for easier reference later - Skymmer
         return true;
     }
 
-    @Override
-    public void breakBlock(World p_149749_1_, int p_149749_2_, int p_149749_3_, int p_149749_4_, Block p_149749_5_, int p_149749_6_)
-    {
-        if (hasTileEntity(p_149749_6_) && !(this instanceof BlockContainer))
-        {
-            p_149749_1_.removeTileEntity(p_149749_2_, p_149749_3_, p_149749_4_);
+    public void breakBlock(World world, int x, int y, int z, Block block, int i) {
+        if (hasTileEntity(i) && !(this instanceof BlockContainer)) {
+            world.removeTileEntity(x, y, z);
         }
     }
 
-    private void dropItems(World world, int x, int y, int z){
+    /*private void dropItems(World world, int x, int y, int z){ // Don't know what this does, it might be covered by another method - Skymmer
         Random rand = new Random();
 
         TileEntity tileEntity = world.getTileEntity(x, y, z);
@@ -85,10 +83,25 @@ public class ForgeStation extends BlockContainer {
                 item.stackSize = 0;
             }
         }
+    } */
+    
+    public boolean hasComparatorInputOverride() {
+		return true;
+	}
+
+	public int getComparatorInputOverride(World world, int x, int y, int z, int i) {
+		return Container.calcRedstoneFromInventory((IInventory)world.getTileEntity(x, y, z));
+	}
+	
+	public Item getItemDropped(int i, Random rand, int j) {
+		return Item.getItemFromBlock(SAOBlocks.ForgingStation);
+	}
+	
+	public Item getItem(World world, int x, int y, int z) {
+        return Item.getItemFromBlock(SAOBlocks.ForgingStation);
     }
 
-    @Override
-    public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
+    public TileEntity createNewTileEntity(World world, int i) {
         return new TileEntityForgeStation();
     }
 }

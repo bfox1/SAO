@@ -33,7 +33,7 @@ public class Elucidator extends ItemSword {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-        ItemStack sword = new ItemStack(SAOItems.Elucidator_Powered);
+        ItemStack sword = new ItemStack(SAOItems.ElucidatorPowered);
         sword.addEnchantment(Enchantment.sharpness, 5);
 
         if(!par2.isRemote)

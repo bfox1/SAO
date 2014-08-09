@@ -8,6 +8,6 @@ public class ItemFnFiveSeven extends Item {
 
     public ItemFnFiveSeven() {
         super();
-        setCreativeTab(SAOTabsManager.sao)
+        setCreativeTab(SAOTabsManager.SAO);
     }
 }

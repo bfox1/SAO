@@ -85,11 +85,7 @@ public class SAOTeleporter extends Teleporter
         mpPlayer.isDead = false;
         transferEntityToWorld(mpPlayer, s, worldServer, worldServer1);
         func_72375_a(mpPlayer, worldServer);
-        if(mpPlayer.dimension == 2) {
             mpPlayer.playerNetServerHandler.setPlayerLocation(0, 40, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
-        }else if(mpPlayer.dimension == 0){
-            mpPlayer.playerNetServerHandler.setPlayerLocation(bedX, bedY, bedZ, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
-        }
         mpPlayer.theItemInWorldManager.setWorld(worldServer1);
         updateTimeAndWeatherForPlayer(mpPlayer, worldServer1);
         syncPlayerInventory(mpPlayer);

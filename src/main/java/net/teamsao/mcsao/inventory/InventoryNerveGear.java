@@ -151,26 +151,47 @@ public class InventoryNerveGear implements IInventory {
      * items can still be left-clicked and placed in the inventory
      * even when this returns false
      */
-    @Override
-    public boolean isItemValidForSlot(int slot, ItemStack itemstack)
+    public static boolean getItemInSlot(ItemStack stack)
     {
-// Don't want to be able to store the inventory item within itself
-// Bad things will happen, like losing your inventory
-// Actually, this needs a custom Slot to work
-        return getItemInSlot(slot, itemstack);
-    }
-
-    public boolean getItemInSlot(int slot, ItemStack stack)
-    {
-        slot = INV_SIZE;
 
         if(stack == new ItemStack(SAOItems.CDSAO))
         {
             return true;
         }
 
+
+
         return false;
     }
+
+    public static boolean compareSlot()
+    {
+       // if(getSlotItem() ==)
+        return false;
+    }
+
+
+
+
+
+    @Override
+    public boolean isItemValidForSlot(int slot, ItemStack itemstack)
+    {
+// Don't want to be able to store the inventory item within itself
+// Bad things will happen, like losing your inventory
+// Actually, this needs a custom Slot to work
+        if(slot == 1) {
+            return getItemInSlot(itemstack);
+        }
+        return false;
+    }
+
+    public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3)
+    {
+        return this.isItemValidForSlot(par1, par2ItemStack);
+    }
+
+
 
 
     /**

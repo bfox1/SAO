@@ -34,6 +34,13 @@ public class SAOTabsManager extends CreativeTabs {
 
 };
 
+	public static final SAOTabsManager saoIngots = new SAOTabsManager(CreativeTabs.getNextID(), "SaoIngots") {
+		@SideOnly(Side.CLIENT)
+    	public Item getTabIconItem() {
+    		return SAOItems.CrystalliteIngot;
+    	}
+	};
+
 
     public static final SAOTabsManager saoFood = new SAOTabsManager(CreativeTabs.getNextID(), "SaoFoods")
     {
@@ -53,7 +60,8 @@ public class SAOTabsManager extends CreativeTabs {
 
     public static final SAOTabsManager saoGuns = new SAOTabsManager(CreativeTabs.getNextID(), "SAO Guns") {
         @SideOnly(Side.CLIENT)
-        public Item getTabIconItem() { return null; }
+        public Item getTabIconItem() {
+            return SAOItems.CDSAO; }
     };
 
     @Override

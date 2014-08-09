@@ -20,7 +20,7 @@ public class GuiNerveGear extends GuiContainer {
 
 
 
-    //public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/NerveGear.png");
+    public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/NerveGear.png");
 
 
     public GuiNerveGear(ContainerNerveGear containerItem)
@@ -43,7 +43,7 @@ public class GuiNerveGear extends GuiContainer {
     protected void drawGuiContainerForegroundLayer(int par1, int par2){
 
 
-        fontRendererObj.drawString("NerveGear", 8, 6, 4210752);
+        fontRendererObj.drawString("Nerve Gear", 8, 6, 4210752);
 
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
     }
@@ -52,9 +52,9 @@ public class GuiNerveGear extends GuiContainer {
     protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
 
         //draw your Gui here, only thing you need to change is the path
-        //this.mc.renderEngine.getTexture(GuiForgeStation);
+        this.mc.renderEngine.getTexture(texture);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-      //  this.mc.renderEngine.bindTexture(texture);
+        this.mc.renderEngine.bindTexture(texture);
         int x = (width - xSize) / 2;
         int y = (height - ySize) / 2;
         this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
