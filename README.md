@@ -3,6 +3,10 @@ Sword Art Online
 
 This mod will provide an experience, similar to the virtual reality game [Sword Art Online](http://swordartonline.wikia.com/Sword_Art_Online), into the world of Minecraft.
 
+INFO
+----
+If your Branch isnt listed, Create a New one. I delete these branches to resync Everyone To the master. Before 12PM Pacific time, you need to have your Changes added to the Master if you want to work with them. 
+
 To-Do
 -----
 
