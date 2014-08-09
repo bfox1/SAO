@@ -1,5 +1,7 @@
 package net.teamsao.mcsao.item.items;
 
+import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.item.ItemSAO;
 
@@ -12,6 +14,7 @@ public class SAOCD extends ItemSAO{
     {
         super();
         this.setMaxStackSize(1);
-        this.setUnlocalizedName("SAOCD");
+        this.setUnlocalizedName("saocartridge");
+        this.setTextureName(ReferenceHelper.setItemName(this));
     }
 }

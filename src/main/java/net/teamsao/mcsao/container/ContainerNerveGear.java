@@ -5,7 +5,9 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.inventory.InventoryNerveGear;
+import net.teamsao.mcsao.item.items.SAOCD;
 
 
 /**
@@ -45,7 +47,7 @@ public class ContainerNerveGear extends Container
 // from being stored within itself, but if you want to allow that and
 // you followed my advice at the end of the above step, then you
 // could get away with using the vanilla Slot class
-            this.addSlotToContainer(new Slot(this.inventory, 0, 80, 51));
+            this.addSlotToContainer(new SlotNerveGear(this.inventory, 0, 80, 51));
         }
 
 // If you want, you can add ARMOR SLOTS here as well, but you need to
@@ -85,6 +87,7 @@ this.addSlotToContainer(new SlotArmor(this.player, inventoryPlayer, inventoryPla
      * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
      * Only real change we make to this is to set needsUpdate to true at the end
      */
+    @Override
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
     {
         ItemStack itemstack = null;
@@ -94,6 +97,8 @@ this.addSlotToContainer(new SlotArmor(this.player, inventoryPlayer, inventoryPla
         {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
+
+            ItemStack cd = new ItemStack(SAOItems.CDSAO);
 
 // If item is in our custom Inventory or armor slot
             if (par2 < INV_START)
@@ -109,6 +114,11 @@ this.addSlotToContainer(new SlotArmor(this.player, inventoryPlayer, inventoryPla
 // Item is in inventory / hotbar, try to place in custom inventory or armor slots
             else
             {
+                if(itemstack1.getItem() instanceof SAOCD){
+                    if(!this.mergeItemStack(itemstack1, 0, 0, false)) {
+                        return null;
+                    }
+                }
 /* If your inventory only stores certain instances of Items,
 * you can implement shift-clicking to your inventory like this:
 // Check that the item is the right type

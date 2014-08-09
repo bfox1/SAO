@@ -25,13 +25,8 @@ public class GuiHandler implements IGuiHandler {
         }
         if(ID == SwordArtOnline.GUI_ITEM_INV)
         {
-            System.out.println("This passes ServerGuiElement");
             return new ContainerNerveGear(player, player.inventory, new InventoryNerveGear(player.getHeldItem()));
         }
-     /*   if(tileEntity instanceof TileEntityNerveGear)
-        {
-            return new ContainerNerveGear(player.inventory, (TileEntityNerveGear) tileEntity);
-        }*/
         return null;
     }
 
@@ -41,17 +36,10 @@ public class GuiHandler implements IGuiHandler {
         if(tileEntity instanceof TileEntityForgeStation){
             return new GuiForgeStation(player.inventory, (TileEntityForgeStation) tileEntity);
         }
-
         if(ID == SwordArtOnline.GUI_ITEM_INV)
         {
-            System.out.println("This passes ClientGuiElement");
             return new GuiNerveGear((ContainerNerveGear) new ContainerNerveGear(player, player.inventory, new InventoryNerveGear(player.getHeldItem())));
         }
-      /*  if(tileEntity instanceof TileEntityNerveGear)
-        {
-            return new GuiNerveGear(player.inventory, (TileEntityNerveGear) tileEntity);
-        }
-        */
         return null;
 
     }
