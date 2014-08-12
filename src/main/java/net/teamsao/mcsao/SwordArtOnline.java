@@ -43,13 +43,9 @@ public class SwordArtOnline {
 	@EventHandler
 	public void invalidFingerprint(FMLFingerprintViolationEvent event)
 	{
-		if(Reference.FINGERPRINT.equals("Test"))
-		{
+		if (Reference.FINGERPRINT.equals("Test")) {
 			LogHelper.info(Messages.NO_FINGERPRINT_MESSAGE);
-		}
-		else
-
-		{
+		} else {
 			LogHelper.warn(Messages.INVALID_FINGERPRINT_MESSAGE);
 		}
 	}
