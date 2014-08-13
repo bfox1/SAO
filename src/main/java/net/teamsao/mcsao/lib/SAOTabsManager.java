@@ -60,8 +60,7 @@ public class SAOTabsManager extends CreativeTabs {
 
     public static final SAOTabsManager saoGuns = new SAOTabsManager(CreativeTabs.getNextID(), "SAO Guns") {
         @SideOnly(Side.CLIENT)
-        public Item getTabIconItem() {
-            return SAOItems.CDSAO; }
+        public Item getTabIconItem() { return SAOItems.CDSAO; }
     };
 
     @Override

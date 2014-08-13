@@ -305,8 +305,14 @@ public class SchematicHelper
 				if(!(replacee instanceof BlockStairs))
 				{
 					int stairRotation = 0;
-					if((sides == 63) || ((sides & 15) == 10))
+					if(((sides & 15) == 10) || ((sides & 15) == 15) || ((sides & 51) == 51) || ((sides & 60) == 60))
 					{
+						/*
+						 * This basically only happens if you have surrounded the block to be replaced in a ring of blocks.
+						 * It uses bitwise operators like that to ensure it covers varying cases where those ringed directions
+						 * would not "exactly" happen because one or two of the remaining block directions might also be
+						 * solid. Also covers the "oh, you *do* want it to face east in a normal way." case.
+						*/
 						stairRotation = 0;
 					}
 					else if((sides & 15) == 9)
