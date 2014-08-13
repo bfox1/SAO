@@ -26,8 +26,7 @@ Weapons need a refined power system, chris is currently working on it.
 
 ### Assigned to [Bfox][bfox]:
 
-The nerve gear needs an internal inventory which will store a CD and allow teleportation based on the CD being in the inventory. It also needs to save
-aincrad player locations.
+Working on Player and Individual skills that can be obtained or selected.
 
 ### Assigned to [Texturers][richard]/[Modelers][golden]:
 
@@ -38,6 +37,10 @@ Bosses and mobs need models and we need ideas for specific mobs and bosses.
 ### Assigned to [SirPwn][sirpwns]:
 
 We also need a way to make a safe zone. The best idea we had earlier was making a block that players could pass through but mobs could not.
+
+### Assigned to [Earbuds][earbuds]
+
+Making a Crafting system.
 
 ### Unassigned:
 
