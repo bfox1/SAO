@@ -117,8 +117,8 @@ public class SAOItems {
 
         Item[] items = { BossKillToken, HeartOfKobold, NerveGear,AntidoteCrystal,
                 TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
-                ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, WeaponTypeSelector,
-                SwordTypeSelector};
+                ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, /*WeaponTypeSelector,
+                SwordTypeSelector*/};
 
 
         Item[] foods = {ragoutRabbitMeat , ScavengerToadMeat, RawRagoutRabbitMeat, ScavengerCookedToadMeat};
