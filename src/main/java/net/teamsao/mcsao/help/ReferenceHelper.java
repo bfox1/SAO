@@ -46,5 +46,4 @@ public class ReferenceHelper {
 		String test = Reference.MODID + ":" + name.getUnlocalizedName().substring(5);
 		return test;
 	}
-	
 }

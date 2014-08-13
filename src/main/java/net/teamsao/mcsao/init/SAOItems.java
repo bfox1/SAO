@@ -11,6 +11,7 @@ import net.teamsao.mcsao.item.potions.Elixir;
 import net.teamsao.mcsao.item.swords.*;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
+import net.teamsao.mcsao.recipes.ForgeStationRecipes;
 
 /**
  * Created by bfox1 on 7/23/2014.
@@ -65,6 +66,9 @@ public class SAOItems {
     public static Item FnFiveSeven /* = new FnFiveSeven(SToolMaterial.FnFiveSeven)*/;
     public static Item PgmUltimaRatioHecateII /* = new PgmUltimaRatioHecateII(SToolMaterial.PgmUltimaRatioHecateII)*/;
     public static Item Type54BlackStar;
+    
+    //Hammers
+    public static Item ZoringenHammer = new net.teamsao.mcsao.item.hammers.ZoringenHammer();
 
     // ItemBlocks
     public static Item DungeonStoneItem = new ItemBlockMetaData(SAOBlocks.DungeonStone);
@@ -83,6 +87,9 @@ public class SAOItems {
 
 
 
+    public static Item WeaponTypeSelector = new net.teamsao.mcsao.item.items.WeaponTypeSelector();
+    public static Item SwordTypeSelector = new net.teamsao.mcsao.item.items.SwordTypeSelector();
+    
     //Ingots
     public static Item CrystalliteIngot = new net.teamsao.mcsao.item.ingots.CrystalliteIngot();
     
@@ -110,7 +117,8 @@ public class SAOItems {
 
         Item[] items = { BossKillToken, HeartOfKobold, NerveGear,AntidoteCrystal,
                 TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
-                ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO};
+                ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, WeaponTypeSelector,
+                SwordTypeSelector};
 
 
         Item[] foods = {ragoutRabbitMeat , ScavengerToadMeat, RawRagoutRabbitMeat, ScavengerCookedToadMeat};
@@ -126,6 +134,8 @@ public class SAOItems {
                          /*KagemitsuG4Powered, LiberatorShieldPowered, LiberatorSwordPowered*/};
 
         /*Item[] guns = {FnFiveSeven, PgmUltimaRatioHecateII, Type54BlackStar};*/
+        
+        Item[] hammers = {ZoringenHammer};
 
         for (Item item : items) {
             ReferenceHelper.registerItem(item);
@@ -139,6 +149,10 @@ public class SAOItems {
         
         for(int i = 0; i < ingots.length; i++) {
         	ReferenceHelper.registerItem(ingots[i]);
+        	
+        	for(int j = 0; j < hammers.length; j++) {
+        		ForgeStationRecipes.forging().addForgingRecipe(ingots[i], WeaponTypeSelector, SwordTypeSelector, hammers[j], 0.1F);
+        	}
         }
         
         for(int i = 0; i < foods.length; i++){
@@ -159,7 +173,9 @@ public class SAOItems {
             ReferenceHelper.registerItem(gun);
         }
         */
-
-
+        
+        for(int i = 0; i < hammers.length; i++) {
+        	ReferenceHelper.registerItem(hammers[i]);
+        }
     }
 }

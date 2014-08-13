@@ -49,7 +49,8 @@ item.ShadowDaggerPowered.name=§8Shadow Dagger
 item.TyrantDragon.name=Tyrant Dragon
 item.TyrantDragonPowered.name=Tyrant Dragon
 
-
+//Hammers
+item.sao:ZoringenHammer.name=Zoringen Hammer
 
 //Blocks
 
