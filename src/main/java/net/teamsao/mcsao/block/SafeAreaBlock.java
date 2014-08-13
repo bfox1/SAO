@@ -20,6 +20,7 @@ public class SafeAreaBlock extends BlockSAO {
 	public SafeAreaBlock() {
 		super(Material.rock);
 		this.setBlockName("safetyblock");
+        this.setBlockUnbreakable();
         this.setBlockTextureName(ReferenceHelper.setBlockName(this));
 	}
 

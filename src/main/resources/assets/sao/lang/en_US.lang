@@ -13,8 +13,10 @@ item.sao:cartridge.name=SAO Game
 item.sao:CrystalliteIngot.name=§bCrystallite Ingot
 
 //Foods
-item.RagoutRabbitMeat.name=Ragout Rabbit Meat
-item.ScavengerToadMeat.name=Toad Meat
+item.ragoutmeat.name=Ragout Rabbit Meat
+item.toadmeat.name=Toad Meat
+item.cookedtoadmeat.name=Cooked Toad Meat
+item.rawragoutmeat.name=Raw Ragout Meat
 
 //Swords
 item.Elucidator.name=§8Elucidator
@@ -41,7 +43,7 @@ item.MateChopperPowered.name=§4Mate Chopper
 item.Karakurenai.name=Karakurenai
 item.KarakurenaiPowered.name=Karakurenai
 
-item.ShadowDagger.name=§8Shadow Dagger
+item.shadowdagger.name=§8Shadow Dagger
 item.ShadowDaggerPowered.name=§8Shadow Dagger
 
 item.TyrantDragon.name=Tyrant Dragon

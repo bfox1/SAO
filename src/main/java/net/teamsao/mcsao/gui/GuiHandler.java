@@ -1,6 +1,7 @@
 package net.teamsao.mcsao.gui;
 
 import cpw.mods.fml.common.network.IGuiHandler;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemHangingEntity;
 import net.minecraft.tileentity.TileEntity;

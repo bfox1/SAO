@@ -2,12 +2,12 @@ package net.teamsao.mcsao.init;
 
 import net.minecraft.item.Item;
 import net.teamsao.mcsao.block.ItemBlockMetaData;
-import net.teamsao.mcsao.block.BlockSAO;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.*;
 import net.teamsao.mcsao.item.armor.*;
-import net.teamsao.mcsao.item.foods.RabbitMeat;
+import net.teamsao.mcsao.item.foods.*;
 import net.teamsao.mcsao.item.items.SAOCD;
+import net.teamsao.mcsao.item.potions.Elixir;
 import net.teamsao.mcsao.item.swords.*;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
@@ -78,6 +78,10 @@ public class SAOItems {
     public static Item TeleportCrystal = new net.teamsao.mcsao.item.items.TeleportCrystal();
     public static Item AntidoteCrystal = new net.teamsao.mcsao.item.items.AntidoteCrystal();
 
+    //Potions
+    public static Item Elixer = new Elixir();
+
+
 
     //Ingots
     public static Item CrystalliteIngot = new net.teamsao.mcsao.item.ingots.CrystalliteIngot();
@@ -93,9 +97,11 @@ public class SAOItems {
     public static Item debugBoots = new Debug_Boots(SArmorMaterial.debugMaterial,  3, "DebugBoots");
 
     // Food
-    public static Item ragoutRabbitMeat = new RabbitMeat(10, 15.0F, false, "RagoutRabbitMeat");
+    public static Item ragoutRabbitMeat = new RabbitMeat(10, 15.0F, false, "ragoutmeat");
+    public static Item RawRagoutRabbitMeat = new RawRabbitMeat(2, 2.0F, false, "rawragoutmeat");
 
-    public static SItemFood ScavengerToadMeat = new net.teamsao.mcsao.item.foods.ScavengerToadMeat(3, 4.0F, false, "ScavengerToadMeat");
+    public static SItemFood ScavengerToadMeat = new ScavengerToadMeat(1, 1.0F, false, "toadmeat");
+    public static SItemFood ScavengerCookedToadMeat = new ScavengerCookedToadMeat(3, 4.0F, false, "cookedtoadmeat");
     
 
 
@@ -107,7 +113,7 @@ public class SAOItems {
                 ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO};
 
 
-        Item[] foods = {ragoutRabbitMeat, ScavengerToadMeat};
+        Item[] foods = {ragoutRabbitMeat , ScavengerToadMeat, RawRagoutRabbitMeat, ScavengerCookedToadMeat};
 
         Item[] swords = {Elucidator, AnnealBlade, DarkRepulser, GuiltyThorn, LambentLight, EbonDagger, MateChopper,
                         Karakurenai, ShadowDagger, TyrantDragon, /*KagemitsuG4, LiberatorShield, LiberatorSword*/};

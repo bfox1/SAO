@@ -46,7 +46,7 @@ public class SAOTabsManager extends CreativeTabs {
     {
         @SideOnly(Side.CLIENT)
         public Item getTabIconItem() {
-            return SAOItems.ragoutRabbitMeat;
+            return SAOItems.RawRagoutRabbitMeat;
         }
     };
 
