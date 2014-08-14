@@ -68,6 +68,10 @@ tile.CyrstalStone.EdgedStone.name=Crystal EdgedStone
 
 tile.sao:safetyblock.name=Safety Block
 
+tile.sao:cobbleroad.name=Cobblestone Road
+tile.sao:aincraddirt.name=Aincrad Dirt
+tile.sao:aincradgrass.name=Aincrad Grass Block
+
 tile.portal.name=SAO Portal Block
 
 //Tabs

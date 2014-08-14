@@ -17,8 +17,11 @@ public class BlockSAO extends Block{
 	
 
 
-    public BlockSAO(Material material) {
+    public BlockSAO(Material material)
+    {
         super(material);
+        this.setBlockUnbreakable();
+        this.setLightOpacity(0);
         this.setCreativeTab(SAOTabsManager.saoBlocks);
     }
 

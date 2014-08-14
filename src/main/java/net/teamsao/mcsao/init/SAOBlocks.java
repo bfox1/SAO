@@ -23,6 +23,9 @@ public class SAOBlocks {
     public static Block CrystalStone = new net.teamsao.mcsao.block.dungeonstone.CrystalStone();
     public static Block TeleportCrystalBlock = new net.teamsao.mcsao.block.TeleportCrystalBlock();
     public static Block SafeAreaBlock = new net.teamsao.mcsao.block.SafeAreaBlock();
+    public static Block CobbleRoadBlock = new net.teamsao.mcsao.block.CobbleRoadBlock();
+    public static Block AincradDirtBlock = new net.teamsao.mcsao.block.AincradDirtBlock();
+    public static Block AincradGrassBlock = new net.teamsao.mcsao.block.AincradGrassBlock();
 
     public static void registerInit()
     {
@@ -35,5 +38,8 @@ public class SAOBlocks {
         ReferenceHelper.registerBlock(ForgingStation);
         ReferenceHelper.registerBlock(TeleportCrystalBlock);
         ReferenceHelper.registerBlock(SafeAreaBlock);
+        ReferenceHelper.registerBlock(CobbleRoadBlock);
+        ReferenceHelper.registerBlock(AincradDirtBlock);
+        ReferenceHelper.registerBlock(AincradGrassBlock);
     }
 }
