@@ -11,6 +11,7 @@ item.sao:cartridge.name=SAO Game
 
 //Ingots
 item.sao:CrystalliteIngot.name=§bCrystallite Ingot
+item.sao:BlackIronIngot.name=§8Black Iron Ingot
 
 //Foods
 item.RagoutRabbitMeat.name=Ragout Rabbit Meat
