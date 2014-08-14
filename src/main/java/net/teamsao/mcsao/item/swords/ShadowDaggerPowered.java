@@ -33,7 +33,7 @@ public class ShadowDaggerPowered extends SItemSword {
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-        ItemStack sword = new ItemStack(SAOItems.MateChopper);
+        ItemStack sword = new ItemStack(SAOItems.ShadowDagger);
 
         if(!par2.isRemote)
         {
