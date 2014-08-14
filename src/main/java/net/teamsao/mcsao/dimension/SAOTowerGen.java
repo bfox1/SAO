@@ -4,14 +4,10 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.chunk.NibbleArray;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.teamsao.mcsao.block.BlockSAO;
 import net.teamsao.mcsao.help.StructureGenHelper;
 import net.teamsao.mcsao.init.SAOBlocks;
 
@@ -24,6 +20,21 @@ public class SAOTowerGen extends WorldGenerator
 	private Block floor = Blocks.stonebrick;
 	private Block wall = SAOBlocks.DungeonStone;
 
+	/**
+	 * This method is what is used to generate individual chunks at a time for the floor currently.
+	 * It doesn't incorporate the "roaming" chunks I used for the schema generator quite yet. I'm still
+	 * working out how to do that correctly. Basically, the generate method iterates through a 64 chunk square
+	 * area, and sends data to this method which is used to grab a chunk. From that chunk the individual
+	 * 16 cubic block area is grabbed, which has methods to directly modify the block and metadata for a
+	 * single coordinate. While inside the loop I determine the world coordinates so that I can keep the shape
+	 * of the floor cylindrical by using a <= radius function. Then, while on the radius of the circle I add
+	 * in the walls. After modifying each chunk, what keeps it from bugging out is the piece at the end,
+	 * generating the sky light map and telling the world the chunk has been modified. Oh, and also apparently
+	 * calling getBlock on every single coordinate also helps that. Still not sure why about that part.
+	 * @param world
+	 * @param chunkX
+	 * @param chunkZ
+	 */
 	private void setUpTower(World world, int chunkX, int chunkZ)
 	{
 		int startX = 0;

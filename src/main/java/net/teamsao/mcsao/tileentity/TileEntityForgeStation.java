@@ -16,6 +16,11 @@ import net.teamsao.mcsao.recipes.ForgeStationRecipes;
  * Created by bfox1 on 7/12/2014.
  * Edited by Earbuds on 8/7/2014.
  */
+/*
+    Be sure Earbuds to @Override anymethods that have the Up arrow next to it.
+    Most methods have an indicator on the left side that says that it has a super method. Not overriding it
+    can result in alot of conflicts.
+ */
 public class TileEntityForgeStation extends TileEntity implements IInventory{
    
 	//Where sides items can be put into/taken out of.
@@ -24,7 +29,9 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
     private static final int[] slotsSides = new int[] {1};
     
 	//private ItemStack[] inv;
-    public ItemStack[] slots = new ItemStack[5];
+
+    public ItemStack[] slots = new ItemStack[6];
+
     
     //public int cookTime;
     //public int power;
@@ -35,7 +42,6 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
     public int cookTime;
     
     private String field_145958_o;
-    private static final String __OBFID = "CL_00000357";
 
     public static final TileEntityForgeStation forgeBase = new TileEntityForgeStation();
     
@@ -45,14 +51,17 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
 
     private String getInventoryName;
 
+    @Override
     public int getSizeInventory() {
         return this.slots.length;
     }
 
+    @Override
     public ItemStack getStackInSlot(int slot) {
         return slots[slot];
     }
 
+    @Override
     public ItemStack decrStackSize(int slot, int amt) {
         if (this.slots[slot] != null) {
             ItemStack itemstack;
@@ -75,7 +84,8 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
             return null;
         }
     }
-    
+
+    @Override
     public ItemStack getStackInSlotOnClosing(int slot) {
         if (this.slots[slot] != null) {
             ItemStack itemstack = this.slots[slot];
@@ -87,6 +97,7 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
         }
     }
 
+    @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
         this.slots[slot] = stack;
 
@@ -95,10 +106,12 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
         }
     }
 
+    @Override
     public String getInventoryName() {
         return this.hasCustomInventoryName() ? this.field_145958_o : "container.molecularIncinerator";
     }
 
+    @Override
     public boolean hasCustomInventoryName() {
         return this.field_145958_o != null && this.field_145958_o.length() > 0;
     }
@@ -107,6 +120,7 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
         this.field_145958_o = string;
     }
 
+    @Override
     public int getInventoryStackLimit() {
         return 64;
     }
@@ -128,7 +142,8 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
     public boolean isBurning() {
         return this.burnTime > 0;
     }
-    
+
+    @Override
     public void updateEntity() {
         boolean flag = this.burnTime > 0;
         boolean flag1 = false;
@@ -188,19 +203,23 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
             return result <= getInventoryStackLimit() && result <= this.slots[2].getMaxStackSize();
         }
     }
-    
+
+    @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
         return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this && player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
     }
 
+    @Override
     public void openInventory() {
 
     }
 
+    @Override
     public void closeInventory() {
 
     }
 
+    @Override
     public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
         return false;
     }
@@ -208,6 +227,7 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
     /**
      * Reads a tile entity from NBT.
      */
+    @Override
     public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items", par1NBTTagCompound.getId());
@@ -232,6 +252,7 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
     /**
      * Writes a tile entity to NBT.
      */
+    @Override
     public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
         NBTTagList nbttaglist = new NBTTagList();

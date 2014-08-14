@@ -4,22 +4,28 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Facing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.proxy.ClientProxy;
 
 //Created by SirPwn on 8/6/14
 public class SafeAreaBlock extends BlockSAO {
 	
-	public SafeAreaBlock() {
+	public SafeAreaBlock()
+	{
 		super(Material.rock);
 		this.setBlockName("safetyblock");
+        this.setBlockUnbreakable();
         this.setBlockTextureName(ReferenceHelper.setBlockName(this));
 	}
 
@@ -34,6 +40,23 @@ public class SafeAreaBlock extends BlockSAO {
     public boolean renderAsNormalBlock()
     {
         return false;
+    }
+    
+    @Override
+    public int getRenderType()
+    {
+    	return ClientProxy.safeAreaBlockRenderType;
+    }
+    
+    @Override
+    public boolean canRenderInPass(int pass)
+    {
+    	ClientProxy.renderPass = pass;
+    	if(pass == 0)
+    	{
+    		return false;
+    	}
+    	return true;
     }
 
     @Override
@@ -61,9 +84,35 @@ public class SafeAreaBlock extends BlockSAO {
 
     @Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
 	{
-	  return par1IBlockAccess.getBlock(par2, par3, par4) != this;
+    	Block block = world.getBlock(x, y, z);
+    	boolean flag = false;	
+    	
+    	if (world.getBlockMetadata(x, y, z) != world.getBlockMetadata(x - Facing.offsetsXForSide[side], y - Facing.offsetsYForSide[side], z - Facing.offsetsZForSide[side]))
+        {
+            flag = true;
+        }
+    	else if (block == this && !this.isOpaqueCube())
+        {
+            return false;
+        }
+        
+        if(flag)
+        {
+        	/*ForgeDirection coords = ForgeDirection.getOrientation(side);
+        	int modX = x + coords.offsetX;
+        	int modY = y + coords.offsetY;
+        	int modZ = z + coords.offsetZ;
+        	ForgeDirection opposite = coords.getOpposite();
+        	int mod2X = x + opposite.offsetX;
+        	int mod2Y = y + opposite.offsetY;
+        	int mod2Z = z + opposite.offsetZ;
+        	Block across = world.getBlock(modX, modY, modZ);
+        	Block before = world.getBlock(mod2X, mod2Y, mod2Z);
+        	flag = !(across != this && before == this);*/
+        }
+        return flag ? false : super.shouldSideBeRendered(world, x, y, z, side);
 	}
 
     @Override
@@ -81,7 +130,7 @@ public class SafeAreaBlock extends BlockSAO {
 
     @Override
 	public boolean isBlockSolid(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-	  {
+	{
 	    return true;
-	  }
+	}
 }

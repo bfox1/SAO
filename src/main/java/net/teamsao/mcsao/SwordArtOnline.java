@@ -1,7 +1,10 @@
 package net.teamsao.mcsao;
 
 import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiIngame;
 import net.teamsao.mcsao.entity.EntitySAO;
+import net.teamsao.mcsao.gui.GuiSaoInGameMenu;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.gui.GuiHandler;

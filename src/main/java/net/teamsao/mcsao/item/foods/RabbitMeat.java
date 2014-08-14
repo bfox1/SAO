@@ -1,7 +1,11 @@
 package net.teamsao.mcsao.item.foods;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SAOTabsManager;
 
@@ -16,5 +20,8 @@ public class RabbitMeat extends ItemFood {
             this.setUnlocalizedName(name);
             this.setTextureName(ReferenceHelper.setItemName(this));
             this.setCreativeTab(SAOTabsManager.saoFood);
+
         }
+
+
 }
