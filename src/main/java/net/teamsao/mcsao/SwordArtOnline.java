@@ -1,33 +1,34 @@
 package net.teamsao.mcsao;
 
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiIngame;
+
+import net.minecraftforge.common.MinecraftForge;
 import net.teamsao.mcsao.entity.EntitySAO;
-import net.teamsao.mcsao.gui.GuiSaoInGameMenu;
-import net.teamsao.mcsao.init.SAOBlocks;
-import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.gui.GuiHandler;
 import net.teamsao.mcsao.help.Messages;
 import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.init.SAOBlocks;
+import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.lib.Recipe;
 import net.teamsao.mcsao.material.SToolMaterial;
+import net.teamsao.mcsao.overlay.OverlayHealth;
 import net.teamsao.mcsao.proxy.SProxy;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import net.teamsao.mcsao.util.LogHelper;
 
-/* Created on 7-1-2014
+/**
+ * Created on 7-1-2014
  * This is the main file for the entire mod. All Init MUST go here.
  * If you need help, Ask bfox1 for information or refer to the Other classes for examples.
- */
-
-/**
  * @author bfox1
  */
 @Mod(modid = Reference.MODID, name = Reference.NAME, certificateFingerprint = "Test", version = Reference.VERSION)
@@ -44,8 +45,7 @@ public class SwordArtOnline {
 
 
 	@EventHandler
-	public void invalidFingerprint(FMLFingerprintViolationEvent event)
-	{
+	public void invalidFingerprint(FMLFingerprintViolationEvent event) {
 		if (Reference.FINGERPRINT.equals("Test")) {
 			LogHelper.info(Messages.NO_FINGERPRINT_MESSAGE);
 		} else {
@@ -54,8 +54,7 @@ public class SwordArtOnline {
 	}
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
+	public void preInit(FMLPreInitializationEvent evt) {
         LogHelper.info("Starting PreInitEvent");
 		EntitySAO.registerIds();
 		SToolMaterial.init();
@@ -64,13 +63,10 @@ public class SwordArtOnline {
         proxy.registerDimension();
 		proxy.initRenderingAndTextures();
         LogHelper.info("Finished PreInitEvent");
-
-
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
+	public void init(FMLInitializationEvent evt) {
         LogHelper.info("Starting InitEvent");
         proxy.registerGlobalEntity();
 		proxy.registerTileEntities();
@@ -79,5 +75,9 @@ public class SwordArtOnline {
         LogHelper.info("Finished InitEvent");
 	}
 
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent evt) {
+        MinecraftForge.EVENT_BUS.register(new OverlayHealth(Minecraft.getMinecraft())); // Register health overlay
+    }
 
 }

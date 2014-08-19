@@ -8,7 +8,6 @@ import net.teamsao.mcsao.init.SAOItems;
 
 /**
  * @author bfox1
- *
  */
 public class SAOTabsManager extends CreativeTabs {
 
