@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
@@ -281,7 +282,7 @@ public class StructureGenHelper
 	 * @param z
 	 * @return a new BlockData object which contains the block type, metadata, and entered coordinates.
 	 */
-	public static BlockData getBlockDataAt(World world, int x, int y, int z)
+	public static BlockData getBlockDataAt(IBlockAccess world, int x, int y, int z)
 	{
 		return new BlockData(world.getBlock(x, y, z), world.getBlockMetadata(x, y, z), x, y, z);
 	}

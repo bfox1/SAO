@@ -140,12 +140,6 @@ public class BlockData implements Comparable
 				return false;
 		} else if (!block.equals(other.block))
 			return false;
-		if (blockX != other.blockX)
-			return false;
-		if (blockY != other.blockY)
-			return false;
-		if (blockZ != other.blockZ)
-			return false;
 		if (metadata != other.metadata)
 			return false;
 		return true;

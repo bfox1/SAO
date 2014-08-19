@@ -15,7 +15,9 @@ import net.minecraft.util.Facing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.teamsao.mcsao.help.BlockData;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.help.StructureGenHelper;
 import net.teamsao.mcsao.proxy.ClientProxy;
 
 //Created by SirPwn on 8/6/14
@@ -25,6 +27,7 @@ public class SafeAreaBlock extends BlockSAO {
 	{
 		super(Material.rock);
 		this.setBlockName("safetyblock");
+		this.setLightOpacity(0);
         this.setBlockTextureName(ReferenceHelper.setBlockName(this));
 	}
 
@@ -85,33 +88,17 @@ public class SafeAreaBlock extends BlockSAO {
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
 	{
-    	Block block = world.getBlock(x, y, z);
-    	boolean flag = false;	
-    	
-    	if (world.getBlockMetadata(x, y, z) != world.getBlockMetadata(x - Facing.offsetsXForSide[side], y - Facing.offsetsYForSide[side], z - Facing.offsetsZForSide[side]))
+    	BlockData otherBlock = StructureGenHelper.getBlockDataAt(world, x, y, z);
+    	BlockData block = StructureGenHelper.getBlockDataAt(world, x - Facing.offsetsXForSide[side], 
+    			y - Facing.offsetsYForSide[side], z - Facing.offsetsZForSide[side]);
+    	if (!(otherBlock.equals(block)))
         {
-            flag = true;
+            return true;
         }
-    	else if (block == this && !this.isOpaqueCube())
+    	else
         {
             return false;
         }
-        
-        if(flag)
-        {
-        	/*ForgeDirection coords = ForgeDirection.getOrientation(side);
-        	int modX = x + coords.offsetX;
-        	int modY = y + coords.offsetY;
-        	int modZ = z + coords.offsetZ;
-        	ForgeDirection opposite = coords.getOpposite();
-        	int mod2X = x + opposite.offsetX;
-        	int mod2Y = y + opposite.offsetY;
-        	int mod2Z = z + opposite.offsetZ;
-        	Block across = world.getBlock(modX, modY, modZ);
-        	Block before = world.getBlock(mod2X, mod2Y, mod2Z);
-        	flag = !(across != this && before == this);*/
-        }
-        return flag ? false : super.shouldSideBeRendered(world, x, y, z, side);
 	}
 
     @Override
