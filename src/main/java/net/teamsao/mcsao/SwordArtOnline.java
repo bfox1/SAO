@@ -1,10 +1,9 @@
 package net.teamsao.mcsao;
 
 import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiIngame;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.teamsao.mcsao.entity.EntitySAO;
-import net.teamsao.mcsao.gui.GuiSaoInGameMenu;
+import net.teamsao.mcsao.event.command.SAOCommand;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.gui.GuiHandler;
@@ -43,6 +42,7 @@ public class SwordArtOnline {
 	public static SProxy proxy;
 
 
+
 	@EventHandler
 	public void invalidFingerprint(FMLFingerprintViolationEvent event)
 	{
@@ -76,12 +76,19 @@ public class SwordArtOnline {
 	public void init(FMLInitializationEvent event)
 	{
         LogHelper.info("Starting InitEvent");
+        proxy.registerEventHandlers();
         proxy.registerGlobalEntity();
 		proxy.registerTileEntities();
 		Recipe.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         LogHelper.info("Finished InitEvent");
 	}
+
+    @EventHandler
+    public void serverLoad(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new SAOCommand());
+    }
 
 
 }

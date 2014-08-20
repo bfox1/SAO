@@ -20,8 +20,7 @@ public class ServerProxy extends CommonProxy {
 
 	@Override
 	public void registerEventHandlers() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
