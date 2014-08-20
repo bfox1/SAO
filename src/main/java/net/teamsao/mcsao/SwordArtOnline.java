@@ -1,9 +1,11 @@
 package net.teamsao.mcsao;
 
 import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngame;
 import net.teamsao.mcsao.entity.EntitySAO;
+import net.teamsao.mcsao.event.commands.TpDimension;
 import net.teamsao.mcsao.gui.GuiSaoInGameMenu;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.init.SAOItems;
@@ -82,6 +84,13 @@ public class SwordArtOnline {
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         LogHelper.info("Finished InitEvent");
 	}
+
+
+    @EventHandler
+    public void serverLoad(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new TpDimension());
+    }
 
 
 }
