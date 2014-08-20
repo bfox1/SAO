@@ -18,6 +18,7 @@ public class TpDimension extends CommandBase{
         this.aliases = new ArrayList();
         this.aliases.add("SAO");
         this.aliases.add("SwordArtOnline");
+        this.aliases.add("sao");
     }
     @Override
     public String getCommandName() {
@@ -40,10 +41,10 @@ public class TpDimension extends CommandBase{
     public void processCommand(ICommandSender commandSender, String[] strings) {
 
         EntityPlayerMP playerMP = strings.length == 0 ? getCommandSenderAsPlayer(commandSender) : getPlayer(commandSender, strings[0]);
-        System.out.println("Made it here");
+        //System.out.println("Made it here");
 
         if(strings.length == 3) {
-            System.out.println("past the strings" );
+          //  System.out.println("past the strings" );
             byte b0 = 1;
             int ji = b0 + 1;
             int i = 30000000;
