@@ -65,7 +65,6 @@ public class SAOWorldGenerator implements IWorldGenerator
      */
     private void generateAincrad(World world, Random rand, int blockX, int blockZ)
     {
-    	System.out.println("Fine the class is being used but where is the generator?!");
     	WorldGenerator towerGen = new SAOTowerGen();
     	towerGen.generate(world, rand, blockX, blockZ, 0);
     }

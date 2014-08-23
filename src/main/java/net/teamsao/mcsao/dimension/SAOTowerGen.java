@@ -64,7 +64,6 @@ public class SAOTowerGen extends WorldGenerator
 							world.markBlockForUpdate(modX, 32+y, modZ);
 							world.notifyBlockChange(modX, 32+y, modZ, wall);
 						}
-
 					}
 				}
 				else if(distance < floor1Radius)
@@ -121,7 +120,7 @@ public class SAOTowerGen extends WorldGenerator
 		
 		long endTime = System.nanoTime();
 		long time = (endTime - startTime);
-		System.out.println("Time for completion is "+time+" nanoseconds, "+time/1000000L+" seconds, or "+time/60000000L+" minutes.");
+		System.out.println("Time for completion is "+time+" nanoseconds, "+time/1000000000L+" seconds, or "+time/60000000000L+" minutes.");
 		return true;
 	}
 }

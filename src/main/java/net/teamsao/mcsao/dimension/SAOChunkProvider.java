@@ -255,13 +255,13 @@ public class SAOChunkProvider implements IChunkProvider
 	 * based on the biome's height class and the world type.
 	 * @param chunkXCoord
 	 * @param chunkZCoord
-	 * @param chunkOfBlocks
-	 * @param p_147422_4_
+	 * @param blocks
+	 * @param metadata
 	 * @param biomesToGenerate
 	 */
-	public void replaceBlocksForBiome(int chunkXCoord, int chunkZCoord, Block[] chunkOfBlocks, byte[] p_147422_4_, BiomeGenBase[] biomesToGenerate)
+	public void replaceBlocksForBiome(int chunkXCoord, int chunkZCoord, Block[] blocks, byte[] metadata, BiomeGenBase[] biomesToGenerate)
 	{
-		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, chunkXCoord, chunkZCoord, chunkOfBlocks, p_147422_4_, biomesToGenerate);
+		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, chunkXCoord, chunkZCoord, blocks, metadata, biomesToGenerate);
 		MinecraftForge.EVENT_BUS.post(event);
 		if (event.getResult() == Result.DENY) return;
 
@@ -278,14 +278,7 @@ public class SAOChunkProvider implements IChunkProvider
 			for (int l = 0; l < 16; ++l)
 			{
 				BiomeGenBase biomegenbase = biomesToGenerate[l + k * 16];
-				/*if(worldType != WorldType.FLAT)
-                { 
-
-				 * Ian - The if statement is something I made to test it but this is where all blocks in every chunk are generated.
-				 * Getting rid of this code is what makes the void dimension. Lava and other structures might remain after but this does most of the work.
-
-                	biomegenbase.genTerrainBlocks(this.worldObj, this.rand, p_147422_3_, p_147422_4_, p_147422_1_ * 16 + k, p_147422_2_ * 16 + l, this.stoneNoise[l + k * 16]);
-                }*/
+                biomegenbase.genTerrainBlocks(this.worldObj, this.rand, blocks, metadata, chunkXCoord * 16 + k, chunkZCoord * 16 + l, this.stoneNoise[l + k * 16]);
 			}
 		}
 	}
@@ -480,7 +473,7 @@ public class SAOChunkProvider implements IChunkProvider
 		 */
 		if(chunkX == 0 && chunkZ == 0)
 		{
-			this.towerGen.generate(this.worldObj, this.rand, chunkX, chunkZ, 40);
+			//this.towerGen.generate(this.worldObj, this.rand, chunkX, chunkZ, 40);
 
 		}
 

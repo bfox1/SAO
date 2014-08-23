@@ -73,9 +73,6 @@ public class SafeAreaBlockRenderer implements ISimpleBlockRenderingHandler
 	 */
 	public void drawCube(Tessellator tessellator, Block block, int x, int y, int z, boolean[] renderFaces)
 	{
-		//t.startDrawingQuads();
-		//t.setTranslation(x, y, z);
-
 		IIcon icon = block.getIcon(0, 0);
 		double uMin = icon.getMinU();
 		double uMax = icon.getMaxU();
@@ -108,8 +105,6 @@ public class SafeAreaBlockRenderer implements ISimpleBlockRenderingHandler
 		{
 			drawEast(tessellator, (double)x, (double)y, (double)z, uMin, uMax, vMin, vMax, offset);
 		}
-
-		//t.draw();
 	}
 
 	private void drawNorth(Tessellator t, double x, double y, double z, double uMin, double uMax, double vMin, double vMax, double offset)

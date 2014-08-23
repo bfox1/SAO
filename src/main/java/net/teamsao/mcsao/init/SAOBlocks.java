@@ -11,6 +11,7 @@ import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.ItemIngot;
 import net.teamsao.mcsao.item.items.ItemCobbleSlab;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 
 /**
  * Created by bfox1 on 7/24/2014.
@@ -43,7 +44,7 @@ public class SAOBlocks {
         GameRegistry.registerBlock(DungeonStone, ItemBlockMetaData.class, ReferenceHelper.setBlockName(SAOBlocks.DungeonStone));
         GameRegistry.registerBlock(CrystalStone, ItemBlockMetaData.class, ReferenceHelper.setBlockName(SAOBlocks.CrystalStone));
 
-        AincradCobbleHalfSlab.setCreativeTab(CobbleRoadBlock.getCreativeTabToDisplayOn());
+        AincradCobbleHalfSlab.setCreativeTab(SAOTabsManager.saoBlocks);
         GameRegistry.registerBlock(AincradCobbleHalfSlab, ItemCobbleSlab.class, AincradCobbleHalfSlab.getUnlocalizedName());
         GameRegistry.registerBlock(AincradCobbleDoubleSlab, ItemCobbleSlab.class, AincradCobbleDoubleSlab.getUnlocalizedName());
 
@@ -55,7 +56,7 @@ public class SAOBlocks {
         ReferenceHelper.registerBlock(CobbleRoadBlock);
         ReferenceHelper.registerBlock(AincradDirtBlock);
         ReferenceHelper.registerBlock(AincradGrassBlock);
-        AincradCobbleStairs.setCreativeTab(CobbleRoadBlock.getCreativeTabToDisplayOn());
+        AincradCobbleStairs.setCreativeTab(SAOTabsManager.saoBlocks);
         ReferenceHelper.registerBlock(AincradCobbleStairs);
     }
 }
