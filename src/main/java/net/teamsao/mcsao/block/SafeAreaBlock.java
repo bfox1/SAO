@@ -45,6 +45,7 @@ public class SafeAreaBlock extends BlockSAO {
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
     public int getRenderType()
     {
     	return ClientProxy.safeAreaBlockRenderType;

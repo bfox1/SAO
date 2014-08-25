@@ -8,6 +8,9 @@ item.NerveGear.name=§7NerveGear
 item.TeleportCrystal.name=Teleport Crystal
 item.AntidoteCrystal.name=Antidote Crystal
 item.sao:cartridge.name=SAO Game
+item.HealingCrystal.name=Healing Crystal
+item.Elixer.name=Elixer
+item.EmptyVial.name=EmptyVial
 
 //Ingots
 item.sao:CrystalliteIngot.name=§bCrystallite Ingot
