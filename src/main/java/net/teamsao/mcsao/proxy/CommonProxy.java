@@ -4,15 +4,22 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.MinecraftForge;
+import net.teamsao.mcsao.handler.SaoEventHandler;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.lib.DimensionId;
 import net.teamsao.mcsao.dimension.SAOWorldProvider;
 import net.teamsao.mcsao.entity.*;
 import net.teamsao.mcsao.model.KoboldTest;
 import net.teamsao.mcsao.model.boar;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /*
     ANY Methods you add here from the Sproxy class will not be needed in Client/Server proxy Classes.
@@ -24,6 +31,7 @@ import net.teamsao.mcsao.model.boar;
 
 public abstract class CommonProxy implements SProxy {
 
+    private static final Map<String, NBTTagCompound> extendedEntityData = new HashMap<String, NBTTagCompound>();
 
     public void registerTileEntities()
     {}
@@ -46,6 +54,20 @@ public abstract class CommonProxy implements SProxy {
     public void addChestLoot()
     {
         ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SAOItems.CDSAO), 1,1, 005));
+    }
+
+    public static void storeEntityData(String name, NBTTagCompound storage)
+    {
+        extendedEntityData.put(name, storage);
+    }
+    public static NBTTagCompound getEntityData(String name)
+    {
+        return extendedEntityData.remove(name);
+    }
+
+    @Override
+    public void registerEventHandlers(){
+        MinecraftForge.EVENT_BUS.register(new SaoEventHandler());
     }
 
 }

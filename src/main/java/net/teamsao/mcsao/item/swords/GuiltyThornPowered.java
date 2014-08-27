@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
@@ -24,6 +25,7 @@ public class GuiltyThornPowered extends ItemSword {
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
 	{
+        par1ItemStack.damageItem(1, par3EntityLiving);
 	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.poison.id, 20 * 5, 1));
 	return true;
 	}

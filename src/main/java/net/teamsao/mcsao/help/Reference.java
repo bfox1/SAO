@@ -13,4 +13,5 @@ public class Reference {
 		public static final String CLIENTPROXY = "net.teamsao.mcsao.proxy.ClientProxy";
 		public static final String SERVERPROXY = "net.teamsao.mcsao.proxy.ServerProxy";
         public static final String FINGERPRINT = "Test";
+        public static final String GUI_FACTORY = "net.teamsao.mcsao.help.SAOGuiFactory";
 }

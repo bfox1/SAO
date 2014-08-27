@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
@@ -23,6 +24,7 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.teamsao.mcsao.block.BlockSAO;
 import net.teamsao.mcsao.init.SAOBlocks;
+import net.teamsao.mcsao.player.PlayerSAO;
 
 public class SAOTeleporter extends Teleporter
 {
@@ -61,19 +63,13 @@ public class SAOTeleporter extends Teleporter
 
     public static void tranferPlayerToDimension(EntityPlayerMP mpPlayer, int newDim)
     {
-        int X = 0;
-        int Y = 0;
-        int Z = 0;
-        if(mpPlayer.dimension == 0) {
+        EntityPlayer player = (EntityPlayerMP)mpPlayer;
 
 
-            ChunkCoordinates chunkcoordinates = mpPlayer.getPlayerCoordinates();
-            mpPlayer.setSpawnChunk(chunkcoordinates, true);
-
-             X = chunkcoordinates.posX;
-             Y = chunkcoordinates.posY;
-             Z = chunkcoordinates.posZ;
-        }
+        PlayerSAO props = PlayerSAO.get(player);
+        int X = props.getXCoord();
+        int Y = props.getYCoord();
+        int Z = props.getZCoord();
 
 
 

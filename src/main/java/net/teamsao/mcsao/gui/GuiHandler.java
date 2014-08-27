@@ -41,6 +41,10 @@ public class GuiHandler implements IGuiHandler {
         {
             return new GuiNerveGear((ContainerNerveGear) new ContainerNerveGear(player, player.inventory, new InventoryNerveGear(player.getHeldItem())));
         }
+        if(ID == SwordArtOnline.GUI_ITEM_INV)
+        {
+            return new GuiSaoMenu();
+        }
         return null;
 
     }

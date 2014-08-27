@@ -1,11 +1,13 @@
 package net.teamsao.mcsao;
 
-import cpw.mods.fml.common.event.FMLFingerprintViolationEvent;
-import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.event.*;
 
 
+import net.minecraftforge.common.config.Configuration;
 import net.teamsao.mcsao.entity.EntitySAO;
 import net.teamsao.mcsao.event.commands.TpDimension;
+import net.teamsao.mcsao.handler.ConfigurationHandler;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.gui.GuiHandler;
@@ -13,13 +15,12 @@ import net.teamsao.mcsao.help.Messages;
 import net.teamsao.mcsao.help.Reference;
 import net.teamsao.mcsao.lib.Recipe;
 import net.teamsao.mcsao.material.SToolMaterial;
+import net.teamsao.mcsao.packet.SaoPacketPipeline;
 import net.teamsao.mcsao.proxy.SProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import net.teamsao.mcsao.util.LogHelper;
 
@@ -31,11 +32,13 @@ import net.teamsao.mcsao.util.LogHelper;
 /**
  * @author bfox1
  */
-@Mod(modid = Reference.MODID, name = Reference.NAME, certificateFingerprint = "Test", version = Reference.VERSION)
+@Mod(modid = Reference.MODID, name = Reference.NAME, certificateFingerprint = "Test", version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY)
 public class SwordArtOnline {
 
 	@Instance(Reference.MODID)
 	public static SwordArtOnline instance;
+
+    public static final SaoPacketPipeline packetPipeline = new SaoPacketPipeline();
 
     public static int modGuiIndex = 0;
 
@@ -63,6 +66,8 @@ public class SwordArtOnline {
 	public void preInit(FMLPreInitializationEvent event)
 	{
         LogHelper.info("Starting PreInitEvent");
+        ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+        FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 		EntitySAO.registerIds();
 		SToolMaterial.init();
 		SAOItems.registerInit();
@@ -77,14 +82,23 @@ public class SwordArtOnline {
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+        packetPipeline.initialise();
         LogHelper.info("Starting InitEvent");
         proxy.registerEventHandlers();
         proxy.registerGlobalEntity();
 		proxy.registerTileEntities();
+        proxy.registerKeybindings();
+        Recipe.removeBlockRecipes();
 		Recipe.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         LogHelper.info("Finished InitEvent");
 	}
+
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {
+        packetPipeline.postInitialise();
+    }
 
 
 

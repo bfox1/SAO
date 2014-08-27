@@ -32,4 +32,9 @@ public class AincradCobbleStairs extends BlockStairs
 	{
 		return "sao:cobbleroadstairs";
 	}
+    @Override
+    public int damageDropped(int par1)
+    {
+        return par1;
+    }
 }

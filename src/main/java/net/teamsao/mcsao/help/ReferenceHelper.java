@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.teamsao.mcsao.block.BlockSAO;
 
 /**
  * @author bfox1
@@ -15,13 +16,13 @@ public class ReferenceHelper {
 	
 	public static void registerBlock(Block block)
 	{
-		GameRegistry.registerBlock(block,  Reference.MODID + ":" + block.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(block,  block.getUnlocalizedName().substring(5));
 
 	}
 
 	public static void registerItem(Item item)
 	{
-		GameRegistry.registerItem(item,  Reference.MODID + ":" + item.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
 
 
 	}
@@ -33,7 +34,7 @@ public class ReferenceHelper {
 	 */
 	public static String setItemName(Item name)
 	{
-		String test = Reference.MODID + ":" + name.getUnlocalizedName().substring(5);
+		String test = Reference.MODID.toLowerCase() + ":" + name.getUnlocalizedName().substring(5);
 		return test;
 
 	}
@@ -43,7 +44,7 @@ public class ReferenceHelper {
 	 * @return returns the Variable test
 	 */
 	public static String setBlockName(Block name){
-		String test = Reference.MODID + ":" + name.getUnlocalizedName().substring(5);
+		String test = Reference.MODID.toLowerCase() + ":" + name.getUnlocalizedName().substring(5);
 		return test;
 	}
 }

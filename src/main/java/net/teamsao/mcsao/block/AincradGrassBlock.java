@@ -19,7 +19,7 @@ public class AincradGrassBlock extends BlockSAO
 	
 	public AincradGrassBlock()
 	{
-		super();
+		super(Material.grass);
 		this.setBlockName("cobbleroad");
 		this.setBlockTextureName(ReferenceHelper.setBlockName(this));
 		this.setStepSound(Block.soundTypeGrass);

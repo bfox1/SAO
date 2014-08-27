@@ -12,11 +12,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.teamsao.mcsao.block.BlockSAO;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.lib.SAOTabsManager;
 //
 
-public class DungeonStone extends Block {
+public class DungeonStone extends BlockSAO {
 
 	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "AlterStone", "EdgedStone"};
 	
@@ -25,7 +26,6 @@ public class DungeonStone extends Block {
 		super(Material.rock);
 		this.setCreativeTab(SAOTabsManager.saoBlocks);
 		this.setBlockName("DungeonBlock");
-        this.setBlockUnbreakable();
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class DungeonStone extends Block {
 
 		for(int i = 0; i < icons.length; i++)
 		{
-			icons[i] = par1IconRegister.registerIcon(ReferenceHelper.setBlockName(this) + i);
+			icons[i] = par1IconRegister.registerIcon(this.getUnlocalizedName().substring(5) + i);
 			System.out.println(ReferenceHelper.setBlockName(this) + i);
 		}
 	}
