@@ -33,8 +33,8 @@ public class SAOBlocks {
     public static Block AincradDirtBlock = new net.teamsao.mcsao.block.AincradDirtBlock();
     public static Block AincradGrassBlock = new net.teamsao.mcsao.block.AincradGrassBlock();
     public static Block AincradCobbleStairs = new net.teamsao.mcsao.block.AincradCobbleStairs(CobbleRoadBlock);
-    public static Block AincradCobbleHalfSlab = new net.teamsao.mcsao.block.AincradCobbleSlab(CobbleRoadBlock, false);
-    public static Block AincradCobbleDoubleSlab = new net.teamsao.mcsao.block.AincradCobbleSlab(CobbleRoadBlock, true);
+    public static Block AincradCobbleHalfSlab = new net.teamsao.mcsao.block.AincradCobbleSlab(CobbleRoadBlock, false).setCreativeTab(SAOTabsManager.saoBlocks);
+    public static Block AincradCobbleDoubleSlab = new net.teamsao.mcsao.block.AincradCobbleSlab(CobbleRoadBlock, true).setCreativeTab(SAOTabsManager.saoBlocks);
 
 
     public static void registerInit()

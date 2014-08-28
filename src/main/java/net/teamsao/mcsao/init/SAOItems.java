@@ -4,10 +4,13 @@ import net.minecraft.item.Item;
 import net.teamsao.mcsao.block.ItemBlockMetaData;
 import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.*;
+import net.teamsao.mcsao.item.ingots.*;
 import net.teamsao.mcsao.item.armor.*;
 import net.teamsao.mcsao.item.foods.*;
+import net.teamsao.mcsao.item.items.*;
+import net.teamsao.mcsao.item.hammers.*;
 import net.teamsao.mcsao.item.items.SAOCD;
-import net.teamsao.mcsao.item.potions.Elixir;
+import net.teamsao.mcsao.item.potions.*;
 import net.teamsao.mcsao.item.swords.*;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
@@ -21,13 +24,13 @@ public class SAOItems {
     public static Item CDSAO = new SAOCD();
 
     // Swords
-    public static Item Elucidator = new net.teamsao.mcsao.item.swords.Elucidator(SToolMaterial.Elucidator);
-    public static Item ElucidatorPowered = new net.teamsao.mcsao.item.swords.Elucidator_Powered(SToolMaterial.Elucidator);
+    public static Item Elucidator = new Elucidator(SToolMaterial.Elucidator);
+    public static Item ElucidatorPowered = new Elucidator_Powered(SToolMaterial.Elucidator);
 
-    public static Item AnnealBlade = new net.teamsao.mcsao.item.swords.AnnealBlade(SToolMaterial.AnnealBlade);
-    public static Item AnnealBladePowered = new net.teamsao.mcsao.item.swords.AnnealBladePowered(SToolMaterial.AnnealBlade);
+    public static Item AnnealBlade = new AnnealBlade(SToolMaterial.AnnealBlade);
+    public static Item AnnealBladePowered = new AnnealBladePowered(SToolMaterial.AnnealBlade);
 
-    public static Item DarkRepulser = new net.teamsao.mcsao.item.swords.DarkRepulser(SToolMaterial.DarkRepulser);
+    public static Item DarkRepulser = new DarkRepulser(SToolMaterial.DarkRepulser);
     public static Item DarkRepulserPowered = new DarkRepulserPowered(SToolMaterial.DarkRepulser);
 
     public static Item EbonDagger = new EbonDagger(SToolMaterial.EbonDagger);
@@ -68,30 +71,32 @@ public class SAOItems {
     public static Item Type54BlackStar;
     
     //Hammers
-    public static Item ZoringenHammer = new net.teamsao.mcsao.item.hammers.ZoringenHammer();
+    public static Item ZoringenHammer = new ZoringenHammer();
 
     // ItemBlocks
     public static Item DungeonStoneItem = new ItemBlockMetaData(SAOBlocks.DungeonStone);
     public static Item CrystalDungeonItem = new ItemBlockMetaData(SAOBlocks.CrystalStone);
 
     // Items
-    public static Item BossKillToken = new net.teamsao.mcsao.item.items.BossKillToken();
-    public static Item HeartOfKobold = new net.teamsao.mcsao.item.items.HeartOfKobold();
-    public static Item NerveGear = new net.teamsao.mcsao.item.items.NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
+    public static Item BossKillToken = new BossKillToken();
+    public static Item HeartOfKobold = new HeartOfKobold();
+    public static Item NerveGear = new NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
 
-    public static Item TeleportCrystal = new net.teamsao.mcsao.item.items.TeleportCrystal();
-    public static Item AntidoteCrystal = new net.teamsao.mcsao.item.items.AntidoteCrystal();
+    public static Item TeleportCrystal = new TeleportCrystal();
+    public static Item AntidoteCrystal = new AntidoteCrystal();
+    public static Item HealingCrystal = new HealingCrystal();
 
     //Potions
     public static Item Elixer = new Elixir();
+    public static Item EmptyVial = new EmptyVial();
 
 
 
-    public static Item WeaponTypeSelector = new net.teamsao.mcsao.item.items.WeaponTypeSelector();
-    public static Item SwordTypeSelector = new net.teamsao.mcsao.item.items.SwordTypeSelector();
+    public static Item WeaponTypeSelector = new WeaponTypeSelector();
+    public static Item SwordTypeSelector = new SwordTypeSelector();
     
     //Ingots
-    public static Item CrystalliteIngot = new net.teamsao.mcsao.item.ingots.CrystalliteIngot();
+    public static Item CrystalliteIngot = new CrystalliteIngot();
     
     //Armor
     public static Item CoatOfMidnightBody = new COM_Body(SArmorMaterial.coatOfMidnight, 1, "CoatOfMidnightBody");
@@ -117,7 +122,8 @@ public class SAOItems {
 
         Item[] items = { BossKillToken, HeartOfKobold, NerveGear,AntidoteCrystal,
                 TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
-                ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, /*WeaponTypeSelector,
+                ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, Elixer, EmptyVial,
+                HealingCrystal/*WeaponTypeSelector,
                 SwordTypeSelector*/};
 
 
