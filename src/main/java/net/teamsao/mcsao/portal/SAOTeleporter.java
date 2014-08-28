@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.*;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
@@ -21,8 +22,10 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
+import net.minecraft.world.chunk.Chunk;
 import net.teamsao.mcsao.block.BlockSAO;
 import net.teamsao.mcsao.init.SAOBlocks;
+import net.teamsao.mcsao.player.PlayerSAO;
 
 public class SAOTeleporter extends Teleporter
 {
@@ -61,22 +64,12 @@ public class SAOTeleporter extends Teleporter
 
     public static void tranferPlayerToDimension(EntityPlayerMP mpPlayer, int newDim)
     {
-        int X = 0;
-        int Y = 0;
-        int Z = 0;
-        if(mpPlayer.dimension == 0) {
-
-
-            ChunkCoordinates chunkcoordinates = mpPlayer.getPlayerCoordinates();
-            mpPlayer.setSpawnChunk(chunkcoordinates, true);
-
-             X = chunkcoordinates.posX;
-             Y = chunkcoordinates.posY;
-             Z = chunkcoordinates.posZ;
-        }
-
-
-
+        EntityPlayer player = (EntityPlayerMP)mpPlayer;
+        PlayerSAO.loadProxyData(player);
+        PlayerSAO props = PlayerSAO.get(player);
+        int X = props.getXCoord();
+        int Y = props.getYCoord();
+        int Z = props.getZCoord();
 
         MinecraftServer mcServer = MinecraftServer.getServer();
         int s = mpPlayer.dimension;
@@ -90,9 +83,12 @@ public class SAOTeleporter extends Teleporter
         func_72375_a(mpPlayer, worldServer);
 
         if(newDim == 2) {
-            mpPlayer.playerNetServerHandler.setPlayerLocation(0, 40, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+            Chunk chunk = worldServer.getChunkFromBlockCoords(0, 0);
+            int height = chunk.getHeightValue(0, 0);
+            mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }else if(newDim == 0)
         {
+
             mpPlayer.playerNetServerHandler.setPlayerLocation(X, Y, Z, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }
 

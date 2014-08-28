@@ -25,7 +25,8 @@ public class ShadowDaggerPowered extends SItemSword {
     @Override
     public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
     {
-        par2EntityLiving.addPotionEffect(new PotionEffect(Potion.blindness.id, 20 * 5, 2));
+        par1ItemStack.damageItem(1, par3EntityLiving);
+        par2EntityLiving.addPotionEffect(new PotionEffect(Potion.blindness.id, 50 * 5, 2));
         return true;
     }
 

@@ -23,7 +23,8 @@ public class LambentLightPowered extends ItemSword {
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
 	{
-	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20 * 5, 3));
+    par1ItemStack.damageItem(1, par3EntityLiving);
+	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 500, 3));
 	return true;
 	}
 	

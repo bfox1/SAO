@@ -25,7 +25,7 @@ public class GuiltyThorn extends ItemSword {
     {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
         ItemStack sword = new ItemStack(SAOItems.GuiltyThornPowered);
-        sword.addEnchantment(Enchantment.sharpness, 5);
+        sword.addEnchantment(Enchantment.sharpness, 2);
 
         if(!par2.isRemote)
         {

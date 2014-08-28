@@ -24,6 +24,11 @@ public class AincradCobbleSlab extends BlockSlab
 		this.material = block;
 		this.isDoubleSlab = isDoubleSlab;
 	}
+    @Override
+    public int damageDropped(int par1)
+    {
+        return par1;
+    }
 
 	@Override
 	public String func_150002_b(int damageValue)

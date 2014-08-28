@@ -23,8 +23,9 @@ public class MateChopperPowered extends ItemSword {
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
 	{
-	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.wither.id, 50, 3));
-	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.confusion.id, 5, 1));
+    par1ItemStack.damageItem(1, par3EntityLiving);
+	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.wither.id, 30, 3));
+	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.confusion.id, 30*5, 1));
 	par3EntityLiving.addPotionEffect(new PotionEffect(Potion.resistance.id, 20, 3));
 	return true;
 	}

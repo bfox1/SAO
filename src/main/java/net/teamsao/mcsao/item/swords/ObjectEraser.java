@@ -5,12 +5,19 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.item.SItemSword;
+import net.teamsao.mcsao.util.ColorHelper;
+
+import java.util.List;
 //
 
 /**
@@ -26,12 +33,22 @@ public class ObjectEraser extends SItemSword
 		this.setCreativeTab(null);
 	}
 
-	@Override
+
+
+    @Override
+    public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3) {
+        par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
+
+        return par1;
+    }
+
+    @Override
 	public void onUpdate(ItemStack itemstack, World world, Entity entity, int par4, boolean par5) {
 
 		EntityPlayer player = ((EntityPlayer) entity);
 		if (!world.isRemote)
 		{
+            player.setAbsorptionAmount(15.5F);
 			if (itemstack.isItemEnchanted() == false)
 			{
 				itemstack.addEnchantment(Enchantment.sharpness, 5);
@@ -52,4 +69,14 @@ public class ObjectEraser extends SItemSword
 			}
 		}
 	}
+
+    @Override
+    public void addInformation(ItemStack item, EntityPlayer player, List list,
+                               boolean par4) {
+
+        list.add(ColorHelper.DARK_RED + "" + ColorHelper.ITALIC + "A Legendary Sword");
+        list.add(ColorHelper.DARK_RED + "" + ColorHelper.ITALIC + "Said to hold Infinite");
+        list.add(ColorHelper.DARK_RED + "" + ColorHelper.ITALIC + "Power unlike anyother.");
+
+    }
 }
