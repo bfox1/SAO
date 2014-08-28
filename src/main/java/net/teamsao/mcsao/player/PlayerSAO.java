@@ -18,6 +18,8 @@ import net.teamsao.mcsao.packet.SyncPlayerPropPacket;
 import net.teamsao.mcsao.proxy.CommonProxy;
 import net.teamsao.mcsao.util.NBTHelper;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.util.UUID;
 
 /**
@@ -40,9 +42,9 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     public PlayerSAO(EntityPlayer player) {
         this.player = player;
-        this.overWorldX = 0;
-        this.overWorldY = 0;
-        this.overWorldZ = 0;
+        /*this.overWorldX = 10;
+        this.overWorldY = 60;
+        this.overWorldZ = 10;*/
     }
 
     //Used to register these extended properties for the player during EntityConstruction event
@@ -59,6 +61,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     public static String getSavedKey(EntityPlayer player)
     {
+        System.out.println(player.getGameProfile().getName());
         return player.getGameProfile().getName() + ":" + EXT_PROP_NAME;
     }
 
@@ -88,10 +91,10 @@ public class PlayerSAO implements IExtendedEntityProperties {
     @Override
     public void saveNBTData(NBTTagCompound compound) {
         NBTTagCompound properties = new NBTTagCompound();
-        getOverPlayerCoords();
-        properties.setInteger("bedCoordX", overWorldX);
-        properties.setInteger("bedCoordY", overWorldY);
-        properties.setInteger("bedCoordZ", overWorldZ);
+
+        properties.setInteger("bedCoordX", this.overWorldX);
+        properties.setInteger("bedCoordY", this.overWorldY);
+        properties.setInteger("bedCoordZ", this.overWorldZ);
         compound.setTag(EXT_PROP_NAME, properties);
     }
 
@@ -101,7 +104,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
         this.overWorldX = properties.getInteger("bedCoordX");
         this.overWorldY = properties.getInteger("bedCoordY");
         this.overWorldZ = properties.getInteger("bedCoordZ");
-        player.addChatMessage(new ChatComponentText("Now At:" + overWorldX + "" + overWorldY + "" + overWorldZ));
+        player.addChatMessage(new ChatComponentText("Now At:" + this.overWorldX + "" + this.overWorldY + "" + this.overWorldZ));
 
     }
 
@@ -112,6 +115,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     public int getXCoord()
     {
+
         return this.overWorldX;
     }
 
@@ -125,18 +129,13 @@ public class PlayerSAO implements IExtendedEntityProperties {
         return this.overWorldZ;
     }
 
-    private  PlayerSAO getOverPlayerCoords(){
-
-        if(player.dimension == 0)
-        {
-
-                this.overWorldY = player.getBedLocation(0).posX;
-                this.overWorldY = player.getBedLocation(0).posY;
-                this.overWorldZ = player.getBedLocation(0).posZ;
-
-            this.world = 0;
-        }
-        return null;
+    public void setXYZCoord(int x, int y, int z)
+    {
+        this.overWorldX = x;
+        this.overWorldY = y;
+        this.overWorldZ = z;
     }
+
+
 
 }

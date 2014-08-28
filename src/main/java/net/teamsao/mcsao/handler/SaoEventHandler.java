@@ -1,11 +1,13 @@
 package net.teamsao.mcsao.handler;
 
+import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.teamsao.mcsao.player.PlayerSAO;
 import net.teamsao.mcsao.proxy.CommonProxy;
 
@@ -26,7 +28,7 @@ public class SaoEventHandler {
     }
 
     @SubscribeEvent
-    public void onLivingDeadEvent(LivingDeathEvent event)
+    public void onLivingDeathEvent(LivingDeathEvent event)
     {
         if(!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
         {
@@ -36,7 +38,7 @@ public class SaoEventHandler {
         }
     }
     @SubscribeEvent
-    public void onEntityJoinWorld(EntityJoinWorldEvent event)
+    public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
     {
         if(!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
         {
@@ -44,8 +46,9 @@ public class SaoEventHandler {
 
             if(playerdata != null)
             {
-                ((PlayerSAO)(event.entity.getExtendedProperties(PlayerSAO.EXT_PROP_NAME))).loadNBTData(playerdata);
+                PlayerSAO.loadProxyData((EntityPlayer)event.entity);
             }
+
         }
     }
 }

@@ -97,6 +97,7 @@ public class SwordArtOnline {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+
         packetPipeline.postInitialise();
     }
 

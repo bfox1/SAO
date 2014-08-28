@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.container.ContainerNerveGear;
@@ -15,6 +16,7 @@ import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.inventory.InventoryNerveGear;
 import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.player.PlayerSAO;
 import net.teamsao.mcsao.portal.SAOTeleporter;
 
 /**
@@ -90,6 +92,8 @@ public class NerveGear extends ItemArmor {
                     //String cart = new ItemStack(SAOItems.CDSAO).getUnlocalizedName();
 
                     if (gear2.equals(cart2)) {
+                        PlayerSAO prop = PlayerSAO.get(players);
+                        prop.setXYZCoord((int)players.posX,(int) players.posY, (int)players.posZ);
 
                         EntityPlayerMP player = ((EntityPlayerMP) players);
                         SAOTeleporter.tranferPlayerToDimension(player, 2);
