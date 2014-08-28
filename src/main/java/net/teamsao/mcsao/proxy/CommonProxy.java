@@ -8,8 +8,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.teamsao.mcsao.handler.SaoEventHandler;
+import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.lib.DimensionId;
 import net.teamsao.mcsao.dimension.SAOWorldProvider;
@@ -53,7 +55,7 @@ public abstract class CommonProxy implements SProxy {
 
     public void addChestLoot()
     {
-        ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SAOItems.CDSAO), 1,1, 005));
+        ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SAOItems.CDSAO), 1,6, 010));
     }
 
     public static void storeEntityData(String name, NBTTagCompound storage)

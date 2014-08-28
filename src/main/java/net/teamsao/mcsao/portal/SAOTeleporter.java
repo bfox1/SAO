@@ -82,13 +82,12 @@ public class SAOTeleporter extends Teleporter
         transferEntityToWorld(mpPlayer, s, worldServer, worldServer1);
         func_72375_a(mpPlayer, worldServer);
 
-        if(newDim == 2) {
+        if(newDim != s && newDim == 2) {
             Chunk chunk = worldServer.getChunkFromBlockCoords(0, 0);
             int height = chunk.getHeightValue(0, 0);
             mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
-        }else if(newDim == 0)
+        }else if(newDim != s && newDim == 0)
         {
-
             mpPlayer.playerNetServerHandler.setPlayerLocation(X, Y, Z, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }
 

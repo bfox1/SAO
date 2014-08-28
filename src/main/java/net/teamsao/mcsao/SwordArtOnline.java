@@ -85,6 +85,7 @@ public class SwordArtOnline {
 
         packetPipeline.initialise();
         LogHelper.info("Starting InitEvent");
+        proxy.addChestLoot();
         proxy.registerEventHandlers();
         proxy.registerGlobalEntity();
 		proxy.registerTileEntities();
