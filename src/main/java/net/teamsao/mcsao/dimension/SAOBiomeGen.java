@@ -17,6 +17,8 @@ import net.teamsao.mcsao.init.SAOBlocks;
 
 public class SAOBiomeGen extends BiomeGenBase
 {
+	public Block wallBlock;
+	
 	/**
 	 * 
 	 * Attempts to create a biome more friendly for building with no blocks anywhere except the portal.
@@ -38,6 +40,7 @@ public class SAOBiomeGen extends BiomeGenBase
 		this.spawnableWaterCreatureList.clear();
 		this.topBlock = SAOBlocks.AincradGrassBlock;
 		this.fillerBlock = SAOBlocks.AincradDirtBlock;
+		this.wallBlock = SAOBlocks.CrystalStone;
 		this.enableRain = false;
 		this.enableSnow = false;
 		this.setBiomeName("Void World");
@@ -60,18 +63,31 @@ public class SAOBiomeGen extends BiomeGenBase
 	
 	public void genVoidTerrain(World world, Random random, Block[] blocks, byte[] metadata, int x, int z, double noiseGenSeed)
     {
-		if(StructureGenHelper.distance2D(x, z) < 500)
+		int distance = StructureGenHelper.distance2D(x, z);
+		int chunkX = x & 15;
+        int chunkZ = z & 15;
+        int chunkHeight = blocks.length / 256;
+		if(distance <= 500 && distance >= 497)
+		{
+			for (int blockHeight = 255; blockHeight >= 0; --blockHeight)
+	        {
+				int blockIndex = (chunkZ * 16 + chunkX) * chunkHeight + blockHeight;
+	        	metadata[blockIndex] = 0;
+	        	int wallEnd = ((4-(500 - distance)) * 20)+40;
+	        	int wallStart = wallEnd-20;
+	        	if(blockHeight >= wallStart && blockHeight <= wallEnd)
+	        	{
+	        		blocks[blockIndex] = this.wallBlock;
+	        	}
+	        }
+		}
+		if(distance < 497)
         {
-			boolean flag = true;
 	        Block block = this.topBlock;
 	        byte blockData = (byte)(this.field_150604_aj & 255);
 	        Block block1 = this.fillerBlock;
-	        int noiseGenRand = (int)(noiseGenSeed / 3.0D + 3.0D + random.nextDouble() * 0.25D);
-	        int chunkX = x & 15;
-	        int chunkZ = z & 15;
-	        int chunkHeight = blocks.length / 256;
+	        int noiseGenRand = (int)Math.pow(noiseGenSeed / 3.0D + 3.0D, 2);
 	        int blockMaxHeight = noiseGenRand + 40;
-	        
 	        for (int blockHeight = 255; blockHeight >= 0; --blockHeight)
 	        {
 	        	int blockIndex = (chunkZ * 16 + chunkX) * chunkHeight + blockHeight;

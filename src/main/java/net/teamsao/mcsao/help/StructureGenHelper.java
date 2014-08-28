@@ -65,12 +65,21 @@ public class StructureGenHelper
 			//Do not use null data or those openly visible to not have the right amount of data.
 			return null;
 		}
-		//Also check and be sure that no indices of the arrays are null. (later)
-		double xDelta = Math.abs(origin[0]-point[0]);
-		double yDelta = Math.abs(origin[1]-point[1]);
-		double zDelta = Math.abs(origin[2]-point[2]);
-		double distance = Math.sqrt(Math.pow(xDelta, 2) + Math.pow(yDelta, 2) + Math.pow(zDelta, 2));
-		return (int) Math.round(distance);
+		try
+		{
+			//Also check and be sure that no indices of the arrays are null. (later)
+			double xDelta = Math.abs(origin[0]-point[0]);
+			double yDelta = Math.abs(origin[1]-point[1]);
+			double zDelta = Math.abs(origin[2]-point[2]);
+			double distance = Math.sqrt(Math.pow(xDelta, 2) + Math.pow(yDelta, 2) + Math.pow(zDelta, 2));
+			return (int) Math.round(distance);
+		}
+		catch(Exception e)
+		{
+			System.out.println("Bad variable for 3D distance somewhere inside the coordinate arrays.");
+			System.out.println(e);
+			return null;
+		}
 	}
 	
 	/**

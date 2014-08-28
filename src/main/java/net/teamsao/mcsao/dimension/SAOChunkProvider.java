@@ -253,25 +253,20 @@ public class SAOChunkProvider implements IChunkProvider
 	/**
 	 * The method which uses the noise generators to create hills above ground, with the amount of "hill" being
 	 * based on the biome's height class and the world type.
-	 * @param chunkXCoord
 	 * @param chunkZCoord
-	 * @param blocks
-	 * @param metadata
+	 * @param chunkXCoord
+	 * @param blocks - The array of block types in each chunk coordinate.
+	 * @param metadata - The array corresponding to the metadata of each block type in each coordinate.
 	 * @param biomesToGenerate
 	 */
-	public void replaceBlocksForBiome(int chunkXCoord, int chunkZCoord, Block[] blocks, byte[] metadata, BiomeGenBase[] biomesToGenerate)
+	public void replaceBlocksForBiome(int chunkZCoord, int chunkXCoord, Block[] blocks, byte[] metadata, BiomeGenBase[] biomesToGenerate)
 	{
-		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, chunkXCoord, chunkZCoord, blocks, metadata, biomesToGenerate);
+		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, chunkZCoord, chunkXCoord, blocks, metadata, biomesToGenerate);
 		MinecraftForge.EVENT_BUS.post(event);
 		if (event.getResult() == Result.DENY) return;
 
 		double d0 = 0.03125D;
-		this.stoneNoise = this.field_147430_m.func_151599_a(this.stoneNoise, (double)(chunkXCoord * 16), (double)(chunkZCoord * 16), 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
-
-		/*
-		 * Ian - Renamed most of the parameters when I figured out what they were by tracing the code. No idea about the byte array;
-		 * it's something to do with the BiomeGenBase class.
-		 */
+		this.stoneNoise = this.field_147430_m.func_151599_a(this.stoneNoise, (double)(chunkZCoord * 16), (double)(chunkXCoord * 16), 16, 16, d0 * 2.0D, d0 * 2.0D, 1.0D);
 
 		for (int k = 0; k < 16; ++k)
 		{
@@ -280,6 +275,25 @@ public class SAOChunkProvider implements IChunkProvider
 				BiomeGenBase biomegenbase = biomesToGenerate[l + k * 16];
                 biomegenbase.genTerrainBlocks(this.worldObj, this.rand, blocks, metadata, chunkXCoord * 16 + k, chunkZCoord * 16 + l, this.stoneNoise[l + k * 16]);
 			}
+		}
+	}
+	
+	/**
+	 * Private helper method which converts to the "correct" coordinate, since minecraft seems to like to generate all in one direction,
+	 * rather than filling out each coordinate axis in the direction of the axis.
+	 * @param coord
+	 * @param mod
+	 * @return
+	 */
+	private int getWorldCoord(int coord, int mod)
+	{
+		if(coord >= 0)
+		{
+			return coord + mod;
+		}
+		else
+		{
+			return coord - mod;
 		}
 	}
 
