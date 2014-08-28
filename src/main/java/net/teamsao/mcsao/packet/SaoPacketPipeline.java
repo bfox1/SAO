@@ -106,12 +106,18 @@ public class SaoPacketPipeline extends MessageToMessageCodec<FMLProxyPacket, Sao
     }
 
     // Method to call from FMLInitializationEvent
+    /*
+    This is so you can initialze it
+     */
     public void initialise() {
         this.channels = NetworkRegistry.INSTANCE.newChannel(Reference.MODID, this);
-
         registerPackets();
     }
 
+
+    /*
+    This is for registering ALL PacketClasses you make
+     */
     public void registerPackets(){
         registerPacket(SyncPlayerPropPacket.class);
     }

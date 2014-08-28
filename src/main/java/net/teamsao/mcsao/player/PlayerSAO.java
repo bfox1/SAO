@@ -52,37 +52,31 @@ public class PlayerSAO implements IExtendedEntityProperties {
     {
         player.registerExtendedProperties(PlayerSAO.EXT_PROP_NAME, new PlayerSAO(player));
     }
-
     //Returns ExtendedPlayer properties for player
     public static final PlayerSAO get(EntityPlayer player)
     {
         return (PlayerSAO) player.getExtendedProperties(EXT_PROP_NAME);
     }
-
     public static String getSavedKey(EntityPlayer player)
     {
-        System.out.println(player.getGameProfile().getName());
-        return player.getGameProfile().getName() + ":" + EXT_PROP_NAME;
+        String key = player.getGameProfile().getName() + "-" + player.dimension + ":" + EXT_PROP_NAME;
+        System.out.println(key);
+        return key;
     }
-
     public static void saveProxyData(EntityPlayer player){
         PlayerSAO playerdata = PlayerSAO.get(player);
         NBTTagCompound savedData = new NBTTagCompound();
-
         playerdata.saveNBTData(savedData);
         CommonProxy.storeEntityData(getSavedKey(player), savedData);
     }
-
     public static void loadProxyData(EntityPlayer player)
     {
         PlayerSAO playerdata = PlayerSAO.get(player);
         NBTTagCompound savedData = CommonProxy.getEntityData(getSavedKey(player));
-
         if(savedData != null)
         {
             playerdata.loadNBTData(savedData);
         }
-
         SwordArtOnline.packetPipeline.sendTo(new SyncPlayerPropPacket(player), (EntityPlayerMP) player);
     }
 
@@ -91,7 +85,6 @@ public class PlayerSAO implements IExtendedEntityProperties {
     @Override
     public void saveNBTData(NBTTagCompound compound) {
         NBTTagCompound properties = new NBTTagCompound();
-
         properties.setInteger("bedCoordX", this.overWorldX);
         properties.setInteger("bedCoordY", this.overWorldY);
         properties.setInteger("bedCoordZ", this.overWorldZ);
@@ -104,8 +97,6 @@ public class PlayerSAO implements IExtendedEntityProperties {
         this.overWorldX = properties.getInteger("bedCoordX");
         this.overWorldY = properties.getInteger("bedCoordY");
         this.overWorldZ = properties.getInteger("bedCoordZ");
-        player.addChatMessage(new ChatComponentText("Now At:" + this.overWorldX + "" + this.overWorldY + "" + this.overWorldZ));
-
     }
 
     @Override

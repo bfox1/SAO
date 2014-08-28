@@ -82,6 +82,7 @@ public class SwordArtOnline {
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+
         packetPipeline.initialise();
         LogHelper.info("Starting InitEvent");
         proxy.registerEventHandlers();

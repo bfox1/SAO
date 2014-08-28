@@ -22,6 +22,7 @@ import net.minecraft.world.ChunkCoordIntPair;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
+import net.minecraft.world.chunk.Chunk;
 import net.teamsao.mcsao.block.BlockSAO;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.player.PlayerSAO;
@@ -64,15 +65,11 @@ public class SAOTeleporter extends Teleporter
     public static void tranferPlayerToDimension(EntityPlayerMP mpPlayer, int newDim)
     {
         EntityPlayer player = (EntityPlayerMP)mpPlayer;
-
-
+        PlayerSAO.loadProxyData(player);
         PlayerSAO props = PlayerSAO.get(player);
         int X = props.getXCoord();
         int Y = props.getYCoord();
         int Z = props.getZCoord();
-
-
-
 
         MinecraftServer mcServer = MinecraftServer.getServer();
         int s = mpPlayer.dimension;
@@ -86,9 +83,12 @@ public class SAOTeleporter extends Teleporter
         func_72375_a(mpPlayer, worldServer);
 
         if(newDim == 2) {
-            mpPlayer.playerNetServerHandler.setPlayerLocation(0, 40, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+            Chunk chunk = worldServer.getChunkFromBlockCoords(0, 0);
+            int height = chunk.getHeightValue(0, 0);
+            mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }else if(newDim == 0)
         {
+
             mpPlayer.playerNetServerHandler.setPlayerLocation(X, Y, Z, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }
 

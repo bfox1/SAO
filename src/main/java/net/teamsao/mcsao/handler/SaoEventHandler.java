@@ -27,18 +27,16 @@ public class SaoEventHandler {
         }
     }
 
-    @SubscribeEvent
+    @SubscribeEvent()
     public void onLivingDeathEvent(LivingDeathEvent event)
     {
         if(!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
         {
-
-
             PlayerSAO.saveProxyData((EntityPlayer)event.entity);
         }
     }
     @SubscribeEvent
-    public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
+    public void onEntityJoinWorld(EntityJoinWorldEvent event)
     {
         if(!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
         {

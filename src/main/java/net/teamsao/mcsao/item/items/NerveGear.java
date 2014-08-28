@@ -18,6 +18,7 @@ import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.player.PlayerSAO;
 import net.teamsao.mcsao.portal.SAOTeleporter;
+import net.teamsao.mcsao.proxy.CommonProxy;
 
 /**
  * This file was forked from HeartOfKobold (thanks, bfox! :D).
@@ -89,12 +90,10 @@ public class NerveGear extends ItemArmor {
             String cart2 = cart.getUnlocalizedName();
             if (!world.isRemote) {
                 if (players.getCurrentArmor(3) == itemStack && players.isPlayerSleeping() && players.dimension == 0) {
-                    //String cart = new ItemStack(SAOItems.CDSAO).getUnlocalizedName();
-
                     if (gear2.equals(cart2)) {
                         PlayerSAO prop = PlayerSAO.get(players);
                         prop.setXYZCoord((int)players.posX,(int) players.posY, (int)players.posZ);
-
+                        PlayerSAO.saveProxyData(players);
                         EntityPlayerMP player = ((EntityPlayerMP) players);
                         SAOTeleporter.tranferPlayerToDimension(player, 2);
                     }
