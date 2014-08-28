@@ -3,7 +3,7 @@ package net.teamsao.mcsao.proxy;
 import java.io.File;
 
 /*
-    Do NOT change anything in here unless you know what you're DOING!
+    Do NOT change anything in here unless you know what your DOING!
  */
 
 public interface SProxy {

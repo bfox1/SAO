@@ -43,6 +43,12 @@ public class Recipe {
                 {"S", "O", "T", 'S', Blocks.obsidian, 'O', SAOItems.CrystalliteIngot, 'T', Items.diamond});
 
 
+        GameRegistry.addShapedRecipe(new ItemStack(SAOItems.NerveGear), new Object[]
+                {"GRG",
+                 "RHR",
+                 "GSG", 'G', Blocks.gold_block, 'R', Blocks.redstone_block, 'H', Items.iron_helmet, 'S', Blocks.glass});
+
+
         swordRecipe(SAOItems.AnnealBlade, 1, Items.iron_ingot, Items.iron_ingot, Blocks.obsidian);
         swordRecipe(SAOItems.EbonDagger, 1, Items.iron_ingot, Items.wooden_sword, SAOItems.CrystalliteIngot);
 	}

@@ -8,10 +8,12 @@ item.NerveGear.name=§7NerveGear
 item.TeleportCrystal.name=Teleport Crystal
 item.AntidoteCrystal.name=Antidote Crystal
 item.sao:cartridge.name=SAO Game
+item.HealingCrystal.name=Healing Crystal
+item.Elixer.name=Elixer
+item.EmptyVial.name=EmptyVial
 
 //Ingots
 item.sao:CrystalliteIngot.name=§bCrystallite Ingot
-item.sao:BlackIronIngot.name=§8Black Iron Ingot
 
 //Foods
 item.ragoutmeat.name=Ragout Rabbit Meat
@@ -68,6 +70,13 @@ tile.CrystalStone.AlterStone.name=Crystal AlterStone
 tile.CyrstalStone.EdgedStone.name=Crystal EdgedStone
 
 tile.sao:safetyblock.name=Safety Block
+
+sao:cobbleroad.name=Cobblestone Road
+sao:cobbleroadstairs.name=Cobblestone Road Stairs
+sao:cobbleroadhalfslab.name=Cobblestone Road Slab
+sao:cobbleroaddoubleslab.name=Cobblestone Road Double-Slab
+sao:aincraddirt.name=Aincrad Dirt
+sao:aincradgrass.name=Aincrad Grass Block
 
 tile.portal.name=SAO Portal Block
 

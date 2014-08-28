@@ -61,17 +61,20 @@ public class SAOTeleporter extends Teleporter
 
     public static void tranferPlayerToDimension(EntityPlayerMP mpPlayer, int newDim)
     {
-        int bedX= 0;
-        int bedY = 0;
-        int bedZ = 0;
+        int X = 0;
+        int Y = 0;
+        int Z = 0;
+        if(mpPlayer.dimension == 0) {
 
-        ChunkCoordinates overWorldBed = mpPlayer.getBedLocation(0);
 
-        if(mpPlayer.getBedLocation(0) != null) {
-            bedX = overWorldBed.posX;
-            bedY = overWorldBed.posY;
-            bedZ = overWorldBed.posZ;
+            ChunkCoordinates chunkcoordinates = mpPlayer.getPlayerCoordinates();
+            mpPlayer.setSpawnChunk(chunkcoordinates, true);
+
+             X = chunkcoordinates.posX;
+             Y = chunkcoordinates.posY;
+             Z = chunkcoordinates.posZ;
         }
+
 
 
 
@@ -85,7 +88,14 @@ public class SAOTeleporter extends Teleporter
         mpPlayer.isDead = false;
         transferEntityToWorld(mpPlayer, s, worldServer, worldServer1);
         func_72375_a(mpPlayer, worldServer);
+
+        if(newDim == 2) {
             mpPlayer.playerNetServerHandler.setPlayerLocation(0, 40, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+        }else if(newDim == 0)
+        {
+            mpPlayer.playerNetServerHandler.setPlayerLocation(X, Y, Z, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+        }
+
         mpPlayer.theItemInWorldManager.setWorld(worldServer1);
         updateTimeAndWeatherForPlayer(mpPlayer, worldServer1);
         syncPlayerInventory(mpPlayer);
