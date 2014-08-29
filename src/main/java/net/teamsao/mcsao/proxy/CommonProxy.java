@@ -1,6 +1,5 @@
 package net.teamsao.mcsao.proxy;
 
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 import net.minecraft.item.ItemStack;
@@ -8,20 +7,15 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.common.DungeonHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.teamsao.mcsao.handler.SaoEventHandler;
-import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.lib.DimensionId;
-import net.teamsao.mcsao.dimension.SAOWorldProvider;
+import net.teamsao.mcsao.world.DimensionId;
+import net.teamsao.mcsao.world.SAOWorldProvider;
 import net.teamsao.mcsao.entity.*;
-import net.teamsao.mcsao.model.KoboldTest;
-import net.teamsao.mcsao.model.boar;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /*
     ANY Methods you add here from the Sproxy class will not be needed in Client/Server proxy Classes.

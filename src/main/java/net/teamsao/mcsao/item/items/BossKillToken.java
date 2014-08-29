@@ -11,9 +11,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

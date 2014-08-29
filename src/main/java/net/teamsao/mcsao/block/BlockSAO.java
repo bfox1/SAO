@@ -4,12 +4,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.teamsao.mcsao.handler.ConfigurationHandler;
-import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.helper.Reference;
 import net.minecraft.block.Block;
-import net.teamsao.mcsao.lib.SAOTabsManager;
-
-import java.util.Random;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
  * @author bfox1

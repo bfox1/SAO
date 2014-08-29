@@ -2,7 +2,6 @@ package net.teamsao.mcsao.item.swords;
 
 import java.util.List;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -12,10 +11,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.item.ItemSAO;
-import net.teamsao.mcsao.util.ColorHelper;
+import net.teamsao.mcsao.helper.ColorHelper;
 
 /**
  * @author bfox1
