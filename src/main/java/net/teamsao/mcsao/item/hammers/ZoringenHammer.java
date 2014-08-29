@@ -1,6 +1,9 @@
 package net.teamsao.mcsao.item.hammers;
 
-import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.ItemHammer;
 
 // Created by Skymmer on 8/8/2014.

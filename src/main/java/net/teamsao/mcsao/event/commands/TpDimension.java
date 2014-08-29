@@ -3,7 +3,8 @@ package net.teamsao.mcsao.event.commands;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.teamsao.mcsao.world.SAOTeleporter;
+import net.minecraft.util.ChatComponentText;
+import net.teamsao.mcsao.portal.SAOTeleporter;
 
 import java.util.ArrayList;
 import java.util.List;

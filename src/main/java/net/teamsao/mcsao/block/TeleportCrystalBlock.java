@@ -2,7 +2,7 @@ package net.teamsao.mcsao.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 
 /**
  * Created by bfox1 on 7/20/2014.

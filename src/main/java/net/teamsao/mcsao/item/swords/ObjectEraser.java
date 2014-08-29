@@ -1,14 +1,21 @@
 package net.teamsao.mcsao.item.swords;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.item.SItemSword;
-import net.teamsao.mcsao.helper.ColorHelper;
+import net.teamsao.mcsao.util.ColorHelper;
 
 import java.util.List;
 //

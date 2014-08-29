@@ -4,10 +4,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.helper.ReferenceHelper;
-import net.teamsao.mcsao.world.DimensionId;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.init.SAOBlocks;
+import net.teamsao.mcsao.lib.DimensionId;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 
 import java.io.File;
 
@@ -78,7 +80,7 @@ public class TeleportCrystal extends Item {
                 {
                     player.timeUntilPortal = 10;
                 }
-                else if (player.world != SwordArtOnline.dimensionId)
+                else if (player.dimension != SwordArtOnline.dimensionId)
                 {
                     player.timeUntilPortal = 10;
 

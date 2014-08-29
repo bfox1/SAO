@@ -1,8 +1,9 @@
 package net.teamsao.mcsao.item.potions;
 
 import net.minecraft.item.Item;
-import net.teamsao.mcsao.helper.ReferenceHelper;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.minecraft.item.ItemPotion;
+import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 
 /**
  * Created by bfox1 on 8/21/2014.

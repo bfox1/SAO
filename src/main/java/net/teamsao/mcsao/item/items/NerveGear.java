@@ -3,17 +3,22 @@ package net.teamsao.mcsao.item.items;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.helper.Reference;
-import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.container.ContainerNerveGear;
+import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.inventory.InventoryNerveGear;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.item.ItemSAO;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 import net.teamsao.mcsao.player.PlayerSAO;
-import net.teamsao.mcsao.world.SAOTeleporter;
+import net.teamsao.mcsao.portal.SAOTeleporter;
+import net.teamsao.mcsao.proxy.CommonProxy;
 
 /**
  * This file was forked from HeartOfKobold (thanks, bfox! :D).

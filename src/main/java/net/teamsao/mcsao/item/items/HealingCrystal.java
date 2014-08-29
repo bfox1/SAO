@@ -1,12 +1,14 @@
 package net.teamsao.mcsao.item.items;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 
 /**
  * Created by bfox1 on 8/21/2014.

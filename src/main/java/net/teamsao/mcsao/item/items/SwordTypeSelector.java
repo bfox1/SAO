@@ -6,8 +6,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.item.SwordType;
+import net.teamsao.mcsao.item.WeaponType;
 
 // Created by Skymmer on 8/9/2014.
 

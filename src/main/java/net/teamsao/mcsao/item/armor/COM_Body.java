@@ -3,10 +3,10 @@ package net.teamsao.mcsao.item.armor;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.teamsao.mcsao.helper.Reference;
-import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 //
 
 /**

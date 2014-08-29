@@ -1,7 +1,8 @@
 package net.teamsao.mcsao.eastereggs.item.guns;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 
 public class ItemFnFiveSeven extends Item {
 

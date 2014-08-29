@@ -1,10 +1,11 @@
 package net.teamsao.mcsao.handler;
 
+import com.google.common.eventbus.Subscribe;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.common.config.Configuration;
 import net.teamsao.mcsao.block.BlockSAO;
-import net.teamsao.mcsao.helper.Reference;
+import net.teamsao.mcsao.help.Reference;
 
 
 import java.io.File;

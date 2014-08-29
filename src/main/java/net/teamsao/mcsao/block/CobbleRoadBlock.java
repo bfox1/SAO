@@ -6,7 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
-import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.help.ReferenceHelper;
 
 public class CobbleRoadBlock extends BlockSAO
 {

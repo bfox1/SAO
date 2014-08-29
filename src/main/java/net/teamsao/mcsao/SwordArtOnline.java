@@ -4,27 +4,29 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;
 
 
+import net.minecraftforge.common.config.Configuration;
 import net.teamsao.mcsao.entity.EntitySAO;
 import net.teamsao.mcsao.event.commands.TpDimension;
 import net.teamsao.mcsao.handler.ConfigurationHandler;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.gui.GuiHandler;
-import net.teamsao.mcsao.helper.Reference;
-import net.teamsao.mcsao.recipes.ItemRecipes;
+import net.teamsao.mcsao.help.Messages;
+import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.lib.Recipe;
 import net.teamsao.mcsao.material.SToolMaterial;
-import net.teamsao.mcsao.network.SaoPacketPipeline;
+import net.teamsao.mcsao.packet.SaoPacketPipeline;
 import net.teamsao.mcsao.proxy.SProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import net.teamsao.mcsao.helper.LogHelper;
+import net.teamsao.mcsao.util.LogHelper;
 
 /* Created on 7-1-2014
  * This is the main file for the entire mod. All Init MUST go here.
- * If you need helper, Ask bfox1 for information or refer to the Other classes for examples.
+ * If you need help, Ask bfox1 for information or refer to the Other classes for examples.
  */
 
 /**
@@ -43,6 +45,22 @@ public class SwordArtOnline {
     public static final int GUI_ITEM_INV = modGuiIndex++;
 	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;
+
+
+
+	@EventHandler
+	public void invalidFingerprint(FMLFingerprintViolationEvent event)
+	{
+		if(Reference.FINGERPRINT.equals("Test"))
+		{
+			LogHelper.info(Messages.NO_FINGERPRINT_MESSAGE);
+		}
+		else
+
+		{
+			LogHelper.warn(Messages.INVALID_FINGERPRINT_MESSAGE);
+		}
+	}
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -72,8 +90,8 @@ public class SwordArtOnline {
         proxy.registerGlobalEntity();
 		proxy.registerTileEntities();
         proxy.registerKeybindings();
-        ItemRecipes.removeBlockRecipes();
-		ItemRecipes.init();
+        Recipe.removeBlockRecipes();
+		Recipe.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
         LogHelper.info("Finished InitEvent");
 	}

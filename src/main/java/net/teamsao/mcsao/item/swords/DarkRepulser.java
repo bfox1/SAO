@@ -5,9 +5,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.help.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.item.ItemSAO;
+import net.teamsao.mcsao.lib.SAOTabsManager;
 //
 
 public class DarkRepulser extends ItemSword {

@@ -7,10 +7,13 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
+import net.teamsao.mcsao.SwordArtOnline;
 //
 import net.teamsao.mcsao.init.SAOBlocks;
-import net.teamsao.mcsao.world.DimensionId;
-import net.teamsao.mcsao.world.SAOTeleporter;
+import net.teamsao.mcsao.lib.DimensionId;
+import net.teamsao.mcsao.portal.SAOTeleporter;
+
+import java.awt.*;
 
 public class SAOPortalBlock extends BlockPortal
 {

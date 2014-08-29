@@ -1,14 +1,26 @@
 package net.teamsao.mcsao.player;
 
+import com.mojang.authlib.GameProfile;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.management.ItemInWorldManager;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.ChunkCoordinates;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.network.SyncPlayerPropPacket;
+import net.teamsao.mcsao.packet.SyncPlayerPropPacket;
 import net.teamsao.mcsao.proxy.CommonProxy;
+import net.teamsao.mcsao.util.NBTHelper;
+
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.util.UUID;
 
 /**
  * Created by bfox1 on 8/11/2014.
