@@ -1,6 +1,6 @@
 package net.teamsao.mcsao.item;
 
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 // Created by Skymmer on 8/8/2014.
 

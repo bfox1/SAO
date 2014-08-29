@@ -2,7 +2,6 @@ package net.teamsao.mcsao.material;
 
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import net.teamsao.mcsao.help.ReferenceHelper;
 
 /**
  * @author bfox1

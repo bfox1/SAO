@@ -1,8 +1,6 @@
 package net.teamsao.mcsao.item.items;
 
-import net.teamsao.mcsao.help.Reference;
-import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.init.SAOBlocks;
+import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.item.ItemSAO;
 
 /**

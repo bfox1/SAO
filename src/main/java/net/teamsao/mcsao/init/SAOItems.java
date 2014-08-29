@@ -2,7 +2,7 @@ package net.teamsao.mcsao.init;
 
 import net.minecraft.item.Item;
 import net.teamsao.mcsao.block.ItemBlockMetaData;
-import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.item.*;
 import net.teamsao.mcsao.item.ingots.*;
 import net.teamsao.mcsao.item.armor.*;

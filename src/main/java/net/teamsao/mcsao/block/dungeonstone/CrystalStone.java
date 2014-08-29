@@ -2,7 +2,6 @@ package net.teamsao.mcsao.block.dungeonstone;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,8 +9,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.teamsao.mcsao.block.BlockSAO;
-import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 import java.util.List;
 

@@ -4,11 +4,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.teamsao.mcsao.block.*;
 import net.teamsao.mcsao.block.inventoryblocks.ForgeStation;
-import net.teamsao.mcsao.help.Reference;
-import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.helper.Reference;
+import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.block.dungeonstone.*;
 import net.teamsao.mcsao.item.items.ItemCobbleSlab;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
  * Created by bfox1 on 7/24/2014.
