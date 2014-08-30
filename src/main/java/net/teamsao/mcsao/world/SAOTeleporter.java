@@ -71,7 +71,6 @@ public class SAOTeleporter extends Teleporter
         int Y = props.getYCoord();
         int Z = props.getZCoord();
 
-
         MinecraftServer mcServer = MinecraftServer.getServer();
         int s = mpPlayer.dimension;
         WorldServer worldServer = mcServer.worldServerForDimension(mpPlayer.dimension);

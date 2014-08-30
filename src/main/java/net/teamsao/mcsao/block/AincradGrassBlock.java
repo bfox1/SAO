@@ -6,8 +6,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.IIcon;
-import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.init.SAOBlocks;
 
 public class AincradGrassBlock extends BlockSAO
 {
@@ -34,11 +34,16 @@ public class AincradGrassBlock extends BlockSAO
 	@Override
 	public IIcon getIcon(int blockSide, int blockMetadataIcon)
 	{
-		if (blockSide == 0) {
+		if(blockSide == 0)
+		{
 			return SAOBlocks.AincradDirtBlock.getIcon(0, 0);
-        } else if (blockSide == 1) {
+		}
+		else if(blockSide == 1)
+		{
 			return topIcon;
-		} else {
+		}
+		else
+		{
 			return sideIcon;
 		}
 	}

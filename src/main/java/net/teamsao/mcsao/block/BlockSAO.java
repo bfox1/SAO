@@ -17,8 +17,6 @@ public class BlockSAO extends Block{
 
     public static boolean isBreakable = true;
 	
-
-
     public BlockSAO(Material material) {
         super(Material.rock);
         if(isBreakable) {
@@ -31,7 +29,6 @@ public class BlockSAO extends Block{
         this.setLightOpacity(0);
         this.setCreativeTab(SAOTabsManager.saoBlocks);
     }
-
 
     @Override
     public String getUnlocalizedName()

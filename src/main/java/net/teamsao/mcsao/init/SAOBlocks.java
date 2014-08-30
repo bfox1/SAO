@@ -14,7 +14,7 @@ import net.teamsao.mcsao.item.items.ItemCobbleSlab;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
- * Created by bfox1 on 7/24/2014.
+ * @author bfox1
  */
 public class SAOBlocks {
 

@@ -19,6 +19,7 @@ import net.teamsao.mcsao.recipes.ForgeStationRecipes;
 /**
  * @author bfox1
  */
+@SuppressWarnings("UnusedDeclaration")
 public class SAOItems {
 
     // Swords
@@ -102,7 +103,6 @@ public class SAOItems {
                 TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
                 ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, Elixer, EmptyVial,
                 HealingCrystal/* , WeaponTypeSelector, SwordTypeSelector*/};
-
 
         Item[] foods = {ragoutRabbitMeat , ScavengerToadMeat, RawRagoutRabbitMeat, ScavengerCookedToadMeat};
 

@@ -9,7 +9,11 @@ import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
+<<<<<<< HEAD
  * @author bfox1
+=======
+ * Created by bfox1 on 8/21/2014.
+>>>>>>> 79313ea16d2318340787e6ca2a63af359f0dafde
  */
 public class HealingCrystal extends Item {
 

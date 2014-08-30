@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+<<<<<<< HEAD
  * @author bfox1
+=======
+ * Created by bfox1 on 8/20/2014.
+>>>>>>> 79313ea16d2318340787e6ca2a63af359f0dafde
  */
 public class TpDimension extends CommandBase{
 
@@ -42,6 +46,7 @@ public class TpDimension extends CommandBase{
     public void processCommand(ICommandSender commandSender, String[] strings) {
 
         EntityPlayerMP playerMP = strings.length == 0 ? getCommandSenderAsPlayer(commandSender) : getPlayer(commandSender, strings[0]);
+
         if(strings.length == 3) {
             byte b0 = 1;
             int ji = b0 + 1;
