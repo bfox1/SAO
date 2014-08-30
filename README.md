@@ -65,7 +65,7 @@ Custom holographic texture that appears on players when they're looking at a sho
 Auto-building house block? Will we just make it out of vanilla blocks for now or hard-code in some mod blocks to use in the future.
 
 [bfox]: http://github.com/bfox1/ "Bfox"
-[chris]: http://github.com/5chris100/ "Chris"
+[chris]: http://github.com/kkirigaya/ "Chris"
 [drad]: http://github.com/igraham/ "Drad"
 [jones]: # "Jones2max"
 [golden]: http://github.com/GoldenJay "GoldenJay"
