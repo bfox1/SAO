@@ -5,8 +5,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.teamsao.mcsao.help.Reference;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.helper.Reference;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
  * @author bfox1

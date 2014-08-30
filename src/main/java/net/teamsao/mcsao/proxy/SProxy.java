@@ -1,5 +1,7 @@
 package net.teamsao.mcsao.proxy;
 
+import net.minecraft.nbt.NBTTagCompound;
+
 import java.io.File;
 
 /*
@@ -25,4 +27,6 @@ public interface SProxy {
     public abstract void registerDimension();
 
     public abstract void addChestLoot();
+
+
 }

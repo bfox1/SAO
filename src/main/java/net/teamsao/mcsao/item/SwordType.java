@@ -1,11 +1,6 @@
 package net.teamsao.mcsao.item;
 
-import java.util.List;
-
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 // Created by Skymmer on 8/9/2014.
 

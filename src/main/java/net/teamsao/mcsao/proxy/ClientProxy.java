@@ -2,18 +2,13 @@ package net.teamsao.mcsao.proxy;
 
 import java.io.File;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraftforge.common.DimensionManager;
+import cpw.mods.fml.common.FMLCommonHandler;
 import net.teamsao.mcsao.block.customrenderers.*;
-import net.teamsao.mcsao.dimension.SAOWorldProvider;
 import net.teamsao.mcsao.entity.*;
-import net.teamsao.mcsao.help.Reference;
-import net.teamsao.mcsao.lib.DimensionId;
+import net.teamsao.mcsao.client.settings.KeyBindings;
+import net.teamsao.mcsao.client.handler.SaoKeyInputHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.teamsao.mcsao.model.*;
-import net.teamsao.mcsao.tileentity.TileEntityForgeStation;
 
 public class ClientProxy extends CommonProxy
 {
@@ -35,16 +30,14 @@ public class ClientProxy extends CommonProxy
         RenderingRegistry.registerBlockHandler(new SafeAreaBlockRenderer());
 	}
 
-	@Override
-	public void registerEventHandlers()
-	{
-		
-	}
+
 
 	@Override
 	public void registerKeybindings()
 	{
-		
+        KeyBindings.init();
+        FMLCommonHandler.instance().bus().register(new KeyBindings());
+        FMLCommonHandler.instance().bus().register(new SaoKeyInputHandler());
 	}
 
     @Override

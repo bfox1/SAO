@@ -1,8 +1,8 @@
 package net.teamsao.mcsao.item;
 
 import net.minecraft.item.ItemFood;
-import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
  * Created by bfox1 on 7/9/2014.

@@ -5,10 +5,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.item.ItemSAO;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
  * @author bfox1

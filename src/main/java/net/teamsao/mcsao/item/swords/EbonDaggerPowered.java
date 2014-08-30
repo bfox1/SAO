@@ -7,9 +7,8 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.item.ItemSAO;
 //
 
 public class EbonDaggerPowered extends ItemSword {

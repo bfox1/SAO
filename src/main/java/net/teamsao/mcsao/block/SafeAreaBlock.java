@@ -4,25 +4,21 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Facing;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.util.ForgeDirection;
-import net.teamsao.mcsao.help.BlockData;
-import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.help.StructureGenHelper;
+import net.teamsao.mcsao.helper.BlockData;
+import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.helper.StructureGenHelper;
 import net.teamsao.mcsao.proxy.ClientProxy;
 
 //Created by SirPwn on 8/6/14
 public class SafeAreaBlock extends BlockSAO {
-	
+
 	public SafeAreaBlock()
 	{
 		super(Material.rock);
@@ -31,9 +27,9 @@ public class SafeAreaBlock extends BlockSAO {
         this.setBlockTextureName(ReferenceHelper.setBlockName(this));
 	}
 
-    @SideOnly(Side.CLIENT)
     @Override
-	public boolean isOpaqueCube()
+    @SideOnly(Side.CLIENT)
+    public boolean isOpaqueCube()
     {
         return false;
     }
@@ -55,11 +51,7 @@ public class SafeAreaBlock extends BlockSAO {
     public boolean canRenderInPass(int pass)
     {
     	ClientProxy.renderPass = pass;
-    	if(pass == 0)
-    	{
-    		return false;
-    	}
-    	return true;
+        return pass != 0;
     }
 
     @Override

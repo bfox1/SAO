@@ -4,9 +4,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.helper.Reference;
 import net.minecraft.block.Block;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
  * @author bfox1
@@ -14,21 +14,24 @@ import net.teamsao.mcsao.lib.SAOTabsManager;
  *
  */
 public class BlockSAO extends Block{
+
+    public static boolean isBreakable = true;
 	
 
 
-    public BlockSAO(Material material)
-    {
-        super(material);
-        this.setBlockUnbreakable();
+    public BlockSAO(Material material) {
+        super(Material.rock);
+        if(isBreakable) {
+            this.setBlockUnbreakable();
+            this.setResistance(-1);
+        } else {
+            this.setHardness(1.0F);
+            this.setResistance(5.0F);
+        }
         this.setLightOpacity(0);
         this.setCreativeTab(SAOTabsManager.saoBlocks);
     }
 
-    public BlockSAO()
-    {
-        this(Material.rock);
-    }
 
     @Override
     public String getUnlocalizedName()

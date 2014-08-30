@@ -3,19 +3,17 @@ package net.teamsao.mcsao.item.items;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.container.ContainerNerveGear;
-import net.teamsao.mcsao.help.Reference;
-import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.helper.Reference;
+import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.inventory.InventoryNerveGear;
-import net.teamsao.mcsao.item.ItemSAO;
-import net.teamsao.mcsao.lib.SAOTabsManager;
-import net.teamsao.mcsao.portal.SAOTeleporter;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.player.PlayerSAO;
+import net.teamsao.mcsao.world.SAOTeleporter;
 
 /**
  * This file was forked from HeartOfKobold (thanks, bfox! :D).
@@ -87,10 +85,10 @@ public class NerveGear extends ItemArmor {
             String cart2 = cart.getUnlocalizedName();
             if (!world.isRemote) {
                 if (players.getCurrentArmor(3) == itemStack && players.isPlayerSleeping() && players.dimension == 0) {
-                    //String cart = new ItemStack(SAOItems.CDSAO).getUnlocalizedName();
-
                     if (gear2.equals(cart2)) {
-
+                        PlayerSAO prop = PlayerSAO.get(players);
+                        prop.setXYZCoord((int)players.posX,(int) players.posY, (int)players.posZ);
+                        PlayerSAO.saveProxyData(players);
                         EntityPlayerMP player = ((EntityPlayerMP) players);
                         SAOTeleporter.tranferPlayerToDimension(player, 2);
                     }

@@ -1,12 +1,11 @@
 package net.teamsao.mcsao.item.potions;
 
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPotion;
-import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
- * Created by bfox1 on 8/21/2014.
+ * @author bfox1
  */
 public class EmptyVial extends Item {
 

@@ -6,9 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.item.SItemSword;
 
 /**
@@ -25,7 +24,8 @@ public class ShadowDaggerPowered extends SItemSword {
     @Override
     public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
     {
-        par2EntityLiving.addPotionEffect(new PotionEffect(Potion.blindness.id, 20 * 5, 2));
+        par1ItemStack.damageItem(1, par3EntityLiving);
+        par2EntityLiving.addPotionEffect(new PotionEffect(Potion.blindness.id, 50 * 5, 2));
         return true;
     }
 

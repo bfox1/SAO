@@ -19,11 +19,6 @@ public class ServerProxy extends CommonProxy {
 	}
 
 	@Override
-	public void registerEventHandlers() {
-
-	}
-
-	@Override
 	public void registerKeybindings() {
 		// TODO Auto-generated method stub
 		

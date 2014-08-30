@@ -19,18 +19,6 @@ public abstract class SItemSword extends ItemSword
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPlayer player)
-	{
-		player.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
-		//ItemStack sword = new ItemStack(SAOItems.EbonDagger);
-		if(!world.isRemote)
-		{
-			if(player.isSneaking())
-			{
-				//sword.setItemDamage(par1ItemStack.getItemDamage());
-				// return sword;
-			}
-		}
-		return par1ItemStack;
-	}
+	public abstract ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPlayer player);
+
 }

@@ -2,7 +2,6 @@ package net.teamsao.mcsao.item.swords;
 
 import java.util.List;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -12,9 +11,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.help.Reference;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.item.ItemSAO;
+import net.teamsao.mcsao.helper.ColorHelper;
 
 /**
  * @author bfox1
@@ -39,9 +38,9 @@ public class Elucidator_Powered extends ItemSword {
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
 	{
-	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.harm.id, 2, 1));
+	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.harm.id, 10, 2));
 	 float entity = par2EntityLiving.getHealth();
-	 System.out.println(entity);
+    par1ItemStack.damageItem(1, par3EntityLiving);
 	return true;
 	}
 
@@ -72,6 +71,8 @@ public class Elucidator_Powered extends ItemSword {
 				+ "Can be Obtained Only by defeating");
 		list.add(EnumChatFormatting.DARK_BLUE + "" + EnumChatFormatting.ITALIC
 				+ "a specific Boss.");
+        list.add(EnumChatFormatting.DARK_PURPLE + "" + ColorHelper.ITALIC
+                + "Harming 2 Damage");
 
 	}
 

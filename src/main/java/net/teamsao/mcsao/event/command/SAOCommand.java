@@ -6,13 +6,13 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
-import net.teamsao.mcsao.portal.SAOTeleporter;
+import net.teamsao.mcsao.world.SAOTeleporter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bfox1 on 8/15/2014.
+ * @author bfox1
  */
 public class SAOCommand extends CommandBase {
 

@@ -3,17 +3,18 @@ package net.teamsao.mcsao.event.commands;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.teamsao.mcsao.portal.SAOTeleporter;
+import net.teamsao.mcsao.world.SAOTeleporter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bfox1 on 8/20/2014.
+ * @author bfox1
  */
 public class TpDimension extends CommandBase{
 
     private List aliases;
+    private int dimension;
     public TpDimension(){
         this.aliases = new ArrayList();
         this.aliases.add("SAO");
@@ -29,7 +30,7 @@ public class TpDimension extends CommandBase{
 
     @Override
     public String getCommandUsage(ICommandSender p_71518_1_) {
-        return "Sao <command>";
+        return "Sao <playerName> <command>";
     }
 
     @Override
@@ -41,20 +42,23 @@ public class TpDimension extends CommandBase{
     public void processCommand(ICommandSender commandSender, String[] strings) {
 
         EntityPlayerMP playerMP = strings.length == 0 ? getCommandSenderAsPlayer(commandSender) : getPlayer(commandSender, strings[0]);
-        //System.out.println("Made it here");
-
         if(strings.length == 3) {
-          //  System.out.println("past the strings" );
             byte b0 = 1;
             int ji = b0 + 1;
             int i = 30000000;
 
             int j = parseIntBounded(commandSender, strings[2], -i, i);
 
-            if (strings[1].equals("tptodimension")) {
-
-                SAOTeleporter.tranferPlayerToDimension(playerMP, Integer.valueOf(j));
+            if (strings[1].equals("tpAincrad")) {
+                this.dimension = 2;
+                SAOTeleporter.tranferPlayerToDimension(playerMP, this.dimension);
             }
+            if(strings[1].equals("tpOverworld"))
+            {
+                this.dimension = 0;
+                SAOTeleporter.tranferPlayerToDimension(playerMP, this.dimension);
+            }
+
         }
     }
 

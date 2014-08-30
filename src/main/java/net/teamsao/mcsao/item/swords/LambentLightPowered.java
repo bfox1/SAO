@@ -7,9 +7,8 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.help.ReferenceHelper;
+import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.item.ItemSAO;
 
 public class LambentLightPowered extends ItemSword {
 
@@ -23,7 +22,8 @@ public class LambentLightPowered extends ItemSword {
 	@Override
 	public boolean hitEntity(ItemStack par1ItemStack, EntityLivingBase par2EntityLiving, EntityLivingBase par3EntityLiving)
 	{
-	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20 * 5, 3));
+    par1ItemStack.damageItem(1, par3EntityLiving);
+	par2EntityLiving.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 500, 3));
 	return true;
 	}
 	
