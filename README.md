@@ -19,7 +19,7 @@ To verify:
 * Pull the files from this branch `git pull origin Chris`, and then from master `git pull origin master`.
 * Compile and run in both the client *and the server* and see if everything works as expected.
 * If a new bug arises, [file an issue](https://github.com/bfox1/SAO/issues/new) in Chris' branch.
-* Select the first label on the right-hand side. Enter a title, and fill the body with what you did to cause the bug to appear.
+* Select the first yellow label on the right-hand side, as well as the red label. Enter a title, and fill the body with what you did to cause the bug to appear.
 * If no new bugs are found, commit `git commit -m "Verification of Chris: [mm/dd/yy hh:mm]"` and push (`git push origin master`) this branch to master.
 Note: Make sure that you review all of the changed, deleted, and new code. If you notice there's a new item, test it out. See if it crashes when you hit a Creeper with it.
 Just make sure that you test it *to the best of your ability*.
