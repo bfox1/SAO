@@ -24,6 +24,9 @@ public class DungeonStone extends BlockSAO {
 		super(Material.rock);
 		this.setCreativeTab(SAOTabsManager.saoBlocks);
 		this.setBlockName("DungeonBlock");
+        this.setHardness(-1);
+        this.setBlockUnbreakable();
+        this.setResistance(2000F);
 	}
 
 	@Override
