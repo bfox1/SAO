@@ -17,11 +17,12 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     public static final String EXT_PROP_NAME = "overCoords";
 
-    private int AincradCoordsX;
-    private int AincradCoordsY;
-    private int AincradCoordsZ;
+    public static final String AINCRAD_NAME = "aincradCoords";
+
+    private int AincradCoordsX,AincradCoordsY ,AincradCoordsZ;
 
     private int overWorldX, overWorldY, overWorldZ;
+
 
 
     private int world;
@@ -36,10 +37,10 @@ public class PlayerSAO implements IExtendedEntityProperties {
     }
 
     //Used to register these extended properties for the player during EntityConstruction event
-    public static final void register(EntityPlayer player)
+    /*public static final void register(EntityPlayer player)
     {
         player.registerExtendedProperties(PlayerSAO.EXT_PROP_NAME, new PlayerSAO(player));
-    }
+    }*/
     //Returns ExtendedPlayer properties for player
     public static final PlayerSAO get(EntityPlayer player)
     {
@@ -56,6 +57,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
         NBTTagCompound savedData = new NBTTagCompound();
         playerdata.saveNBTData(savedData);
         CommonProxy.storeEntityData(getSavedKey(player), savedData);
+
     }
     public static void loadProxyData(EntityPlayer player)
     {

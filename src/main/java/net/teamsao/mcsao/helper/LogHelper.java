@@ -53,4 +53,11 @@ public class LogHelper {
     {
         log(Level.WARN, object);
     }
+
+    public static String chatEvent()
+    {
+        String event = "[" + ColorHelper.DARK_GREEN + Reference.MODID.toUpperCase() + ColorHelper.WHITE +  "]";
+        return event;
+    }
+
 }

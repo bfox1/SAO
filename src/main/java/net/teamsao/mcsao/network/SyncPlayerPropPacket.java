@@ -6,6 +6,7 @@ import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.teamsao.mcsao.player.PlayerSAO;
+import net.teamsao.mcsao.player.playerextendedprop.PlayerCol;
 
 /**
  * Created by bfox1 on 8/27/2014.
@@ -21,6 +22,7 @@ public class SyncPlayerPropPacket extends SaoAbstractPacket {
         data = new NBTTagCompound();
 
         PlayerSAO.get(player).saveNBTData(data);
+        PlayerCol.get(player).saveNBTData(data);
     }
     @Override
     public void encodeInto(ChannelHandlerContext ctx, ByteBuf buffer) {
@@ -35,7 +37,8 @@ public class SyncPlayerPropPacket extends SaoAbstractPacket {
 
     @Override
     public void handleClientSide(EntityPlayer player) {
-        PlayerSAO.get(player).loadNBTData(data);
+        PlayerSAO.get(player ).loadNBTData(data);
+        PlayerCol.get(player).loadNBTData(data);
 
     }
 

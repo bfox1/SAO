@@ -44,7 +44,7 @@ public class LiberatorShield extends SItemSword {
         par1ItemStack.damageItem(1, par3EntityLiving);
         //par2EntityLiving.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20 * 7, 3));
        // par2EntityLiving.addPotionEffect(new PotionEffect(Potion.weakness.id, 30 * 5, 3));
-        par2EntityLiving.addPotionEffect(new PotionEffect(Potion.resistance.id, 50*5, 9));
+        par3EntityLiving.addPotionEffect(new PotionEffect(Potion.resistance.id, 50*5, 9));
         return true;
     }
 
