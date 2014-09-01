@@ -49,7 +49,7 @@ public abstract class CommonProxy implements SProxy {
 
     public void addChestLoot()
     {
-        ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SAOItems.CDSAO), 1,6, 010));
+        ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST).addItem(new WeightedRandomChestContent(new ItemStack(SAOItems.CDSAO), 1,6, 10));
     }
 
     public static void storeEntityData(String name, NBTTagCompound storage)
