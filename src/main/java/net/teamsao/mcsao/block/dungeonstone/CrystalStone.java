@@ -50,7 +50,6 @@ public class CrystalStone extends BlockSAO{
         for(int i = 0; i < icons.length; i++)
         {
             icons[i] = par1IconRegister.registerIcon(this.getUnlocalizedName().substring(5) + i);
-            System.out.println(ReferenceHelper.setBlockName(this) + i);
         }
     }
 	/*
@@ -74,7 +73,7 @@ public class CrystalStone extends BlockSAO{
         }
         else
         {
-            System.out.println("Invalid metadata for " + this.getUnlocalizedName());
+            //System.out.println("Invalid metadata for " + this.getUnlocalizedName());
             return icons[0];
         }
     }

@@ -14,7 +14,7 @@ public class LuminescenceLight extends BlockSAO {
         this.setLightLevel(1.0F);
         this.setHardness(1.0F);
         this.setLightOpacity(15);
-        this.setBlockName("LuminescenceLight");
+        this.setBlockName("LuminescenceLightBlock");
     }
 
     @SideOnly(Side.CLIENT)

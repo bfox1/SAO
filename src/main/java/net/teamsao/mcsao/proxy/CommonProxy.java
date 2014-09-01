@@ -55,7 +55,6 @@ public abstract class CommonProxy implements SProxy {
     public static void storeEntityData(String name, NBTTagCompound storage)
     {
         extendedEntityData.put(name, storage);
-        System.out.println(storage);
     }
     public static NBTTagCompound getEntityData(String name)
     {

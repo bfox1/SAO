@@ -43,6 +43,8 @@ item.ShadowDaggerPowered.name=§8Shadow Dagger
 item.TyrantDragon.name=Tyrant Dragon
 item.TyrantDragonPowered.name=Tyrant Dragon
 item.ObjectEraser.name=§4Object Eraser
+item.LiberatorSword.name=Liberator Sword
+item.LiberatorShield.name=Liberator Shield
 //Hammers
 item.sao:ZoringenHammer.name=Zoringen Hammer
 
@@ -61,6 +63,7 @@ tile.sao:CrystalStone.AlterStone.name=Crystal AlterStone
 tile.sao:CyrstalStone.EdgedStone.name=Crystal EdgedStone
 
 tile.sao:safetyblock.name=Safety Block
+tile.sao:LuminescenceLightBlock.name=Luminescence Block
 
 sao:cobbleroad.name=Cobblestone Road
 sao:cobbleroadstairs.name=Cobblestone Road Stairs

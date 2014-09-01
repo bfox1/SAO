@@ -4,6 +4,9 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.*;
 
 
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.common.MinecraftForge;
+import net.teamsao.mcsao.client.gui.GuiCol;
 import net.teamsao.mcsao.entity.EntitySAO;
 import net.teamsao.mcsao.event.commands.TpDimension;
 import net.teamsao.mcsao.handler.ConfigurationHandler;
@@ -81,7 +84,7 @@ public class SwordArtOnline {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-
+        proxy.registerRenderers();
         packetPipeline.postInitialise();
     }
 
