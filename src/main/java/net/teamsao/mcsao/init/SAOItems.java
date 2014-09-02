@@ -46,7 +46,7 @@ public class SAOItems {
     public static Item TyrantDragon = new TyrantDragon(SToolMaterial.TyrantDragon);
     public static Item TyrantDragonPowered = new TyrantDragonPowered(SToolMaterial.TyrantDragon);
 
-    public static Item KagemitsuG4;
+    public static Item KagemitsuG4 = new KagemitsuG4(SToolMaterial.KagemitsuG4);
     public static Item KagemitsuG4Powered;
 
     // Guns
@@ -111,7 +111,7 @@ public class SAOItems {
         Item[] foods = {ragoutRabbitMeat , ScavengerToadMeat, RawRagoutRabbitMeat, ScavengerCookedToadMeat};
 
         Item[] swords = {Elucidator, AnnealBlade, DarkRepulser, GuiltyThorn, LambentLight, EbonDagger, MateChopper,
-                        Karakurenai, ShadowDagger, TyrantDragon, /*KagemitsuG4,*/ LiberatorShield, LiberatorSword};
+                        Karakurenai, ShadowDagger, TyrantDragon, KagemitsuG4, LiberatorShield, LiberatorSword};
 
         Item[] ingots = {CrystalliteIngot, SteelIngot};
 

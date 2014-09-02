@@ -11,6 +11,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.item.SItemSword;
+import net.teamsao.mcsao.item.UnsheathingSword;
 import net.teamsao.mcsao.helper.ColorHelper;
 
 import java.util.List;
@@ -22,18 +23,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * Created by bfox1 on 7/9/2014.
  */
-public class ObjectEraser extends SItemSword
+public class ObjectEraser extends UnsheathingSword
 {
-	@SideOnly(Side.CLIENT)
-	public IIcon[] icons;
-	
-	private int animationStage = 0;
 	private EntityPlayer currentOwner;
 	private InventoryPlayer currentInventory;
-	/**
-	 * Speed of the fwooshing animation goes down as this goes up. 1/x.
-	 */
-	private int animationSpeed = 3;
 	
 	public ObjectEraser(ToolMaterial p_i45356_1_)
 	{
@@ -41,6 +34,7 @@ public class ObjectEraser extends SItemSword
 		this.setUnlocalizedName("ObjectEraser");
 		this.setTextureName("ObjectEraser");
 		this.setCreativeTab(null);
+		setAnimationSpeed(3);
 	}
 
     @Override
@@ -60,7 +54,7 @@ public class ObjectEraser extends SItemSword
     	}
 		if (!world.isRemote)
 		{
-			updateAnimation(inventoryIndex, isItemAnimating);
+			updateAnimation(currentInventory, inventoryIndex, isItemAnimating);
             currentOwner.setAbsorptionAmount(15.5F);
 			if (itemstack.isItemEnchanted() == false)
 			{
@@ -82,48 +76,6 @@ public class ObjectEraser extends SItemSword
 			}
 		}
 	}
-    
-    @SideOnly(Side.CLIENT)
-    @Override
-    public void registerIcons(IIconRegister register)
-    {
-    	icons = new IIcon[5];
-    	
-    	for(int i = 0; i < icons.length; i++)
-    	{
-    		icons[i] = register.registerIcon("sao:"+this.iconString+""+(i+1));
-    	}
-    }
-    
-    private void updateAnimation(int itemIndex, boolean animating)
-    {
-    	if(currentInventory.currentItem == itemIndex && animationStage < icons.length*animationSpeed)
-    	{
-    		animationStage++;
-    	}
-    	else if(animationStage >= icons.length*animationSpeed && !animating)
-		{
-			animationStage = 0;
-		}
-    }
-    
-    @SideOnly(Side.CLIENT)
-    @Override
-    public IIcon getIconFromDamage(int damage)
-    {
-    	if(animationStage/animationSpeed >= icons.length)
-    	{
-    		return icons[icons.length-1];
-    	}
-    	else if(animationStage/animationSpeed <= 0)
-    	{
-    		return icons[0];
-    	}
-    	else
-    	{
-    		return icons[animationStage/animationSpeed];
-    	}
-    }
 
     @Override
     public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)
