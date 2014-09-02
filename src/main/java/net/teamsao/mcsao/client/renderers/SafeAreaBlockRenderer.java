@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.block.customrenderers;
+package net.teamsao.mcsao.client.renderers;
 
 import org.lwjgl.opengl.GL11;
 

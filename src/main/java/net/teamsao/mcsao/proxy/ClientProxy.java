@@ -3,8 +3,8 @@ package net.teamsao.mcsao.proxy;
 import java.io.File;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import net.teamsao.mcsao.block.customrenderers.*;
 import net.teamsao.mcsao.entity.*;
+import net.teamsao.mcsao.client.renderers.SafeAreaBlockRenderer;
 import net.teamsao.mcsao.client.settings.KeyBindings;
 import net.teamsao.mcsao.client.handler.SaoKeyInputHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -29,8 +29,6 @@ public class ClientProxy extends CommonProxy
         safeAreaBlockRenderType = RenderingRegistry.getNextAvailableRenderId();
         RenderingRegistry.registerBlockHandler(new SafeAreaBlockRenderer());
 	}
-
-
 
 	@Override
 	public void registerKeybindings()
