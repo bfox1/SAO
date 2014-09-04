@@ -15,11 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-<<<<<<< HEAD
  * @author bfox1
-=======
- * Created by bfox1 on 8/20/2014.
->>>>>>> 79313ea16d2318340787e6ca2a63af359f0dafde
  */
 public class TpDimension implements ICommand{
 

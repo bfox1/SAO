@@ -1,63 +1,60 @@
 package net.teamsao.mcsao.helper;
 
-import cpw.mods.fml.common.FMLLog;
-import net.teamsao.mcsao.helper.Reference;
-
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Created by bfox1 on 7/11/2014.
  */
 public class LogHelper {
 
-    public static void log(Level logLevel, Object object) {
-        FMLLog.log(Reference.MODID, logLevel, String.valueOf(object));
+    public static void log(Level logLevel, String text) {
+        LogManager.getLogger().log(logLevel, text);
     }
 
-    public static void all(Object object)
+    public static void all(String text)
     {
-        log(Level.ALL, object);
+        log(Level.ALL, text);
     }
 
-    public static void debug(Object object)
+    public static void debug(String text)
     {
-        log(Level.DEBUG, object);
+        log(Level.DEBUG, text);
     }
 
-    public static void error(Object object)
+    public static void error(String text)
     {
-        log(Level.ERROR, object);
+        log(Level.ERROR, text);
     }
 
-    public static void fatal(Object object)
+    public static void fatal(String text)
     {
-        log(Level.FATAL, object);
+        log(Level.FATAL, text);
     }
 
-    public static void info(Object object)
+    public static void info(String text)
     {
-        log(Level.INFO, object);
+        log(Level.INFO, text);
     }
 
-    public static void off(Object object)
+    public static void off(String text)
     {
-        log(Level.OFF, object);
+        log(Level.OFF, text);
     }
 
-    public static void trace(Object object)
+    public static void trace(String text)
     {
-        log(Level.TRACE, object);
+        log(Level.TRACE, text);
     }
 
-    public static void warn(Object object)
+    public static void warn(String text)
     {
-        log(Level.WARN, object);
+        log(Level.WARN, text);
     }
 
     public static String chatEvent()
     {
-        String event = "[" + ColorHelper.DARK_GREEN + Reference.MODID.toUpperCase() + ColorHelper.WHITE +  "]";
-        return event;
+        return "[" + ColorHelper.DARK_GREEN + Reference.MODID.toUpperCase() + ColorHelper.WHITE +  "]";
     }
 
 }

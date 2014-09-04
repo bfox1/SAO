@@ -23,16 +23,17 @@ public class SToolMaterial {
     public static ToolMaterial TyrantDragon;
     public static ToolMaterial LiberatorShield;
     public static ToolMaterial LiberatorSword;
+    public static ToolMaterial KagemitsuG4;
 
-    //Registration.
+    // Registration.
 	public static void init() {
-        /**
-         *  1, String name of Tool
-         *  2, Harvest Level
-         *  3, Durability Level
-         *  4, Effeciency
-         *  5, Damage vs. Entity
-         *  6, Enchantability
+        /*
+         *  1) String name of Tool
+         *  2) Harvest Level
+         *  3) Durability Level
+         *  4) Efficiency
+         *  5) Damage vs. Entity
+         *  6) Enchantability
          */
 		Elucidator = EnumHelper.addToolMaterial("Elucidator", 10, 8800, 7.0F,13.0F, 3);
 		AnnealBlade = EnumHelper.addToolMaterial("Anneal", 4, 1500, 3.0F, 5.0F,6);
@@ -47,5 +48,6 @@ public class SToolMaterial {
         TyrantDragon = EnumHelper.addToolMaterial("TyrantDragon", 5, 4400, 10.0F, 10.0F, 10);
         LiberatorShield = EnumHelper.addToolMaterial("LiberatorShield", 11, 10000, 5.0F, 15.0F, 1);
         LiberatorSword = EnumHelper.addToolMaterial("LiberatorSword", 13, 9000, 9.0F, 17.0F, 1);
+        KagemitsuG4 = EnumHelper.addToolMaterial("KagemitsuG4", 7, 10000, 3.0F, 13.0F, 1);
 	}
 }

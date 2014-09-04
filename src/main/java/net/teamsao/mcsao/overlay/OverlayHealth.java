@@ -5,6 +5,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.teamsao.mcsao.helper.Reference;
 import org.lwjgl.opengl.GL11;
 
 import java.util.Iterator;
@@ -23,6 +24,8 @@ public class OverlayHealth extends Gui {
         // We need this to invoke the render engine.
         OverlayHealth.mc = mc;
     }
+
+    private static final ResourceLocation texturePath = new ResourceLocation(Reference.MODID, "textures/gui/Col.png");
 
     @SubscribeEvent
     public void onRenderHealthBar(RenderGameOverlayEvent evt) {

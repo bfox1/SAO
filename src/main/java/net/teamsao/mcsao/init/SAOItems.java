@@ -24,7 +24,7 @@ public class SAOItems {
 
     // Swords
     public static Item Elucidator = new Elucidator(SToolMaterial.Elucidator);
-    public static Item ElucidatorPowered = new Elucidator_Powered(SToolMaterial.Elucidator);
+    public static Item ElucidatorPowered = new net.teamsao.mcsao.item.swords.ElucidatorPowered(SToolMaterial.Elucidator);
     public static Item AnnealBlade = new AnnealBlade(SToolMaterial.AnnealBlade);
     public static Item AnnealBladePowered = new AnnealBladePowered(SToolMaterial.AnnealBlade);
     public static Item DarkRepulser = new DarkRepulser(SToolMaterial.DarkRepulser);
@@ -47,8 +47,8 @@ public class SAOItems {
     public static Item TyrantDragon = new TyrantDragon(SToolMaterial.TyrantDragon);
     public static Item TyrantDragonPowered = new TyrantDragonPowered(SToolMaterial.TyrantDragon);
 
-    public static Item KagemitsuG4;
-    public static Item KagemitsuG4Powered;
+    public static Item KagemitsuG4 = new KagemitsuG4(SToolMaterial.KagemitsuG4);
+    public static Item KagemitsuG4Powered = new KagemitsuG4Powered(SToolMaterial.KagemitsuG4);
 
     // Guns
     public static Item FnFiveSeven /* = new FnFiveSeven(SToolMaterial.FnFiveSeven)*/;
@@ -107,14 +107,13 @@ public class SAOItems {
         Item[] foods = {ragoutRabbitMeat , ScavengerToadMeat, RawRagoutRabbitMeat, ScavengerCookedToadMeat};
 
         Item[] swords = {Elucidator, AnnealBlade, DarkRepulser, GuiltyThorn, LambentLight, EbonDagger, MateChopper,
-                        Karakurenai, ShadowDagger, TyrantDragon, /*KagemitsuG4,*/ LiberatorShield, LiberatorSword};
+                        Karakurenai, ShadowDagger, TyrantDragon, KagemitsuG4, LiberatorShield, LiberatorSword};
 
         Item[] ingots = {CrystalliteIngot, SteelIngot};
 
-
         Item[] pSwords = {ElucidatorPowered, AnnealBladePowered, DarkRepulserPowered, GuiltyThornPowered, LambentLightPowered,
                          EbonDaggerPowered, MateChopperPowered, KarakurenaiPowered, ShadowDaggerPowered, TyrantDragonPowered,
-                         /*KagemitsuG4Powered, LiberatorShieldPowered, LiberatorSwordPowered*/};
+                         KagemitsuG4Powered/*, LiberatorShieldPowered, LiberatorSwordPowered*/};
 
         /*Item[] guns = {FnFiveSeven, PgmUltimaRatioHecateII, Type54BlackStar};*/
         

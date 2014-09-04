@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.eastereggs.item.guns;
+package net.teamsao.mcsao.item.guns;
 
 import net.minecraft.item.Item;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;

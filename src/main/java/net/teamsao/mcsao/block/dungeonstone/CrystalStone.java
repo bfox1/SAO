@@ -26,6 +26,9 @@ public class CrystalStone extends BlockSAO{
         super(Material.anvil);
         this.setCreativeTab(SAOTabsManager.saoBlocks);
         this.setBlockName("CrystalStone");
+        this.setHardness(-1);
+        this.setBlockUnbreakable();
+        this.setResistance(2000F);
     }
 
 

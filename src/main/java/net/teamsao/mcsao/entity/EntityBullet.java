@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.eastereggs.entity;
+package net.teamsao.mcsao.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;

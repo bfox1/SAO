@@ -1,10 +1,5 @@
 package net.teamsao.mcsao.proxy;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.MinecraftForge;
-import net.teamsao.mcsao.client.gui.GuiCol;
-
 import java.io.File;
 
 /*

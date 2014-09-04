@@ -22,9 +22,17 @@ public class PlayerCol implements IExtendedEntityProperties {
 
     public static final String COL = "Col";
 
+    private double col_ten = 10;
+
+    private double col_hundred = 100;
+
     private double col_thousand = 1000;
 
-    private int col_million = 1000000;
+    private double col_ten_thousand = 10000;
+
+    private double col_hundred_thousand = 100000;
+
+    private double col_million = 1000000;
 
     private double col_amount;
 
@@ -37,7 +45,7 @@ public class PlayerCol implements IExtendedEntityProperties {
 
 
 
-    public static final PlayerCol get(EntityPlayer player)
+    public static PlayerCol get(EntityPlayer player)
     {
         return (PlayerCol) player.getExtendedProperties(COL);
     }
@@ -54,8 +62,7 @@ public class PlayerCol implements IExtendedEntityProperties {
         CommonProxy.storeEntityData(getSavedKey(player), savedData);
         System.out.println("Proxy Data Saved");
     }
-    public static void loadProxyData(EntityPlayer player)
-    {
+    public static void loadProxyData(EntityPlayer player) {
         PlayerCol playerdata = PlayerCol.get(player);
         NBTTagCompound savedData = CommonProxy.getEntityData(getSavedKey(player));
         if(savedData != null)
@@ -107,7 +114,7 @@ public class PlayerCol implements IExtendedEntityProperties {
     {
         return this.col_thousand;
     }
-    public int getCol_million()
+    public double getCol_million()
     {
         return this.col_million;
     }

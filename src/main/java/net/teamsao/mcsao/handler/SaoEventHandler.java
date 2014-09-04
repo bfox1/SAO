@@ -21,6 +21,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.teamsao.mcsao.helper.ColorHelper;
+import net.teamsao.mcsao.helper.LogHelper;
 import net.teamsao.mcsao.player.PlayerSAO;
 import net.teamsao.mcsao.player.PreReleasePlayers;
 import net.teamsao.mcsao.player.entityextendedprop.EntityCol;
@@ -62,9 +63,9 @@ public class SaoEventHandler {
     public void onLivingDeathEvent(LivingDeathEvent event)
     {
 
-        if(!event.entity.worldObj.isRemote && event.entityLiving instanceof EntityMob
-                || event.entityLiving instanceof EntityAnimal && event.source.getEntity() instanceof EntityPlayer
-                && event.source.getEntity().dimension == 2)
+        if(!event.entity.worldObj.isRemote && (event.entityLiving instanceof EntityMob || event.entityLiving instanceof EntityAnimal
+                                           && event.source.getEntity() instanceof EntityPlayer)
+           && event.source.getEntity().dimension == 2)
         {
                 int value;
                 EntityPlayer player = (EntityPlayer) event.source.getEntity();
@@ -75,22 +76,21 @@ public class SaoEventHandler {
                 props.loadNBTData(compound);
 
                 value = event.entity.worldObj.rand.nextInt(3);
-                if(event.entityLiving instanceof EntityMob)
-                {
+
+                if (event.entityLiving instanceof EntityMob) {
                     value = event.entity.worldObj.rand.nextInt(10);
                     System.out.println(value);
                 }
-                if(event.entityLiving instanceof EntityMooshroom)
-                {
+                if (event.entityLiving instanceof EntityMooshroom) {
                     value = event.entity.worldObj.rand.nextInt(20);
-                    System.out.println(value);
                 }
+            LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
 
                 props.addCol(value);
             System.out.println(value);
                 int amt = props.getCol();
                 playerdata.addCol(amt);
-                System.out.println("[LIVINGDEATH] about to save ProxyDATA");
+                LogHelper.debug("[LivingDeathEvent] About to save ProxyData...");
                 PlayerCol.saveProxyData(player);
 
 

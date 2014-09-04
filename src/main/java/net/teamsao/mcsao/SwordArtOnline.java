@@ -9,9 +9,6 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 
 
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.common.MinecraftForge;
-import net.teamsao.mcsao.client.gui.GuiCol;
 import net.teamsao.mcsao.entity.EntitySAO;
 import net.teamsao.mcsao.event.commands.TpDimension;
 import net.teamsao.mcsao.handler.ConfigurationHandler;
@@ -25,7 +22,6 @@ import net.teamsao.mcsao.recipes.ItemRecipes;
 import net.teamsao.mcsao.material.SToolMaterial;
 import net.teamsao.mcsao.network.SaoPacketPipeline;
 import net.teamsao.mcsao.proxy.SProxy;
-
 
 /**
  * <p>This is the main file for the entire mod. All Init MUST go here.</p>
@@ -56,47 +52,58 @@ public class SwordArtOnline {
 	public static SProxy proxy;
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-        // LogHelper.info("PreInitEvent - 0% complete - Creating configuration...");
-        LogHelper.info("Starting PreInitEvent");
-        ConfigurationHandler.init(event.getSuggestedConfigurationFile());
-        FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
-		EntitySAO.registerIds();
-		SToolMaterial.init();
-		SAOItems.registerInit();
-		SAOBlocks.registerInit();
-        proxy.registerDimension();
-        // LogHelper.info("PreInitEvent - 84% complete - Initializing textures...");
-        proxy.initRenderingAndTextures();
-        // LogHelper.info("PreInitEvent - 100% complete - Starting initialization...");
+	public void preInit(FMLPreInitializationEvent event) {
+            LogHelper.info("PreInitEvent - 0% complete - Creating configuration...");
+            ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+            LogHelper.info("PreInitEvent - 13% complete - Registering configuration...");
+            FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
+            LogHelper.info("PreInitEvent - 25% complete - Registering entities...");
+            EntitySAO.registerIds();
+            LogHelper.info("PreInitEvent - 38% complete - Registering materials...");
+            SToolMaterial.init();
+            LogHelper.info("PreInitEvent - 50% complete - Registering items...");
+            SAOItems.registerInit();
+            LogHelper.info("PreInitEvent - 63% complete - Registering blocks...");
+            SAOBlocks.registerInit();
+            LogHelper.info("PreInitEvent - 75% complete - Registering dimension...");
+            proxy.registerDimension();
+            LogHelper.info("PreInitEvent - 88% complete - Initializing textures...");
+            proxy.initRenderingAndTextures();
+            LogHelper.info("PreInitEvent - 100% complete - Starting InitEvent...");
     }
 
 	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
+	public void init(FMLInitializationEvent event) {
 
+        LogHelper.info("InitEvent - 0% complete - Registering packets...");
         packetPipeline.initialise();
-        // LogHelper.info("Starting InitEvent");
+        LogHelper.info("InitEvent - 11% complete - Adding dungeon loot...");
         proxy.addChestLoot();
+        LogHelper.info("InitEvent - 22% complete - Registering events...");
         proxy.registerEventHandlers();
+        LogHelper.info("InitEvent - 33% complete - Registering global entities...");
         proxy.registerGlobalEntity();
-		proxy.registerTileEntities();
+        LogHelper.info("InitEvent - 44% complete - Registering tile entities...");
+        proxy.registerTileEntities();
+        LogHelper.info("InitEvent - 56% complete - Registering keybindings...");
         proxy.registerKeybindings();
+        LogHelper.info("InitEvent - 67% complete - Registering recipes, step 1...");
         ItemRecipes.removeBlockRecipes();
-		ItemRecipes.init();
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-        // LogHelper.info("Finished InitEvent");
+        LogHelper.info("InitEvent - 78% complete - Registering recipes, step 2...");
+        ItemRecipes.init();
+        LogHelper.info("InitEvent - 89% complete - Registering Guis...");
+        NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+        LogHelper.info("InitEvent - 100% complete - Starting PostInitEvent...");
 	}
 
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
+    public void postInit(FMLPostInitializationEvent event) {
+        LogHelper.info("PostInitEvent - 0% complete - Registering renderers...");
         proxy.registerRenderers();
+        LogHelper.info("PostInitEvent - 50% complete - Registering packets...");
         packetPipeline.postInitialise();
+        LogHelper.info("PostInitEvent - 100% complete - Launching Minecraft...");
     }
-
-
 
     @EventHandler
     public void serverLoad(FMLServerStartingEvent event)

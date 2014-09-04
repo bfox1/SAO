@@ -17,7 +17,7 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
  */
 public class Elucidator extends ItemSword {
 	
-	public int PowerPool = Elucidator_Powered.PowerPool;
+	public int PowerPool = ElucidatorPowered.PowerPool;
 
 	public Elucidator(ToolMaterial par1) {
 		super(par1);

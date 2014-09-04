@@ -1,4 +1,4 @@
-package net.teamsao.mcsao.eastereggs.item.bullets;
+package net.teamsao.mcsao.item.ammunition;
 
 import net.minecraft.item.Item;
 

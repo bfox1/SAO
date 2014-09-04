@@ -6,7 +6,7 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.teamsao.mcsao.block.customrenderers.*;
-import net.teamsao.mcsao.client.gui.GuiCol;
+import net.teamsao.mcsao.overlay.OverlayCol;
 import net.teamsao.mcsao.entity.*;
 import net.teamsao.mcsao.client.settings.KeyBindings;
 import net.teamsao.mcsao.client.handler.SaoKeyInputHandler;
@@ -35,7 +35,7 @@ public class ClientProxy extends CommonProxy
 
     @Override
     public void registerRenderers(){
-        MinecraftForge.EVENT_BUS.register(new GuiCol(Minecraft.getMinecraft()));
+        MinecraftForge.EVENT_BUS.register(new OverlayCol(Minecraft.getMinecraft()));
     }
 
 
