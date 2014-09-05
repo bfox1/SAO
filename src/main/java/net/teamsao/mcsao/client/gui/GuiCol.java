@@ -10,7 +10,6 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.player.PlayerSAO;
-import net.teamsao.mcsao.player.playerextendedprop.PlayerCol;
 import org.lwjgl.opengl.GL11;
 
 /**
@@ -36,7 +35,8 @@ public class GuiCol extends Gui {
             return;
         }
 
-        PlayerCol props = PlayerCol.get(this.mc.thePlayer);
+        //PlayerCol props = PlayerCol.get(this.mc.thePlayer);
+        PlayerSAO props = PlayerSAO.get(this.mc.thePlayer);
 
 
 
@@ -64,8 +64,6 @@ public class GuiCol extends Gui {
         this.drawTexturedModalRect(xPos, yPos, 0, 0, 56, 9);
 
         int colBarWidth = (int)(((float)props.getColAmount()/props.getCol_thousand())*49);
-
-       // System.out.println("GUICOL CurrentCol width" + colBarWidth);
         this.drawTexturedModalRect(xPos + 3, yPos + 3, 0, 9, colBarWidth, 3);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_DEPTH_TEST);

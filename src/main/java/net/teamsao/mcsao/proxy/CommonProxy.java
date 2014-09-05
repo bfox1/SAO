@@ -60,6 +60,10 @@ public abstract class CommonProxy implements SProxy {
     {
         return extendedEntityData.remove(name);
     }
+    public static NBTTagCompound checkEntityData(String name)
+    {
+        return extendedEntityData.get(name);
+    }
 
     @Override
     public void registerEventHandlers(){

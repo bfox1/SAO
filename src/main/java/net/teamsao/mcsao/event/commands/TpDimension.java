@@ -8,7 +8,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ChatComponentText;
 import net.teamsao.mcsao.helper.ColorHelper;
 import net.teamsao.mcsao.helper.LogHelper;
-import net.teamsao.mcsao.player.playerextendedprop.PlayerCol;
+import net.teamsao.mcsao.player.PlayerSAO;
 import net.teamsao.mcsao.world.SAOTeleporter;
 
 import java.util.ArrayList;
@@ -73,9 +73,11 @@ public class TpDimension implements ICommand{
             }
             if (strings[1].equals("getCol")) {
                 EntityPlayer player = (EntityPlayer) playerMP;
-                PlayerCol.loadProxyData(player);
-                PlayerCol data = PlayerCol.get(player);
-                double amt = data.getColAmount();
+              //  PlayerCol.loadProxyData(player);
+              //  PlayerCol data = PlayerCol.get(player);
+                PlayerSAO.loadProxyData(player);
+                PlayerSAO data = PlayerSAO.get(player);
+                int amt = data.getColAmount();
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + ColorHelper.YELLOW + "You have "
                         + ColorHelper.DARK_GREEN + amt + ColorHelper.YELLOW +" Col"));
 
@@ -85,21 +87,26 @@ public class TpDimension implements ICommand{
         {
             if(strings[1].equals("setCol")) {
                 EntityPlayer player = (EntityPlayer) playerMP;
-                PlayerCol data = PlayerCol.get(player);
+               // PlayerCol data = PlayerCol.get(player);
+                PlayerSAO data = PlayerSAO.get(player);
                 int amt = Integer.parseInt(strings[2]);
                 data.setColAmount(amt);
-                PlayerCol.saveProxyData(player);
+               // PlayerCol.saveProxyData(player);
+                PlayerSAO.loadProxyData(player);
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + ColorHelper.YELLOW + "You now have "
                         + ColorHelper.DARK_GREEN + amt + ColorHelper.YELLOW +" Col"));
             }
             if(strings[1].equals("addCol")) {
                 EntityPlayer player = (EntityPlayer) playerMP;
-                PlayerCol.loadProxyData(player);
-                PlayerCol data = PlayerCol.get(player);
+               // PlayerCol.loadProxyData(player);
+                PlayerSAO.loadProxyData(player);
+              //  PlayerCol data = PlayerCol.get(player);
+                PlayerSAO data = PlayerSAO.get(player);
                 int amt = Integer.parseInt(strings[2]);
                 data.addCol(amt);
-                double currentAmt = data.getColAmount();
-                PlayerCol.saveProxyData(player);
+                int currentAmt = data.getColAmount();
+               // PlayerCol.saveProxyData(player);
+                PlayerSAO.saveProxyData(player);
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + ColorHelper.YELLOW + " You added "
                         + ColorHelper.DARK_GREEN + amt + ColorHelper.YELLOW + " Col to your account and now have "
                         + ColorHelper.DARK_GREEN + currentAmt + ColorHelper.YELLOW + " Col"));

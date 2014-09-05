@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
 import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.helper.ReferenceHelper;
@@ -84,6 +85,7 @@ public class NerveGear extends ItemArmor {
             String gear2 = gear.getUnlocalizedName();
             String cart2 = cart.getUnlocalizedName();
             if (!world.isRemote) {
+
                 if (players.getCurrentArmor(3) == itemStack && players.isPlayerSleeping() && players.dimension == 0) {
                     if (gear2.equals(cart2)) {
                         PlayerSAO prop = PlayerSAO.get(players);

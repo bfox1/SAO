@@ -5,24 +5,29 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.network.SyncPlayerPropPacket;
+import net.teamsao.mcsao.network.SyncPlayerSAOPropPacket;
+import net.teamsao.mcsao.player.skill.SkillBase;
 import net.teamsao.mcsao.proxy.CommonProxy;
+import net.teamsao.mcsao.world.SAOTeleporter;
 
 /**
  * Created by bfox1 on 8/11/2014.
  */
 public class PlayerSAO implements IExtendedEntityProperties {
 
-    public static final String EXT_PROP_NAME = "overCoords";
-
-    public static final String AINCRAD_NAME = "aincradCoords";
+    public static final String EXT_PROP_NAME = "PlayerSAOProperties";
 
     private int AincradCoordsX,AincradCoordsY ,AincradCoordsZ;
 
     private int overWorldX, overWorldY, overWorldZ;
 
+    private int col_amount;
+    private int col_thousand = 1000;
+
+    private int combat = 1;
 
 
     private int world;
@@ -31,9 +36,10 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     public PlayerSAO(EntityPlayer player) {
         this.player = player;
-        /*this.overWorldX = 10;
-        this.overWorldY = 60;
-        this.overWorldZ = 10;*/
+        this.AincradCoordsX = 0;
+        this.AincradCoordsY = 40;
+        this.AincradCoordsZ = 0;
+        this.col_amount = 100;
     }
 
     //Used to register these extended properties for the player during EntityConstruction event
@@ -48,7 +54,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
     }
     public static String getSavedKey(EntityPlayer player)
     {
-        String key = player.getGameProfile().getName() + "-" + player.dimension + ":" + EXT_PROP_NAME;
+        String key = player.getGameProfile().getName() + ":" + EXT_PROP_NAME;
         System.out.println(key);
         return key;
     }
@@ -63,22 +69,37 @@ public class PlayerSAO implements IExtendedEntityProperties {
     {
         PlayerSAO playerdata = PlayerSAO.get(player);
         NBTTagCompound savedData = CommonProxy.getEntityData(getSavedKey(player));
+        System.out.println(playerdata + " " + savedData);
         if(savedData != null)
         {
             playerdata.loadNBTData(savedData);
         }
-        SwordArtOnline.packetPipeline.sendTo(new SyncPlayerPropPacket(player), (EntityPlayerMP) player);
+        SwordArtOnline.packetPipeline.sendTo(new SyncPlayerSAOPropPacket(player), (EntityPlayerMP) player);
     }
+
+
+
 
 
 
     @Override
     public void saveNBTData(NBTTagCompound compound) {
         NBTTagCompound properties = new NBTTagCompound();
+        String[] skillLength = SkillBase.skills;
+        for(int i = 0; i < skillLength.length; i++)
+        {
+            properties.setInteger(skillLength[i], 0);
+        }
         properties.setInteger("bedCoordX", this.overWorldX);
         properties.setInteger("bedCoordY", this.overWorldY);
         properties.setInteger("bedCoordZ", this.overWorldZ);
+        properties.setInteger("ainCoordX", this.AincradCoordsX);
+        properties.setInteger("ainCoordY", this.AincradCoordsY);
+        properties.setInteger("ainCoordZ", this.AincradCoordsZ);
+        properties.setInteger("colAmount", this.col_amount);
         compound.setTag(EXT_PROP_NAME, properties);
+        System.out.println("Saved NBT data - PlayerSAO" + properties);
+
     }
 
     @Override
@@ -87,6 +108,11 @@ public class PlayerSAO implements IExtendedEntityProperties {
         this.overWorldX = properties.getInteger("bedCoordX");
         this.overWorldY = properties.getInteger("bedCoordY");
         this.overWorldZ = properties.getInteger("bedCoordZ");
+        this.col_amount = properties.getInteger("colAmount");
+        this.AincradCoordsX = properties.getInteger("ainCoordX");
+        this.AincradCoordsY = properties.getInteger("ainCoordY");
+        this.AincradCoordsZ = properties.getInteger("ainCoordZ");
+        System.out.println("loaded NBT data - PLAYERSAO" + properties);
     }
 
     @Override
@@ -116,6 +142,48 @@ public class PlayerSAO implements IExtendedEntityProperties {
         this.overWorldY = y;
         this.overWorldZ = z;
     }
+    public int getColAmount()
+    {
+        return this.col_amount;
+    }
+
+    public void setColAmount(int amount)
+    {
+        this.col_amount = amount;
+    }
+
+    public void addCol(int amount)
+    {
+        this.col_amount = this.col_amount + amount;
+    }
+
+    public int getCol_thousand()
+    {
+        return this.col_thousand;
+    }
+
+    public int getAincradCoordsX()
+    {
+        return this.AincradCoordsX;
+    }
+
+    public int getAincradCoordsY()
+    {
+        return this.AincradCoordsY;
+    }
+    public int getAincradCoordsZ()
+    {
+        return this.AincradCoordsZ;
+    }
+
+    public void setAincradCoordsXYZ(int X, int Y, int Z)
+    {
+        this.AincradCoordsX = X;
+        this.AincradCoordsY = Y;
+        this.AincradCoordsZ = Z;
+    }
+
+
 
 
 
