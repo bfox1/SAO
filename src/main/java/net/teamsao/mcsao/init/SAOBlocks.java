@@ -38,6 +38,11 @@ public class SAOBlocks {
     public static Block LuminescenceLight = new LuminescenceLight();
     public static Block CrystalliteOre = new CrystalliteOre();
 
+    public static Block AincradSCFloorBlock = new net.teamsao.mcsao.block.AincradSCFloorBlock();
+    public static Block AincradSCTowerBlock = new net.teamsao.mcsao.block.AincradSCTowerBlock();
+    public static Block AincradLeafBlock = new net.teamsao.mcsao.block.AincradLeafBlock();
+
+
 
     public static void registerInit()
     {
@@ -64,5 +69,9 @@ public class SAOBlocks {
         ReferenceHelper.registerBlock(AincradStoneBrick);
         ReferenceHelper.registerBlock(LuminescenceLight);
         ReferenceHelper.registerBlock(CrystalliteOre);
+
+        ReferenceHelper.registerBlock(AincradSCTowerBlock);
+        ReferenceHelper.registerBlock(AincradSCFloorBlock);
+        ReferenceHelper.registerBlock(AincradLeafBlock);
     }
 }

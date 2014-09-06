@@ -62,6 +62,11 @@ tile.sao:CrystalStone.ChiseledStone.name=Crystal Chiseled Brick
 tile.sao:CrystalStone.AlterStone.name=Crystal AlterStone
 tile.sao:CyrstalStone.EdgedStone.name=Crystal EdgedStone
 
+tile.AincradLeafBlock.SakuraLeaves.name=Sakura Leaves
+tile.AincradLeafBlock.SummerLeaves.name=Summer Leaves
+tile.AincradLeafBlock.SpringLeaves.name=Spring Leaves
+tile.AincradLeafBlock.AutumnLeaves.name=Autumn Leaves
+
 tile.sao:safetyblock.name=Safety Block
 tile.sao:LuminescenceLightBlock.name=Luminescence Block
 
@@ -71,15 +76,17 @@ sao:cobbleroadhalfslab.name=Cobblestone Road Slab
 sao:cobbleroaddoubleslab.name=Cobblestone Road Double-Slab
 sao:aincraddirt.name=Aincrad Dirt
 sao:aincradgrass.name=Aincrad Grass Block
+sao:aincradsctowerblock.name=Town Of Beginnings Tower Block (Cream)
+sao:aincradscfloorblock.name=Town Of Beginnings Floor Block (Cream)
 
 tile.portal.name=SAO Portal Block
 
 //Tabs
-itemGroup.SAO=Sao
-itemGroup.SaoTools=Sao Tools
-itemGroup.SaoIngots=Sao Ingots
-itemGroup.SaoBlocks=Sao Blocks
-itemGroup.SaoFoods=Sao Foods
+itemGroup.SAO=SAO
+itemGroup.SaoTools=SAO Tools
+itemGroup.SaoIngots=SAO Ingots
+itemGroup.SaoBlocks=SAO Blocks
+itemGroup.SaoFoods=SAO Foods
 
 //Entities
 entity.KoboldTest.name=Kobold
