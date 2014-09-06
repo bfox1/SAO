@@ -3,11 +3,8 @@ package net.teamsao.mcsao.proxy;
 import java.io.File;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import net.minecraft.client.Minecraft;
-import net.minecraftforge.common.MinecraftForge;
-import net.teamsao.mcsao.block.customrenderers.*;
-import net.teamsao.mcsao.client.gui.GuiCol;
 import net.teamsao.mcsao.entity.*;
+import net.teamsao.mcsao.client.renderers.SafeAreaBlockRenderer;
 import net.teamsao.mcsao.client.settings.KeyBindings;
 import net.teamsao.mcsao.client.handler.SaoKeyInputHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -33,13 +30,6 @@ public class ClientProxy extends CommonProxy
         RenderingRegistry.registerBlockHandler(new SafeAreaBlockRenderer());
 	}
 
-    @Override
-    public void registerRenderers(){
-        MinecraftForge.EVENT_BUS.register(new GuiCol(Minecraft.getMinecraft()));
-    }
-
-
-
 	@Override
 	public void registerKeybindings()
 	{
@@ -52,5 +42,10 @@ public class ClientProxy extends CommonProxy
     public void registerEntityLiving()
     {
     	
+    }
+
+    @Override
+    public void registerRenderers() {
+
     }
 }

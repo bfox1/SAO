@@ -1,47 +1,61 @@
 package net.teamsao.mcsao.item.swords;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.item.SItemSword;
+import net.teamsao.mcsao.item.UnsheathingSword;
 import net.teamsao.mcsao.helper.ColorHelper;
 
 import java.util.List;
+
+import cpw.mods.fml.relauncher.Side;
 //
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Created by bfox1 on 7/9/2014.
  */
-public class ObjectEraser extends SItemSword
+public class ObjectEraser extends UnsheathingSword
 {
+	private EntityPlayer currentOwner;
+	private InventoryPlayer currentInventory;
+	
 	public ObjectEraser(ToolMaterial p_i45356_1_)
 	{
 		super(p_i45356_1_);
 		this.setUnlocalizedName("ObjectEraser");
-		this.setTextureName(ReferenceHelper.setItemName(this));
+		this.setTextureName("ObjectEraser");
 		this.setCreativeTab(null);
+		setAnimationSpeed(3);
 	}
 
-
-
     @Override
-    public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3) {
+    public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
+    {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-
         return par1;
     }
 
     @Override
-	public void onUpdate(ItemStack itemstack, World world, Entity entity, int par4, boolean par5) {
-
-		EntityPlayer player = ((EntityPlayer) entity);
+	public void onUpdate(ItemStack itemstack, World world, Entity entity, int inventoryIndex, boolean isItemAnimating)
+    {
+    	if(entity instanceof EntityPlayer && ((currentOwner != null && currentOwner != entity) || currentOwner == null))
+    	{
+    		currentOwner = (EntityPlayer)entity;
+    		currentInventory = currentOwner.inventory;
+    	}
 		if (!world.isRemote)
 		{
-            player.setAbsorptionAmount(15.5F);
+			updateAnimation(currentInventory, inventoryIndex, isItemAnimating);
+            currentOwner.setAbsorptionAmount(15.5F);
 			if (itemstack.isItemEnchanted() == false)
 			{
 				itemstack.addEnchantment(Enchantment.sharpness, 5);
@@ -50,26 +64,25 @@ public class ObjectEraser extends SItemSword
 			{
 				entity.extinguish();
 			}
-			if (player.isPotionActive(Potion.wither) || player.isPotionActive(Potion.weakness) 
-					|| player.isPotionActive(Potion.poison) || player.isPotionActive(Potion.confusion) 
-					|| player.isPotionActive(Potion.blindness))
+			if (currentOwner.isPotionActive(Potion.wither) || currentOwner.isPotionActive(Potion.weakness) 
+					|| currentOwner.isPotionActive(Potion.poison) || currentOwner.isPotionActive(Potion.confusion) 
+					|| currentOwner.isPotionActive(Potion.blindness))
 			{
-				player.clearActivePotions();
+				currentOwner.clearActivePotions();
 			}
-			if (player.getHealth() != player.getMaxHealth())
+			if (currentOwner.getHealth() != currentOwner.getMaxHealth())
 			{
-				player.heal(10);
+				currentOwner.heal(10);
 			}
 		}
 	}
 
     @Override
-    public void addInformation(ItemStack item, EntityPlayer player, List list,
-                               boolean par4) {
-
+    public void addInformation(ItemStack item, EntityPlayer player, List list, boolean par4)
+    {
         list.add(ColorHelper.DARK_RED + "" + ColorHelper.ITALIC + "A Legendary Sword");
         list.add(ColorHelper.DARK_RED + "" + ColorHelper.ITALIC + "Said to hold Infinite");
-        list.add(ColorHelper.DARK_RED + "" + ColorHelper.ITALIC + "Power unlike anyother.");
-
+        list.add(ColorHelper.DARK_RED + "" + ColorHelper.ITALIC + "Power unlike any other.");
     }
+    
 }
