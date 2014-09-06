@@ -38,6 +38,7 @@ public class TownTeleportCrystal extends ItemSAO {
 				if(modeTag == null) {
 					tag.setString("TestString", "Aincrad");
 				}*/
+                System.out.println("Past area");
                 par3Player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_TELEPORT_CRYSTAL, par3Player.worldObj, (int) par3Player.posX,
                         (int) par3Player.posY, (int)par3Player.posZ);
             }

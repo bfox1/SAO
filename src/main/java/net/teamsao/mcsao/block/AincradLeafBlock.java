@@ -9,8 +9,8 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 import java.util.List;
 //
