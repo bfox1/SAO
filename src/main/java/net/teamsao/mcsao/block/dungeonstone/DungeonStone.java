@@ -15,9 +15,8 @@ import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 //
 
-public class DungeonStone extends BlockSAO {
-
-	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "AlterStone", "EdgedStone"};
+public class DungeonStone extends BlockSAO
+{
 	
 	public DungeonStone()
 	{
@@ -44,7 +43,7 @@ public class DungeonStone extends BlockSAO {
 		for(int i = 0; i < icons.length; i++)
 		{
 			icons[i] = par1IconRegister.registerIcon(this.getUnlocalizedName().substring(5) + i);
-			System.out.println(ReferenceHelper.setBlockName(this) + i);
+			System.out.println(this.getUnlocalizedName().substring(5) + i);
 		}
 	}
 	/*

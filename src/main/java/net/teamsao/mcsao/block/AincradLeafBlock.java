@@ -9,22 +9,20 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.teamsao.mcsao.help.ReferenceHelper;
-import net.teamsao.mcsao.lib.SAOTabsManager;
+import net.teamsao.mcsao.helper.ReferenceHelper;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 import java.util.List;
 //
 
-public class AincradLeafBlock extends Block {
-
-	public final static String[] subBlocks = {"SakuraLeaves", "SummerLeaves", "SpringLeaves", "AutumnLeaves"};
+public class AincradLeafBlock extends BlockSAO
+{
 
 	public AincradLeafBlock()
 	{
 		super(Material.leaves);
 		this.setCreativeTab(SAOTabsManager.saoBlocks);
 		this.setBlockName("AincradLeafBlock");
-        this.setBlockUnbreakable();
 	}
 
 	@Override
@@ -38,14 +36,14 @@ public class AincradLeafBlock extends Block {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister register)
 	{
 		icons = new IIcon[4];
 
 		for(int i = 0; i < icons.length; i++)
 		{
-			icons[i] = par1IconRegister.registerIcon(ReferenceHelper.setBlockName(this) + i);
-			System.out.println(ReferenceHelper.setBlockName(this) + i);
+			icons[i] = register.registerIcon(this.getUnlocalizedName().substring(5) + i);
+			System.out.println(this.getUnlocalizedName().substring(5) + i);
 		}
 	}
 	/*
@@ -83,7 +81,4 @@ public class AincradLeafBlock extends Block {
 			par3List.add(new ItemStack(par1, 1, i));
 		}
 	}
-
-
-
 }

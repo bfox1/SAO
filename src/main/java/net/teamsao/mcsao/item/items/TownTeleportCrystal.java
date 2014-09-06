@@ -21,7 +21,7 @@ public class TownTeleportCrystal extends ItemSAO {
 	public TownTeleportCrystal()
 	{
 		this.setMaxStackSize(1);
-		this.setUnlocalizedName("townTeleportCrystal");
+		this.setUnlocalizedName("TownTeleportCrystal");
         this.setTextureName(ReferenceHelper.setItemName(this));
 	}
 	
