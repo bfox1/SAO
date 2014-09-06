@@ -39,14 +39,9 @@ public class SwordArtOnline {
     public static int modGuiIndex = 0;
     public static final int GUI_ITEM_INV = modGuiIndex++;
 
-    @EventHandler
-    public void invalidFingerprint(FMLFingerprintViolationEvent event) {
-        if (Reference.FINGERPRINT.equals("Test")) {
-            LogHelper.info(Messages.NO_FINGERPRINT_MESSAGE);
-        } else {
-            LogHelper.warn(Messages.INVALID_FINGERPRINT_MESSAGE);
-        }
-    }
+
+    public static final int GUI_TELEPORT_CRYSTAL = modGuiIndex + 2;
+    public static final int GUI_TELEPORT_CRYSTAL_BLOCK = modGuiIndex + 3;
 
 	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;

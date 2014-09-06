@@ -12,6 +12,7 @@ import net.teamsao.mcsao.container.ContainerNerveGear;
 import net.teamsao.mcsao.inventory.InventoryNerveGear;
 import net.teamsao.mcsao.tileentity.TileEntityForgeStation;
 //import net.teamsao.mcsao.tileentity.TileEntityNerveGear;
+import net.teamsao.mcsao.tileentity.TileEntityTeleportCrystalBlock;
 
 /**
  * Created by bfox1 on 7/12/2014.
@@ -44,6 +45,14 @@ public class GuiHandler implements IGuiHandler {
         if(ID == SwordArtOnline.GUI_ITEM_INV)
         {
             return new GuiSaoMenu();
+        }
+        if(ID == SwordArtOnline.GUI_TELEPORT_CRYSTAL)
+        {
+        	return new GuiTeleportCrystal(player);
+        }
+        if(ID == SwordArtOnline.GUI_TELEPORT_CRYSTAL_BLOCK)
+        {
+            return new GuiTeleportCrystalBlock((TileEntityTeleportCrystalBlock) tileEntity);
         }
         return null;
 

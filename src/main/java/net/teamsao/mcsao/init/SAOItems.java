@@ -70,6 +70,7 @@ public class SAOItems {
     public static Item NerveGear = new NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
     public static Item TeleportCrystal = new TeleportCrystal();
     public static Item AntidoteCrystal = new AntidoteCrystal();
+    public static Item TownTeleportCrystal = new TownTeleportCrystal();
     public static Item HealingCrystal = new HealingCrystal();
     public static Item CDSAO = new SAOCD();
 
@@ -102,7 +103,7 @@ public class SAOItems {
     public static void registerInit() {
 
         Item[] items = { BossKillToken, HeartOfKobold, NerveGear,AntidoteCrystal,
-                TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
+        		TownTeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
                 ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, Elixer, EmptyVial,
                 HealingCrystal/* , WeaponTypeSelector, SwordTypeSelector*/};
 
