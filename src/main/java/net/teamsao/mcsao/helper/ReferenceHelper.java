@@ -17,31 +17,23 @@ public class ReferenceHelper {
 
 	}
 
-	public static void registerItem(Item item)
-	{
-		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
-
-
-	}
+	public static void registerItem(Item item) {
+        GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
+    }
 	
 	/**
-	 * @name this is for special Items/Blocks in which the texture needs to be the same as another.
-	 * @return returns the Variable test
-	 *  
+	 * @param name Used for special items in which the texture needs to be the same as another.
+	 * @return The display name for the item.
 	 */
-	public static String setItemName(Item name)
-	{
-		String test = Reference.MODID.toLowerCase() + ":" + name.getUnlocalizedName().substring(5);
-		return test;
-
+	public static String setItemName(Item name) {
+		return Reference.MODID.toLowerCase() + ":" + name.getUnlocalizedName().substring(5);
 	}
 	
 	/**
-	 * @name this is for special Items/Blocks in which the texture needs to be the same as another.
-	 * @return returns the Variable test
+	 * @param name Used for special blocks in which the texture needs to be the same as another.
+	 * @return The display name for the block.
 	 */
 	public static String setBlockName(Block name){
-		String test = Reference.MODID.toLowerCase() + ":" + name.getUnlocalizedName().substring(5);
-		return test;
+		return Reference.MODID.toLowerCase() + ":" + name.getUnlocalizedName().substring(5);
 	}
 }

@@ -19,15 +19,15 @@ import net.teamsao.mcsao.helper.ColorHelper;
  * @author bfox1
  *
  */
-public class Elucidator_Powered extends ItemSword {
+public class ElucidatorPowered extends ItemSword {
 	
 	public static int PowerPool = 5000;
 	
 	public NBTTagCompound test;
 
-	public Elucidator_Powered(ToolMaterial p_i45356_1_) {
+	public ElucidatorPowered(ToolMaterial p_i45356_1_) {
 		super(p_i45356_1_);
-		setUnlocalizedName("Elucidator_Powered");
+		setUnlocalizedName("ElucidatorPowered");
 		setTextureName(Reference.MODID + ":" + "Elucidator");
 		this.setCreativeTab(null);
 

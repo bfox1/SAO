@@ -105,11 +105,9 @@ public class SAOTeleporter extends Teleporter
         mpPlayer.theItemInWorldManager.setWorld(worldServer1);
         updateTimeAndWeatherForPlayer(mpPlayer, worldServer1);
         syncPlayerInventory(mpPlayer);
-        Iterator iterator = mpPlayer.getActivePotionEffects().iterator();
 
-        while (iterator.hasNext())
-        {
-            PotionEffect potioneffect = (PotionEffect) iterator.next();
+        for (Object o : mpPlayer.getActivePotionEffects()) {
+            PotionEffect potioneffect = (PotionEffect) o;
             mpPlayer.playerNetServerHandler.sendPacket(new S1DPacketEntityEffect(mpPlayer.getEntityId(), potioneffect));
         }
         FMLCommonHandler.instance().firePlayerChangedDimensionEvent(mpPlayer, s, newDim);

@@ -1,11 +1,10 @@
-package net.teamsao.mcsao.client.gui;
+package net.teamsao.mcsao.overlay;
 
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.teamsao.mcsao.helper.Reference;
@@ -13,15 +12,15 @@ import net.teamsao.mcsao.player.PlayerSAO;
 import org.lwjgl.opengl.GL11;
 
 /**
- * Created by bfox1 on 8/30/2014.
+ * @author bfox1
  */
-public class GuiCol extends Gui {
+public class OverlayCol extends Gui {
 
     private Minecraft mc;
 
     private static final ResourceLocation texturePath = new ResourceLocation(Reference.MODID, "textures/gui/Col.png");
 
-    public GuiCol(Minecraft mc)
+    public OverlayCol(Minecraft mc)
     {
         super();
         this.mc = mc;

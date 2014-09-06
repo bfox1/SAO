@@ -15,12 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bfox1 on 8/20/2014.
+ * @author bfox1
  */
 public class TpDimension implements ICommand{
 
     private List aliases;
-
     private int dimension;
     public TpDimension(){
         this.aliases = new ArrayList();

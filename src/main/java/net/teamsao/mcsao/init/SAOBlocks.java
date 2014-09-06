@@ -2,7 +2,10 @@ package net.teamsao.mcsao.init;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
+import net.minecraft.block.material.Material;
 import net.teamsao.mcsao.block.*;
+import net.teamsao.mcsao.block.dungeonstone.*;
 import net.teamsao.mcsao.block.inventoryblocks.ForgeStation;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.helper.ReferenceHelper;
@@ -11,7 +14,7 @@ import net.teamsao.mcsao.item.items.ItemCobbleSlab;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 
 /**
- * Created by bfox1 on 7/24/2014.
+ * @author bfox1
  */
 public class SAOBlocks {
 
@@ -38,15 +41,12 @@ public class SAOBlocks {
     public static Block LuminescenceLight = new LuminescenceLight();
     public static Block CrystalliteOre = new CrystalliteOre();
 
-
     public static void registerInit()
     {
 
         GameRegistry.registerBlock(SAOPortalBlock, Reference.MODID + (SAOPortalBlock.getUnlocalizedName().substring(5)));
         GameRegistry.registerBlock(DungeonStone, ItemBlockMetaData.class, DungeonStone.getUnlocalizedName().substring(5));
         GameRegistry.registerBlock(CrystalStone, ItemBlockMetaData.class, CrystalStone.getUnlocalizedName().substring(5));
-
-
         GameRegistry.registerBlock(AincradCobbleHalfSlab, ItemCobbleSlab.class, AincradCobbleHalfSlab.getUnlocalizedName());
         GameRegistry.registerBlock(AincradCobbleDoubleSlab, ItemCobbleSlab.class, AincradCobbleDoubleSlab.getUnlocalizedName());
 

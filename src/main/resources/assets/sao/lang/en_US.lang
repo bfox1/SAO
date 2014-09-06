@@ -23,7 +23,7 @@ item.rawragoutmeat.name=Raw Ragout Meat
 
 //Swords
 item.Elucidator.name=§8Elucidator
-item.Elucidator_Powered.name=§8Elucidator
+item.ElucidatorPowered.name=§8Elucidator
 item.AnnealBlade.name=§3Anneal Blade
 item.AnnealBladePowered.name=§3Anneal Blade
 item.DarkRepulser.name=§bDark Repulser
@@ -39,13 +39,15 @@ item.MateChopperPowered.name=§4Mate Chopper
 item.KagemitsuG4.name=KagemitsuG4
 item.Karakurenai.name=Karakurenai
 item.KarakurenaiPowered.name=Karakurenai
-item.shadowdagger.name=§8Shadow Dagger
+item.ShadowDagger.name=§8Shadow Dagger
 item.ShadowDaggerPowered.name=§8Shadow Dagger
 item.TyrantDragon.name=Tyrant Dragon
 item.TyrantDragonPowered.name=Tyrant Dragon
 item.ObjectEraser.name=§4Object Eraser
 item.LiberatorSword.name=Liberator Sword
 item.LiberatorShield.name=Liberator Shield
+item.KagemitsuG4.name=§bKagemitsuG4
+item.KagemitsuG4Powered.name=§bKagemitsuG4
 //Hammers
 item.sao:ZoringenHammer.name=Zoringen Hammer
 

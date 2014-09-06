@@ -17,13 +17,14 @@ import net.teamsao.mcsao.material.SToolMaterial;
 import net.teamsao.mcsao.recipes.ForgeStationRecipes;
 
 /**
- * Created by bfox1 on 7/23/2014.
+ * @author bfox1
  */
+@SuppressWarnings("UnusedDeclaration")
 public class SAOItems {
 
     // Swords
     public static Item Elucidator = new Elucidator(SToolMaterial.Elucidator);
-    public static Item ElucidatorPowered = new Elucidator_Powered(SToolMaterial.Elucidator);
+    public static Item ElucidatorPowered = new net.teamsao.mcsao.item.swords.ElucidatorPowered(SToolMaterial.Elucidator);
     public static Item AnnealBlade = new AnnealBlade(SToolMaterial.AnnealBlade);
     public static Item AnnealBladePowered = new AnnealBladePowered(SToolMaterial.AnnealBlade);
     public static Item DarkRepulser = new DarkRepulser(SToolMaterial.DarkRepulser);
@@ -47,7 +48,9 @@ public class SAOItems {
     public static Item TyrantDragonPowered = new TyrantDragonPowered(SToolMaterial.TyrantDragon);
 
     public static Item KagemitsuG4 = new KagemitsuG4(SToolMaterial.KagemitsuG4);
-    public static Item KagemitsuG4Powered;
+
+    public static Item KagemitsuG4Powered = new KagemitsuG4Powered(SToolMaterial.KagemitsuG4);
+
 
     // Guns
     public static Item FnFiveSeven /* = new FnFiveSeven(SToolMaterial.FnFiveSeven)*/;
@@ -80,7 +83,7 @@ public class SAOItems {
     //Ingots
     public static Item CrystalliteIngot = new CrystalliteIngot();
     public static Item SteelIngot = new SteelIngot();
-    
+
     //Armor
     public static Item CoatOfMidnightBody = new COM_Body(SArmorMaterial.coatOfMidnight, 1, "CoatOfMidnightBody");
     public static Item CoatOfMidnightLeggings = new COM_Leggings(SArmorMaterial.coatOfMidnight, 2, "CoatOfMidnightLeggings");
@@ -96,17 +99,12 @@ public class SAOItems {
     public static SItemFood ScavengerToadMeat = new ScavengerToadMeat(1, 1.0F, false, "toadmeat");
     public static SItemFood ScavengerCookedToadMeat = new ScavengerCookedToadMeat(3, 4.0F, false, "cookedtoadmeat");
     
-
-
-
     public static void registerInit() {
 
         Item[] items = { BossKillToken, HeartOfKobold, NerveGear,AntidoteCrystal,
                 TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
                 ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, Elixer, EmptyVial,
-                HealingCrystal/*WeaponTypeSelector,
-                SwordTypeSelector*/};
-
+                HealingCrystal/* , WeaponTypeSelector, SwordTypeSelector*/};
 
         Item[] foods = {ragoutRabbitMeat , ScavengerToadMeat, RawRagoutRabbitMeat, ScavengerCookedToadMeat};
 
@@ -115,10 +113,9 @@ public class SAOItems {
 
         Item[] ingots = {CrystalliteIngot, SteelIngot};
 
-
         Item[] pSwords = {ElucidatorPowered, AnnealBladePowered, DarkRepulserPowered, GuiltyThornPowered, LambentLightPowered,
                          EbonDaggerPowered, MateChopperPowered, KarakurenaiPowered, ShadowDaggerPowered, TyrantDragonPowered,
-                         /*KagemitsuG4Powered, LiberatorShieldPowered, LiberatorSwordPowered*/};
+                         KagemitsuG4Powered/*, LiberatorShieldPowered, LiberatorSwordPowered*/};
 
         /*Item[] guns = {FnFiveSeven, PgmUltimaRatioHecateII, Type54BlackStar};*/
         
@@ -133,17 +130,19 @@ public class SAOItems {
             ReferenceHelper.registerItem(food);
         }
 
-        
-        for(int i = 0; i < ingots.length; i++) {
-        	ReferenceHelper.registerItem(ingots[i]);
-        	
-        	for(int j = 0; j < hammers.length; j++) {
-        		ForgeStationRecipes.forging().addForgingRecipe(ingots[i], WeaponTypeSelector, SwordTypeSelector, hammers[j], 0.1F);
-        	}
+        for (Item hammer : hammers) {
+            ReferenceHelper.registerItem(hammer);
         }
-        
-        for(int i = 0; i < foods.length; i++){
-            ReferenceHelper.registerItem(foods[i]);
+
+        for (Item ingot : ingots) {
+            ReferenceHelper.registerItem(ingot);
+            for (Item hammer : hammers) {
+                ForgeStationRecipes.forging().addForgingRecipe(ingot, WeaponTypeSelector, SwordTypeSelector, hammer, 0.1F);
+            }
+        }
+
+        for (Item food : foods) {
+            ReferenceHelper.registerItem(food);
 
         }
 
@@ -158,11 +157,7 @@ public class SAOItems {
 
        /* for (Item gun : guns) {
             ReferenceHelper.registerItem(gun);
-        }
-        */
-        
-        for(int i = 0; i < hammers.length; i++) {
-        	ReferenceHelper.registerItem(hammers[i]);
-        }
+        } */
+
     }
 }

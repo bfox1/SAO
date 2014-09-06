@@ -1,10 +1,8 @@
 package net.teamsao.mcsao.item.swords;
 
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.item.SItemSword;
@@ -12,22 +10,20 @@ import net.teamsao.mcsao.item.SItemSword;
 /**
  * @author 5chris100
  */
-public class KagemitsuG4 extends SItemSword {
+public class KagemitsuG4Powered extends SItemSword {
 
-    public KagemitsuG4(ToolMaterial p_i45356_1_) {
+    public KagemitsuG4Powered(ToolMaterial p_i45356_1_) {
         super(p_i45356_1_);
-        this.setUnlocalizedName("KagemitsuG4");
+        this.setUnlocalizedName("KagemitsuG4Powered");
         // this.setTextureName(ReferenceHelper.setItemName(SAOItems.KagemitsuG4));
-        this.setCreativeTab(SAOTabsManager.saoTools);
+        this.setCreativeTab(null);
     }
 
     @Override
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3) {
         par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
 
-        ItemStack sword = new ItemStack(SAOItems.KagemitsuG4Powered);
-        sword.addEnchantment(Enchantment.sharpness, 4);
-        sword.addEnchantment(Enchantment.power, 3);
+        ItemStack sword = new ItemStack(SAOItems.KagemitsuG4);
         if (!par2.isRemote) {
             if (par3.isSneaking()) {
                 sword.setItemDamage(par1.getItemDamage());
