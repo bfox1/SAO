@@ -5,7 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
-import net.teamsao.mcsao.player.playerextendedprop.PlayerCol;
+//import net.teamsao.mcsao.player.playerextendedprop.PlayerCol;
 
 import java.util.Random;
 

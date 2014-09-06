@@ -5,7 +5,7 @@ item.BossKillToken:0.name=§5BossKillToken
 //Items
 item.HeartOfKobold.name=Heart Of Kobold
 item.NerveGear.name=§7NerveGear
-item.TeleportCrystal.name=Teleport Crystal
+item.TownTeleportCrystal.name=Teleport Crystal
 item.AntidoteCrystal.name=Antidote Crystal
 item.sao:cartridge.name=SAO Game
 item.HealingCrystal.name=Healing Crystal
@@ -61,6 +61,8 @@ tile.sao:CrystalStone.BrickedStone.name=Crystal Brick
 tile.sao:CrystalStone.ChiseledStone.name=Crystal Chiseled Brick
 tile.sao:CrystalStone.AlterStone.name=Crystal AlterStone
 tile.sao:CyrstalStone.EdgedStone.name=Crystal EdgedStone
+
+tile.BlockCrystalLocator.name=Teleport Crystal Block
 
 tile.sao:safetyblock.name=Safety Block
 tile.sao:LuminescenceLightBlock.name=Luminescence Block
