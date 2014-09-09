@@ -1,7 +1,7 @@
 package net.teamsao.mcsao.init;
 
 import net.minecraft.item.Item;
-import net.teamsao.mcsao.block.ItemBlockMetaData;
+import net.teamsao.mcsao.block.DungeonBlockMetaData;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.item.*;
 import net.teamsao.mcsao.item.ingots.*;
@@ -19,9 +19,8 @@ import net.teamsao.mcsao.recipes.ForgeStationRecipes;
 /**
  * @author bfox1
  */
-@SuppressWarnings("UnusedDeclaration")
-public class SAOItems {
-
+public class SAOItems
+{
     // Swords
     public static Item Elucidator = new Elucidator(SToolMaterial.Elucidator);
     public static Item ElucidatorPowered = new net.teamsao.mcsao.item.swords.ElucidatorPowered(SToolMaterial.Elucidator);
@@ -50,6 +49,7 @@ public class SAOItems {
     public static Item KagemitsuG4 = new KagemitsuG4(SToolMaterial.KagemitsuG4);
     public static Item KagemitsuG4Powered = new KagemitsuG4Powered(SToolMaterial.KagemitsuG4);
 
+
     // Guns
     public static Item FnFiveSeven /* = new FnFiveSeven(SToolMaterial.FnFiveSeven)*/;
     public static Item PgmUltimaRatioHecateII /* = new PgmUltimaRatioHecateII(SToolMaterial.PgmUltimaRatioHecateII)*/;
@@ -59,8 +59,8 @@ public class SAOItems {
     public static Item ZoringenHammer = new ZoringenHammer();
 
     // ItemBlocks
-    public static Item DungeonStoneItem = new ItemBlockMetaData(SAOBlocks.DungeonStone);
-    public static Item CrystalDungeonItem = new ItemBlockMetaData(SAOBlocks.CrystalStone);
+    public static Item DungeonStoneItem = new DungeonBlockMetaData(SAOBlocks.DungeonStone);
+    public static Item CrystalDungeonItem = new DungeonBlockMetaData(SAOBlocks.CrystalStone);
 
     // Items
     public static Item BossKillToken = new BossKillToken();
@@ -68,6 +68,7 @@ public class SAOItems {
     public static Item NerveGear = new NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
     public static Item TeleportCrystal = new TeleportCrystal();
     public static Item AntidoteCrystal = new AntidoteCrystal();
+    public static Item TownTeleportCrystal = new TownTeleportCrystal();
     public static Item HealingCrystal = new HealingCrystal();
     public static Item CDSAO = new SAOCD();
 
@@ -100,7 +101,7 @@ public class SAOItems {
     public static void registerInit() {
 
         Item[] items = { BossKillToken, HeartOfKobold, NerveGear,AntidoteCrystal,
-                TeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
+        		TownTeleportCrystal, CoatOfMidnightBody, CoatOfMidnightLeggings, CoatOfMidnightBoots,
                 ObjectEraser, debugHelmet, debugChestPlate, debugLeggings, debugBoots, CDSAO, Elixer, EmptyVial,
                 HealingCrystal/* , WeaponTypeSelector, SwordTypeSelector*/};
 

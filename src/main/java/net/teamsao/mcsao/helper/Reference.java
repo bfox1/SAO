@@ -14,4 +14,5 @@ public class Reference {
 		public static final String SERVERPROXY = "net.teamsao.mcsao.proxy.ServerProxy";
         public static final String FINGERPRINT = "Test";
         public static final String GUI_FACTORY = "net.teamsao.mcsao.client.gui.SAOGuiFactory";
+        public static final int NUMBER_OF_TOWNS = 11;
 }

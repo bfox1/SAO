@@ -17,23 +17,15 @@ import java.util.List;
 /**
  * Created by bfox1 on 7/20/2014.
  */
-public class CrystalStone extends BlockSAO{
+public class CrystalStone extends BlockSAO
+{
 
-    public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "AlterStone", "EdgedStone"};
-
-
-    public CrystalStone() {
+    public CrystalStone()
+    {
         super(Material.anvil);
         this.setCreativeTab(SAOTabsManager.saoBlocks);
         this.setBlockName("CrystalStone");
-        this.setHardness(-1);
-        this.setBlockUnbreakable();
-        this.setResistance(2000F);
     }
-
-
-
-
 
     @Override
     public int damageDropped(int par1)

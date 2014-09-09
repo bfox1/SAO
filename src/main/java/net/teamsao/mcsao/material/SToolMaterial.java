@@ -41,6 +41,7 @@ public class SToolMaterial {
 		GuiltyThorn = EnumHelper.addToolMaterial("GuiltyThorn", 5, 3500, 4.0F, 5.0F, 15);
 		LambentLight = EnumHelper.addToolMaterial("LambentLight", 5, 5500, 9.0F, 12.0F, 14);
 		EbonDagger = EnumHelper.addToolMaterial("EbonDagger", 5, 4600, 6.0F, 5.0F, 30);
+		KagemitsuG4 = EnumHelper.addToolMaterial("KagemitsuG4", 8, 7500, 6.0F, 9.0F, 15);
 		Karakurenai = EnumHelper.addToolMaterial("Karakurenai", 6, 4500, 6.0F, 7.0F, 15);
 		MateChopper = EnumHelper.addToolMaterial("MateChopper", 12, 9900, 9.0F, 13.0F, 2);
         ShadowDagger = EnumHelper.addToolMaterial("ShadowDagger", 2, 5700, 5.0F, 4.0F, 15);

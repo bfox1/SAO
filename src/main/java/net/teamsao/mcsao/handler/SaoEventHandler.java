@@ -25,7 +25,6 @@ import net.teamsao.mcsao.player.PlayerSAO;
 import net.teamsao.mcsao.player.SpecialPlayers;
 import net.teamsao.mcsao.player.entityextendedprop.EntityCol;
 import net.teamsao.mcsao.player.entityextendedprop.EntityRegistration;
-import net.teamsao.mcsao.player.playerextendedprop.PlayerCol;
 import net.teamsao.mcsao.player.playerextendedprop.PlayerRegistration;
 import net.teamsao.mcsao.proxy.CommonProxy;
 
@@ -61,8 +60,8 @@ public class SaoEventHandler {
         {
                 int value;
                 EntityPlayer player = (EntityPlayer) event.source.getEntity();
-                PlayerCol.loadProxyData(player);
-                PlayerCol playerdata = PlayerCol.get(player);
+                PlayerSAO.loadProxyData(player);
+                PlayerSAO playerdata = PlayerSAO.get(player);
                 NBTTagCompound compound = new NBTTagCompound();
                 EntityCol props = EntityCol.get((EntityLivingBase)event.entity);
                 props.loadNBTData(compound);
@@ -80,6 +79,12 @@ public class SaoEventHandler {
             Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(ColorHelper.GRAY + "[Debug] " + ColorHelper.GREEN + "You have been awarded " + ColorHelper.YELLOW +
                                                                                     value + ColorHelper.GREEN + " Col for slaying that " + ColorHelper.DARK_GREEN + ((EntityMob)
                                                                                     event.entityLiving).getCustomNameTag() + ColorHelper.GREEN + "!"));
+                props.addCol(value);
+            System.out.println(value);
+                int amt = props.getCol();
+                playerdata.addCol(amt);
+                LogHelper.debug("[LivingDeathEvent] About to save ProxyData...");
+            PlayerSAO.saveProxyData(player);
 
         }
         if(!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
@@ -124,13 +129,7 @@ public class SaoEventHandler {
                         String chat = ColorHelper.DARK_BLUE + "[" + ColorHelper.GREEN + "Beta"
                                 + ColorHelper.DARK_BLUE + "] " + ColorHelper.WHITE + "<" + ePlayer.getDisplayName() + "> "
                                 + ColorHelper.WHITE + event.message;
-                    }
-                }
-                for (String beta : SpecialPlayers.betaPlayers) {
-                    if (target.getGameProfile().getName().equals(beta)) {
-                        String chat = ColorHelper.DARK_BLUE + "[" + ColorHelper.GREEN + "Beta"
-                                + ColorHelper.DARK_BLUE + "] " + ColorHelper.WHITE + "<" + ePlayer.getDisplayName() + "> "
-                                + ColorHelper.WHITE + event.message;
+                        return;
                     }
                 }
                 for (String alpha : SpecialPlayers.alphaPlayers) {
@@ -141,11 +140,11 @@ public class SaoEventHandler {
                         target.addChatMessage(new ChatComponentTranslation(chat));
                         return;
                     }
-                        /* if (target.getGameProfile().getName() != alphaList[f] && f == alphaList.length) {
-                            String chattxt = "<" + player.getDisplayName() + ">" + " §f" + event.message;
-                            target.addChatMessage(new ChatComponentTranslation(chattxt));
-                            // Not necessary, since Minecraft handles default chat names on its own.
-                        } */
+                    /* if (target.getGameProfile().getName() != alphaList[f] && f == alphaList.length) {
+                        String chattxt = "<" + player.getDisplayName() + ">" + " §f" + event.message;
+                        target.addChatMessage(new ChatComponentTranslation(chattxt));
+                        // Not necessary, since Minecraft handles default chat names on its own.
+                    } */
                 }
 
             }

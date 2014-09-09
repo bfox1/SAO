@@ -16,7 +16,7 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 public class ShadowDagger extends SItemSword {
     public ShadowDagger(ToolMaterial p_i45356_1_) {
         super(p_i45356_1_);
-        this.setUnlocalizedName("shadowdagger");
+        this.setUnlocalizedName("ShadowDagger");
         this.setTextureName(ReferenceHelper.setItemName(this));
         this.setCreativeTab(SAOTabsManager.saoTools);
     }

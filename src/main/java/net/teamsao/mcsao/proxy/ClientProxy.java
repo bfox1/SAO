@@ -3,11 +3,12 @@ package net.teamsao.mcsao.proxy;
 import java.io.File;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
-import net.teamsao.mcsao.block.customrenderers.*;
 import net.teamsao.mcsao.overlay.OverlayCol;
 import net.teamsao.mcsao.entity.*;
+import net.teamsao.mcsao.client.renderers.SafeAreaBlockRenderer;
 import net.teamsao.mcsao.client.settings.KeyBindings;
 import net.teamsao.mcsao.client.handler.SaoKeyInputHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -38,8 +39,6 @@ public class ClientProxy extends CommonProxy
         MinecraftForge.EVENT_BUS.register(new OverlayCol(Minecraft.getMinecraft()));
     }
 
-
-
 	@Override
 	public void registerKeybindings()
 	{
@@ -53,4 +52,5 @@ public class ClientProxy extends CommonProxy
     {
     	
     }
+
 }

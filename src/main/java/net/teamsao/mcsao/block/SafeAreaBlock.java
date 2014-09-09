@@ -18,7 +18,7 @@ import net.teamsao.mcsao.proxy.ClientProxy;
 
 //Created by SirPwn on 8/6/14
 public class SafeAreaBlock extends BlockSAO {
-
+	
 	public SafeAreaBlock()
 	{
 		super(Material.rock);
@@ -27,9 +27,9 @@ public class SafeAreaBlock extends BlockSAO {
         this.setBlockTextureName(ReferenceHelper.setBlockName(this));
 	}
 
-    @Override
     @SideOnly(Side.CLIENT)
-    public boolean isOpaqueCube()
+    @Override
+	public boolean isOpaqueCube()
     {
         return false;
     }
@@ -40,8 +40,8 @@ public class SafeAreaBlock extends BlockSAO {
         return false;
     }
     
-    @Override
     @SideOnly(Side.CLIENT)
+    @Override
     public int getRenderType()
     {
     	return ClientProxy.safeAreaBlockRenderType;
@@ -51,7 +51,11 @@ public class SafeAreaBlock extends BlockSAO {
     public boolean canRenderInPass(int pass)
     {
     	ClientProxy.renderPass = pass;
-        return pass != 0;
+    	if(pass == 0)
+    	{
+    		return false;
+    	}
+    	return true;
     }
 
     @Override

@@ -40,13 +40,16 @@ public class SAOBlocks {
     public static Block AincradStoneBrick = new AincradStoneBrick();
     public static Block LuminescenceLight = new LuminescenceLight();
     public static Block CrystalliteOre = new CrystalliteOre();
+    public static Block AincradSCFloorBlock = new net.teamsao.mcsao.block.AincradSCFloorBlock();
+    public static Block AincradSCTowerBlock = new net.teamsao.mcsao.block.AincradSCTowerBlock();
+    public static Block AincradLeafBlock = new net.teamsao.mcsao.block.AincradLeafBlock();
 
     public static void registerInit()
     {
-
         GameRegistry.registerBlock(SAOPortalBlock, Reference.MODID + (SAOPortalBlock.getUnlocalizedName().substring(5)));
-        GameRegistry.registerBlock(DungeonStone, ItemBlockMetaData.class, DungeonStone.getUnlocalizedName().substring(5));
-        GameRegistry.registerBlock(CrystalStone, ItemBlockMetaData.class, CrystalStone.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(DungeonStone, DungeonBlockMetaData.class, DungeonStone.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(CrystalStone, DungeonBlockMetaData.class, CrystalStone.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(AincradLeafBlock, LeafBlockMetaData.class, AincradLeafBlock.getUnlocalizedName().substring(5));
         GameRegistry.registerBlock(AincradCobbleHalfSlab, ItemCobbleSlab.class, AincradCobbleHalfSlab.getUnlocalizedName());
         GameRegistry.registerBlock(AincradCobbleDoubleSlab, ItemCobbleSlab.class, AincradCobbleDoubleSlab.getUnlocalizedName());
 
@@ -64,5 +67,7 @@ public class SAOBlocks {
         ReferenceHelper.registerBlock(AincradStoneBrick);
         ReferenceHelper.registerBlock(LuminescenceLight);
         ReferenceHelper.registerBlock(CrystalliteOre);
+        ReferenceHelper.registerBlock(AincradSCTowerBlock);
+        ReferenceHelper.registerBlock(AincradSCFloorBlock);
     }
 }
