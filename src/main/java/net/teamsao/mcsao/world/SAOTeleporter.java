@@ -23,15 +23,14 @@ import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
+import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.block.BlockSAO;
 import net.teamsao.mcsao.init.SAOBlocks;
+import net.teamsao.mcsao.network.SyncPlayerSAOPropPacket;
 import net.teamsao.mcsao.player.PlayerSAO;
 
 public class SAOTeleporter extends Teleporter
 {
-
-
-
     int spawnX = 0;
     int spawnY = 40;
     int spawnZ = 0;
@@ -70,6 +69,9 @@ public class SAOTeleporter extends Teleporter
         int X = props.getXCoord();
         int Y = props.getYCoord();
         int Z = props.getZCoord();
+        int aX = props.getAincradCoordsX();
+        int aY = props.getAincradCoordsY();
+        int aZ = props.getAincradCoordsZ();
 
         MinecraftServer mcServer = MinecraftServer.getServer();
         int s = mpPlayer.dimension;
@@ -84,11 +86,21 @@ public class SAOTeleporter extends Teleporter
 
         if(newDim != s && newDim == 2) {
             Chunk chunk = worldServer.getChunkFromBlockCoords(0, 0);
-            int height = chunk.getHeightValue(0, 0);
-            mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
-        } else if (newDim != s && newDim == 0) {
+             int height = chunk.getHeightValue(0, 0);
+            if(aY != 0)
+            {
+                mpPlayer.playerNetServerHandler.setPlayerLocation(aX, aY, aZ, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+            }else {
+                mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+            }
+        }else if(newDim != s && newDim == 0)
+        {
+            ChunkCoordinates coords = mpPlayer.getPlayerCoordinates();
+            props.setAincradCoordsXYZ(coords.posX, coords.posY, coords.posZ);
+            PlayerSAO.saveProxyData(player);
             mpPlayer.playerNetServerHandler.setPlayerLocation(X, Y, Z, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }
+        SwordArtOnline.packetPipeline.sendTo(new SyncPlayerSAOPropPacket(player), (EntityPlayerMP) player);
 
         mpPlayer.theItemInWorldManager.setWorld(worldServer1);
         updateTimeAndWeatherForPlayer(mpPlayer, worldServer1);

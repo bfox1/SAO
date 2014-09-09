@@ -31,6 +31,8 @@ public class AincradGrassBlock extends BlockSAO {
         this.setStepSound(Block.soundTypeGrass);
     }
 
+
+
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister register) {

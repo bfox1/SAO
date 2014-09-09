@@ -1,37 +1,34 @@
 package net.teamsao.mcsao.handler;
 
-import cpw.mods.fml.common.eventhandler.Cancelable;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import ibxm.Player;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.DamageSource;
+
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
+
 import net.teamsao.mcsao.helper.ColorHelper;
 import net.teamsao.mcsao.helper.LogHelper;
 import net.teamsao.mcsao.player.PlayerSAO;
-import net.teamsao.mcsao.player.PreReleasePlayers;
+import net.teamsao.mcsao.player.SpecialPlayers;
 import net.teamsao.mcsao.player.entityextendedprop.EntityCol;
 import net.teamsao.mcsao.player.entityextendedprop.EntityRegistration;
 import net.teamsao.mcsao.player.playerextendedprop.PlayerCol;
 import net.teamsao.mcsao.player.playerextendedprop.PlayerRegistration;
 import net.teamsao.mcsao.proxy.CommonProxy;
-import org.lwjgl.Sys;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 /**
@@ -45,12 +42,7 @@ public class SaoEventHandler {
         if(event.entity instanceof EntityPlayer && PlayerSAO.get((EntityPlayer)event.entity) == null)
         {
 
-            PlayerRegistration.registerPlayerSAO((EntityPlayer)event.entity);
-        }
-        if(event.entity instanceof EntityPlayer && PlayerCol.get((EntityPlayer)event.entity)==null)
-        {
-
-            PlayerRegistration.registerPlayerCol((EntityPlayer)event.entity);
+            PlayerRegistration.registerPlayerSAO((EntityPlayer) event.entity);
         }
         if(event.entity instanceof EntityLivingBase)
         {
@@ -85,20 +77,14 @@ public class SaoEventHandler {
                     value = event.entity.worldObj.rand.nextInt(20);
                 }
             LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
-
-                props.addCol(value);
-            System.out.println(value);
-                int amt = props.getCol();
-                playerdata.addCol(amt);
-                LogHelper.debug("[LivingDeathEvent] About to save ProxyData...");
-                PlayerCol.saveProxyData(player);
-
+            Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(ColorHelper.GRAY + "[Debug] " + ColorHelper.GREEN + "You have been awarded " + ColorHelper.YELLOW +
+                                                                                    value + ColorHelper.GREEN + " Col for slaying that " + ColorHelper.DARK_GREEN + ((EntityMob)
+                                                                                    event.entityLiving).getCustomNameTag() + ColorHelper.GREEN + "!"));
 
         }
         if(!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
         {
             PlayerSAO.saveProxyData((EntityPlayer)event.entity);
-            PlayerCol.saveProxyData((EntityPlayer)event.entity);
         }
     }
 
@@ -107,24 +93,15 @@ public class SaoEventHandler {
     {
         if(!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
         {
-            NBTTagCompound playerdata = CommonProxy.getEntityData(PlayerCol.getSavedKey((EntityPlayer)event.entity));
+            EntityPlayer player = (EntityPlayer)event.entity;
+            NBTTagCompound playerSaoData = CommonProxy.checkEntityData(PlayerSAO.getSavedKey(player));
 
-            if(playerdata != null)
+            if(playerSaoData != null)
             {
-                System.out.println("[ENTITYJOIN WORLD] about to load PROXY DATA");
-
-                PlayerSAO.loadProxyData((EntityPlayer)event.entity);
-                PlayerCol.loadProxyData((EntityPlayer)event.entity);
+                PlayerSAO.loadProxyData(player);
             }
 
         }
-      /*  if(event.entity instanceof EntityLivingBase)
-        {
-            NBTTagCompound compound = new NBTTagCompound();
-            EntityCol props = EntityCol.get((EntityLivingBase)event.entity);
-            props.addCol(16);
-            props.saveNBTData(compound);
-        }*/
     }
 
     @SubscribeEvent(priority = EventPriority.NORMAL)
@@ -136,37 +113,41 @@ public class SaoEventHandler {
     @SubscribeEvent
     public void onServerChatReceivedEvent(ServerChatEvent event)
     {
-        if(event.player != null)
-        {
-            EntityPlayer player = (EntityPlayer)event.player;
-
-            if(player != null)
-            {
+        if(event.player != null) {
+            EntityPlayer ePlayer = event.player;
                 event.setCanceled(true);
-
                 List players = MinecraftServer.getServer().getConfigurationManager().playerEntityList;
-
-                for(int i = 0; i< + players.size(); i++)
-                {
-                    String[] playerList = PreReleasePlayers.players;
-
-                    for(int f=0; f<playerList.length; f++) {
-                        EntityPlayer target = (EntityPlayer) players.get(i);
-                        if (target.getGameProfile().getName().equals(playerList[f]))
-                        {
-                            String chattxt = ColorHelper.DARK_RED + "[" + ColorHelper.YELLOW + "Alphy"
-                                    + ColorHelper.DARK_RED +"] §" +  "<" + player.getDisplayName() + ">" + " §f"
-                                    + event.message;
-                            target.addChatMessage(new ChatComponentTranslation(chattxt));
-                            break;
-                        }
-                        if(target.getGameProfile().getName() != playerList[f] && f == playerList.length)
-                        {
-                            String chattxt = "<" + player.getDisplayName() + ">" + " §f" + event.message;
-                            target.addChatMessage(new ChatComponentTranslation(chattxt));
-                        }
+            for (Object player : players) {
+                EntityPlayer target = (EntityPlayer) player;
+                for (String beta : SpecialPlayers.betaPlayers) {
+                    if (target.getGameProfile().getName().equals(beta)) {
+                        String chat = ColorHelper.DARK_BLUE + "[" + ColorHelper.GREEN + "Beta"
+                                + ColorHelper.DARK_BLUE + "] " + ColorHelper.WHITE + "<" + ePlayer.getDisplayName() + "> "
+                                + ColorHelper.WHITE + event.message;
                     }
                 }
+                for (String beta : SpecialPlayers.betaPlayers) {
+                    if (target.getGameProfile().getName().equals(beta)) {
+                        String chat = ColorHelper.DARK_BLUE + "[" + ColorHelper.GREEN + "Beta"
+                                + ColorHelper.DARK_BLUE + "] " + ColorHelper.WHITE + "<" + ePlayer.getDisplayName() + "> "
+                                + ColorHelper.WHITE + event.message;
+                    }
+                }
+                for (String alpha : SpecialPlayers.alphaPlayers) {
+                    if (target.getGameProfile().getName().equals(alpha)) {
+                        String chat = ColorHelper.DARK_RED + "[" + ColorHelper.YELLOW + "Alpha"
+                                + ColorHelper.DARK_RED + "] " + ColorHelper.WHITE + "<" + ePlayer.getDisplayName() + "> "
+                                + ColorHelper.WHITE + event.message;
+                        target.addChatMessage(new ChatComponentTranslation(chat));
+                        return;
+                    }
+                        /* if (target.getGameProfile().getName() != alphaList[f] && f == alphaList.length) {
+                            String chattxt = "<" + player.getDisplayName() + ">" + " §f" + event.message;
+                            target.addChatMessage(new ChatComponentTranslation(chattxt));
+                            // Not necessary, since Minecraft handles default chat names on its own.
+                        } */
+                }
+
             }
         }
     }

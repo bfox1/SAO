@@ -11,7 +11,7 @@ import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.helper.ColorHelper;
 import net.teamsao.mcsao.helper.LogHelper;
 import net.teamsao.mcsao.helper.Reference;
-import net.teamsao.mcsao.network.SyncPlayerPropPacket;
+// import net.teamsao.mcsao.network.SyncPlayerPropPacket;
 import net.teamsao.mcsao.player.PlayerSAO;
 import net.teamsao.mcsao.proxy.CommonProxy;
 
@@ -71,7 +71,7 @@ public class PlayerCol implements IExtendedEntityProperties {
             System.out.println("Proxy Data Loaded");
         }
         //This needs cahning
-        SwordArtOnline.packetPipeline.sendTo(new SyncPlayerPropPacket(player), (EntityPlayerMP) player);
+        // SwordArtOnline.packetPipeline.sendTo(new SyncPlayerPropPacket(player), (EntityPlayerMP) player);
         System.out.println("Proxy Data Loaded 2");
     }
     @Override
