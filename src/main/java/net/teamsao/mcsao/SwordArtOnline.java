@@ -23,6 +23,8 @@ import net.teamsao.mcsao.material.SToolMaterial;
 import net.teamsao.mcsao.network.SaoPacketPipeline;
 import net.teamsao.mcsao.proxy.SProxy;
 
+import java.util.logging.LogManager;
+
 /**
  * <p>This is the main file for the entire mod. All Init MUST go here.</p>
  * <p>If you need help, ask bfox1 for information or refer to the Other classes for examples.</p>

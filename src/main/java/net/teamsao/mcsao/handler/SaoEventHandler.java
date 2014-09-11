@@ -21,6 +21,7 @@ import net.teamsao.mcsao.player.SpecialPlayers;
 import net.teamsao.mcsao.player.entityextendedprop.EntityCol;
 import net.teamsao.mcsao.player.entityextendedprop.EntityRegistration;
 import net.teamsao.mcsao.player.playerextendedprop.PlayerRegistration;
+import net.teamsao.mcsao.player.skill.SkillBase;
 import net.teamsao.mcsao.proxy.CommonProxy;
 
 import java.util.List;
@@ -70,9 +71,14 @@ public class SaoEventHandler {
                 if (event.entityLiving instanceof EntityMooshroom) {
                     value = event.entity.worldObj.rand.nextInt(20);
                 }
-            LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
+                LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
                 props.addCol(value);
-            System.out.println(value);
+                SkillBase base = new SkillBase();
+                base.setSkillName("Combat");
+                base.addexp(10);
+                base.saveSkillData("Combat", 2);
+
+                System.out.println(value);
                 int amt = props.getCol();
                 playerdata.addCol(amt);
                 LogHelper.debug("[LivingDeathEvent] About to save ProxyData...");

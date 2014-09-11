@@ -29,6 +29,8 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     private int combat = 1;
 
+    private int blacksmithing = 0;
+
 
     private int world;
 
@@ -85,10 +87,18 @@ public class PlayerSAO implements IExtendedEntityProperties {
     @Override
     public void saveNBTData(NBTTagCompound compound) {
         NBTTagCompound properties = new NBTTagCompound();
-        String[] skillLength = SkillBase.skills;
-        for(int i = 0; i < skillLength.length; i++)
+
+        for(String name : SkillBase.skills)
         {
-            properties.setInteger(skillLength[i], 0);
+            SkillBase base = new SkillBase();
+            if(base.checkSkillData(name) != 0)
+            {
+                int lvl = base.getSkillData(name);
+                properties.setInteger(name, lvl);
+            }
+            else {
+                properties.setInteger(name, 0);
+            }
         }
         properties.setInteger("bedCoordX", this.overWorldX);
         properties.setInteger("bedCoordY", this.overWorldY);
@@ -105,6 +115,15 @@ public class PlayerSAO implements IExtendedEntityProperties {
     @Override
     public void loadNBTData(NBTTagCompound compound) {
         NBTTagCompound properties = (NBTTagCompound)compound.getTag(EXT_PROP_NAME);
+        for(String name : SkillBase.skills)
+        {
+            SkillBase base = new SkillBase();
+            if(base.checkSkillData(name) != 0)
+            {
+                int lvl = base.getSkillData(name);
+                this.combat = properties.getInteger(name);
+            }
+        }
         this.overWorldX = properties.getInteger("bedCoordX");
         this.overWorldY = properties.getInteger("bedCoordY");
         this.overWorldZ = properties.getInteger("bedCoordZ");
@@ -182,6 +201,8 @@ public class PlayerSAO implements IExtendedEntityProperties {
         this.AincradCoordsY = Y;
         this.AincradCoordsZ = Z;
     }
+
+
 
 
 
