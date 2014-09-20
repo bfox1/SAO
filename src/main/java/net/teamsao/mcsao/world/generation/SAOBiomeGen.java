@@ -12,7 +12,14 @@ import net.teamsao.mcsao.init.SAOBlocks;
 public class SAOBiomeGen extends BiomeGenBase
 {
 	public Block wallBlock;
+	private int wallSegmentHeight = 20;
+	private int wallThickness = 5;
+	private int wallStart = 999;
+	private int wallEnd = wallStart+wallThickness;
 	
+	private int floor2HeightStart = 40+wallSegmentHeight*wallThickness;
+	private int floor2WallStart = wallEnd;
+	private int floor2WallEnd = floor2WallStart + wallThickness;
 	/**
 	 * 
 	 * Attempts to create a biome more friendly for building with no blocks anywhere except the portal.
@@ -66,7 +73,7 @@ public class SAOBiomeGen extends BiomeGenBase
 	{
 		double dist = (double)distance;
 		double height = (double)blockHeight;
-		double mult = 39.0D / 495.0D;
+		double mult = 39.0D / (double)wallStart;
 		if(height < 40 && height >= ((dist * mult)))
 		{
 			return true;
@@ -80,26 +87,27 @@ public class SAOBiomeGen extends BiomeGenBase
 		int chunkX = x & 15;
         int chunkZ = z & 15;
         int chunkHeight = blocks.length / 256;
-		if(distance <= 500 && distance >= 496)
+		if(distance <= wallEnd && distance > wallStart)
 		{
+			int wallTop = ((wallThickness-(wallEnd - distance)) * wallSegmentHeight)+40;
+        	int wallBottom = wallTop-wallSegmentHeight;
+        	
 			for (int blockHeight = 255; blockHeight >= 0; --blockHeight)
 	        {
 				int blockIndex = (chunkZ * 16 + chunkX) * chunkHeight + blockHeight;
 	        	metadata[blockIndex] = 0;
-	        	int wallEnd = ((5-(500 - distance)) * 20)+40;
-	        	int wallStart = wallEnd-20;
-	        	if(blockHeight >= wallStart && blockHeight < wallEnd)
+	        	if(blockHeight <= wallTop && blockHeight >= wallBottom)
 	        	{
 	        		blocks[blockIndex] = this.wallBlock;
 	        	}
 	        }
 		}
-		if(distance < 496)
+		else if(distance <= wallStart)
         {
 	        Block aincradGrass = this.topBlock;
 	        byte blockData = (byte)(this.field_150604_aj & 255);
 	        Block aincradDirt = this.fillerBlock;
-	        int noiseGenRand = (int)Math.pow(noiseGenSeed / 3.0D + 3.0D, 2);
+	        int noiseGenRand = (int)Math.pow(noiseGenSeed / 3.0D + 3.0D, 1.4D);
 	        int blockMaxHeight = noiseGenRand + 40;
 	        for (int blockHeight = 255; blockHeight >= 0; --blockHeight)
 	        {
@@ -123,5 +131,41 @@ public class SAOBiomeGen extends BiomeGenBase
 	        	}
             }
         }
+		if(distance <= floor2WallEnd && distance > floor2WallStart)
+		{
+			int floor2WallTop = ((wallThickness-(floor2WallEnd - distance)) * wallSegmentHeight) + floor2HeightStart;
+			int floor2WallBottom = floor2WallTop-wallSegmentHeight;
+			
+			for (int blockHeight = 255; blockHeight >= 0; --blockHeight)
+	        {
+				int blockIndex = (chunkZ * 16 + chunkX) * chunkHeight + blockHeight;
+	        	metadata[blockIndex] = 0;
+	        	if(blockHeight <= floor2WallTop && blockHeight >= floor2WallBottom)
+	        	{
+	        		blocks[blockIndex] = this.wallBlock;
+	        	}
+	        }
+		}
+		else if(distance <= floor2WallStart)
+		{
+			Block aincradGrass = this.topBlock;
+	        byte blockData = (byte)(this.field_150604_aj & 255);
+	        Block aincradDirt = this.fillerBlock;
+	        int noiseGenRand = (int)Math.pow(noiseGenSeed / 3.0D + 3.0D, 1.8D);
+	        int blockMaxHeight = noiseGenRand + 5 + floor2HeightStart;
+	        for (int blockHeight = 255; blockHeight >= 0; --blockHeight)
+	        {
+	        	int blockIndex = (chunkZ * 16 + chunkX) * chunkHeight + blockHeight;
+	        	metadata[blockIndex] = 0;
+	        	if(blockHeight == blockMaxHeight)
+	        	{
+	        		blocks[blockIndex] = aincradGrass;
+	        	}
+	        	else if(blockHeight < blockMaxHeight && blockHeight >= floor2HeightStart)
+	        	{
+	        		blocks[blockIndex] = aincradDirt;
+	        	}
+	        }
+		}
     }
 }

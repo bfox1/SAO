@@ -15,14 +15,15 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 import java.util.List;
 //
 
-public class AincradLeafBlock extends BlockSAO
+public class AincradLeafBlock extends LeavesSAO
 {
 
 	public AincradLeafBlock()
 	{
-		super(Material.leaves);
+		super(Material.leaves, false);
 		this.setCreativeTab(SAOTabsManager.saoBlocks);
 		this.setBlockName("AincradLeafBlock");
+		this.setStepSound(soundTypeGrass);
 	}
 
 	@Override
@@ -46,6 +47,14 @@ public class AincradLeafBlock extends BlockSAO
 			System.out.println(this.getUnlocalizedName().substring(5) + i);
 		}
 	}
+    
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+
+	
 	/*
 	 * (non-Javadoc)
 	 * @see net.minecraft.block.Block#getIcon(int, int)
