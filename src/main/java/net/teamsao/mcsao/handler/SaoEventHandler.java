@@ -50,41 +50,38 @@ public class SaoEventHandler {
     public void onLivingDeathEvent(LivingDeathEvent event)
     {
 
-        if(!event.entity.worldObj.isRemote && (event.entityLiving instanceof EntityMob || event.entityLiving instanceof EntityAnimal
-                                           && event.source.getEntity() instanceof EntityPlayer)
-           && event.source.getEntity().dimension == 2)
-        {
-                int value;
-                EntityPlayer player = (EntityPlayer) event.source.getEntity();
-                PlayerSAO.loadProxyData(player);
-                PlayerSAO playerdata = PlayerSAO.get(player);
-                NBTTagCompound compound = new NBTTagCompound();
-                EntityCol props = EntityCol.get((EntityLivingBase)event.entity);
-                props.loadNBTData(compound);
+        if(!event.entity.worldObj.isRemote && event.entityLiving instanceof EntityMob || event.entityLiving instanceof EntityAnimal)
+            if(event.source.getEntity() instanceof EntityPlayer && event.source.getEntity().dimension == 2) {
+                {
+                    int value;
+                    EntityPlayer player = (EntityPlayer) event.source.getEntity();
+                    PlayerSAO.loadProxyData(player);
+                    PlayerSAO playerdata = PlayerSAO.get(player);
+                    NBTTagCompound compound = new NBTTagCompound();
+                    EntityCol props = EntityCol.get((EntityLivingBase) event.entity);
+                    props.loadNBTData(compound);
 
-                value = event.entity.worldObj.rand.nextInt(3);
+                    value = event.entity.worldObj.rand.nextInt(7);
 
-                if (event.entityLiving instanceof EntityMob) {
-                    value = event.entity.worldObj.rand.nextInt(10);
+                    if (event.entityLiving instanceof EntityMob) {
+                        value = event.entity.worldObj.rand.nextInt(15);
+                        System.out.println(value);
+                    }
+                    if (event.entityLiving instanceof EntityMooshroom) {
+                        value = event.entity.worldObj.rand.nextInt(25);
+                    }
+                    LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
+                    props.addCol(value);
+                    long exp = props.randomExpGenerator(1, 5);
+                    playerdata.addExp(0,exp);
                     System.out.println(value);
-                }
-                if (event.entityLiving instanceof EntityMooshroom) {
-                    value = event.entity.worldObj.rand.nextInt(20);
-                }
-                LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
-                props.addCol(value);
-                SkillBase base = new SkillBase();
-                base.setSkillName("Combat");
-                base.addexp(10);
-                base.saveSkillData("Combat", 2);
+                    int amt = props.getCol();
+                    playerdata.addCol(amt);
+                    LogHelper.debug("[LivingDeathEvent] About to save ProxyData...");
+                    PlayerSAO.saveProxyData(player);
 
-                System.out.println(value);
-                int amt = props.getCol();
-                playerdata.addCol(amt);
-                LogHelper.debug("[LivingDeathEvent] About to save ProxyData...");
-            PlayerSAO.saveProxyData(player);
-
-        }
+                }
+            }
         if(!event.entity.worldObj.isRemote && event.entity instanceof EntityPlayer)
         {
             PlayerSAO.saveProxyData((EntityPlayer)event.entity);
@@ -134,7 +131,7 @@ public class SaoEventHandler {
                         EntityPlayer target = (EntityPlayer) players.get(i);
                         if (target.getGameProfile().getName().equals(playerList[f]))
                         {
-                            String chattxt = ColorHelper.DARK_RED + "[" + ColorHelper.YELLOW + "Alphy"
+                            String chattxt = ColorHelper.DARK_RED + "[" + ColorHelper.YELLOW + "beater"
                                     + ColorHelper.DARK_RED +"]" +  "§f<" + player.getDisplayName() + ">" + " §f"
                                     + event.message;
                             target.addChatMessage(new ChatComponentTranslation(chattxt));

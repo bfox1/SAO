@@ -11,6 +11,7 @@ import cpw.mods.fml.common.Mod.Instance;
 
 import net.teamsao.mcsao.entity.EntitySAO;
 import net.teamsao.mcsao.event.commands.TpDimension;
+import net.teamsao.mcsao.event.commands.setSkill;
 import net.teamsao.mcsao.handler.ConfigurationHandler;
 import net.teamsao.mcsao.helper.Messages;
 import net.teamsao.mcsao.init.SAOBlocks;
@@ -106,6 +107,7 @@ public class SwordArtOnline {
     public void serverLoad(FMLServerStartingEvent event)
     {
         event.registerServerCommand(new TpDimension());
+        event.registerServerCommand(new setSkill());
     }
 
 }
