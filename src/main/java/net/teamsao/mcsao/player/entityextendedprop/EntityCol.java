@@ -57,12 +57,12 @@ public class EntityCol implements IExtendedEntityProperties {
         return this.col;
     }
 
-    public long randomExpGenerator(long start, long end)
+    public int randomExpGenerator(int start, int end)
     {
         Random rand = new Random();
-        long range = end - start + 1;
-        long fraction = (long)(range * rand.nextDouble());
-        long randnum = fraction + start;
+        int range = end - start + 1;
+        int fraction = (int)(range * rand.nextDouble());
+        int randnum = fraction + start;
         return randnum;
     }
 

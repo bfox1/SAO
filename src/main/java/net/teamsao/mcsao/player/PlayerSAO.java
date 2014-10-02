@@ -266,7 +266,6 @@ public class PlayerSAO implements IExtendedEntityProperties {
         int it = 0;
         for(SkillNBT skill : skillNBTData)
         {
-            System.out.println("[SET SKILl LEVEL]" + skill.getSkillName());
             if(skill.getSkillName().equals(name))
             {
                 SkillNBT skillNBT = skillNBTData.get(it);
@@ -292,7 +291,6 @@ public class PlayerSAO implements IExtendedEntityProperties {
     public int getSkillLvl(String name)
     {
         SkillNBT skillData = getSkillInfo(name);
-//        System.out.println(skillData.getSkillName() + ":" + skillData.getSkillLevel());
         return skillData.getSkillLevel();
 
     }
@@ -302,10 +300,9 @@ public class PlayerSAO implements IExtendedEntityProperties {
         int it = 0;
         for(SkillNBT skill : skillNBTData)
         {
-            if(skill.equals(name))
+            if(skill.getSkillName().equals(name))
             {
                 SkillNBT skillNBT = skillNBTData.get(it);
-                System.out.println(skillNBT.getSkillName());
                 return skillNBT;
             }
         }
@@ -380,24 +377,28 @@ public class PlayerSAO implements IExtendedEntityProperties {
     /**
      *  To Add EXP to the Players Skills
      * @param name The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
-     * @param amt Amount of EXP being awarded
+     * @param modifierIndex The Index number for the method getModifier in SkillNBT class
      */
     @SideOnly(Side.CLIENT)
-    public void addExp(String name, long amt) {
+    public void addExp(String name, int modifierIndex, int level) {
         SkillNBT skillData = getSkillInfo(name);
         String skillName = skillData.getSkillName();
         int skillLevel = skillData.getSkillLevel();
         long skillExp = skillData.getSkillExp();
+        long baseExp = skillData.getBaseExp(skillLevel);
+        long amt = SkillNBT.generateExp(level, baseExp, modifierIndex);
+        long nextExp = skillData.generateNextExp(skillLevel);
+        System.out.println("[ADD EXP]" + skillExp);
         if (isActive(name)) {
-            long level = skillExp;
-            level = level + amt;
-            long maxExp = SkillBase.maxSkillExp();
+            long currentExp = skillExp;
+            currentExp = currentExp + amt;
             if (skillLevel != 0) {
-                if (level > maxExp) {
-                    level = maxExp - level;
+                if (currentExp > nextExp) {
+                    currentExp = currentExp - nextExp;
                     skillLevelUp(skillName);
                 }
-                skillData.setExp(level);
+                skillData.setExp(currentExp);
+                System.out.println("[ADD EXP]" + currentExp + ":" + nextExp + " : " + amt);
             }
         }
     }
@@ -413,15 +414,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
       return this.playerLevel;
     };
 
-    public void setBaseExp(int lvl)
-    {
-        if(lvl != 0)
-        {
-            skillCap = lvl * BASE_EXP_CAP;
-        }else{
-            skillCap = lvl * skillCap;
-        }
-    }
+
 
     private ArrayList<SkillNBT> getSkillData()
     {
@@ -429,27 +422,14 @@ public class PlayerSAO implements IExtendedEntityProperties {
         int index = 0;
         for(String name : SkillBase.skills)
         {
-            System.out.println("[ARRAYLIST]" + name);
+            System.out.println("[ARRAYLIST]" + name.toLowerCase());
             SkillNBT skill = new SkillNBT(index,name.toLowerCase(), 0, 0);
             skillNBT.add(skill);
             index++;
         }
         return skillNBT;
     }
-    private void getSkillLevel(String name, int lvl)
-    {
-                int it = 0;
-                for(SkillNBT skill : skillNBTData)
-                {
-                    if(skill.equals(name))
-                    {
-                        SkillNBT skillNBT = skillNBTData.get(it);
-                        int slvl = skillNBT.getSkillLevel();
-                        System.out.println(slvl);
-                    }
-                    it++;
-                }
-    }
+
 
 
 

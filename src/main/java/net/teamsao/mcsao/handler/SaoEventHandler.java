@@ -22,6 +22,7 @@ import net.teamsao.mcsao.player.entityextendedprop.EntityCol;
 import net.teamsao.mcsao.player.entityextendedprop.EntityRegistration;
 import net.teamsao.mcsao.player.playerextendedprop.PlayerRegistration;
 import net.teamsao.mcsao.player.skill.SkillBase;
+import net.teamsao.mcsao.player.skill.SkillNBT;
 import net.teamsao.mcsao.proxy.CommonProxy;
 
 import java.util.List;
@@ -55,27 +56,29 @@ public class SaoEventHandler {
                 {
 
                     int value;
+                    int exp;
+                    int mobLevel;
                     EntityPlayer player = (EntityPlayer) event.source.getEntity();
                     PlayerSAO.loadProxyData(player);
                     PlayerSAO playerdata = PlayerSAO.get(player);
-
                     NBTTagCompound compound = new NBTTagCompound();
                     EntityCol props = EntityCol.get((EntityLivingBase) event.entity);
                     props.loadNBTData(compound);
-
                     value = event.entity.worldObj.rand.nextInt(7);
-
+                    exp = 0;
+                    mobLevel = props.randomExpGenerator(1, 5);
                     if (event.entityLiving instanceof EntityMob) {
                         value = event.entity.worldObj.rand.nextInt(15);
-                        System.out.println(value);
+                        exp = 1;
+                        mobLevel = props.randomExpGenerator(1, 5);
                     }
                     if (event.entityLiving instanceof EntityMooshroom) {
-                        value = event.entity.worldObj.rand.nextInt(25);
+                        mobLevel = props.randomExpGenerator(3, 7);
+                        exp = 2;
                     }
                     LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
                     props.addCol(value);
-                    long exp = props.randomExpGenerator(1, 5);
-                    playerdata.addExp("combat",exp);
+                    playerdata.addExp("combat",exp, mobLevel);
                     System.out.println(value);
                     int amt = props.getCol();
                     playerdata.addCol(amt);
