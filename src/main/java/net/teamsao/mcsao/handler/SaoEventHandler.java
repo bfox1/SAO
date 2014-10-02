@@ -53,10 +53,12 @@ public class SaoEventHandler {
         if(!event.entity.worldObj.isRemote && event.entityLiving instanceof EntityMob || event.entityLiving instanceof EntityAnimal)
             if(event.source.getEntity() instanceof EntityPlayer && event.source.getEntity().dimension == 2) {
                 {
+
                     int value;
                     EntityPlayer player = (EntityPlayer) event.source.getEntity();
                     PlayerSAO.loadProxyData(player);
                     PlayerSAO playerdata = PlayerSAO.get(player);
+
                     NBTTagCompound compound = new NBTTagCompound();
                     EntityCol props = EntityCol.get((EntityLivingBase) event.entity);
                     props.loadNBTData(compound);
@@ -73,7 +75,7 @@ public class SaoEventHandler {
                     LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
                     props.addCol(value);
                     long exp = props.randomExpGenerator(1, 5);
-                    playerdata.addExp(0,exp);
+                    playerdata.addExp("combat",exp);
                     System.out.println(value);
                     int amt = props.getCol();
                     playerdata.addCol(amt);

@@ -1,5 +1,7 @@
 package net.teamsao.mcsao.player;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -13,9 +15,12 @@ import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.helper.LogHelper;
 import net.teamsao.mcsao.network.SyncPlayerSAOPropPacket;
 import net.teamsao.mcsao.player.skill.SkillBase;
+import net.teamsao.mcsao.player.skill.SkillNBT;
 import net.teamsao.mcsao.proxy.CommonProxy;
 import net.teamsao.mcsao.world.SAOTeleporter;
 import org.lwjgl.Sys;
+
+import java.util.ArrayList;
 
 /**
  * Created by bfox1 on 8/11/2014.
@@ -24,37 +29,28 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     public static final String EXT_PROP_NAME = "PlayerSAOProperties";
 
+    private ArrayList<SkillNBT> skillNBTData = getSkillData();
+
     //Saved Coordinates
+
     private int AincradCoordsX,AincradCoordsY ,AincradCoordsZ;
     private int overWorldX, overWorldY, overWorldZ;
+
     //Currency
+
     private int col_amount;
     private int col_thousand = 1000;
+
     //PlayerLevel
+
     private int playerLevel;
+
     //PlayerEXP
+
     private long playerLevelExp;
     private final int BASE_EXP_CAP = 20;
     private long skillCap;
-    //Skills the Player has
-    private int combat = 0;
-    private int blacksmithing = 0;
-    private int fishing = 0;
-    //Array for Skills
-    private int[] skillList = {
-            this.combat,
-            this.blacksmithing,
-            this.fishing
-    };
-    //SkillEXP
-    private long expCombat;
-    private long expBlackSmithing;
-    //Array for Skill EXP
-    private long[] skillExp = {
-            this.expCombat,
-            this.expBlackSmithing,
 
-    };
 
     private final EntityPlayer player;
 
@@ -62,7 +58,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
         this.player = player;
         this.playerLevel = 1;
         this.AincradCoordsX = 0;
-        this.AincradCoordsY = 40;
+        this.AincradCoordsY = 0;
         this.AincradCoordsZ = 0;
         this.col_amount = 100;
     }
@@ -116,12 +112,19 @@ public class PlayerSAO implements IExtendedEntityProperties {
     public void saveNBTData(NBTTagCompound compound) {
         NBTTagCompound properties = new NBTTagCompound();
         int it = 0;
-        for(int name : this.skillList)
+        for(SkillNBT skill : skillNBTData)
         {
-                if (isActive(it)) {
-                    System.out.println("[SAVING SKILLS]" + SkillBase.skills[it]);
-                    int lvl = this.skillList[it];
-                    properties.setInteger(SkillBase.skills[it], lvl);
+                SkillNBT skillNBT = skillNBTData.get(it);
+                String skillName = skillNBT.getSkillName();
+                int skillLevel = skillNBT.getSkillLevel();
+                long skillExp = skillNBT.getSkillExp();
+                if(skillLevel != 0)
+                {
+                   properties.setInteger(skillName, skillLevel);
+                }
+                if(skillExp != 0)
+                {
+                    properties.setLong(skillName + "EXP", skillExp);
                 }
             it++;
         }
@@ -141,12 +144,23 @@ public class PlayerSAO implements IExtendedEntityProperties {
     @Override
     public void loadNBTData(NBTTagCompound compound) {
         NBTTagCompound properties = (NBTTagCompound)compound.getTag(EXT_PROP_NAME);
-        int it= 0;
-        for(String name : SkillBase.skills)
+        int it = 0;
+        for(SkillNBT skill : skillNBTData)
         {
-            if(properties.hasKey(name))
+            SkillNBT skillNBT = skillNBTData.get(it);
+            String skillName = skillNBT.getSkillName();
+            int skillLevel = skillNBT.getSkillLevel();
+            if(properties.hasKey(skillName))
             {
-                    this.skillList[it] = properties.getInteger(name);
+                int value = properties.getInteger(skillName);
+
+                skillNBT.setLvl(value);
+            }
+            if(properties.hasKey(skillName + "EXP"))
+            {
+                long exp = properties.getLong(skillName + "EXP");
+
+                skillNBT.setExp(exp);
             }
             it++;
         }
@@ -244,31 +258,58 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     /**
      * Setting the Skill of the Player.
-     * @param lvl The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
+     * @param name The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
      * @param setLvl The level you want to set the skill at.
      */
-    public void setSkillLvl(int lvl, int setLvl)
+    public void setSkillLvl(String name, int setLvl)
     {
-                this.skillList[lvl] = setLvl;
+        int it = 0;
+        for(SkillNBT skill : skillNBTData)
+        {
+            System.out.println("[SET SKILl LEVEL]" + skill.getSkillName());
+            if(skill.getSkillName().equals(name))
+            {
+                SkillNBT skillNBT = skillNBTData.get(it);
+                skillNBT.setLvl(setLvl);
+            }
+            it++;
+        }
+               // this.skillList[lvl] = setLvl;
     }
-    public void addSkillLvl(int lvl)
+    public void addSkillLvl(String name)
     {
-        this.skillList[lvl] =this.skillList[lvl] + 1;
+        SkillNBT skillData = getSkillInfo(name);
+        int level = skillData.getSkillLevel();
+        level++;
+        skillData.setLvl(level);
     }
 
     /**
      *
-     * @param lvl The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
+     * @param name The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
      * @return returns the Level your Skill is at, if nothing, returns 0
      */
-    public int getSkillLvl(int lvl)
+    public int getSkillLvl(String name)
     {
-        if(this.skillList[lvl] != 0)
+        SkillNBT skillData = getSkillInfo(name);
+//        System.out.println(skillData.getSkillName() + ":" + skillData.getSkillLevel());
+        return skillData.getSkillLevel();
+
+    }
+
+    public SkillNBT getSkillInfo(String name)
+    {
+        int it = 0;
+        for(SkillNBT skill : skillNBTData)
         {
-            return this.skillList[lvl];
+            if(skill.equals(name))
+            {
+                SkillNBT skillNBT = skillNBTData.get(it);
+                System.out.println(skillNBT.getSkillName());
+                return skillNBT;
+            }
         }
-        this.player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + "§4You do not have this Skill!"));
-        return 0;
+        return null;
     }
 
 /** returns the Aincrad Coord X*/
@@ -302,53 +343,61 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     /**
      *  To Level up the Player.(Skill wise)
-     * @param lvl The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
+     * @param name The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
      */
-    public void skillLevelUp(int lvl)
+    public void skillLevelUp(String name)
     {
-        addSkillLvl(lvl);
-        int level = this.skillList[lvl];
+        addSkillLvl(name);
+        SkillNBT skillData = getSkillInfo(name);
+        int level = skillData.getSkillLevel();
         player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() +
             "§6Congradulations! Your " + "§4"
-                + SkillBase.skills[lvl] + " §6is now Level §4" + level + "§6!"));
+                + skillData.getSkillName() + " §6is now Level §4" + level + "§6!"));
     }
 
     /**
      *  To test if the Skill IS Active or Inactive.
-     * @param lvl The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
+     * @param name The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
      * @return true if not equal to 0.
      */
-    public boolean isActive(int lvl)
+    public boolean isActive(String name)
     {
-        if(this.skillList[lvl] != 0)
+        SkillNBT skillData = getSkillInfo(name);
+        if(skillData.getSkillLevel() != 0)
         {
             return true;
         }
         return false;
     }
 
-    public long getSkillExp(int lvl)
+    public long getSkillExp(String name)
     {
-        return this.skillExp[lvl];
+        SkillNBT skillData = getSkillInfo(name);
+        return skillData.getSkillExp();
     }
 
 
     /**
      *  To Add EXP to the Players Skills
-     * @param lvl The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
+     * @param name The Array Number for the Skill ex.(Combat = 0, BlackSmithing = 1)
      * @param amt Amount of EXP being awarded
      */
-    public void addExp(int lvl, long amt) {
-        if (isActive(lvl)) {
-            long level = this.skillExp[lvl];
+    @SideOnly(Side.CLIENT)
+    public void addExp(String name, long amt) {
+        SkillNBT skillData = getSkillInfo(name);
+        String skillName = skillData.getSkillName();
+        int skillLevel = skillData.getSkillLevel();
+        long skillExp = skillData.getSkillExp();
+        if (isActive(name)) {
+            long level = skillExp;
             level = level + amt;
             long maxExp = SkillBase.maxSkillExp();
-            if (this.skillList[lvl] != 0) {
+            if (skillLevel != 0) {
                 if (level > maxExp) {
                     level = maxExp - level;
-                    skillLevelUp(lvl);
+                    skillLevelUp(skillName);
                 }
-                this.skillExp[lvl] = level;
+                skillData.setExp(level);
             }
         }
     }
@@ -373,5 +422,37 @@ public class PlayerSAO implements IExtendedEntityProperties {
             skillCap = lvl * skillCap;
         }
     }
+
+    private ArrayList<SkillNBT> getSkillData()
+    {
+        ArrayList<SkillNBT> skillNBT = new ArrayList<SkillNBT>();
+        int index = 0;
+        for(String name : SkillBase.skills)
+        {
+            System.out.println("[ARRAYLIST]" + name);
+            SkillNBT skill = new SkillNBT(index,name.toLowerCase(), 0, 0);
+            skillNBT.add(skill);
+            index++;
+        }
+        return skillNBT;
+    }
+    private void getSkillLevel(String name, int lvl)
+    {
+                int it = 0;
+                for(SkillNBT skill : skillNBTData)
+                {
+                    if(skill.equals(name))
+                    {
+                        SkillNBT skillNBT = skillNBTData.get(it);
+                        int slvl = skillNBT.getSkillLevel();
+                        System.out.println(slvl);
+                    }
+                    it++;
+                }
+    }
+
+
+
+
 
 }

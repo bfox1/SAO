@@ -50,9 +50,9 @@ public class setSkill implements ICommand {
             {
                 EntityPlayer player = (EntityPlayer)playerMP;
                 PlayerSAO data = PlayerSAO.get(player);
-                int lvl = Integer.parseInt(strings[1]);
+                //int lvl = Integer.parseInt(strings[1]);
                 int amt = Integer.parseInt(strings[2]);
-                data.setSkillLvl(lvl, amt);
+                data.setSkillLvl(strings[1], amt);
                 PlayerSAO.saveProxyData(player);
 
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + "§6You set new Level!"
@@ -67,8 +67,7 @@ public class setSkill implements ICommand {
                 EntityPlayer player = (EntityPlayer)playerMP;
                 PlayerSAO.loadProxyData(player);
                 PlayerSAO data =PlayerSAO.get(player);
-                int lvl = Integer.parseInt(strings[1]);
-                int currentLvl = data.getSkillLvl(lvl);
+                int currentLvl = data.getSkillLvl(strings[1]);
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + "§6Your level is!" + "§4" + currentLvl
                 ));
             }
