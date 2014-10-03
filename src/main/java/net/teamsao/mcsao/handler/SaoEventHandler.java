@@ -76,7 +76,6 @@ public class SaoEventHandler {
                         mobLevel = props.randomExpGenerator(3, 7);
                         exp = 2;
                     }
-                    LogHelper.info(" was given " + value + " Col for killing a " + ((EntityMob) event.entityLiving).getCustomNameTag());
                     props.addCol(value);
                     playerdata.addExp("combat",exp, mobLevel);
                     System.out.println(value);
