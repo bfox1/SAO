@@ -11,6 +11,7 @@ import cpw.mods.fml.common.Mod.Instance;
 
 import net.teamsao.mcsao.entity.EntitySAO;
 import net.teamsao.mcsao.event.commands.TpDimension;
+import net.teamsao.mcsao.event.commands.setSkill;
 import net.teamsao.mcsao.handler.ConfigurationHandler;
 import net.teamsao.mcsao.helper.Messages;
 import net.teamsao.mcsao.init.SAOBlocks;
@@ -22,6 +23,8 @@ import net.teamsao.mcsao.recipes.ItemRecipes;
 import net.teamsao.mcsao.material.SToolMaterial;
 import net.teamsao.mcsao.network.SaoPacketPipeline;
 import net.teamsao.mcsao.proxy.SProxy;
+
+import java.util.logging.LogManager;
 
 /**
  * <p>This is the main file for the entire mod. All Init MUST go here.</p>
@@ -104,6 +107,7 @@ public class SwordArtOnline {
     public void serverLoad(FMLServerStartingEvent event)
     {
         event.registerServerCommand(new TpDimension());
+        event.registerServerCommand(new setSkill());
     }
 
 }

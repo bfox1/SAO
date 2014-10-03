@@ -1,33 +1,40 @@
 package net.teamsao.mcsao.player.skill;
 
 import net.minecraft.nbt.NBTTagCompound;
+import net.teamsao.mcsao.helper.LogHelper;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by bfox1 on 9/3/2014.
  */
 public class SkillBase {
-    private static final Map<String, Integer> skillData = new HashMap<String, Integer>();
+
+
+    private final int MAXIMUM_SKILL_SLOT = 15;
+
+    private int skillSlots = 0;
 
     public static String[] skills = {
-      "Combat", "BlackSmithing"
+      "Combat", "BlackSmithing", "Fishing", "Sneaking", "DuelWielding", "OneHandedSword", "BattleAxe"
     };
 
 
-    public static void saveSkillData(String name, int LVL)
-    {
-        skillData.put(name, LVL);
-    }
 
-    public static Integer getSkillData(String name)
-    {
-        return skillData.remove(name);
-    }
 
-    public static Integer checkSkillData(String name)
-    {
-       return skillData.get(name);
-    }
+
+
+
+
+
+
+
+
+
+
 }

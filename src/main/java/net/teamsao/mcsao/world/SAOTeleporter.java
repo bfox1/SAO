@@ -87,11 +87,13 @@ public class SAOTeleporter extends Teleporter
         if(newDim != s && newDim == 2) {
             Chunk chunk = worldServer.getChunkFromBlockCoords(0, 0);
              int height = chunk.getHeightValue(0, 0);
-            if(aY != 0)
+            if(aY == 0)
             {
-                mpPlayer.playerNetServerHandler.setPlayerLocation(aX, aY, aZ, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
-            }else {
                 mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+            }else {
+                mpPlayer.playerNetServerHandler.setPlayerLocation(aX, aY, aZ, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+
+
             }
         }else if(newDim != s && newDim == 0)
         {

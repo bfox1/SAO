@@ -50,7 +50,7 @@ public class TpDimension implements ICommand{
         //EntityPlayerMP playerMP = strings.length == 0 ? CommandBase.getCommandSenderAsPlayer(commandSender) : CommandBase.getPlayer(commandSender, strings[0]);
         EntityPlayerMP playerMP = strings.length == 0 ? CommandBase.getCommandSenderAsPlayer(commandSender) : CommandBase.getPlayer(commandSender, strings[0]);
 
-        if(strings.length !=2 && strings.length !=3)
+        if(strings.length !=2 && strings.length !=3 && strings.length !=4 && strings.length !=5)
         {
             playerMP.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + ColorHelper.RED + "Invalid Arguments!"));
             getCommandUsage(commandSender);
@@ -112,10 +112,13 @@ public class TpDimension implements ICommand{
             }
 
         }
+
     }
 
     @Override
-    public boolean canCommandSenderUseCommand(ICommandSender p_71519_1_) {
+    public boolean canCommandSenderUseCommand(ICommandSender commandSender) {
+        EntityPlayerMP player = (EntityPlayerMP)commandSender;
+      //  if(player.mcServer.getConfigurationManager().func_152603_m().equals(((EntityPlayerMP) commandSender).getGameProfile().getName()))
         return true;
     }
 
