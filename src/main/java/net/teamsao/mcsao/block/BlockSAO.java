@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.teamsao.mcsao.helper.Reference;
 import net.minecraft.block.Block;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
@@ -15,16 +16,18 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
  */
 public class BlockSAO extends Block{
 
-    public static boolean isBreakable = true;
+    public static boolean isBreakable = false;
 	
-    public BlockSAO(Material material) {
+    public BlockSAO(Material material)
+    {
         super(Material.rock);
-        if(isBreakable) {
+        if(isBreakable == true) {
+            this.setHardness(5.0F);
+            this.setResistance(-1.0F);
+        }else if(isBreakable == false)
+        {
             this.setBlockUnbreakable();
-            this.setResistance(-1);
-        } else {
-            this.setHardness(1.0F);
-            this.setResistance(5.0F);
+            this.setResistance(30000000.0F);
         }
         this.setLightOpacity(0);
         this.setCreativeTab(SAOTabsManager.saoBlocks);
@@ -47,7 +50,4 @@ public class BlockSAO extends Block{
     {
         return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
-
-
-
 }

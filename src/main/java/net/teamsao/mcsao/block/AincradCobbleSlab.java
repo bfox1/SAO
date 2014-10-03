@@ -23,6 +23,8 @@ public class AincradCobbleSlab extends BlockSlab
 		this.setLightOpacity(0);
 		this.material = block;
 		this.isDoubleSlab = isDoubleSlab;
+		this.setBlockUnbreakable();
+        this.setResistance(30000000.0F);
 	}
     @Override
     public int damageDropped(int par1)

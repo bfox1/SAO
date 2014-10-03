@@ -119,7 +119,7 @@ public class SaoPacketPipeline extends MessageToMessageCodec<FMLProxyPacket, Sao
     This is for registering ALL PacketClasses you make
      */
     public void registerPackets(){
-        registerPacket(SyncPlayerPropPacket.class);
+        registerPacket(SyncPlayerSAOPropPacket.class);
     }
 
     // Method to call from FMLPostInitializationEvent

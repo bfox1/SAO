@@ -5,7 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
-import net.teamsao.mcsao.player.playerextendedprop.PlayerCol;
+
 
 import java.util.Random;
 
@@ -55,6 +55,15 @@ public class EntityCol implements IExtendedEntityProperties {
     public int getCol()
     {
         return this.col;
+    }
+
+    public int randomExpGenerator(int start, int end)
+    {
+        Random rand = new Random();
+        int range = end - start + 1;
+        int fraction = (int)(range * rand.nextDouble());
+        int randnum = fraction + start;
+        return randnum;
     }
 
 

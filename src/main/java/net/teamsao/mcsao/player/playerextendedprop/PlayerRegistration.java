@@ -15,10 +15,6 @@ public class PlayerRegistration {
         player.registerExtendedProperties(PlayerSAO.EXT_PROP_NAME, new PlayerSAO(player));
     }
 
-    public static final void registerPlayerCol(EntityPlayer player)
-    {
-        player.registerExtendedProperties(PlayerCol.COL, new PlayerCol(player));
-    }
 
 
 }

@@ -18,6 +18,8 @@ public class AincradCobbleStairs extends BlockStairs
 		this.setBlockName("cobbleroadstairs");
 		this.setLightOpacity(0);
 		this.material = block;
+		this.setBlockUnbreakable();
+        this.setResistance(30000000.0F);
 	}
 	
 	@SideOnly(Side.CLIENT)
