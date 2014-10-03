@@ -13,7 +13,7 @@ import net.teamsao.mcsao.tileentity.TileEntityTeleportCrystalBlock;
 /**
  * Created by bfox1 on 7/20/2014.
  */
-public class TeleportCrystalBlock extends Block implements ITileEntityProvider {
+public class TeleportCrystalBlock extends BlockSAO implements ITileEntityProvider {
     public TeleportCrystalBlock( ) {
         super(Material.anvil);
         this.setBlockName("BlockCrystalLocator");

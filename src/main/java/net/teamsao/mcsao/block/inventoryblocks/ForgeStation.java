@@ -101,4 +101,10 @@ public class ForgeStation extends BlockContainer {
     public TileEntity createNewTileEntity(World world, int i) {
         return new TileEntityForgeStation();
     }
+    
+    @Override
+    public String getUnlocalizedName()
+    {
+    	return "sao:ForgeStation";
+    }
 }

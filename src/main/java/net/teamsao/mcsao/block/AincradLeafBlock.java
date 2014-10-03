@@ -15,16 +15,15 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 import java.util.List;
 //
 
-public class AincradLeafBlock extends Block {
-
-	public final static String[] subBlocks = {"SakuraLeaves", "SummerLeaves", "SpringLeaves", "AutumnLeaves"};
+public class AincradLeafBlock extends LeavesSAO
+{
 
 	public AincradLeafBlock()
 	{
-		super(Material.leaves);
+		super(Material.leaves, false);
 		this.setCreativeTab(SAOTabsManager.saoBlocks);
 		this.setBlockName("AincradLeafBlock");
-        this.setBlockUnbreakable();
+		this.setStepSound(soundTypeGrass);
 	}
 
 	@Override
@@ -38,16 +37,24 @@ public class AincradLeafBlock extends Block {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerBlockIcons(IIconRegister par1IconRegister)
+	public void registerBlockIcons(IIconRegister register)
 	{
 		icons = new IIcon[4];
 
 		for(int i = 0; i < icons.length; i++)
 		{
-			icons[i] = par1IconRegister.registerIcon(ReferenceHelper.setBlockName(this) + i);
-			System.out.println(ReferenceHelper.setBlockName(this) + i);
+			icons[i] = register.registerIcon(this.getUnlocalizedName().substring(5) + i);
+			System.out.println(this.getUnlocalizedName().substring(5) + i);
 		}
 	}
+    
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+
+	
 	/*
 	 * (non-Javadoc)
 	 * @see net.minecraft.block.Block#getIcon(int, int)
@@ -83,7 +90,4 @@ public class AincradLeafBlock extends Block {
 			par3List.add(new ItemStack(par1, 1, i));
 		}
 	}
-
-
-
 }

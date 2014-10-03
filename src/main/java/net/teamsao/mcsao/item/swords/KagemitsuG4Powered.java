@@ -5,32 +5,34 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
-import net.teamsao.mcsao.item.SItemSword;
 
 /**
  * @author 5chris100
  */
-public class KagemitsuG4Powered extends SItemSword {
+public class KagemitsuG4Powered extends KagemitsuG4
+{
 
-    public KagemitsuG4Powered(ToolMaterial p_i45356_1_) {
-        super(p_i45356_1_);
+    public KagemitsuG4Powered(ToolMaterial material)
+    {
+        super(material);
         this.setUnlocalizedName("KagemitsuG4Powered");
-        // this.setTextureName(ReferenceHelper.setItemName(SAOItems.KagemitsuG4));
+        this.setTextureName("KagemitsuG4");
         this.setCreativeTab(null);
     }
 
     @Override
-    public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3) {
-        par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-
+    public ItemStack onItemRightClick(ItemStack swordPowered, World world, EntityPlayer player)
+    {
+        player.setItemInUse(swordPowered, this.getMaxItemUseDuration(swordPowered));
         ItemStack sword = new ItemStack(SAOItems.KagemitsuG4);
-        if (!par2.isRemote) {
-            if (par3.isSneaking()) {
-                sword.setItemDamage(par1.getItemDamage());
+        if(!world.isRemote)
+        {
+            if(player.isSneaking())
+            {
+                sword.setItemDamage(swordPowered.getItemDamage());
                 return sword;
             }
-
         }
-        return par1;
+        return swordPowered;
     }
 }

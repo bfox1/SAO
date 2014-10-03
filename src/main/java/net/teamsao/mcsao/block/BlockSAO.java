@@ -21,10 +21,12 @@ public class BlockSAO extends Block{
     public BlockSAO(Material material)
     {
         super(Material.rock);
-        if(isBreakable == true) {
+        if(isBreakable)
+        {
             this.setHardness(5.0F);
             this.setResistance(-1.0F);
-        }else if(isBreakable == false)
+        }
+        else if(!isBreakable)
         {
             this.setBlockUnbreakable();
             this.setResistance(30000000.0F);

@@ -1,7 +1,7 @@
 package net.teamsao.mcsao.init;
 
 import net.minecraft.item.Item;
-import net.teamsao.mcsao.block.ItemBlockMetaData;
+import net.teamsao.mcsao.block.DungeonBlockMetaData;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.item.*;
 import net.teamsao.mcsao.item.ingots.*;
@@ -19,9 +19,8 @@ import net.teamsao.mcsao.recipes.ForgeStationRecipes;
 /**
  * @author bfox1
  */
-@SuppressWarnings("UnusedDeclaration")
-public class SAOItems {
-
+public class SAOItems
+{
     // Swords
     public static Item Elucidator = new Elucidator(SToolMaterial.Elucidator);
     public static Item ElucidatorPowered = new net.teamsao.mcsao.item.swords.ElucidatorPowered(SToolMaterial.Elucidator);
@@ -48,7 +47,6 @@ public class SAOItems {
     public static Item TyrantDragonPowered = new TyrantDragonPowered(SToolMaterial.TyrantDragon);
 
     public static Item KagemitsuG4 = new KagemitsuG4(SToolMaterial.KagemitsuG4);
-
     public static Item KagemitsuG4Powered = new KagemitsuG4Powered(SToolMaterial.KagemitsuG4);
 
 
@@ -61,8 +59,8 @@ public class SAOItems {
     public static Item ZoringenHammer = new ZoringenHammer();
 
     // ItemBlocks
-    public static Item DungeonStoneItem = new ItemBlockMetaData(SAOBlocks.DungeonStone);
-    public static Item CrystalDungeonItem = new ItemBlockMetaData(SAOBlocks.CrystalStone);
+    public static Item DungeonStoneItem = new DungeonBlockMetaData(SAOBlocks.DungeonStone);
+    public static Item CrystalDungeonItem = new DungeonBlockMetaData(SAOBlocks.CrystalStone);
 
     // Items
     public static Item BossKillToken = new BossKillToken();

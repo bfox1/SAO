@@ -5,15 +5,27 @@ item.BossKillToken:0.name=§5BossKillToken
 //Items
 item.HeartOfKobold.name=Heart Of Kobold
 item.NerveGear.name=§7NerveGear
-item.TownTeleportCrystal.name=Teleport Crystal
+item.sao:TownTeleportCrystal.name=Teleport Crystal
 item.AntidoteCrystal.name=Antidote Crystal
 item.sao:cartridge.name=SAO Game
 item.HealingCrystal.name=Healing Crystal
 item.Elixer.name=Elixer
 item.EmptyVial.name=EmptyVial
 
+//Armor
+item.CoatOfMidnightBody.name=Coat of Midnight Body
+item.CoatOfMidnightLeggings.name=Coat of Midnight Leggings
+item.CoatOfMidnightBoots.name=Coat of Midnight Boots
+
+item.DebugHelmet.name=Debug Helmet
+item.DebugChestPlate.name=Debug Chestplate
+item.DebugLeggings.name=Debug Leggings
+item.DebugBoots.name=Debug Boots
+
 //Ingots
 item.sao:CrystalliteIngot.name=§bCrystallite Ingot
+item.sao:BlackIronIngot.name=Black Iron Ingot
+item.sao:SteelIngot.name=Steel Ingot
 
 //Foods
 item.ragoutmeat.name=Ragout Rabbit Meat
@@ -51,7 +63,7 @@ item.KagemitsuG4Powered.name=§bKagemitsuG4
 //Hammers
 item.sao:ZoringenHammer.name=Zoringen Hammer
 
-//Blocks
+//Metadata Blocks
 
 tile.sao:DungeonBlock.SmoothStone.name=Dungeon Stone
 tile.sao:DungeonBlock.BrickedStone.name=Dungeon Brick
@@ -65,28 +77,39 @@ tile.sao:CrystalStone.ChiseledStone.name=Crystal Chiseled Brick
 tile.sao:CrystalStone.AlterStone.name=Crystal AlterStone
 tile.sao:CyrstalStone.EdgedStone.name=Crystal EdgedStone
 
+tile.sao:AincradLeafBlock.SakuraLeaves.name=Sakura Leaves
+tile.sao:AincradLeafBlock.SummerLeaves.name=Summer Leaves
+tile.sao:AincradLeafBlock.SpringLeaves.name=Spring Leaves
+tile.sao:AincradLeafBlock.AutumnLeaves.name=Autumn Leaves
 
-tile.AincradLeafBlock.SakuraLeaves.name=Sakura Leaves
-tile.AincradLeafBlock.SummerLeaves.name=Summer Leaves
-tile.AincradLeafBlock.SpringLeaves.name=Spring Leaves
-tile.AincradLeafBlock.AutumnLeaves.name=Autumn Leaves
+sao:cobbleroadhalfslab.name=Cobblestone Road Slab
+sao:cobbleroaddoubleslab.name=Cobblestone Road Double-Slab
 
-tile.BlockCrystalLocator.name=Teleport Crystal Block
+//Normal Blocks (animated, custom render, or not doesn't matter)
 
+tile.sao:AincradCobble.name=Aincrad Cobble
+tile.sao:AincradStone.name=Aincrad Stone
+tile.sao:AincradStoneBrick.name=Aincrad Stone Brick
 
 tile.sao:safetyblock.name=Safety Block
 tile.sao:LuminescenceLightBlock.name=Luminescence Block
 
 sao:cobbleroad.name=Cobblestone Road
 sao:cobbleroadstairs.name=Cobblestone Road Stairs
-sao:cobbleroadhalfslab.name=Cobblestone Road Slab
-sao:cobbleroaddoubleslab.name=Cobblestone Road Double-Slab
+
 sao:aincraddirt.name=Aincrad Dirt
 sao:aincradgrass.name=Aincrad Grass Block
 sao:aincradsctowerblock.name=Town Of Beginnings Tower Block (Cream)
 sao:aincradscfloorblock.name=Town Of Beginnings Floor Block (Cream)
 
+tile.sao:CrystalliteOre.name=Crystallite Ore
+
+//Basically Unused
 tile.portal.name=SAO Portal Block
+
+//Tile Entities
+sao:ForgeStation.name=Forge Station
+tile.sao:BlockCrystalLocator.name=Teleport Crystal Block
 
 //Tabs
 itemGroup.SAO=SAO

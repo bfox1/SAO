@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
  * @author bfox1
  *
  */
-public class ItemBlockMetaData extends ItemBlock {
+public class DungeonBlockMetaData extends ItemBlock {
 
 	/*
 	 * (non-Javadoc)
@@ -19,9 +19,9 @@ public class ItemBlockMetaData extends ItemBlock {
 	 */
 	public final static String[] subBlocks = {"SmoothStone", "BrickedStone", "ChiseledStone", "AlterStone", "EdgedStone"};
 	
-	public ItemBlockMetaData(Block p_i45328_1_)
+	public DungeonBlockMetaData(Block material)
 	{
-		super(p_i45328_1_);
+		super(material);
 		this.setHasSubtypes(true);
 	}
 	

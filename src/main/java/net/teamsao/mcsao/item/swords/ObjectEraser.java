@@ -28,9 +28,9 @@ public class ObjectEraser extends UnsheathingSword
 	private EntityPlayer currentOwner;
 	private InventoryPlayer currentInventory;
 	
-	public ObjectEraser(ToolMaterial p_i45356_1_)
+	public ObjectEraser(ToolMaterial material)
 	{
-		super(p_i45356_1_);
+		super(material);
 		this.setUnlocalizedName("ObjectEraser");
 		this.setTextureName("ObjectEraser");
 		this.setCreativeTab(null);
@@ -38,10 +38,10 @@ public class ObjectEraser extends UnsheathingSword
 	}
 
     @Override
-    public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3)
+    public ItemStack onItemRightClick(ItemStack sword, World world, EntityPlayer player)
     {
-        par3.setItemInUse(par1, this.getMaxItemUseDuration(par1));
-        return par1;
+        player.setItemInUse(sword, this.getMaxItemUseDuration(sword));
+        return sword;
     }
 
     @Override
@@ -52,25 +52,25 @@ public class ObjectEraser extends UnsheathingSword
     		currentOwner = (EntityPlayer)entity;
     		currentInventory = currentOwner.inventory;
     	}
-		if (!world.isRemote)
+		if(!world.isRemote)
 		{
 			updateAnimation(currentInventory, inventoryIndex, isItemAnimating);
             currentOwner.setAbsorptionAmount(15.5F);
-			if (itemstack.isItemEnchanted() == false)
+			if(itemstack.isItemEnchanted() == false)
 			{
 				itemstack.addEnchantment(Enchantment.sharpness, 5);
 			}
-			if (entity.isBurning())
+			if(entity.isBurning())
 			{
 				entity.extinguish();
 			}
-			if (currentOwner.isPotionActive(Potion.wither) || currentOwner.isPotionActive(Potion.weakness) 
+			if(currentOwner.isPotionActive(Potion.wither) || currentOwner.isPotionActive(Potion.weakness) 
 					|| currentOwner.isPotionActive(Potion.poison) || currentOwner.isPotionActive(Potion.confusion) 
 					|| currentOwner.isPotionActive(Potion.blindness))
 			{
 				currentOwner.clearActivePotions();
 			}
-			if (currentOwner.getHealth() != currentOwner.getMaxHealth())
+			if(currentOwner.getHealth() != currentOwner.getMaxHealth())
 			{
 				currentOwner.heal(10);
 			}

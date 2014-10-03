@@ -46,10 +46,10 @@ public class SAOBlocks {
 
     public static void registerInit()
     {
-
         GameRegistry.registerBlock(SAOPortalBlock, Reference.MODID + (SAOPortalBlock.getUnlocalizedName().substring(5)));
-        GameRegistry.registerBlock(DungeonStone, ItemBlockMetaData.class, DungeonStone.getUnlocalizedName().substring(5));
-        GameRegistry.registerBlock(CrystalStone, ItemBlockMetaData.class, CrystalStone.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(DungeonStone, DungeonBlockMetaData.class, DungeonStone.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(CrystalStone, DungeonBlockMetaData.class, CrystalStone.getUnlocalizedName().substring(5));
+        GameRegistry.registerBlock(AincradLeafBlock, LeafBlockMetaData.class, AincradLeafBlock.getUnlocalizedName().substring(5));
         GameRegistry.registerBlock(AincradCobbleHalfSlab, ItemCobbleSlab.class, AincradCobbleHalfSlab.getUnlocalizedName());
         GameRegistry.registerBlock(AincradCobbleDoubleSlab, ItemCobbleSlab.class, AincradCobbleDoubleSlab.getUnlocalizedName());
 
@@ -67,9 +67,7 @@ public class SAOBlocks {
         ReferenceHelper.registerBlock(AincradStoneBrick);
         ReferenceHelper.registerBlock(LuminescenceLight);
         ReferenceHelper.registerBlock(CrystalliteOre);
-
         ReferenceHelper.registerBlock(AincradSCTowerBlock);
         ReferenceHelper.registerBlock(AincradSCFloorBlock);
-        ReferenceHelper.registerBlock(AincradLeafBlock);
     }
 }
