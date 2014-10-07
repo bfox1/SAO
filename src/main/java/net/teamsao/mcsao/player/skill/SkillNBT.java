@@ -110,6 +110,7 @@ public class SkillNBT {
     {
             System.out.println("[GENERATE EXP]" + level + ":" + baseExp);
             double exp = ((baseExp * level) * modifier) / 7;
+
             System.out.println("[GENERATE EXP]" + (long)exp);
             return (long)exp;
     }

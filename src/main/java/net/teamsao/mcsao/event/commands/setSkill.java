@@ -9,6 +9,7 @@ import net.minecraft.util.ChatComponentText;
 import net.teamsao.mcsao.helper.ColorHelper;
 import net.teamsao.mcsao.helper.LogHelper;
 import net.teamsao.mcsao.player.PlayerSAO;
+import net.teamsao.mcsao.world.AincradFloorSavedData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,6 @@ public class setSkill implements ICommand {
 
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + "§6You set new Level!"
                 ));
-
             }
         }
         if(strings.length == 2)
@@ -70,6 +70,19 @@ public class setSkill implements ICommand {
                 int currentLvl = data.getSkillLvl(strings[1]);
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + "§6Your level is!" + "§4" + currentLvl
                 ));
+            }
+            if(strings[0].equals("checkunlocks"))
+            {
+                EntityPlayer player = (EntityPlayer)playerMP;
+                AincradFloorSavedData data = new AincradFloorSavedData();
+                data.getUnlock();
+            }
+            if(strings[0].equals("setunlock"))
+            {
+                AincradFloorSavedData data = new AincradFloorSavedData();
+                int number = Integer.parseInt(strings[1]);
+                data.floorBossDefeat(number);
+                data.markDirty();
             }
         }
     }

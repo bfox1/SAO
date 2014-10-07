@@ -54,7 +54,6 @@ public class SaoEventHandler {
         if(!event.entity.worldObj.isRemote && event.entityLiving instanceof EntityMob || event.entityLiving instanceof EntityAnimal)
             if(event.source.getEntity() instanceof EntityPlayer && event.source.getEntity().dimension == 2) {
                 {
-
                     int value;
                     int exp;
                     int mobLevel;
