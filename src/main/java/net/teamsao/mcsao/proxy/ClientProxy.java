@@ -13,6 +13,7 @@ import net.teamsao.mcsao.client.settings.KeyBindings;
 import net.teamsao.mcsao.client.handler.SaoKeyInputHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.teamsao.mcsao.model.*;
+import net.teamsao.mcsao.overlay.OverlayHealth;
 
 public class ClientProxy extends CommonProxy
 {
@@ -37,6 +38,7 @@ public class ClientProxy extends CommonProxy
     @Override
     public void registerRenderers(){
         MinecraftForge.EVENT_BUS.register(new OverlayCol(Minecraft.getMinecraft()));
+        MinecraftForge.EVENT_BUS.register(new OverlayHealth(Minecraft.getMinecraft()));
     }
 
 	@Override
