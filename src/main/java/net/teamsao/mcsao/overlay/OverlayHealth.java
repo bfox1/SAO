@@ -24,8 +24,8 @@ import java.util.Iterator;
 public class OverlayHealth extends GuiScreen {
     private static Minecraft mc;
     
-    public static ResourceLocation textureBase = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/overlay/health/healthBarBase.png");
-    public static ResourceLocation textureBar = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/overlay/health/healthBar.png");
+    public static ResourceLocation textureBase = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/overlay/health/healthBarBase.png");
+    public static ResourceLocation textureBar = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/overlay/health/healthBar.png");
     public static final ResourceLocation originalIcons = new ResourceLocation("textures/gui/icons.png");
 
     public OverlayHealth(Minecraft mc) {

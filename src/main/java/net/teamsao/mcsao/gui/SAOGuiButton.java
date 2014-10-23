@@ -38,10 +38,10 @@ public class SAOGuiButton extends GuiButton {
 		this.mouseOver = twoTypes;
 		
 		if(twoTypes) {
-			texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/button/" + buttonFileName + "_INACTIVE" + ".png");
-			textureActive = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/button/" + buttonFileName + "_ACTIVE" + ".png");
+			texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/button/" + buttonFileName + "_INACTIVE" + ".png");
+			textureActive = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/button/" + buttonFileName + "_ACTIVE" + ".png");
 		} else {
-			texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/button/" + buttonFileName + ".png");
+			texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/button/" + buttonFileName + ".png");
 		}
 		
 	}

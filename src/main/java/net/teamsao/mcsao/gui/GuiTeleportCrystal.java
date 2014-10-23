@@ -18,7 +18,7 @@ import net.teamsao.mcsao.helper.Reference;
 
 public class GuiTeleportCrystal extends GuiScreen {
 	
-	public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/TeleportCrystal.png");
+	public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/TeleportCrystal.png");
 	
 	public final int xSize = 352;
 	public final int ySize = 176;
