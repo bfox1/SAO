@@ -4,7 +4,8 @@ package net.teamsao.mcsao.helper;
  * @author bfox1
  *
  */
-public class Reference {
+public class Reference 
+{
 
 		public static final String MODID = "sao";
 		public static final String NAME = "Sword Art Online";
