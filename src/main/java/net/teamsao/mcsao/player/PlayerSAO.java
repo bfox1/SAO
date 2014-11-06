@@ -381,26 +381,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
      */
     @SideOnly(Side.CLIENT)
     public void addExp(String name, int modifierIndex, int level) {
-        SkillNBT skillData = getSkillInfo(name);
-        String skillName = skillData.getSkillName();
-        int skillLevel = skillData.getSkillLevel();
-        long skillExp = skillData.getSkillExp();
-        long baseExp = skillData.getBaseExp(skillLevel);
-        long amt = SkillNBT.generateExp(level, baseExp, modifierIndex);
-        long nextExp = skillData.generateNextExp(skillLevel);
-        System.out.println("[ADD EXP]" + skillExp);
-        if (isActive(name)) {
-            long currentExp = skillExp;
-            currentExp = currentExp + amt;
-            if (skillLevel != 0) {
-                if (currentExp > nextExp) {
-                    currentExp = currentExp - nextExp;
-                    skillLevelUp(skillName);
-                }
-                skillData.setExp(currentExp);
-                System.out.println("[ADD EXP]" + currentExp + ":" + nextExp + " : " + amt);
-            }
-        }
+
     }
 
     public void addLevelEXP(long amt)
