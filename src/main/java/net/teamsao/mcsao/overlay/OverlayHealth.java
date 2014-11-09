@@ -14,6 +14,7 @@ import net.teamsao.mcsao.player.PlayerSAO;
 import org.lwjgl.opengl.GL11;
 
 import java.util.Iterator;
+import java.awt.*;
 
 /**
  * <p>OverlayHealth implements the health bar from Sword Art Online.</p>
@@ -49,11 +50,12 @@ public class OverlayHealth extends Gui {
             return;
         }
         
+    	
         double xPos = 5; // Horizontal position of the overlay relative to the top-left corner.
         double yPos = 5; // Vertical position of the overlay relative to the top-left corner.
-        double frameXSize = 100;
+        double frameXSize = 120;
         double frameYSize = 20;
-        double barXSize = 58.5;
+        double barXSize = 70;
         double barYSize = 6;
         float health = mc.thePlayer.getHealth();
         
@@ -63,7 +65,7 @@ public class OverlayHealth extends Gui {
             //int precent = playerProp.getHealth()/playerProp.getMaxHealth();
             double percent = health/ mc.thePlayer.getMaxHealth();
             drawFrame(xPos, yPos, frameXSize, frameYSize);
-            drawBar(percent, xPos + 34, yPos + 4.25, barXSize, barYSize);
+            drawBar(percent, xPos + 41.2, yPos + 4.25, barXSize, barYSize);
         }
         
     }
