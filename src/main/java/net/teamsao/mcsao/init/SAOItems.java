@@ -66,7 +66,6 @@ public class SAOItems
     public static Item BossKillToken = new BossKillToken();
     public static Item HeartOfKobold = new HeartOfKobold();
     public static Item NerveGear = new NerveGear(SArmorMaterial.nerveGear, 0, "NerveGear");
-    public static Item TeleportCrystal = new TeleportCrystal();
     public static Item AntidoteCrystal = new AntidoteCrystal();
     public static Item TownTeleportCrystal = new TownTeleportCrystal();
     public static Item HealingCrystal = new HealingCrystal();

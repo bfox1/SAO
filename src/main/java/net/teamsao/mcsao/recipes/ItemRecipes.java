@@ -50,7 +50,6 @@ public class ItemRecipes {
 		Temporary Recipes for Item Creation EXCEPT Object Eraser ;)
 		 */
 		GameRegistry.addShapedRecipe(new ItemStack(SAOItems.DarkRepulser, 1),    " C ", " C ", " D ", 'C', SAOItems.CrystalliteIngot, 'D', Items.diamond);
-        GameRegistry.addShapedRecipe(new ItemStack(SAOItems.TeleportCrystal, 1), " S ", " A ", "   ", 'A', SAOItems.CrystalliteIngot, 'S', Items.iron_ingot);
         GameRegistry.addShapedRecipe(new ItemStack(SAOItems.Elucidator, 1),      " S ", " O ", " T ", 'S', Blocks.obsidian,           'O', SAOItems.CrystalliteIngot, 'T', Items.diamond);
         GameRegistry.addShapedRecipe(new ItemStack(SAOItems.NerveGear, 1),       "GRG", "RHR", "GSG", 'G', Blocks.gold_block,         'R', Blocks.redstone_block,     'H', Items.iron_helmet, 'S', Blocks.glass);
 
