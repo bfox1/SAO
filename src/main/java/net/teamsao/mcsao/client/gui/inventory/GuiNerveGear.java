@@ -18,7 +18,7 @@ public class GuiNerveGear extends GuiContainer {
 
 
 
-    public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/container/NerveGear.png");
+    public static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "/textures/gui/NerveGear.png");
 
 
     public GuiNerveGear(ContainerNerveGear containerItem)

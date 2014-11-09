@@ -8,7 +8,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * @author bfox1
  *
  */
-public class ReferenceHelper {
+public class ReferenceHelper 
+{
 	
 	
 	public static void registerBlock(Block block)
@@ -17,7 +18,8 @@ public class ReferenceHelper {
 
 	}
 
-	public static void registerItem(Item item) {
+	public static void registerItem(Item item) 
+	{
         GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
     }
 	
@@ -25,7 +27,9 @@ public class ReferenceHelper {
 	 * @param name Used for special items in which the texture needs to be the same as another.
 	 * @return The display name for the item.
 	 */
-	public static String setItemName(Item name) {
+	
+	public static String setItemName(Item name) 
+	{
 		return Reference.MODID.toLowerCase() + ":" + name.getUnlocalizedName().substring(5);
 	}
 	
@@ -33,7 +37,9 @@ public class ReferenceHelper {
 	 * @param name Used for special blocks in which the texture needs to be the same as another.
 	 * @return The display name for the block.
 	 */
-	public static String setBlockName(Block name){
+	
+	public static String setBlockName(Block name)
+	{
 		return Reference.MODID.toLowerCase() + ":" + name.getUnlocalizedName().substring(5);
 	}
 }
