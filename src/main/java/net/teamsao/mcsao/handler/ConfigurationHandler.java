@@ -28,7 +28,7 @@ public class ConfigurationHandler {
 
     private static void loadConfiguration()
     {
-        BlockSAO.isBreakable = config.getBoolean("configValue", Configuration.CATEGORY_GENERAL, true, "Is Block Unbreakable.");
+        BlockSAO.isBreakable = config.getBoolean("IsBlockBreakable", Configuration.CATEGORY_GENERAL, false, "Determine if Aincrad Blocks are breakable");
 
         if (config.hasChanged())
         {
