@@ -26,10 +26,9 @@ public class BlockSAO extends Block{
             this.setHardness(5.0F);
             this.setResistance(-1.0F);
         }
-        else if(!isBreakable)
+        else
         {
-            this.setBlockUnbreakable();
-            this.setResistance(30000000.0F);
+            this.setBlockUnbreakable().setResistance(30000000.0F).setHardness(30000000.0F);
         }
         this.setLightOpacity(0);
         this.setCreativeTab(SAOTabsManager.saoBlocks);

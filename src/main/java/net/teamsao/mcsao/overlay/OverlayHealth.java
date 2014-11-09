@@ -21,7 +21,7 @@ import java.util.Iterator;
  * @author 5chris100
  * @author SirPwn
  */
-public class OverlayHealth extends GuiScreen {
+public class OverlayHealth extends Gui {
     private static Minecraft mc;
     
     public static ResourceLocation textureBase = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/overlay/health/healthBarBase.png");
@@ -35,7 +35,7 @@ public class OverlayHealth extends GuiScreen {
         OverlayHealth.mc = mc;
     }
 
-    private static final ResourceLocation texturePath = new ResourceLocation(Reference.MODID, "textures/gui/Col.png");
+
 
     @SubscribeEvent()
     public void onRenderHealthBar(RenderGameOverlayEvent evt) {
@@ -51,8 +51,6 @@ public class OverlayHealth extends GuiScreen {
         float health = mc.thePlayer.getHealth();
         if (health > 0 && mc.thePlayer.worldObj.provider.dimensionId == 2) {
             // The player is alive! TODO: Let's draw the health bar!
-
-            PlayerSAO playerProp = PlayerSAO.get(mc.thePlayer);
 
             //int precent = playerProp.getHealth()/playerProp.getMaxHealth();
             double percent = health/ mc.thePlayer.getMaxHealth();
