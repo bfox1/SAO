@@ -5,6 +5,7 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.teamsao.mcsao.helper.ColorHelper;
 import net.teamsao.mcsao.helper.LogHelper;
@@ -80,9 +81,11 @@ public class setSkill implements ICommand {
             if(strings[0].equals("setunlock"))
             {
                 AincradFloorSavedData data = new AincradFloorSavedData();
+                NBTTagCompound compound = new NBTTagCompound();
                 int number = Integer.parseInt(strings[1]);
                 data.floorBossDefeat(number);
                 data.markDirty();
+                data.writeToNBT(compound);
             }
         }
     }

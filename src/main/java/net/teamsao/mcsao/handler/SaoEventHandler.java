@@ -63,6 +63,7 @@ public class SaoEventHandler {
                     NBTTagCompound compound = new NBTTagCompound();
                     EntityCol props = EntityCol.get((EntityLivingBase) event.entity);
                     props.loadNBTData(compound);
+
                     value = event.entity.worldObj.rand.nextInt(7);
                     exp = 0;
                     mobLevel = props.randomExpGenerator(1, 5);
@@ -107,10 +108,13 @@ public class SaoEventHandler {
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.NORMAL)
+    @SubscribeEvent()
         public void onRenderExperienceBar(RenderGameOverlayEvent event)
         {
-
+            if(event.type.equals(RenderGameOverlayEvent.ElementType.EXPERIENCE) && event.isCancelable())
+            {
+                event.setCanceled(true);
+            }
         }
 
 
