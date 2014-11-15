@@ -14,7 +14,7 @@ public class SkillNBT {
     private String skillName;
     private int lvl;
     private long exp;
-    private double expGain = 0.8;
+    private long baseSkillExp = 0;
     private int maxLevel = 1000;
 
     private int skillIndex;
@@ -64,6 +64,12 @@ public class SkillNBT {
     {
         int baseExp = (100 * level) + 100;
         return baseExp;
+    }
+
+    public long getBaseSkillExp(int level)
+    {
+        int levelBase = level*level*level;
+        return (levelBase);
     }
 
     public int generateMobExp(int start, int end)

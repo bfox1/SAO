@@ -6,7 +6,11 @@ import cpw.mods.fml.common.gameevent.InputEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.client.settings.KeyBindings;
+import net.teamsao.mcsao.network.SaoAbstractPacket;
+import net.teamsao.mcsao.world.DimensionId;
+import net.teamsao.mcsao.world.SAOTeleporter;
 
 import java.io.PrintStream;
 
@@ -15,19 +19,28 @@ import java.io.PrintStream;
  */
 public class SaoKeyInputHandler {
 
-   EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-    World world = FMLClientHandler.instance().getClient().theWorld;
-    PrintStream test = System.out;
 
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event){
 
 
-        if(KeyBindings.guiSAO.isPressed())
+        if(KeyBindings.guiSkill.isPressed())
         {
 //                player.openGui(Reference.MODID, SwordArtOnline.GUI_ITEM_INV, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+            if(FMLClientHandler.instance().getClientPlayerEntity() != null)
+            {
+                EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
 
-            test.println("This works");
+                if(entityPlayer.dimension == DimensionId.SAO_DIMENSION_ID)
+                {
+                    if(entityPlayer.worldObj.isRemote)
+                    {
+                        System.out.println("KEY IS PRESSED");
+                        entityPlayer.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_SKILL, entityPlayer.worldObj, (int)entityPlayer.posX, (int)entityPlayer.posY, (int)entityPlayer.posZ);
+                    }
+                    System.out.println("AFTER IS REMOTE");
+                }
+            }
         }
     }
 }

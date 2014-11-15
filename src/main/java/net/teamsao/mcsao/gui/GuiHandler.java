@@ -1,6 +1,7 @@
 package net.teamsao.mcsao.gui;
 
 import cpw.mods.fml.common.network.IGuiHandler;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -42,10 +43,6 @@ public class GuiHandler implements IGuiHandler {
         {
             return new GuiNerveGear((ContainerNerveGear) new ContainerNerveGear(player, player.inventory, new InventoryNerveGear(player.getHeldItem())));
         }
-        if(ID == SwordArtOnline.GUI_ITEM_INV)
-        {
-            return new GuiSaoMenu();
-        }
         if(ID == SwordArtOnline.GUI_TELEPORT_CRYSTAL)
         {
         	return new GuiTeleportCrystal(player);
@@ -54,6 +51,11 @@ public class GuiHandler implements IGuiHandler {
         {
             return new GuiTeleportCrystalBlock((TileEntityTeleportCrystalBlock) tileEntity);
         }
+        if(ID == SwordArtOnline.GUI_SKILL)
+        {
+            return new GuiSkillMenu(Minecraft.getMinecraft());
+        }
+
         return null;
 
     }

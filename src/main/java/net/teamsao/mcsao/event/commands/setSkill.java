@@ -6,7 +6,9 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ColorHelper;
 import net.teamsao.mcsao.helper.LogHelper;
 import net.teamsao.mcsao.player.PlayerSAO;
@@ -80,8 +82,12 @@ public class setSkill implements ICommand {
             }
             if(strings[0].equals("setunlock"))
             {
-                AincradFloorSavedData data = new AincradFloorSavedData();
+                System.out.println();
+                World world = MinecraftServer.getServer().getEntityWorld();
+                AincradFloorSavedData data = AincradFloorSavedData.forWorld(world);
+                System.out.println(data + "After data reading");
                 NBTTagCompound compound = new NBTTagCompound();
+                System.out.println("After creation of NBT");
                 int number = Integer.parseInt(strings[1]);
                 data.floorBossDefeat(number);
                 data.markDirty();

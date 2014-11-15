@@ -16,14 +16,13 @@ public class AincradFloorSavedData extends WorldSavedData {
 
     public static AincradFloorSavedData forWorld(World world)
     {
-        MapStorage storage = world.perWorldStorage;
-        AincradFloorSavedData result = (AincradFloorSavedData)storage.loadData(AincradFloorSavedData.class, IDENTIFIER);
-        if(result == null)
+        AincradFloorSavedData data = (AincradFloorSavedData)world.loadItemData(AincradFloorSavedData.class, IDENTIFIER);
+        if(data == null)
         {
-            result = new AincradFloorSavedData();
-            storage.setData(IDENTIFIER, result);
+            data = new AincradFloorSavedData();
+            world.setItemData(IDENTIFIER, data);
         }
-        return result;
+        return data;
     }
 
     public AincradFloorSavedData() {
@@ -41,6 +40,7 @@ public class AincradFloorSavedData extends WorldSavedData {
             {
                 boolean unlocked = properties.getBoolean(floorName);
                 data.setUnlocked(unlocked);
+                System.out.println(data.getFloorName() + ":" + unlocked);
             }
         }
 
@@ -56,6 +56,7 @@ public class AincradFloorSavedData extends WorldSavedData {
             if(unlocked)
             {
                 properties.setBoolean(floorName, unlocked);
+                System.out.println(data.getFloorName() + ":" + unlocked);
             }
         }
         compound.setTag(IDENTIFIER, properties);
@@ -85,13 +86,18 @@ public class AincradFloorSavedData extends WorldSavedData {
     {
         ArrayList<AincradFloorNBTData> worldNBT = new ArrayList<AincradFloorNBTData>();
         boolean unlocked = false;
-        for(int i = 1; i < 100; i++)
+        for(int i = 0; i < 100; i++)
         {
-            if(i == 1 )
+            if(i == 0 )
             {
                 unlocked = true;
             }
+            else
+            {
+                unlocked = false;
+            }
             AincradFloorNBTData worldData = new AincradFloorNBTData(i, unlocked, "floor");
+            System.out.println(i + ":" + unlocked);
             worldNBT.add(worldData);
         }
         return worldNBT;
