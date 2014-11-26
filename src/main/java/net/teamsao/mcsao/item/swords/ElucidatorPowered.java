@@ -14,19 +14,20 @@ import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.helper.ColorHelper;
+import net.teamsao.mcsao.item.SItemSword;
 
 /**
  * @author bfox1
  *
  */
-public class ElucidatorPowered extends ItemSword {
+public class ElucidatorPowered extends SItemSword {
 	
 	public static int PowerPool = 5000;
 	
 	public NBTTagCompound test;
 
-	public ElucidatorPowered(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	public ElucidatorPowered(ToolMaterial p_i45356_1_, String typeName) {
+		super(p_i45356_1_, typeName);
 		setUnlocalizedName("ElucidatorPowered");
 		setTextureName(Reference.MODID + ":" + "Elucidator");
 		this.setCreativeTab(null);

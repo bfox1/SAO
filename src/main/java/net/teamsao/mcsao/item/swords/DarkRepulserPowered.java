@@ -10,13 +10,14 @@ import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.helper.ColorHelper;
+import net.teamsao.mcsao.item.SItemSword;
 
 import java.util.List;
 
-public class DarkRepulserPowered extends ItemSword {
+public class DarkRepulserPowered extends SItemSword {
 
-	public DarkRepulserPowered(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	public DarkRepulserPowered(ToolMaterial p_i45356_1_, String typeName ) {
+		super(p_i45356_1_, typeName);
 		this.setUnlocalizedName("DarkRepulserPowered");
 		this.setTextureName(ReferenceHelper.setItemName(SAOItems.DarkRepulser));
 		this.setCreativeTab(null);

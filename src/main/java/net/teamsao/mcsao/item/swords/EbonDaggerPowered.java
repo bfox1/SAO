@@ -9,12 +9,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.SItemSword;
 //
 
-public class EbonDaggerPowered extends ItemSword {
+public class EbonDaggerPowered extends SItemSword {
 
-	public EbonDaggerPowered(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	public EbonDaggerPowered(ToolMaterial p_i45356_1_, String typeName ) {
+		super(p_i45356_1_, typeName);
 		this.setUnlocalizedName("EbonDaggerPowered");
 		this.setTextureName(ReferenceHelper.setItemName(SAOItems.EbonDagger));
 		this.setCreativeTab(null);

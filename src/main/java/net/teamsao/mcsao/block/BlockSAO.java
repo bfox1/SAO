@@ -12,6 +12,7 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 /**
  * @author bfox1
  * All Blocks will now extend This Class.
+ * Provides the Properties to allow breakability in the Aincrad world.
  *
  */
 public class BlockSAO extends Block{

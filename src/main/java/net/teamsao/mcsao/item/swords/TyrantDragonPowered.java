@@ -13,8 +13,8 @@ import net.teamsao.mcsao.item.SItemSword;
 public class TyrantDragonPowered extends SItemSword{
 
 
-    public TyrantDragonPowered(ToolMaterial p_i45356_1_) {
-        super(p_i45356_1_);
+    public TyrantDragonPowered(ToolMaterial p_i45356_1_, String typeName ) {
+        super(p_i45356_1_, typeName);
         this.setUnlocalizedName("TyrantDragonPowered");
         this.setTextureName(ReferenceHelper.setItemName(SAOItems.TyrantDragon));
         this.setCreativeTab(null);

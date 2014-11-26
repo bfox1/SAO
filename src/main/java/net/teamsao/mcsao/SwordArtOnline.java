@@ -45,6 +45,8 @@ public class SwordArtOnline {
 
     public static final int GUI_TELEPORT_CRYSTAL = modGuiIndex + 2;
     public static final int GUI_TELEPORT_CRYSTAL_BLOCK = modGuiIndex + 3;
+    public static final int GUI_SKILL = modGuiIndex + 4;
+
 
 	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;
@@ -52,21 +54,39 @@ public class SwordArtOnline {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
             LogHelper.info("PreInitEvent - 0% complete - Creating configuration...");
+
             ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+
             LogHelper.info("PreInitEvent - 13% complete - Registering configuration...");
+
             FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
+
             LogHelper.info("PreInitEvent - 25% complete - Registering entities...");
+
             EntitySAO.registerIds();
+
             LogHelper.info("PreInitEvent - 38% complete - Registering materials...");
+
             SToolMaterial.init();
+
+           proxy.registerKeybindings();
+
             LogHelper.info("PreInitEvent - 50% complete - Registering items...");
+
             SAOItems.registerInit();
+
             LogHelper.info("PreInitEvent - 63% complete - Registering blocks...");
+
             SAOBlocks.registerInit();
+
             LogHelper.info("PreInitEvent - 75% complete - Registering dimension...");
+
             proxy.registerDimension();
+
             LogHelper.info("PreInitEvent - 88% complete - Initializing textures...");
+
             proxy.initRenderingAndTextures();
+
             LogHelper.info("PreInitEvent - 100% complete - Starting InitEvent...");
     }
 
@@ -83,8 +103,6 @@ public class SwordArtOnline {
         proxy.registerGlobalEntity();
         LogHelper.info("InitEvent - 44% complete - Registering tile entities...");
         proxy.registerTileEntities();
-        LogHelper.info("InitEvent - 56% complete - Registering keybindings...");
-        proxy.registerKeybindings();
         LogHelper.info("InitEvent - 67% complete - Registering recipes, step 1...");
         ItemRecipes.removeBlockRecipes();
         LogHelper.info("InitEvent - 78% complete - Registering recipes, step 2...");

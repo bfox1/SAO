@@ -8,7 +8,6 @@ import net.minecraft.world.WorldSavedData;
  */
 public class AincradFloorNBTData
 {
-    private int floorAmount = 100;
     private int floorNumber;
     private boolean isUnlocked;
     private String floorname;
@@ -23,6 +22,7 @@ public class AincradFloorNBTData
 
     public int getFloorAmount()
     {
+        int floorAmount = 100;
         return floorAmount;
     }
 

@@ -15,7 +15,7 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 public class COM_Body extends ItemArmor {
     public COM_Body(ArmorMaterial material, int armorSlot, String name) {
         super(material, 1, armorSlot);
-        setUnlocalizedName(name);
+        setUnlocalizedName("CoatOfMidnightBody");
         this.setTextureName(ReferenceHelper.setItemName(this));
         this.setCreativeTab(SAOTabsManager.SAO);
     }

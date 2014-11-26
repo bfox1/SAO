@@ -12,8 +12,8 @@ import net.teamsao.mcsao.item.SItemSword;
  * Created by bfox1 on 7/8/2014.
  */
 public class KarakurenaiPowered extends SItemSword {
-    public KarakurenaiPowered(ToolMaterial p_i45356_1_) {
-        super(p_i45356_1_);
+    public KarakurenaiPowered(ToolMaterial p_i45356_1_, String typeName ) {
+        super(p_i45356_1_, typeName);
         this.setUnlocalizedName("KarakurenaiPowered");
         this.setTextureName(ReferenceHelper.setItemName(SAOItems.Karakurenai));
         this.setCreativeTab(null);

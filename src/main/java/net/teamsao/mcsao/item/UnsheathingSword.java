@@ -34,9 +34,9 @@ public abstract class UnsheathingSword extends SItemSword
 		this.animationSpeed = animationSpeed;
 	}
 
-	public UnsheathingSword(ToolMaterial p_i45356_1_)
+	public UnsheathingSword(ToolMaterial p_i45356_1_, String typeName )
 	{
-		super(p_i45356_1_);
+		super(p_i45356_1_, typeName);
 	}
 	
 	@SideOnly(Side.CLIENT)

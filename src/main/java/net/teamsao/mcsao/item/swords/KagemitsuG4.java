@@ -1,5 +1,6 @@
 package net.teamsao.mcsao.item.swords;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,9 +21,9 @@ public class KagemitsuG4 extends UnsheathingSword
 	private EntityPlayer currentOwner;
 	private InventoryPlayer currentInventory;
 
-    public KagemitsuG4(ToolMaterial material)
+    public KagemitsuG4(ToolMaterial material, String typeName )
     {
-        super(material);
+        super(material, typeName);
         this.setUnlocalizedName("KagemitsuG4");
         this.setTextureName("KagemitsuG4");
         this.setCreativeTab(SAOTabsManager.saoTools);
@@ -39,7 +40,7 @@ public class KagemitsuG4 extends UnsheathingSword
     	}
 		if (!world.isRemote)
 		{
-			updateAnimation(currentInventory, inventoryIndex, isItemAnimating);
+            updateAnimation(currentInventory, inventoryIndex, isItemAnimating);
 		}
     }
 

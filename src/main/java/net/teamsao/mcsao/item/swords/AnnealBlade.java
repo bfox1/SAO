@@ -8,20 +8,25 @@ import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.item.SItemSword;
 
 /**
  * @author bfox1
  *
  */
-public class AnnealBlade extends ItemSword {
+public class AnnealBlade extends SItemSword {
 
-	public AnnealBlade(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+
+
+	public AnnealBlade(ToolMaterial p_i45356_1_, String typeName ) {
+		super(p_i45356_1_, typeName);
 		this.setUnlocalizedName("AnnealBlade");
+
 		this.setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setCreativeTab(SAOTabsManager.saoTools);
 
 	}
+
 	
 	@Override
     public ItemStack onItemRightClick(ItemStack par1, World par2, EntityPlayer par3) {

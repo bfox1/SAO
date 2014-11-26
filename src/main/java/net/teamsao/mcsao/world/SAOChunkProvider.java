@@ -106,7 +106,7 @@ public class SAOChunkProvider implements IChunkProvider
 	int[][] field_73219_j = new int[32][32];
 	private static final String __OBFID = "CL_00000396";
 
-	{
+	static {
 		/*caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
         strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
         villageGenerator = (MapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);

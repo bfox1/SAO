@@ -2,6 +2,7 @@ package net.teamsao.mcsao.proxy;
 
 import java.io.File;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
 
 import net.minecraft.client.Minecraft;
@@ -14,8 +15,10 @@ import net.teamsao.mcsao.client.settings.KeyBindings;
 import net.teamsao.mcsao.client.handler.SaoKeyInputHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.gui.Saoingamemenu;
 import net.teamsao.mcsao.model.*;
 import net.teamsao.mcsao.overlay.OverlayHealth;
+import net.teamsao.mcsao.overlay.OverlayVersionText;
 
 public class ClientProxy extends CommonProxy
 {
@@ -44,14 +47,21 @@ public class ClientProxy extends CommonProxy
     @Override
     public void registerRenderers(){
         MinecraftForge.EVENT_BUS.register(new OverlayHealth(Minecraft.getMinecraft()));
+        MinecraftForge.EVENT_BUS.register(new OverlayVersionText(Minecraft.getMinecraft()));
+        MinecraftForge.EVENT_BUS.register(new Saoingamemenu(Minecraft.getMinecraft()));
+    }
+
+    @Override
+    public void registerEventHandlers()
+    {
+        super.registerEventHandlers();
+        FMLCommonHandler.instance().bus().register(new SaoKeyInputHandler());
     }
 
 	@Override
 	public void registerKeybindings()
 	{
-        KeyBindings.init();
-        FMLCommonHandler.instance().bus().register(new KeyBindings());
-        FMLCommonHandler.instance().bus().register(new SaoKeyInputHandler());
+        ClientRegistry.registerKeyBinding(KeyBindings.guiSkill);
 	}
 
     @Override

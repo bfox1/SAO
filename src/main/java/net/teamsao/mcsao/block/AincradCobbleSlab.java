@@ -61,7 +61,7 @@ public class AincradCobbleSlab extends BlockSlab
             boolean oppositeBottom = (metadata & 8) == 0;
             boolean isSlab = block instanceof BlockSlab;
             boolean vertSide = side > -1 && side < 6;
-			return vertSide && ((side == 0 && oppositeBottom) || (side == 1 && oppositeTop)) && isSlab ? true : superSideSolid;
+			return vertSide && ((side == 0 && oppositeBottom) || (side == 1 && oppositeTop)) && isSlab || superSideSolid;
 		}
 	}
 

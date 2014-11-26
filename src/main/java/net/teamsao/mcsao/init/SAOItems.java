@@ -14,40 +14,44 @@ import net.teamsao.mcsao.item.potions.*;
 import net.teamsao.mcsao.item.swords.*;
 import net.teamsao.mcsao.material.SArmorMaterial;
 import net.teamsao.mcsao.material.SToolMaterial;
+import net.teamsao.mcsao.player.skill.SkillList;
 import net.teamsao.mcsao.recipes.ForgeStationRecipes;
 
 /**
+ * Initializing Items
  * @author bfox1
  */
 public class SAOItems
 {
     // Swords
-    public static Item Elucidator = new Elucidator(SToolMaterial.Elucidator);
-    public static Item ElucidatorPowered = new net.teamsao.mcsao.item.swords.ElucidatorPowered(SToolMaterial.Elucidator);
-    public static Item AnnealBlade = new AnnealBlade(SToolMaterial.AnnealBlade);
-    public static Item AnnealBladePowered = new AnnealBladePowered(SToolMaterial.AnnealBlade);
-    public static Item DarkRepulser = new DarkRepulser(SToolMaterial.DarkRepulser);
-    public static Item DarkRepulserPowered = new DarkRepulserPowered(SToolMaterial.DarkRepulser);
-    public static Item EbonDagger = new EbonDagger(SToolMaterial.EbonDagger);
-    public static Item EbonDaggerPowered = new EbonDaggerPowered(SToolMaterial.EbonDagger);
-    public static Item GuiltyThorn = new GuiltyThorn(SToolMaterial.GuiltyThorn);
-    public static Item GuiltyThornPowered = new GuiltyThornPowered(SToolMaterial.GuiltyThorn);
-    public static Item Karakurenai = new Karakurenai(SToolMaterial.Karakurenai);
-    public static Item KarakurenaiPowered = new KarakurenaiPowered(SToolMaterial.Karakurenai);
-    public static Item LambentLight = new LambentLight(SToolMaterial.LambentLight);
-    public static Item LambentLightPowered = new LambentLightPowered(SToolMaterial.LambentLight);
-    public static Item LiberatorShield = new LiberatorShield(SToolMaterial.LiberatorShield);
-    public static Item LiberatorSword = new LiberatorSword(SToolMaterial.LiberatorSword);
-    public static Item MateChopper = new MateChopper(SToolMaterial.MateChopper);
-    public static Item MateChopperPowered = new MateChopperPowered(SToolMaterial.MateChopper);
-    public static Item ObjectEraser = new ObjectEraser(SToolMaterial.ObjectEraser);
-    public static Item ShadowDagger = new ShadowDagger(SToolMaterial.ShadowDagger);
-    public static Item ShadowDaggerPowered = new ShadowDaggerPowered(SToolMaterial.ShadowDagger);
-    public static Item TyrantDragon = new TyrantDragon(SToolMaterial.TyrantDragon);
-    public static Item TyrantDragonPowered = new TyrantDragonPowered(SToolMaterial.TyrantDragon);
+    public static SItemSword Elucidator = new Elucidator(SToolMaterial.Elucidator, "one-handed-sword");
+    public static SItemSword ElucidatorPowered = new ElucidatorPowered(SToolMaterial.Elucidator, "one-handed-sword");
+    public static SItemSword AnnealBlade = new AnnealBlade(SToolMaterial.AnnealBlade,"one-handed-sword");
+    public static SItemSword AnnealBladePowered = new AnnealBladePowered(SToolMaterial.AnnealBlade,"one-handed-sword");
+    public static SItemSword DarkRepulser = new DarkRepulser(SToolMaterial.DarkRepulser,"one-handed-sword");
+    public static SItemSword DarkRepulserPowered = new DarkRepulserPowered(SToolMaterial.DarkRepulser,"one-handed-sword");
+    public static SItemSword EbonDagger = new EbonDagger(SToolMaterial.EbonDagger, "dagger");
+    public static SItemSword EbonDaggerPowered = new EbonDaggerPowered(SToolMaterial.EbonDagger, "dagger");
+    public static SItemSword GuiltyThorn = new GuiltyThorn(SToolMaterial.GuiltyThorn, "spear");
+    public static SItemSword GuiltyThornPowered = new GuiltyThornPowered(SToolMaterial.GuiltyThorn, "spear");
+    public static SItemSword Karakurenai = new Karakurenai(SToolMaterial.Karakurenai,"katana");
+    public static SItemSword KarakurenaiPowered = new KarakurenaiPowered(SToolMaterial.Karakurenai,"katana");
+    public static SItemSword LambentLight = new LambentLight(SToolMaterial.LambentLight, "rapier-sword");
+    public static SItemSword LambentLightPowered = new LambentLightPowered(SToolMaterial.LambentLight, "rapier-sword");
+    public static SItemSword LiberatorShield = new LiberatorShield(SToolMaterial.LiberatorShield, "shield");
+    public static SItemSword LiberatorSword = new LiberatorSword(SToolMaterial.LiberatorSword, "one-handed-sword");
+    public static SItemSword MateChopper = new MateChopper(SToolMaterial.MateChopper, "dagger");
+    public static SItemSword MateChopperPowered = new MateChopperPowered(SToolMaterial.MateChopper, "dagger");
+    public static SItemSword ObjectEraser = new ObjectEraser(SToolMaterial.ObjectEraser, "two-handed-sword");
+    public static SItemSword ShadowDagger = new ShadowDagger(SToolMaterial.ShadowDagger, "dagger");
+    public static SItemSword ShadowDaggerPowered = new ShadowDaggerPowered(SToolMaterial.ShadowDagger, "dagger");
+    public static SItemSword TyrantDragon = new TyrantDragon(SToolMaterial.TyrantDragon, "two-handed-sword");
+    public static SItemSword TyrantDragonPowered = new TyrantDragonPowered(SToolMaterial.TyrantDragon, "two-handed-sword");
 
-    public static Item KagemitsuG4 = new KagemitsuG4(SToolMaterial.KagemitsuG4);
-    public static Item KagemitsuG4Powered = new KagemitsuG4Powered(SToolMaterial.KagemitsuG4);
+
+
+    public static SItemSword KagemitsuG4 = new KagemitsuG4(SToolMaterial.KagemitsuG4, "one-handed-sword");
+    public static Item KagemitsuG4Powered = new KagemitsuG4Powered(SToolMaterial.KagemitsuG4, "one-handed-sword");
 
 
     // Guns

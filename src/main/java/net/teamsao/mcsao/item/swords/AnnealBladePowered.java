@@ -6,16 +6,17 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.SItemSword;
 
 
 /**
  * @author bfox1
  *
  */
-public class AnnealBladePowered extends ItemSword {
+public class AnnealBladePowered extends SItemSword {
 
-	public AnnealBladePowered(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	public AnnealBladePowered(ToolMaterial p_i45356_1_, String typeName) {
+		super(p_i45356_1_, typeName);
 		this.setUnlocalizedName("AnnealBladePowered");
 		this.setTextureName(ReferenceHelper.setItemName(SAOItems.AnnealBlade));
 		this.setCreativeTab(null);

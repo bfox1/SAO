@@ -16,8 +16,8 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
  * Created by bfox1 on 8/25/2014.
  */
 public class LiberatorSword extends SItemSword {
-    public LiberatorSword(ToolMaterial p_i45356_1_) {
-        super(p_i45356_1_);
+    public LiberatorSword(ToolMaterial p_i45356_1_, String typeName) {
+        super(p_i45356_1_, typeName);
         this.setUnlocalizedName("LiberatorSword");
         this.setTextureName(ReferenceHelper.setItemName(this));
         this.setCreativeTab(SAOTabsManager.saoTools);
@@ -30,7 +30,7 @@ public class LiberatorSword extends SItemSword {
         if (!world.isRemote)
         {
 
-            if (itemstack.isItemEnchanted() == false)
+            if (!itemstack.isItemEnchanted())
             {
                 itemstack.addEnchantment(Enchantment.sharpness, 5);
             }

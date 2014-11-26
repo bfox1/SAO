@@ -5,11 +5,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.item.ItemHammer;
 import net.teamsao.mcsao.item.ItemIngot;
 import net.teamsao.mcsao.item.SwordType;
@@ -60,13 +57,13 @@ public class ForgeStationRecipes {
 
             entry = (Entry)iterator.next();
         }
-        while (!this.canSmelt(itemstack, (ItemStack)entry.getKey()));
+        while (this.canSmelt(itemstack, (ItemStack)entry.getKey()));
 
         return (ItemStack)entry.getValue();
     } // getValue is output, getKey is input
     
     private boolean canSmelt(ItemStack itemstack, ItemStack itemstack2) {
-        return itemstack2.getItem() == itemstack.getItem() && (itemstack2.getItemDamage() == 32767 || itemstack2.getItemDamage() == itemstack.getItemDamage());
+        return itemstack2.getItem() != itemstack.getItem() || (itemstack2.getItemDamage() != 32767 && itemstack2.getItemDamage() != itemstack.getItemDamage());
     }
 
     public Map getIncineratingList() {
@@ -87,7 +84,7 @@ public class ForgeStationRecipes {
 
             entry = (Entry)iterator.next();
         }
-        while (!this.canSmelt(itemstack, (ItemStack)entry.getKey()));
+        while (this.canSmelt(itemstack, (ItemStack)entry.getKey()));
 
         return ((Float)entry.getValue()).floatValue();
     }

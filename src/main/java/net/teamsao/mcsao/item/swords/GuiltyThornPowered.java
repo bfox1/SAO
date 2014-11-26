@@ -9,12 +9,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.SItemSword;
 //
 
-public class GuiltyThornPowered extends ItemSword {
+public class GuiltyThornPowered extends SItemSword {
 	
-	public GuiltyThornPowered(ToolMaterial par1){
-	super(par1);
+	public GuiltyThornPowered(ToolMaterial par1, String typeName ){
+	super(par1, typeName);
 	this.setUnlocalizedName("GuiltyThornPowered");
 	this.setTextureName(ReferenceHelper.setItemName(SAOItems.GuiltyThorn));
 	this.setCreativeTab(null);

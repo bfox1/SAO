@@ -10,5 +10,7 @@ public class SpecialPlayers {
 
     public static String[] gameMasters = {"bfox1", "Dradgit"};
 
+    public static String[] lover = {"Leg4cy_Reborn_", "CherryBaka"};
+
     public static String[] developer = {"Chris005", "zanderboycherry"};
 }

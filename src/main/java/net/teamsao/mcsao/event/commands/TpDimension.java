@@ -47,7 +47,6 @@ public class TpDimension implements ICommand{
     @Override
     public void processCommand(ICommandSender commandSender, String[] strings) {
 
-        //EntityPlayerMP playerMP = strings.length == 0 ? CommandBase.getCommandSenderAsPlayer(commandSender) : CommandBase.getPlayer(commandSender, strings[0]);
         EntityPlayerMP playerMP = strings.length == 0 ? CommandBase.getCommandSenderAsPlayer(commandSender) : CommandBase.getPlayer(commandSender, strings[0]);
 
         if(strings.length !=2 && strings.length !=3 && strings.length !=4 && strings.length !=5)
@@ -56,11 +55,6 @@ public class TpDimension implements ICommand{
             getCommandUsage(commandSender);
         }
         if(strings.length == 2) {
-            // byte b0 = 1;
-            // int ji = b0 + 1;
-            // int i = 30000000;
-
-            //int j = parseIntBounded(commandSender, strings[2], -i, i);
 
             if (strings[1].equals("tpAincrad")) {
                 this.dimension = 2;
@@ -72,11 +66,12 @@ public class TpDimension implements ICommand{
             }
             if (strings[1].equals("getCol")) {
                 EntityPlayer player = (EntityPlayer) playerMP;
-              //  PlayerCol.loadProxyData(player);
-              //  PlayerCol data = PlayerCol.get(player);
+
                 PlayerSAO.loadProxyData(player);
                 PlayerSAO data = PlayerSAO.get(player);
+
                 int amt = data.getColAmount();
+
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + ColorHelper.YELLOW + "You have "
                         + ColorHelper.DARK_GREEN + amt + ColorHelper.YELLOW +" Col"));
 
@@ -85,26 +80,27 @@ public class TpDimension implements ICommand{
         if(strings.length == 3)
         {
             if(strings[1].equals("setCol")) {
+
                 EntityPlayer player = (EntityPlayer) playerMP;
-               // PlayerCol data = PlayerCol.get(player);
+
                 PlayerSAO data = PlayerSAO.get(player);
+
                 int amt = Integer.parseInt(strings[2]);
+
                 data.setColAmount(amt);
-               // PlayerCol.saveProxyData(player);
+
                 PlayerSAO.loadProxyData(player);
+
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + ColorHelper.YELLOW + "You now have "
                         + ColorHelper.DARK_GREEN + amt + ColorHelper.YELLOW +" Col"));
             }
             if(strings[1].equals("addCol")) {
                 EntityPlayer player = (EntityPlayer) playerMP;
-               // PlayerCol.loadProxyData(player);
                 PlayerSAO.loadProxyData(player);
-              //  PlayerCol data = PlayerCol.get(player);
                 PlayerSAO data = PlayerSAO.get(player);
                 int amt = Integer.parseInt(strings[2]);
                 data.addCol(amt);
                 int currentAmt = data.getColAmount();
-               // PlayerCol.saveProxyData(player);
                 PlayerSAO.saveProxyData(player);
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + ColorHelper.YELLOW + " You added "
                         + ColorHelper.DARK_GREEN + amt + ColorHelper.YELLOW + " Col to your account and now have "
@@ -118,7 +114,6 @@ public class TpDimension implements ICommand{
     @Override
     public boolean canCommandSenderUseCommand(ICommandSender commandSender) {
         EntityPlayerMP player = (EntityPlayerMP)commandSender;
-      //  if(player.mcServer.getConfigurationManager().func_152603_m().equals(((EntityPlayerMP) commandSender).getGameProfile().getName()))
         return true;
     }
 

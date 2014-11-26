@@ -16,6 +16,7 @@ public class EntityCol implements IExtendedEntityProperties {
 
     public final static String ENTITY_COL_DROP = "EntityColDrop";
 
+    @SuppressWarnings("FieldCanBeLocal")
     private final EntityLivingBase entity;
 
     private int col;
@@ -30,7 +31,7 @@ public class EntityCol implements IExtendedEntityProperties {
         return entity.getEntityData().getId();
     }
 
-    public static final EntityCol get(EntityLivingBase entity){
+    public static EntityCol get(EntityLivingBase entity){
         return (EntityCol)entity.getExtendedProperties(ENTITY_COL_DROP);
     }
     @Override

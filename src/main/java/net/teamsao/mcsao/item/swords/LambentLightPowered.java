@@ -9,11 +9,12 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
+import net.teamsao.mcsao.item.SItemSword;
 
-public class LambentLightPowered extends ItemSword {
+public class LambentLightPowered extends SItemSword {
 
-	public LambentLightPowered(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	public LambentLightPowered(ToolMaterial p_i45356_1_, String typeName ) {
+		super(p_i45356_1_, typeName);
 		this.setUnlocalizedName("LambentLightPowered");
 		this.setTextureName(ReferenceHelper.setItemName(SAOItems.LambentLight));
 		this.setCreativeTab(null);

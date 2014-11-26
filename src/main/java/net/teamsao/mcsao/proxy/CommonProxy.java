@@ -1,5 +1,6 @@
 package net.teamsao.mcsao.proxy;
 
+
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 import net.minecraft.item.ItemStack;
@@ -30,7 +31,8 @@ public abstract class CommonProxy implements SProxy {
     private static final Map<String, NBTTagCompound> extendedEntityData = new HashMap<String, NBTTagCompound>();
 
     public void registerTileEntities()
-    {}
+    {
+    }
 
 
 
@@ -38,6 +40,7 @@ public abstract class CommonProxy implements SProxy {
     {
         EntityRegistry.registerGlobalEntityID(EntityKoboldTest.class, "KoboldTest", EntityRegistry.findGlobalUniqueEntityId(), EntitySAO.redColor, EntitySAO.orangeColor);
         EntityRegistry.registerGlobalEntityID(EntityBoar.class, "Boar", EntityRegistry.findGlobalUniqueEntityId(), EntitySAO.redColor, EntitySAO.blueColor);
+
 	}
 
 

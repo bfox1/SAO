@@ -14,8 +14,8 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
  * Created by bfox1 on 7/8/2014.
  */
 public class Karakurenai extends SItemSword {
-    public Karakurenai(ToolMaterial p_i45356_1_) {
-        super(p_i45356_1_);
+    public Karakurenai(ToolMaterial p_i45356_1_, String typeName ) {
+        super(p_i45356_1_,typeName);
         this.setUnlocalizedName("Karakurenai");
         this.setTextureName(ReferenceHelper.setItemName(this));
         this.setCreativeTab(SAOTabsManager.saoTools);

@@ -9,6 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.*;
@@ -25,9 +26,12 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.block.BlockSAO;
+import net.teamsao.mcsao.handler.PlayerInventoryHandler;
+import net.teamsao.mcsao.helper.InventoryNBTHelper;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.network.SyncPlayerSAOPropPacket;
 import net.teamsao.mcsao.player.PlayerSAO;
+import net.teamsao.mcsao.player.skill.SkillBase;
 
 public class SAOTeleporter extends Teleporter
 {
@@ -41,7 +45,9 @@ public class SAOTeleporter extends Teleporter
  
     /** Stores successful portal placement locations for rapid lookup. */
     private final LongHashMap destinationCoordinateCache = new LongHashMap();
- 
+
+
+
     /**
      * A list of valid keys for the destinationCoordainteCache. These are based on the X & Z of the players initial
      * location.
@@ -85,11 +91,16 @@ public class SAOTeleporter extends Teleporter
         func_72375_a(mpPlayer, worldServer);
 
         if(newDim != s && newDim == 2) {
-            Chunk chunk = worldServer.getChunkFromBlockCoords(0, 0);
+            Chunk chunk = worldServer.getChunkFromBlockCoords(1, 1);
              int height = chunk.getHeightValue(0, 0);
             if(aY == 0)
             {
                 mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
+                if(!props.getFirstTimeTraveler())
+                {
+                    player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_SKILL, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+                }
+
             }else {
                 mpPlayer.playerNetServerHandler.setPlayerLocation(aX, aY, aZ, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
 
@@ -99,6 +110,8 @@ public class SAOTeleporter extends Teleporter
         {
             ChunkCoordinates coords = mpPlayer.getPlayerCoordinates();
             props.setAincradCoordsXYZ(coords.posX, coords.posY, coords.posZ);
+            PlayerInventoryHandler nv = new PlayerInventoryHandler();
+            nv.saveInventory(player);
             PlayerSAO.saveProxyData(player);
             mpPlayer.playerNetServerHandler.setPlayerLocation(X, Y, Z, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }
@@ -106,7 +119,10 @@ public class SAOTeleporter extends Teleporter
 
         mpPlayer.theItemInWorldManager.setWorld(worldServer1);
         updateTimeAndWeatherForPlayer(mpPlayer, worldServer1);
+
+
         syncPlayerInventory(mpPlayer);
+
 
         for (Object o : mpPlayer.getActivePotionEffects()) {
             PotionEffect potioneffect = (PotionEffect) o;
@@ -160,6 +176,13 @@ public class SAOTeleporter extends Teleporter
         par1EntityPlayerMP.setPlayerHealthUpdated();
         par1EntityPlayerMP.playerNetServerHandler.sendPacket(new S09PacketHeldItemChange(par1EntityPlayerMP.inventory.currentItem));
     }
+
+    private static void savePlayerOverworldInventory(EntityPlayerMP playerMP)
+    {
+
+    }
+
+
 
     public static void func_72375_a(EntityPlayerMP par1EntityPlayerMP, WorldServer par2WorldServer)
     {

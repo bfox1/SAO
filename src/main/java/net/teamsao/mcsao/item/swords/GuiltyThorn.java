@@ -8,12 +8,13 @@ import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.item.SItemSword;
 //
 
-public class GuiltyThorn extends ItemSword {
+public class GuiltyThorn extends SItemSword {
 
-	public GuiltyThorn(ToolMaterial p_i45356_1_) {
-		super(p_i45356_1_);
+	public GuiltyThorn(ToolMaterial p_i45356_1_, String typeName ) {
+		super(p_i45356_1_, typeName);
 		this.setUnlocalizedName("GuiltyThorn");
 		this.setTextureName(ReferenceHelper.setItemName(this));
 		this.setCreativeTab(SAOTabsManager.saoTools);
