@@ -64,7 +64,7 @@ public class SAOTabsManager extends CreativeTabs {
 
     @Override
     public Item getTabIconItem() {
-        return SAOItems.TeleportCrystal;
+        return SAOItems.TownTeleportCrystal;
     }
 
 
