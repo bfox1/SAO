@@ -26,18 +26,20 @@ public class TownTeleportCrystal extends ItemSAO {
 	}
 	
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3Player)
-	{
-		if(par2World.isRemote)
-		{
-			if(par3Player.isSneaking() && par3Player.dimension == DimensionId.SAO_DIMENSION_ID)
-			{
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3Player) {
+        if (par2World.isRemote) {
+            if (par3Player.isSneaking() && par3Player.dimension == DimensionId.SAO_DIMENSION_ID) {
                 System.out.println("Past area");
                 par3Player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_TELEPORT_CRYSTAL, par3Player.worldObj, (int) par3Player.posX,
-                        (int) par3Player.posY, (int)par3Player.posZ);
+                        (int) par3Player.posY, (int) par3Player.posZ);
             }
-		}
-		return par1ItemStack;
-		
-	}
+        }
+        return par1ItemStack;
+
+    }
+
+    @Override
+    public boolean isFull3D() {
+        return true;
+    }
 }

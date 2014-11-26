@@ -39,4 +39,9 @@ public class AntidoteCrystal extends Item{
         }
         return item;
     }
+
+    @Override
+    public boolean isFull3D() {
+        return true;
+    }
 }

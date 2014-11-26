@@ -58,7 +58,7 @@ public class TileEntityForgeStation extends TileEntity implements IInventory{
 
     @Override
     public ItemStack getStackInSlot(int slot) {
-        return slots[slot];
+            return slots[slot];
     }
 
     @Override
