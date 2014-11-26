@@ -12,9 +12,9 @@ import net.teamsao.mcsao.init.SAOItems;
 public class KagemitsuG4Powered extends KagemitsuG4
 {
 
-    public KagemitsuG4Powered(ToolMaterial material)
+    public KagemitsuG4Powered(ToolMaterial material, String typeName )
     {
-        super(material);
+        super(material, typeName);
         this.setUnlocalizedName("KagemitsuG4Powered");
         this.setTextureName("KagemitsuG4");
         this.setCreativeTab(null);

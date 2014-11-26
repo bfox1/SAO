@@ -14,11 +14,15 @@ import net.teamsao.mcsao.item.SItemSword;
  * Created by bfox1 on 7/8/2014.
  */
 public class ShadowDaggerPowered extends SItemSword {
-    public ShadowDaggerPowered(ToolMaterial p_i45356_1_) {
-        super(p_i45356_1_);
+
+
+    public ShadowDaggerPowered(ToolMaterial p_i45356_1_, String typeName ) {
+        super(p_i45356_1_, typeName );
         this.setUnlocalizedName("ShadowDaggerPowered");
         this.setTextureName(ReferenceHelper.setItemName(SAOItems.ShadowDagger));
         this.setCreativeTab(null);
+
+
     }
 
     @Override
@@ -46,4 +50,5 @@ public class ShadowDaggerPowered extends SItemSword {
 
         return par1;
     }
+
 }

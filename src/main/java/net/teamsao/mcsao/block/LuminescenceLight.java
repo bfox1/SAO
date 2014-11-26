@@ -34,11 +34,7 @@ public class LuminescenceLight extends BlockSAO {
     public boolean canRenderInPass(int pass)
     {
         ClientProxy.renderPass = pass;
-        if(pass == 0)
-        {
-            return false;
-        }
-        return true;
+        return pass != 0;
     }
 
     @Override

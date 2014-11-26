@@ -10,7 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class AincradCobbleStairs extends BlockStairs
 {
 	
-	public Block material;
+	private Block material;
 	
 	public AincradCobbleStairs(Block block)
 	{

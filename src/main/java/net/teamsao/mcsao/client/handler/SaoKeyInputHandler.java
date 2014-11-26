@@ -26,7 +26,6 @@ public class SaoKeyInputHandler {
 
         if(KeyBindings.guiSkill.isPressed())
         {
-//                player.openGui(Reference.MODID, SwordArtOnline.GUI_ITEM_INV, world, (int) player.posX, (int) player.posY, (int) player.posZ);
             if(FMLClientHandler.instance().getClientPlayerEntity() != null)
             {
                 EntityPlayer entityPlayer = FMLClientHandler.instance().getClientPlayerEntity();
@@ -35,10 +34,8 @@ public class SaoKeyInputHandler {
                 {
                     if(entityPlayer.worldObj.isRemote)
                     {
-                        System.out.println("KEY IS PRESSED");
                         entityPlayer.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_SKILL, entityPlayer.worldObj, (int)entityPlayer.posX, (int)entityPlayer.posY, (int)entityPlayer.posZ);
                     }
-                    System.out.println("AFTER IS REMOTE");
                 }
             }
         }

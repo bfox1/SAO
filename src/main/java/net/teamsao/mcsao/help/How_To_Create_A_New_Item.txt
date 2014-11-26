@@ -1,3 +1,0 @@
-For this file, let's assume your item name is in camelCase and is assigned to the variable "$item.name".
-
-1. Create a new class file in net.teamsao.mcsao.item.[most appropriate category] named

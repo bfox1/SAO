@@ -48,9 +48,18 @@ public class setSkill implements ICommand {
     public void processCommand(ICommandSender commandSender, String[] strings) {
         EntityPlayerMP playerMP =  CommandBase.getCommandSenderAsPlayer(commandSender);
 
+        if(strings.length == 1 && strings[0].equals("help"))
+        {
+            EntityPlayer player = (EntityPlayer)playerMP;
+            player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() +
+                    "/s setLevel (Level Name)" +
+                    "/s getLevel (Level Name"
+            ));
+            return;
+        }
         if(strings.length == 3)
         {
-            if(strings[0].equals("setlevel"))
+            if(strings[0].equals("setLevel"))
             {
                 EntityPlayer player = (EntityPlayer)playerMP;
                 PlayerSAO data = PlayerSAO.get(player);
@@ -61,6 +70,7 @@ public class setSkill implements ICommand {
 
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + "§6You set new Level!"
                 ));
+                return;
             }
         }
         if(strings.length == 2)
@@ -73,26 +83,33 @@ public class setSkill implements ICommand {
                 int currentLvl = data.getSkillLvl(strings[1]);
                 player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + "§6Your level is!" + "§4" + currentLvl
                 ));
+                return;
             }
             if(strings[0].equals("checkunlocks"))
             {
                 EntityPlayer player = (EntityPlayer)playerMP;
                 AincradFloorSavedData data = new AincradFloorSavedData();
                 data.getUnlock();
+                return;
             }
             if(strings[0].equals("setunlock"))
             {
                 System.out.println();
                 World world = MinecraftServer.getServer().getEntityWorld();
                 AincradFloorSavedData data = AincradFloorSavedData.forWorld(world);
-                System.out.println(data + "After data reading");
                 NBTTagCompound compound = new NBTTagCompound();
-                System.out.println("After creation of NBT");
                 int number = Integer.parseInt(strings[1]);
                 data.floorBossDefeat(number);
                 data.markDirty();
                 data.writeToNBT(compound);
+                return;
             }
+        }
+        if(strings.length != 2 || strings.length != 3)
+        {
+            EntityPlayer player = (EntityPlayer)playerMP;
+            player.addChatMessage(new ChatComponentText(LogHelper.chatEvent() + "§eInvalid Argument. §f do /s help"
+            ));
         }
     }
 

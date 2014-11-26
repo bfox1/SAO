@@ -29,6 +29,7 @@ public class EntityBoar extends EntityMob {
 
     private int stareTimer;
     private Entity lastEntityToAttack;
+    @SuppressWarnings("FieldCanBeLocal")
     private boolean isAggressive;
 
     public EntityBoar(World p_i1738_1_) {

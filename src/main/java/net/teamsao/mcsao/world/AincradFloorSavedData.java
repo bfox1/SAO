@@ -88,14 +88,7 @@ public class AincradFloorSavedData extends WorldSavedData {
         boolean unlocked = false;
         for(int i = 0; i < 100; i++)
         {
-            if(i == 0 )
-            {
-                unlocked = true;
-            }
-            else
-            {
-                unlocked = false;
-            }
+            unlocked = i == 0;
             AincradFloorNBTData worldData = new AincradFloorNBTData(i, unlocked, "floor");
             System.out.println(i + ":" + unlocked);
             worldNBT.add(worldData);

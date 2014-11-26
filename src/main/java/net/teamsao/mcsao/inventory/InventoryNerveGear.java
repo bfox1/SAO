@@ -154,14 +154,9 @@ public class InventoryNerveGear implements IInventory {
     public static boolean getItemInSlot(ItemStack stack)
     {
 
-        if(stack == new ItemStack(SAOItems.CDSAO))
-        {
-            return true;
-        }
+        return stack == new ItemStack(SAOItems.CDSAO);
 
 
-
-        return false;
     }
 
     public static boolean compareSlot()

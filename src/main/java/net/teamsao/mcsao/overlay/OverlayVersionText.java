@@ -77,8 +77,10 @@ public class OverlayVersionText extends Gui {
 
     public void drawCol(int amount, double xPos, double yPos, int color)
     {
+        GL11.glPushMatrix();
         String name = String.valueOf(amount);
         fontRenderer.drawStringWithShadow(name, (int)xPos, (int)yPos, color);
+        GL11.glPopMatrix();
     }
 
 }

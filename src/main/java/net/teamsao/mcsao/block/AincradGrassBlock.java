@@ -44,7 +44,15 @@ public class AincradGrassBlock extends BlockSAO {
                 world.setBlockToAir(x, y, z);
                 world.setBlock(x, y, z, SAOBlocks.AincradDirtBlock, 0, 0);
             }
+            int i1 = x + rand.nextInt(3) - 1;
+            int j1 = y + rand.nextInt(5) - 3;
+            int k1 = z + rand.nextInt(3) - 1;
+            Block block = world.getBlock(i1, j1 + 1, k1);
 
+            if (world.getBlock(i1, j1, k1) == SAOBlocks.AincradDirtBlock)
+            {
+                world.setBlock(i1, j1, k1, SAOBlocks.AincradGrassBlock);
+            }
         }
     }
 

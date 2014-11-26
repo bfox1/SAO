@@ -9,18 +9,20 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.item.ItemSAO;
+import net.teamsao.mcsao.item.SItemSword;
 //
 
 /**
  * @author bfox1
  *
  */
-public class Elucidator extends ItemSword {
+public class Elucidator extends SItemSword {
 	
 	public int PowerPool = ElucidatorPowered.PowerPool;
 
-	public Elucidator(ToolMaterial par1) {
-		super(par1);
+	public Elucidator(ToolMaterial par1, String typeName) {
+		super(par1, typeName);
 		setUnlocalizedName("Elucidator");
 		setTextureName(Reference.MODID + ":" + getUnlocalizedName().substring(5));
 		this.setCreativeTab(SAOTabsManager.saoTools);

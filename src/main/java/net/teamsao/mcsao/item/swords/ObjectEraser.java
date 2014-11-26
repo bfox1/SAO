@@ -28,9 +28,9 @@ public class ObjectEraser extends UnsheathingSword
 	private EntityPlayer currentOwner;
 	private InventoryPlayer currentInventory;
 	
-	public ObjectEraser(ToolMaterial material)
+	public ObjectEraser(ToolMaterial material, String typeName )
 	{
-		super(material);
+		super(material, typeName);
 		this.setUnlocalizedName("ObjectEraser");
 		this.setTextureName("ObjectEraser");
 		this.setCreativeTab(null);
@@ -56,7 +56,7 @@ public class ObjectEraser extends UnsheathingSword
 		{
 			updateAnimation(currentInventory, inventoryIndex, isItemAnimating);
             currentOwner.setAbsorptionAmount(15.5F);
-			if(itemstack.isItemEnchanted() == false)
+			if(!itemstack.isItemEnchanted())
 			{
 				itemstack.addEnchantment(Enchantment.sharpness, 5);
 			}
