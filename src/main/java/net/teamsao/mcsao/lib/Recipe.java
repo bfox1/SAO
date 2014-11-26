@@ -34,7 +34,7 @@ public class Recipe {
 		 */
 		GameRegistry.addRecipe(new ItemStack(SAOItems.DarkRepulser), " C ", " C ", " D ", 'C', SAOItems.CrystalliteIngot, 'D', Items.diamond);
 
-        GameRegistry.addShapedRecipe(new ItemStack(SAOItems.TeleportCrystal, 1), new Object[]
+        GameRegistry.addShapedRecipe(new ItemStack(SAOItems.TownTeleportCrystal, 1), new Object[]
                 {
                         "S", "A", 'A', SAOItems.CrystalliteIngot, 'S', Items.iron_ingot
                 });
