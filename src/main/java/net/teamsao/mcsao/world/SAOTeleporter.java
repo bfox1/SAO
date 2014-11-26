@@ -25,13 +25,9 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.block.BlockSAO;
-import net.teamsao.mcsao.handler.PlayerInventoryHandler;
-import net.teamsao.mcsao.helper.InventoryNBTHelper;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.network.SyncPlayerSAOPropPacket;
 import net.teamsao.mcsao.player.PlayerSAO;
-import net.teamsao.mcsao.player.skill.SkillBase;
 
 public class SAOTeleporter extends Teleporter
 {
@@ -110,8 +106,6 @@ public class SAOTeleporter extends Teleporter
         {
             ChunkCoordinates coords = mpPlayer.getPlayerCoordinates();
             props.setAincradCoordsXYZ(coords.posX, coords.posY, coords.posZ);
-            PlayerInventoryHandler nv = new PlayerInventoryHandler();
-            nv.saveInventory(player);
             PlayerSAO.saveProxyData(player);
             mpPlayer.playerNetServerHandler.setPlayerLocation(X, Y, Z, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }
