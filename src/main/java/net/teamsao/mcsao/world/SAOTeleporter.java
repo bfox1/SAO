@@ -92,10 +92,6 @@ public class SAOTeleporter extends Teleporter
             if(aY == 0)
             {
                 mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
-                if(!props.getFirstTimeTraveler())
-                {
-                    player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_SKILL, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
-                }
 
             }else {
                 mpPlayer.playerNetServerHandler.setPlayerLocation(aX, aY, aZ, mpPlayer.rotationYaw, mpPlayer.rotationPitch);

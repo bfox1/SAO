@@ -17,6 +17,7 @@ import net.teamsao.mcsao.player.PlayerSAO;
 public class GuiSkillMenu extends GuiScreen {
 
     private static Minecraft mc;
+    private static ScaledResolution res;
 
     public static ResourceLocation textureButton = new ResourceLocation(Reference.MODID.toLowerCase(),
             "textures/gui/button/menu.png");
@@ -33,37 +34,25 @@ public class GuiSkillMenu extends GuiScreen {
     public void initGui()
     {
         this.buttonList.clear();
-        if(alreadySelected(mc.thePlayer))
-        {
+
             byte b0 = -16;
             boolean flag = true;
-            ScaledResolution res = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
+             this.res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 
 
-            int width = res.getScaledWidth();
-            int height = res.getScaledHeight();
+            int width = this.res.getScaledWidth();
+            int height = this.res.getScaledHeight();
             mc.entityRenderer.setupOverlayRendering();
             //this.buttonList.add(new SAOGuiButton(1, width / 2 - 200, height / 4 + 120 + b0, 32, "menu", true));
-            this.buttonSlide(1, width / 2 - 200, height / 4 + 120 + b0, 32, "menu", true, "return to game");
+            this.buttonSlide(1, width / 2 - 250, height / 4 + 89 + b0, 32, "menu", true, "return to game");//return to game
 
 
             if (!this.mc.isIntegratedServerRunning()) {
                 ((SAOGuiButton) this.buttonList.get(0)).displayString = I18n.format("menu", new Object[0]);
             }
-            this.buttonList.add(new SAOGuiButton(4, this.width / 2 - 100, this.height / 4 + 24 + b0, 32, "menu", true));
-            this.buttonList.add(new SAOGuiButton(12, this.width / 2 + 2, this.height / 4 + 96 + b0, 32, "menu", true));
-        } else {
+            this.buttonList.add(new SAOGuiButton(4, width / 2 - 250, height / 4 + 24 + b0, 32, "menu", true));//Weapon
+            this.buttonList.add(new SAOGuiButton(12, width / 2 - 250, height / 4 + 56 + b0, 32, "menu", true));//Support
 
-            byte b0 = -16;
-            ScaledResolution res = new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
-
-            int width = res.getScaledWidth();
-            int height = res.getScaledHeight();
-
-            mc.entityRenderer.setupOverlayRendering();
-
-            this.buttonSlide(1, width / 2 - 200, height / 4 + 120 + b0, 32, "menu", true, "test");
-        }
     }
 
     @Override
@@ -80,11 +69,7 @@ public class GuiSkillMenu extends GuiScreen {
         this.buttonList.add(new SAOGuiButton(id, x, y, size, buttonFileName, twoTypes));
     }
 
-    public boolean alreadySelected(EntityPlayer player)
-    {
-        PlayerSAO data = PlayerSAO.get(player);
-        return data.getFirstTimeTraveler();
-    }
+
 
     /**
      * Called from the main game loop to update the screen.
@@ -102,17 +87,11 @@ public class GuiSkillMenu extends GuiScreen {
     @Override
     public void drawScreen(int p_73863_1_, int p_73863_2_, float p_73863_3_)
     {
-        if(alreadySelected(mc.thePlayer))
-        {
+
             this.drawDefaultBackground();
             this.drawCenteredString(this.fontRendererObj, "Skill Menu", this.width / 2, 40, 16777215);
-            this.drawString(this.fontRendererObj, "ReturnToMenu", ((width / 2) - 200) + 30, height / 4 + 120, 0xFFFFFF);
+           // this.drawString(this.fontRendererObj, "ReturnToMenu", ((this.width / 2) - 200), height / 4 + 120, 0xFFFFFF);
             super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
-        } else {
-            this.drawDefaultBackground();
-            this.drawCenteredString(this.fontRendererObj, "Skill Menu", this.width / 2, 40, 16777215);
-            this.drawString(this.fontRendererObj, "ReturnToMenu", ((width / 2) - 200) + 20, height / 4 + 123, 0xFFFFFF);
-            super.drawScreen(p_73863_1_, p_73863_2_, p_73863_3_);
-        }
+
     }
 }

@@ -44,6 +44,14 @@ public class OverlayVersionText extends Gui {
             }
             return;
         }
+        if(event.type.equals(RenderGameOverlayEvent.ElementType.FOOD)&& event.isCancelable())
+        {
+            if(mc.thePlayer.worldObj.provider.dimensionId == 2)
+            {
+                event.setCanceled(true);
+            }
+            return;
+        }
             String version = Reference.NAME + "-" + Reference.VERSION;
 
             PlayerSAO data = PlayerSAO.get(this.mc.thePlayer);

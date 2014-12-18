@@ -51,7 +51,6 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
     private boolean saveInvNBT;
 
-    private boolean firstTimeTraveler;
 
     //PlayerEXP
 
@@ -74,7 +73,6 @@ public class PlayerSAO implements IExtendedEntityProperties {
         this.AincradCoordsY = 0;
         this.AincradCoordsZ = 0;
         this.col_amount = 100;
-        this.firstTimeTraveler = false;
         this.saveInvNBT = false;
     }
 
@@ -172,7 +170,6 @@ public class PlayerSAO implements IExtendedEntityProperties {
             }
         }
          **/
-        properties.setBoolean("firstTimeTraveler", this.firstTimeTraveler);
         properties.setInteger("bedCoordX", this.overWorldX);
         properties.setInteger("bedCoordY", this.overWorldY);
         properties.setInteger("bedCoordZ", this.overWorldZ);
@@ -230,7 +227,6 @@ public class PlayerSAO implements IExtendedEntityProperties {
             }
         }
          **/
-        this.firstTimeTraveler = properties.getBoolean("firstTimeTraveler");
         this.overWorldX = properties.getInteger("bedCoordX");
         this.overWorldY = properties.getInteger("bedCoordY");
         this.overWorldZ = properties.getInteger("bedCoordZ");
@@ -463,15 +459,8 @@ public class PlayerSAO implements IExtendedEntityProperties {
         return skillData.getSkillExp();
     }
 
-    public boolean setFirstTimeTraveler(boolean test)
-    {
-        return this.firstTimeTraveler = test;
-    }
 
-    public boolean getFirstTimeTraveler()
-    {
-        return this.firstTimeTraveler;
-    }
+
 
 
     /**
