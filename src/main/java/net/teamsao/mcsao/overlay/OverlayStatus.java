@@ -3,6 +3,7 @@ package net.teamsao.mcsao.overlay;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
@@ -46,6 +47,7 @@ public class OverlayStatus extends Gui {
             /* TODO: Make the statuses show
              * TODO: Make the statuses show in their correct spot
              */
+
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glDisable(GL11.GL_LIGHTING);
             mc.renderEngine.bindTexture(new ResourceLocation("sao", "/assets/sao/textures/overlay/health/healthbase.png"));
@@ -56,6 +58,7 @@ public class OverlayStatus extends Gui {
                 if (potion.hasStatusIcon()) {
                     // It has an icon! TODO: Let's change it to our custom image!
                     index = potion.getStatusIconIndex();
+
                     this.drawTexturedModalRect(xPos, yPos, STAT_ICON_BASE_U_OFFSET + index % STAT_ICONS_PER_ROW * STAT_ICON_SIZE,
                             STAT_ICON_BASE_V_OFFSET + index / STAT_ICONS_PER_ROW * STAT_ICON_SIZE,
                             STAT_ICON_SIZE, STAT_ICON_SIZE);
@@ -63,6 +66,27 @@ public class OverlayStatus extends Gui {
             }
 
         }
+    }
+
+
+    public void drawFrame(double xPos, double yPos, double xSize, double ySize)
+    {
+       // this.mc.renderEngine.bindTexture(textureBase);
+
+        GL11.glPushMatrix();
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+
+        Tessellator t = Tessellator.instance;
+
+        t.startDrawingQuads();
+        t.addVertexWithUV(xPos, yPos, this.zLevel, 0, 0);
+        t.addVertexWithUV(xPos, yPos + ySize, this.zLevel, 0, 1);
+        t.addVertexWithUV(xPos + xSize, yPos + ySize, this.zLevel, 1, 1);
+        t.addVertexWithUV(xPos + xSize, yPos, this.zLevel, 1, 0);
+        t.draw();
+
+        GL11.glPopMatrix();
     }
 
 }

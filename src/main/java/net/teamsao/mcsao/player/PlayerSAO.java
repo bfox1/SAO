@@ -5,16 +5,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.helper.InventoryNBTHelper;
 import net.teamsao.mcsao.helper.LogHelper;
 import net.teamsao.mcsao.network.SyncPlayerSAOPropPacket;
 import net.teamsao.mcsao.player.skill.SkillList;
@@ -139,6 +134,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
     @Override
     public void saveNBTData(NBTTagCompound compound) {
         NBTTagCompound properties = new NBTTagCompound();
+
         for(SkillBase skill : skillNBTData)
         {
                 String skillName = skill.getSkillName();

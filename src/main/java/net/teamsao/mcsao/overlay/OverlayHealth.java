@@ -33,6 +33,8 @@ public class OverlayHealth extends Gui {
     public static ResourceLocation textureBar = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/overlay/health/healthBar.png");
     public static final ResourceLocation originalIcons = new ResourceLocation("textures/gui/icons.png");
 
+    public static double frameSizeLen;
+
     public OverlayHealth(Minecraft mc) 
     {
         super();
@@ -46,6 +48,13 @@ public class OverlayHealth extends Gui {
     @SubscribeEvent()
     public void onRenderHealthBar(RenderGameOverlayEvent.Pre evt)
     {
+        if(evt.type.equals(RenderGameOverlayEvent.ElementType.FOOD) && evt.isCancelable())
+        {
+            if(mc.thePlayer.worldObj.provider.dimensionId == 2)
+            {
+                evt.setCanceled(true);
+            }
+        }
     	if (evt.type.equals(RenderGameOverlayEvent.ElementType.HEALTH) && evt.isCancelable()) {
             if(mc.thePlayer.worldObj.provider.dimensionId == 2) {
                 evt.setCanceled(true);
@@ -53,12 +62,14 @@ public class OverlayHealth extends Gui {
 
 
 
+
             double xPos = 5; // Horizontal position of the overlay relative to the top-left corner.
             double yPos = 5; // Vertical position of the overlay relative to the top-left corner.
-            double frameXSize = 120;
+            double frameXSize = 150;
             double frameYSize = 20;
-            double barXSize = 70;
+            double barXSize = 88.5;
             double barYSize = 6;
+            this.frameSizeLen = frameXSize;
             float health = mc.thePlayer.getHealth();
             float food = mc.thePlayer.getFoodStats().getFoodLevel();
 
@@ -68,7 +79,7 @@ public class OverlayHealth extends Gui {
                 //int precent = playerProp.getHealth()/playerProp.getMaxHealth();
                 double percent = health/ mc.thePlayer.getMaxHealth();
                 drawFrame(xPos, yPos, frameXSize, frameYSize);
-                drawBar(percent, xPos + 41.2, yPos + 4.25, barXSize, barYSize);
+                drawBar(percent, xPos + 51.2, yPos + 4.25, barXSize, barYSize);
             }
             if (food > 0 && mc.thePlayer.worldObj.provider.dimensionId == 2)
             {

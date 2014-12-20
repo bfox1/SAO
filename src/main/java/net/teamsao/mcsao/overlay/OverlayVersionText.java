@@ -38,24 +38,12 @@ public class OverlayVersionText extends Gui {
     public void renderScreen(RenderGameOverlayEvent event)
     {
 
-        if(event.type.equals(RenderGameOverlayEvent.ElementType.FOOD) && event.isCancelable()) {
-            if (mc.thePlayer.worldObj.provider.dimensionId == 2) {
-                event.setCanceled(true);
-            }
-            return;
-        }
-        if(event.type.equals(RenderGameOverlayEvent.ElementType.FOOD)&& event.isCancelable())
-        {
-            if(mc.thePlayer.worldObj.provider.dimensionId == 2)
-            {
-                event.setCanceled(true);
-            }
+        if(event.type != RenderGameOverlayEvent.ElementType.FOOD || event.isCancelable()) {
             return;
         }
             String version = Reference.NAME + "-" + Reference.VERSION;
 
             PlayerSAO data = PlayerSAO.get(this.mc.thePlayer);
-            int colAmount = data.getColAmount();
 
         ScaledResolution res = new ScaledResolution(this.mc,
                 this.mc.displayWidth, this.mc.displayHeight);
@@ -64,15 +52,11 @@ public class OverlayVersionText extends Gui {
         int height = res.getScaledHeight();
         mc.entityRenderer.setupOverlayRendering();
 
-            double xColPos = width - 30;
-            double yColPos = height - 30;
-            int colColor = 0x008000;
 
             double xPos = width/2 - 70;
             double yPos = 5;
             int color = 0xFFFFFF;
             drawText(version, xPos, yPos, color);
-            drawCol(colAmount, xColPos, yColPos, colColor);
     }
 
     public void drawText(String string, double xPos, double yPos, int color)
@@ -83,12 +67,5 @@ public class OverlayVersionText extends Gui {
         GL11.glPopMatrix();
     }
 
-    public void drawCol(int amount, double xPos, double yPos, int color)
-    {
-        GL11.glPushMatrix();
-        String name = String.valueOf(amount);
-        fontRenderer.drawStringWithShadow(name, (int)xPos, (int)yPos, color);
-        GL11.glPopMatrix();
-    }
 
 }

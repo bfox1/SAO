@@ -27,6 +27,7 @@ public class GuiSkillMenu extends GuiScreen {
         super();
 
         // We need this to invoke the render engine.
+        this.res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
         GuiSkillMenu.mc = mc;
     }
 
@@ -37,21 +38,23 @@ public class GuiSkillMenu extends GuiScreen {
 
             byte b0 = -16;
             boolean flag = true;
-             this.res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
+        //     this.res = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
 
 
             int width = this.res.getScaledWidth();
             int height = this.res.getScaledHeight();
             mc.entityRenderer.setupOverlayRendering();
             //this.buttonList.add(new SAOGuiButton(1, width / 2 - 200, height / 4 + 120 + b0, 32, "menu", true));
-            this.buttonSlide(1, width / 2 - 250, height / 4 + 89 + b0, 32, "menu", true, "return to game");//return to game
+            //this.buttonSlide(1, width / 2 - 250, height / 4 + 89 + b0, 32, "menu", true, "return to game");//return to game
 
 
             if (!this.mc.isIntegratedServerRunning()) {
                 ((SAOGuiButton) this.buttonList.get(0)).displayString = I18n.format("menu", new Object[0]);
             }
-            this.buttonList.add(new SAOGuiButton(4, width / 2 - 250, height / 4 + 24 + b0, 32, "menu", true));//Weapon
-            this.buttonList.add(new SAOGuiButton(12, width / 2 - 250, height / 4 + 56 + b0, 32, "menu", true));//Support
+            this.buttonList.add(new SAOGuiButton(4, width / 2 - 250, height / 4 , 32, "menu", true));//Weapon
+            this.buttonList.add(new SAOGuiButton(5, width / 2 - 250, height / 4 + 32 , 32, "menu", true));//Support
+            this.buttonList.add(new SAOGuiButton(6, width / 2 - 250, height / 4 + 64 , 32, "menu", true));//Support
+            this.buttonList.add(new SAOGuiButton(7, width / 2 - 250, height / 4 + 96 , 32, "menu", true));//Support
 
     }
 
