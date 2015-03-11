@@ -36,11 +36,9 @@ public class SyncPlayerSAOPropPacket extends SaoAbstractPacket {
     @Override
     public void handleClientSide(EntityPlayer player) {
         PlayerSAO.get(player ).loadNBTData(data);
-
     }
 
     @Override
     public void handleServerSide(EntityPlayer player) {
-
     }
 }

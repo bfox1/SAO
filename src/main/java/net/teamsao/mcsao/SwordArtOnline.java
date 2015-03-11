@@ -39,14 +39,6 @@ public class SwordArtOnline {
     public static SwordArtOnline instance;
 
     public static final SaoPacketPipeline packetPipeline = new SaoPacketPipeline();
-    public static int modGuiIndex = 0;
-    public static final int GUI_ITEM_INV = modGuiIndex++;
-
-
-    public static final int GUI_TELEPORT_CRYSTAL = modGuiIndex + 2;
-    public static final int GUI_TELEPORT_CRYSTAL_BLOCK = modGuiIndex + 3;
-    public static final int GUI_SKILL = modGuiIndex + 4;
-
 
 	@SidedProxy(clientSide = Reference.CLIENTPROXY, serverSide = Reference.SERVERPROXY)
 	public static SProxy proxy;

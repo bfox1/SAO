@@ -6,13 +6,12 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
 import net.teamsao.mcsao.SwordArtOnline;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.inventory.InventoryNerveGear;
-import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 import net.teamsao.mcsao.player.PlayerSAO;
 import net.teamsao.mcsao.world.SAOTeleporter;
 
@@ -68,7 +67,7 @@ public class NerveGear extends ItemArmor {
 		{
 			if(par3Player.isSneaking())
 			{
-                par3Player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_ITEM_INV, par3Player.worldObj, (int) par3Player.posX,
+                par3Player.openGui(SwordArtOnline.instance, Reference.GUI_ITEM_INV, par3Player.worldObj, (int) par3Player.posX,
                         (int) par3Player.posY, (int)par3Player.posZ);
             }
 		}

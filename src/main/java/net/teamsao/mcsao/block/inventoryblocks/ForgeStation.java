@@ -3,13 +3,17 @@ package net.teamsao.mcsao.block.inventoryblocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 import net.teamsao.mcsao.tileentity.TileEntityForgeStation;
@@ -37,7 +41,7 @@ public class ForgeStation extends BlockContainer {
             return false;
         }
         //Code to Open Gui.
-        player.openGui(SwordArtOnline.instance, SAOBlocks.ForgingStationID, world, x, y, z); // moved id to a separate area for easier reference later - Skymmer
+        player.openGui(SwordArtOnline.instance, Reference.GUI_FORGE_STATION, world, x, y, z); // moved id to a separate area for easier reference later - Skymmer
         return true;
     }
 
@@ -47,7 +51,7 @@ public class ForgeStation extends BlockContainer {
         }
     }
 
-    /*private void dropItems(World world, int x, int y, int z){ // Don't know what this does, it might be covered by another method - Skymmer
+    private void dropItems(World world, int x, int y, int z) {
         Random rand = new Random();
 
         TileEntity tileEntity = world.getTileEntity(x, y, z);
@@ -80,7 +84,7 @@ public class ForgeStation extends BlockContainer {
                 item.stackSize = 0;
             }
         }
-    } */
+    }
     
     public boolean hasComparatorInputOverride() {
 		return true;

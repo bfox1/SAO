@@ -120,6 +120,7 @@ public class SaoPacketPipeline extends MessageToMessageCodec<FMLProxyPacket, Sao
      */
     public void registerPackets(){
         registerPacket(SyncPlayerSAOPropPacket.class);
+        registerPacket(OpenPlayerInterfacePacket.class);
     }
 
     // Method to call from FMLPostInitializationEvent

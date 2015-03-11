@@ -1,18 +1,19 @@
 package net.teamsao.mcsao.world;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
-
-import cpw.mods.fml.common.FMLCommonHandler;
-import ibxm.Player;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.play.server.*;
+import net.minecraft.network.play.server.S03PacketTimeUpdate;
+import net.minecraft.network.play.server.S07PacketRespawn;
+import net.minecraft.network.play.server.S09PacketHeldItemChange;
+import net.minecraft.network.play.server.S1DPacketEntityEffect;
+import net.minecraft.network.play.server.S2BPacketChangeGameState;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChunkCoordinates;
@@ -25,13 +26,12 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.teamsao.mcsao.SwordArtOnline;
-import net.teamsao.mcsao.block.BlockSAO;
-import net.teamsao.mcsao.handler.PlayerInventoryHandler;
-import net.teamsao.mcsao.helper.InventoryNBTHelper;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.init.SAOBlocks;
 import net.teamsao.mcsao.network.SyncPlayerSAOPropPacket;
 import net.teamsao.mcsao.player.PlayerSAO;
-import net.teamsao.mcsao.player.skill.SkillBase;
+import cpw.mods.fml.common.FMLCommonHandler;
+//import net.teamsao.mcsao.handler.PlayerInventoryHandler; Class doesn't exist yet!
 
 public class SAOTeleporter extends Teleporter
 {
@@ -98,7 +98,7 @@ public class SAOTeleporter extends Teleporter
                 mpPlayer.playerNetServerHandler.setPlayerLocation(0, height, 0, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
                 if(!props.getFirstTimeTraveler())
                 {
-                    player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_SKILL, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
+                    player.openGui(SwordArtOnline.instance, Reference.GUI_SKILL, player.worldObj, (int)player.posX, (int)player.posY, (int)player.posZ);
                 }
 
             }else {
@@ -110,8 +110,8 @@ public class SAOTeleporter extends Teleporter
         {
             ChunkCoordinates coords = mpPlayer.getPlayerCoordinates();
             props.setAincradCoordsXYZ(coords.posX, coords.posY, coords.posZ);
-            PlayerInventoryHandler nv = new PlayerInventoryHandler();
-            nv.saveInventory(player);
+            //PlayerInventoryHandler nv = new PlayerInventoryHandler(); Class doesn't exist yet!
+            //nv.saveInventory(player);
             PlayerSAO.saveProxyData(player);
             mpPlayer.playerNetServerHandler.setPlayerLocation(X, Y, Z, mpPlayer.rotationYaw, mpPlayer.rotationPitch);
         }

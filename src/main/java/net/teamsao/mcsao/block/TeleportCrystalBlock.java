@@ -1,6 +1,5 @@
 package net.teamsao.mcsao.block;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -8,6 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.creativetabs.SAOTabsManager;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.tileentity.TileEntityTeleportCrystalBlock;
 
 /**
@@ -31,7 +31,7 @@ public class TeleportCrystalBlock extends BlockSAO implements ITileEntityProvide
 		{
 			if(player.isSneaking())
 			{
-                player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_TELEPORT_CRYSTAL_BLOCK, player.worldObj, (int) player.posX,
+                player.openGui(SwordArtOnline.instance, Reference.GUI_TELEPORT_CRYSTAL_BLOCK, player.worldObj, (int) player.posX,
                         (int) player.posY, (int)player.posZ);
             }
 			else

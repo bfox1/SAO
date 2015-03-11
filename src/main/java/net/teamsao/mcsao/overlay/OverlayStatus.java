@@ -8,7 +8,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import org.lwjgl.opengl.GL11;
-import scala.tools.ant.sabbus.Make;
+//import scala.tools.ant.sabbus.Make;
 
 import java.util.Iterator;
 
@@ -32,6 +32,8 @@ public class OverlayStatus extends Gui {
     private static final int STAT_ICON_BASE_U_OFFSET = 0;
     private static final int STAT_ICON_BASE_V_OFFSET = 198;
     private static final int STAT_ICONS_PER_ROW = 25;
+    
+    private static final ResourceLocation originalIcons = new ResourceLocation("textures/gui/icons.png");
 
     @SubscribeEvent
     public void onRenderHealthBar(RenderGameOverlayEvent evt) {
@@ -61,6 +63,9 @@ public class OverlayStatus extends Gui {
                             STAT_ICON_SIZE, STAT_ICON_SIZE);
                 }
             }
+            
+            GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+            mc.renderEngine.bindTexture(originalIcons);
 
         }
     }

@@ -9,10 +9,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.teamsao.mcsao.helper.ColorHelper;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.player.PlayerSAO;
+
 import org.lwjgl.opengl.GL11;
 
 import java.util.EnumSet;
@@ -24,9 +26,8 @@ public class OverlayVersionText extends Gui {
 
     private static Minecraft mc;
 
-
-
     private static FontRenderer fontRenderer = Minecraft.getMinecraft().fontRenderer;
+    public static final ResourceLocation originalIcons = new ResourceLocation("textures/gui/icons.png");
 
     public OverlayVersionText(Minecraft mc)
     {
@@ -37,17 +38,17 @@ public class OverlayVersionText extends Gui {
     @SubscribeEvent
     public void renderScreen(RenderGameOverlayEvent event)
     {
-
-        if(event.type.equals(RenderGameOverlayEvent.ElementType.FOOD) && event.isCancelable()) {
+       if(event.type.equals(RenderGameOverlayEvent.ElementType.FOOD) && event.isCancelable()) {
             if (mc.thePlayer.worldObj.provider.dimensionId == 2) {
                 event.setCanceled(true);
             }
             return;
         }
-            String version = Reference.NAME + "-" + Reference.VERSION;
+        
+        String version = Reference.NAME + "-" + Reference.VERSION;
 
-            PlayerSAO data = PlayerSAO.get(this.mc.thePlayer);
-            int colAmount = data.getColAmount();
+        PlayerSAO data = PlayerSAO.get(this.mc.thePlayer);
+        int colAmount = data.getColAmount();
 
         ScaledResolution res = new ScaledResolution(this.mc,
                 this.mc.displayWidth, this.mc.displayHeight);
@@ -56,15 +57,17 @@ public class OverlayVersionText extends Gui {
         int height = res.getScaledHeight();
         mc.entityRenderer.setupOverlayRendering();
 
-            double xColPos = width - 30;
-            double yColPos = height - 30;
-            int colColor = 0x008000;
+        double xColPos = width - 30;
+        double yColPos = height - 30;
+        int colColor = 0x008000;
 
-            double xPos = width/2 - 70;
-            double yPos = 5;
-            int color = 0xFFFFFF;
-            drawText(version, xPos, yPos, color);
-            drawCol(colAmount, xColPos, yColPos, colColor);
+        double xPos = width/2 - 70;
+        double yPos = 5;
+        int color = 0xFFFFFF;
+        drawText(version, xPos, yPos, color);
+        drawCol(colAmount, xColPos, yColPos, colColor);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        mc.renderEngine.bindTexture(originalIcons);
     }
 
     public void drawText(String string, double xPos, double yPos, int color)

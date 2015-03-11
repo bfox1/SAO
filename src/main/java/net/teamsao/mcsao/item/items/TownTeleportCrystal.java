@@ -2,10 +2,9 @@ package net.teamsao.mcsao.item.items;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTBase;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.item.ItemSAO;
 import net.teamsao.mcsao.world.DimensionId;
@@ -33,7 +32,7 @@ public class TownTeleportCrystal extends ItemSAO {
 			if(par3Player.isSneaking() && par3Player.dimension == DimensionId.SAO_DIMENSION_ID)
 			{
                 System.out.println("Past area");
-                par3Player.openGui(SwordArtOnline.instance, SwordArtOnline.GUI_TELEPORT_CRYSTAL, par3Player.worldObj, (int) par3Player.posX,
+                par3Player.openGui(SwordArtOnline.instance, Reference.GUI_TELEPORT_CRYSTAL, par3Player.worldObj, (int) par3Player.posX,
                         (int) par3Player.posY, (int)par3Player.posZ);
             }
 		}

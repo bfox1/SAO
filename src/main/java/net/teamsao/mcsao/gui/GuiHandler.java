@@ -1,6 +1,5 @@
 package net.teamsao.mcsao.gui;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -10,10 +9,12 @@ import net.teamsao.mcsao.client.gui.inventory.GuiForgeStation;
 import net.teamsao.mcsao.client.gui.inventory.GuiNerveGear;
 import net.teamsao.mcsao.container.ContainerForgeStation;
 import net.teamsao.mcsao.container.ContainerNerveGear;
+import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.inventory.InventoryNerveGear;
 import net.teamsao.mcsao.tileentity.TileEntityForgeStation;
 //import net.teamsao.mcsao.tileentity.TileEntityNerveGear;
 import net.teamsao.mcsao.tileentity.TileEntityTeleportCrystalBlock;
+import cpw.mods.fml.common.network.IGuiHandler;
 
 /**
  * Created by bfox1 on 7/12/2014.
@@ -26,7 +27,7 @@ public class GuiHandler implements IGuiHandler {
         if(tileEntity instanceof TileEntityForgeStation){
             return new ContainerForgeStation(player.inventory, (TileEntityForgeStation) tileEntity);
         }
-        if(ID == SwordArtOnline.GUI_ITEM_INV)
+        if(ID == Reference.GUI_ITEM_INV)
         {
             return new ContainerNerveGear(player, player.inventory, new InventoryNerveGear(player.getHeldItem()));
         }
@@ -39,19 +40,19 @@ public class GuiHandler implements IGuiHandler {
         if(tileEntity instanceof TileEntityForgeStation){
             return new GuiForgeStation(player.inventory, (TileEntityForgeStation) tileEntity);
         }
-        if(ID == SwordArtOnline.GUI_ITEM_INV)
+        if(ID == Reference.GUI_ITEM_INV)
         {
             return new GuiNerveGear((ContainerNerveGear) new ContainerNerveGear(player, player.inventory, new InventoryNerveGear(player.getHeldItem())));
         }
-        if(ID == SwordArtOnline.GUI_TELEPORT_CRYSTAL)
+        if(ID == Reference.GUI_TELEPORT_CRYSTAL)
         {
         	return new GuiTeleportCrystal(player);
         }
-        if(ID == SwordArtOnline.GUI_TELEPORT_CRYSTAL_BLOCK)
+        if(ID == Reference.GUI_TELEPORT_CRYSTAL_BLOCK)
         {
             return new GuiTeleportCrystalBlock((TileEntityTeleportCrystalBlock) tileEntity);
         }
-        if(ID == SwordArtOnline.GUI_SKILL)
+        if(ID == Reference.GUI_SKILL)
         {
             return new GuiSkillMenu(Minecraft.getMinecraft());
         }

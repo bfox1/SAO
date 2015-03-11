@@ -17,8 +17,6 @@ import net.teamsao.mcsao.creativetabs.SAOTabsManager;
  * @author bfox1
  */
 public class SAOBlocks {
-
-	public static final int ForgingStationID = 0;
 	
     public static Block ForgingStation = new ForgeStation(); //Special TileEntity That Allows the Creation of Most High-tier Swords and Items.
 
