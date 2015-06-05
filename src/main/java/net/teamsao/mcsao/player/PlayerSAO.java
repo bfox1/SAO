@@ -14,6 +14,7 @@ import net.teamsao.mcsao.helper.LogHelper;
 import net.teamsao.mcsao.network.SyncPlayerSAOPropPacket;
 import net.teamsao.mcsao.player.skill.SkillList;
 import net.teamsao.mcsao.player.skill.SkillBase;
+import net.teamsao.mcsao.player.skill.SkillType;
 import net.teamsao.mcsao.proxy.CommonProxy;
 
 import java.util.ArrayList;
@@ -513,7 +514,7 @@ public class PlayerSAO implements IExtendedEntityProperties {
 
         int index = 0;
 
-        for(String name : SkillList.COMBAT)
+       /* for(String name : SkillList.COMBAT)
         {
             SkillBase skill = new SkillBase(index,name.toLowerCase(), 0, 0);
             skillBase.add(skill);
@@ -531,6 +532,12 @@ public class PlayerSAO implements IExtendedEntityProperties {
             SkillBase skill = new SkillBase(index, name.toLowerCase(), 0, 0);
             skillBase.add(skill);
             index++;
+        }*/
+
+        for(SkillType type : SkillType.values())
+        {
+            SkillBase skill = new SkillBase(index, type.getClassName(), type.getSkillLevel(), type.getExp());
+            skillBase.add(skill);
         }
         return skillBase;
     }

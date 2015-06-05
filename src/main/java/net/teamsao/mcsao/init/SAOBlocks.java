@@ -6,7 +6,7 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.teamsao.mcsao.block.*;
 import net.teamsao.mcsao.block.dungeonstone.*;
-import net.teamsao.mcsao.block.inventoryblocks.ForgeStation;
+//import net.teamsao.mcsao.block.inventoryblocks.ForgeStation;
 import net.teamsao.mcsao.helper.Reference;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.block.dungeonstone.*;
@@ -20,7 +20,7 @@ public class SAOBlocks {
 
 	public static final int ForgingStationID = 0;
 	
-    public static Block ForgingStation = new ForgeStation(); //Special TileEntity That Allows the Creation of Most High-tier Swords and Items.
+   // public static Block ForgingStation = new ForgeStation(); //Special TileEntity That Allows the Creation of Most High-tier Swords and Items.
 
     public static Block Log;
 
@@ -55,7 +55,7 @@ public class SAOBlocks {
 
         //Use the Method below for registering simple Blocks
 
-        ReferenceHelper.registerBlock(ForgingStation);
+       // ReferenceHelper.registerBlock(ForgingStation);
         ReferenceHelper.registerBlock(TeleportCrystalBlock);
         ReferenceHelper.registerBlock(SafeAreaBlock);
         ReferenceHelper.registerBlock(CobbleRoadBlock);

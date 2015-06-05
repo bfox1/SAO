@@ -1,9 +1,12 @@
 package net.teamsao.mcsao.item.swords;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.world.World;
+import net.teamsao.mcsao.creativetabs.SAOTabsManager;
 import net.teamsao.mcsao.helper.ReferenceHelper;
 import net.teamsao.mcsao.init.SAOItems;
 import net.teamsao.mcsao.item.SItemSword;
@@ -34,6 +37,8 @@ public class AnnealBladePowered extends SItemSword {
         	if(par3.isSneaking())
         	{
 			sword.setItemDamage(par1.getItemDamage());
+                Item ssword = new AnnealBlades(ToolMaterial.EMERALD, "yes");
+                ReferenceHelper.registerItem(ssword);
             return sword;
         	}
         }
@@ -43,4 +48,10 @@ public class AnnealBladePowered extends SItemSword {
 		
 	}
 
+    private class AnnealBlades extends SItemSword {
+        public AnnealBlades(ToolMaterial emerald, String yes) {
+            super(emerald, yes);
+            this.setCreativeTab(SAOTabsManager.saoTools);
+        }
+    }
 }

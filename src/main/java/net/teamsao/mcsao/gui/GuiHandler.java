@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 import net.teamsao.mcsao.SwordArtOnline;
 import net.teamsao.mcsao.client.gui.inventory.GuiForgeStation;
 import net.teamsao.mcsao.client.gui.inventory.GuiNerveGear;
-import net.teamsao.mcsao.container.ContainerForgeStation;
+//import net.teamsao.mcsao.container.ContainerForgeStation;
 import net.teamsao.mcsao.container.ContainerNerveGear;
 import net.teamsao.mcsao.inventory.InventoryNerveGear;
 import net.teamsao.mcsao.tileentity.TileEntityForgeStation;
@@ -24,7 +24,7 @@ public class GuiHandler implements IGuiHandler {
         TileEntity tileEntity = world.getTileEntity(x, y, z);
 
         if(tileEntity instanceof TileEntityForgeStation){
-            return new ContainerForgeStation(player.inventory, (TileEntityForgeStation) tileEntity);
+            //return new ContainerForgeStation(player.inventory, (TileEntityForgeStation) tileEntity);
         }
         if(ID == SwordArtOnline.GUI_ITEM_INV)
         {

@@ -1,7 +1,10 @@
 package net.teamsao.mcsao.handler;
 
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.entity.EntityLivingBase;
@@ -149,6 +152,7 @@ public class SaoEventHandler {
     }
 
     @SubscribeEvent()
+    @SideOnly(Side.CLIENT)
         public void onRenderExperienceBar(RenderGameOverlayEvent event)
         {
             if(event.type.equals(RenderGameOverlayEvent.ElementType.EXPERIENCE) && event.isCancelable())
@@ -158,6 +162,7 @@ public class SaoEventHandler {
         }
 
     @SubscribeEvent()
+    @SideOnly(Side.CLIENT)
     public void onRenderTick(TickEvent.RenderTickEvent event)
     {
 

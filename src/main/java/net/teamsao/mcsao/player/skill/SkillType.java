@@ -6,11 +6,11 @@ package net.teamsao.mcsao.player.skill;
 public enum SkillType {
 
     //Weapon Skills
-    ONEHANDEDSWORD(0, "one-handed-sword", "weapon"),
-    ONECURVEDSWORD(0, "one-handed-curved-sword", "weapon"),
-    TWOHANDEDBATTLEAXE(0, "two-handed-battle-axe", "weapon"),
-    TWOHANDEDSWORD(0, "two-handed-sword", "weapon"),
-    RAPIERSWORD(0, "rapier-sword", "weapon");
+    ONEHANDEDSWORD(0,0, "one-handed-sword", "weapon"),
+    ONECURVEDSWORD(0,0, "one-handed-curved-sword", "weapon"),
+    TWOHANDEDBATTLEAXE(0,0, "two-handed-battle-axe", "weapon"),
+    TWOHANDEDSWORD(0,0, "two-handed-sword", "weapon"),
+    RAPIERSWORD(0,0, "rapier-sword", "weapon");
     /*
     TODO
     Support
@@ -22,18 +22,23 @@ public enum SkillType {
     */
 
 
-    public int LVL;
-    public final String name;
-    public final String className;
+    private int LVL;
+    private final String name;
+    private final String className;
+    private long exp;
 
-    private SkillType(int LVL, String name, String className) {
+    private SkillType(int LVL, long exp, String name, String className) {
 
         this.LVL = LVL;
         this.name = name;
         this.className = className;
+        this.exp = exp;
     }
 
-
+    public long getExp()
+    {
+        return this.exp;
+    }
 
     public int getSkillLevel()
     {
